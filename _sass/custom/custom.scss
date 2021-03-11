@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
+
+.site-header, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', sans-serif
+}
+
+#search-input {
+  color: $body-text-color;
+}
+
+.highlight {
+  line-height: 0.75em;
+
+  .na {
+    color: $grey-lt-300;
+  }
+  .c1 {
+    color: $grey-dk-000;
+  }
+}
+
+blockquote {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+
+  margin: 0.5em;
+
+  border: solid 0.2em transparent;
+  border-left-color: $grey-dk-000;
+
+  padding: 0 1.5em 0 1.5em;
+  line-height: 1.25em;
+
+  background-color: mix($grey-dk-000, $body-background-color, 10%);
+  color: $grey-dk-000;
+
+  &.info {
+    background-color: mix($blue-000, $body-background-color, 10%);
+    border-left-color: $blue-000;
+
+    &.important {
+      border-left-color: $red-000;
+      background-color: mix($red-000, $body-background-color, 10%);
+    }
+  }
+}
+
+td, th {
+  border: none;
+}
+
+th {
+  background-color: $grey-dk-200;
+}
+
+.search-result-doc .search-result-doc-title {
+  overflow: unset;
+}

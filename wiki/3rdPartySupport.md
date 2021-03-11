@@ -1,0 +1,38 @@
+---
+layout: page
+title: 3rd Party Support
+parent: Wiki
+nav_order: 7
+---
+
+# 3rd Party Support
+
+**This is a list of plugins/mods that use BlueMap's API to integrate some features with BlueMap.**
+
+API: [https://github.com/BlueMap-Minecraft/BlueMapAPI](https://github.com/BlueMap-Minecraft/BlueMapAPI)
+
+If you know of any plugin/mod that fits into this list, you can ping me (Blue) on [discord](https://discord.gg/zmkyJa3) 
+in #general, and I will add it! :)
+
+----
+
+- **BlueMap-Essentials** *(for **EssentialsX**)*<br>
+  [https://www.spigotmc.org/resources/bluemap-essentials.84365/](https://www.spigotmc.org/resources/bluemap-essentials.84365/)
+
+- **ChunkyBorder**<br>
+  [https://www.spigotmc.org/resources/chunkyborder.84278/](https://www.spigotmc.org/resources/chunkyborder.84278/)
+
+- **Lands**<br>
+  [https://www.spigotmc.org/resources/lands-land-claim-plugin-grief-prevention-protection-gui-management-wars-1-16-support.53313/](https://www.spigotmc.org/resources/lands-land-claim-plugin-grief-prevention-protection-gui-management-wars-1-16-support.53313/)
+
+- **BlueBridge** *(for **WorldGuard**)*<br>
+  [https://github.com/Mark-225/BlueBridge](https://github.com/Mark-225/BlueBridge)
+
+- **Player Warps**<br>
+  [https://www.spigotmc.org/resources/66692/](https://www.spigotmc.org/resources/66692/)
+
+- **MCG BlueMap Essentials** *(integration for multiple other plugins)*<br>
+  [https://www.spigotmc.org/resources/mcg-bluemap-essentials.88940/](https://www.spigotmc.org/resources/mcg-bluemap-essentials.88940/)
+
+- **TownyBlue** *(for **Towny**)*<br>
+  [https://github.com/Hafixion/TownyBlue](https://github.com/Hafixion/TownyBlue)
