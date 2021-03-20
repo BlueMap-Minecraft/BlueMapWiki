@@ -36,3 +36,6 @@ in #general, and I will add it! :)
 
 - **TownyBlue** *(for **Towny**)*<br>
   [https://github.com/Hafixion/TownyBlue](https://github.com/Hafixion/TownyBlue)
+  
+- **BlueMap Skins** *(player-head icons for offline-mode)*<br>
+  [https://www.spigotmc.org/resources/bluemap-skins.90284/](https://www.spigotmc.org/resources/bluemap-skins.90284/)
