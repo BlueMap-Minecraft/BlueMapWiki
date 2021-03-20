@@ -90,8 +90,13 @@ DocumentRoot /var/www/
   </FilesMatch>
   
 </Directory>
+
+# Proxy requests to the live data interface to bluemaps integrated webserver  
+ProxyPreserveHost On
+ProxyPass /live/ http://127.0.0.1:8100/live/
+ProxyPassReverse /live/ http://127.0.0.1:8100/live/
 ```
-*(this needs the HEADERS and REWRITE mods for Apache enabled, and the reverse proxy for live data is missing)*
+*(this needs the HEADERS, REWRITE and all PROXY mods for Apache to be enabled)*
 
 ## Caddy
 Here is a solution from [@mbround18](https://github.com/mbround18) if you are using [Caddy](https://caddyserver.com/):
