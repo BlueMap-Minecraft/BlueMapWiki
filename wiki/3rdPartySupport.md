@@ -39,3 +39,6 @@ in #general, and I will add it! :)
   
 - **BlueMap Skins** *(player-head icons for offline-mode)*<br>
   [https://www.spigotmc.org/resources/bluemap-skins.90284/](https://www.spigotmc.org/resources/bluemap-skins.90284/)
+
+- **BlueMap Mobs** *(icons for mobs)*<br>
+  [https://www.spigotmc.org/resources/bluemap-mobs.90349/](https://www.spigotmc.org/resources/bluemap-mobs.90349/)
