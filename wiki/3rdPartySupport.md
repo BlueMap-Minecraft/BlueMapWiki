@@ -42,3 +42,6 @@ in #general, and I will add it! :)
 
 - **BlueMap Mobs** *(icons for mobs)*<br>
   [https://www.spigotmc.org/resources/bluemap-mobs.90349/](https://www.spigotmc.org/resources/bluemap-mobs.90349/)
+
+- **BlueMap No Ore Texture Pack**<br>
+  [https://www.spigotmc.org/resources/bluemap-no-ore-texture-pack.90535/](https://www.spigotmc.org/resources/bluemap-no-ore-texture-pack.90535/)
