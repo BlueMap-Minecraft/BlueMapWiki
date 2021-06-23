@@ -27,7 +27,7 @@ You can download BlueMap from [here](https://github.com/BlueMap-Minecraft/BlueMa
 
 ## Using BlueMap
 BlueMap can be used on the command-line, or as a plugin/mod for your Sponge/Spigot/Paper/Forge/Fabric-Server. 
-Read the [installation instructions]({{site.baseurl}}/wiki/Installation.html) to get started!
+Read the [installation instructions]({{site.baseurl}}/wiki/getting-started/Installation.html) to get started!
 
 ## Questions / Need help?
 If you have questions or need help, you can always join the [Discord-Server for BlueMap](https://discord.gg/zmkyJa3) or 

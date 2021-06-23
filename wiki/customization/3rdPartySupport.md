@@ -1,13 +1,14 @@
 ---
 layout: page
 title: 3rd Party Support
-parent: Wiki
-nav_order: 7
+parent: Advanced Customization
+grand_parent: Wiki
+nav_order: 3
 ---
 
 # 3rd Party Support
 
-**This is a list of plugins/mods that use BlueMap's API to integrate some features with BlueMap.**
+**This is a list of plugins/mods/resources that use BlueMap's API to integrate some features with BlueMap.**
 
 API: [https://github.com/BlueMap-Minecraft/BlueMapAPI](https://github.com/BlueMap-Minecraft/BlueMapAPI)
 

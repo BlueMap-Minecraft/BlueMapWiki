@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Reverse-Proxy with NGINX
-parent: Wiki
-nav_order: 8
+parent: Webserver
+grand_parent: Wiki
+nav_order: 1
 ---
 
 # Reverse proxy BlueMap with NGINX

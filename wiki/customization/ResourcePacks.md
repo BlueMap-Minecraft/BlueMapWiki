@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Installing Resource-Packs
-parent: Wiki
-nav_order: 5
+parent: Advanced Customization
+grand_parent: Wiki
+nav_order: 1
 ---
 
 # Installing Resource-Packs
@@ -12,11 +13,11 @@ use high resolution textures or fancy block-models.
 
 > **Important:**<br>
 > If you change your resource-pack setup you need to delete your previous renders! Delete the complete `web/data` 
-> folder! Otherwise you will get broken models with really weird textures.
+> folder! Otherwise, you will get broken models with really weird textures.
 {: .info .important }
 
 To install a resource-pack you just need to put the resource-pack folder or zip in the folder `resourcepacks` next to 
-your configuration files and reload BlueMap. BlueMap will scan the folder and try to load every resources it finds.
+your configuration files and reload BlueMap. BlueMap will scan the folder and try to load every resource it finds.
 
 > Sponge, Forge, Fabric: `./config/bluemap/resourcepacks/`<br>
 > Spigot/Paper: `./plugins/BlueMap/resourcepacks/`
@@ -26,7 +27,7 @@ You can use more than one resource-pack. Like in minecraft, they will override e
 alphabetical order, so a resource-pack called `zzzresources.zip` will override `aaaresources.zip`.<br>
 This means you can reorder them by renaming them e.g. `01_some_pack.zip`, `02_some_extension_pack.zip`...
 
-Make sure the resource-pack is for the correct minecraft-version. Otherwise it might not be loaded correctly.<br>
+Make sure the resource-pack is for the correct minecraft-version. Otherwise, it might not be loaded correctly.<br>
 There might be warnings in the console if you are using resource-packs that have some unexpected formatting. A warning
 mostly results in a single (block-)model not loaded correctly, so all the other resources from that resource-pack are 
 still being loaded.

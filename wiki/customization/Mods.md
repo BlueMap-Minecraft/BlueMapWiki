@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Configuring Mods
-parent: Wiki
-nav_order: 6
+parent: Advanced Customization
+grand_parent: Wiki
+nav_order: 2
 ---
 
 # Configuring Mods
@@ -14,7 +15,9 @@ look like this:
 ![Unknown block render example](https://pbs.twimg.com/media/ENeQqrbX0AElXmJ?format=jpg&name=large)
 
 If you don't want that, you can try to add and configure the resources of those mods to tell BlueMap how to render 
-those blocks. **Unfortunately for 1.12.x this is not easy and very tedious.** Here is how it works:
+those blocks.<br>
+**Unfortunately for 1.12.x this is not easy and very tedious.**<br>
+Here is how it works:
 
 1. TOC
 {:toc}
@@ -22,7 +25,7 @@ those blocks. **Unfortunately for 1.12.x this is not easy and very tedious.** He
 ## General
 
 > **Info:**<br>
-> Read the chapter [Installing-resource-packs]({{site.baseurl}}/wiki/ResourcePacks.html) before reading this chapter.
+> Read the chapter [Installing-resource-packs]({{site.baseurl}}/wiki/customization/ResourcePacks.html) before reading this chapter.
 {: .info }
 
 The first and most important thing to do this, is to take the **client**-version of the mod.jar and put it into the 
@@ -39,7 +42,7 @@ BlueMap will then load that mod like a resource-pack: Try to parse the block-sta
 > resources using the normal format.
 {: .info }
 
-After that it could already work! But especially on 1.12.x you might need to do some more configuration. 
+**After that it could already work!** But especially on 1.12.x you might need to do some more configuration. 
 Go through the chapters below and prepare the config files.
 
 ## Configs
@@ -56,7 +59,7 @@ Go through the chapters below and prepare the config files.
 }
 ```
 
-This is the most annoying part, but it is only needed with worlds (chunks) stored in the 1.12.x format! 
+This is the most annoying part, but it is only needed with worlds (chunks) stored in the 1.12.x format!<br>
 **So if you have a minecraft world with only 1.13.x and above, you don't need to do this.**
 
 Before 1.13 and [the flattening](https://minecraft.gamepedia.com/Java_Edition_1.13/Flattening), blocks are stored by 

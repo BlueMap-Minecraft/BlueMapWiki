@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Configuring External Webservers
-parent: Wiki
-nav_order: 9
+parent: Webserver
+grand_parent: Wiki
+nav_order: 2
 ---
 
 # Directly hosting BlueMap with external webservers

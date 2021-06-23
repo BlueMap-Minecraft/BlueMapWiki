@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Installation
-parent: Wiki
-nav_order: 2
+parent: Getting Started
+grand_parent: Wiki
+nav_order: 1
 ---
 
 # Installation
@@ -15,6 +16,9 @@ nav_order: 2
 To run bluemap you need:
 - Java 8 or newer
 - Minecraft Java-Edition
+- (Usually) a second open port on your server
+
+BlueMap only works with Java-Edition worlds, Bedrock-Edition worlds are not supported!
 
 ## As a sponge-plugin
 If you have a [sponge](https://www.spongepowered.org/)-server, you can use bluemap as a plugin on your server. 
@@ -27,10 +31,11 @@ Render-tasks are paused and resumed if the server shuts down / restarts.
   Make sure it targets the SpongeAPI-Version of your server!
 - Put the downloaded jar in the `mods`-folder of your server and restart the server.
 - BlueMap will now generate the configuration files here `./config/bluemap/`, open those configs with your 
-  favorite editor and read the chapter [Configuration]({{site.baseurl}}/wiki/Configuration) to learn how to configure 
+  favorite editor and read the chapter [Configuration]({{site.baseurl}}/wiki/getting-started/Configuration) to learn how to configure 
   bluemap.
 - After you have edited the configs use the command `/bluemap reload` on your server or restart the server.
-- Run the command `/bluemap render <world>` on the server to start an initial render of the whole world.
+
+Now BlueMap starts to render your maps. You can go to `http://<your-server-ip>:<port>/` to view the maps.
 
 ## As a spigot/paper-plugin
 If you have a [spigot](https://www.spigotmc.org/) or [paper](https://papermc.io/)-server, 
@@ -43,9 +48,10 @@ changes. Render-tasks are paused and resumed if the server shuts down / restarts
   Make sure it targets the SpigotAPI-Version of your server!
 - Put the downloaded jar in the `plugins`-folder of your server and restart the server.
 - BlueMap will now generate the configuration files here `./plugins/BlueMap/`, open those configs with your favorite 
-  editor and read the chapter [Configuration]({{site.baseurl}}/wiki/Configuration) to learn how to configure bluemap.
+  editor and read the chapter [Configuration]({{site.baseurl}}/wiki/getting-started/Configuration) to learn how to configure bluemap.
 - After you have edited the configs use the command `/bluemap reload` on your server or restart the server.
-- Run the command `/bluemap render <world>` on the server to start an initial render of the whole world.
+
+Now BlueMap starts to render your maps. You can go to `http://<your-server-ip>:<port>/` to view the maps.
 
 ## As a forge/fabric-mod
 If you have a [forge](https://minecraftforge.net/) or [fabric](https://fabricmc.net/)-server, you can use bluemap as a 
@@ -59,10 +65,11 @@ Render-tasks are paused and resumed if the server shuts down / restarts.
   [fabricAPI](https://www.curseforge.com/minecraft/mc-mods/fabric-api) mod.
 - Put the downloaded bluemap-jar in the `mods`-folder of your server and restart the server.
 - BlueMap will now generate the configuration files here `./config/bluemap/`, open that config with your 
-  favorite editor and read the chapter [Configuration]({{site.baseurl}}/wiki/Configuration) to learn how to 
+  favorite editor and read the chapter [Configuration]({{site.baseurl}}/wiki/getting-started/Configuration) to learn how to 
   configure bluemap.
 - After you have edited the configs use the command `/bluemap reload` on your server or restart the server.
-- Run the command `/bluemap render <world>` on the server to start an initial render of the whole world.
+
+Now BlueMap starts to render your maps. You can go to `http://<your-server-ip>:<port>/` to view the maps.
 
 ## On the CLI / standalone
 You can use bluemap as a standalone app using the [CLI](https://en.wikipedia.org/wiki/Command-line_interface). 
@@ -77,8 +84,8 @@ This is useful if you want to render a map of a minecraft-world you have, but do
   your jar. *(using `cd <path-to-your-folder>`)*
 - Run `java -jar BlueMap-cli.jar` so bluemap generates the configuration-files next to the jar in your cwd.
 - Now open the configs using your favorite editor and read the chapter 
-  [Configuration]({{site.baseurl}}/wiki/Configuration) to learn how to configure bluemap.
+  [Configuration]({{site.baseurl}}/wiki/getting-started/Configuration) to learn how to configure bluemap.
 - After you have edited the configs run `java -jar BlueMap-cli.jar -r` to start the render.
 - With `java -jar BlueMap-cli.jar -w` you can also start the builtin web-server to be able to view your map. 
-  Or you can read [this]({{site.baseurl}}/wiki/Configuring-external-web-servers) to learn how to setup NGINX or 
+  Or you can read [this]({{site.baseurl}}/wiki/webserver/ExternalWebservers) to learn how to setup NGINX or 
   Apache for BlueMap.

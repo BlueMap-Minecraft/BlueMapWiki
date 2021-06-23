@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Configuration
-parent: Wiki
-nav_order: 3
+parent: Getting Started
+grand_parent: Wiki
+nav_order: 2
 ---
 
 # Configuration
@@ -30,7 +31,7 @@ metrics: true
 data: "bluemap"
 ```
 
-- The `accept-download` field defaults to `false` but you **need to set this to** `true` if you want to use bluemap! 
+- The `accept-download` field defaults to `false` but you **need to set this to `true` if you want to use bluemap!**<br>
   Before doing that, please read the following carefully:
   
 > By changing the setting `accept-download` to `true` you are indicating that you have accepted mojang's 
@@ -44,16 +45,17 @@ data: "bluemap"
 > *(BlueMap will not work without those resources.)*
 
 - `renderThreadCount` defines how many render threads (processes) bluemap will create. Set this to 0 to maximize the 
-  utilization of your CPU *(bluemap will create as many threads as available CPU-cores)*. If you set it to a negative 
-  value, bluemap will take the number of available cores and add the (negative) defined number to it. So with 8 cores 
-  and `renderThreadCount: -2` its `8 + (-2) = 6` threads.
+  utilization of your CPU *(bluemap will create as many threads as available CPU-cores)*.<br>
+  If you set it to a negative value, bluemap will take the number of available cores and add the (negative) 
+  defined number to it. So with 8 cores and `renderThreadCount: -2` its `8 + (-2) = 6` threads.<br>
+  If you have concerns or problems with your servers performance, try setting this to `1`.
 - The `metrics` field defaults to `true` and controls if bluemap is sending some really small metrics reports. The
-  report only contains the used implementation type *(e.g. 'cli' or 'sponge')* and the version. This allows me to 
+  report only contains the used implementation type *(e.g., 'cli' or 'sponge')* and the version. This allows me to 
   track the basic usage of BlueMap and helps me stay motivated to further develop this tool! Please leave it on :)<br>
-  *(Since sponge has it's own metrics control, this setting will be ignored if you use bluemap as sponge-plugin)*
+  *(Since sponge has its own metrics control, this setting will be ignored if you use bluemap as sponge-plugin)*
 - With the `data` field you can change the folder where bluemap saves files it needs during run-time or to save 
   other data.<br>
-  *(E.g. the downloaded minecraft-client file, other default resources and the state of your render-tasks if they 
+  *(E.g., the downloaded minecraft-client file, other default resources, and the state of your render-tasks if they 
   got paused.)*
 
 ## The render configuration: `render.conf`
@@ -62,13 +64,14 @@ In the render configuration you define exactly what and how BlueMap should rende
 ```yaml
 webroot: "bluemap/web"
 useCookies: true
+enableFreeFlight: true
 maps: [
   {
     id: "world"
     name: "World"
     world: "world"
 
-    # Advanced map optional config fields:
+    # Optional advanced config fields:
     startPos: [500, -820]
     skyColor: "#7dabff"
     ambientLight: 0
@@ -93,6 +96,7 @@ maps: [
   files will be generated.
 - With `useCookies` you can disable the usage of cookies on the web-app. Cookies are only used to save users settings, 
   so they don't need to set them again each time they revisit the map.
+- `enableFreeFlight` allows you to enable/disable the free-flight-mode in the web-app. 
 - Using the list `maps` you can define as many maps as you want. Each configured map will appear in a drop-down on the 
   web-app where you can switch between them.<br>
   The generated config has 3 maps pre-configured as an example. **Remember to remove the pre-generated maps if you 
@@ -167,6 +171,7 @@ hiddenGameModes: [
 ]
 hideInvisible: true
 hideSneaking: false
+fullUpdateInterval: 1440
 ```
 - If you don't want any live data being used, set `liveUpdates` to `false`. This disables the full live-updates module.
 - If `skinDownload` is set to true, BlueMap will download and update the current skin of each player to make it 
@@ -175,3 +180,5 @@ hideSneaking: false
   except players in spectator-mode.
 - When `hideInvisible` is `true`, players that have the invisibility effect will not be displayed on the map.
 - `hideSneaking` controls if a player that is sneaking should be visible on the map.
+- The `fullUpdateInterval` is the interval in minutes in which a full map-update will be triggered.
+  This is **additionally** to the normal map-update process (in case that fails to detect any file-changes).
