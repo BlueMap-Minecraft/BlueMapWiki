@@ -27,13 +27,13 @@ If yes, check if your `webroot` settings in `render.conf` and `webserver.conf` a
 
 ### Q: My map isn't updating!
 BlueMap needs to wait until the server saves the world data to disk, so it may take some time for changes to appear 
-on the map. Also make sure to click `clear tile cache` in the menu on the left to make your browser fetch a fresh copy.
+on the map. Also make sure to click `Update Map` in the menu on the left to make your browser fetch a fresh copy.
 
 ### Q: I have black/pink-checkered blocks on my map!
 Read this: https://github.com/BlueMap-Minecraft/BlueMap/wiki/Configuring-mods
 
 ### Q: My block-textures are messed up when i zoom in on the map!
-First, press the `clear tile cache` button in BlueMap's menu. This updates all tiles from the server and makes sure 
+First, press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure 
 your browser has not cached anything weird.<br>
 You can also try to clear your browser-cache completely. *(Ctrl+F5 might not be enough)*<br>
 If that doesn't help you might have changed some bluemap-settings that require a complete re-render of the map:
@@ -43,7 +43,7 @@ and it should be fixed :)
 
 ### Q: I have a black map / a lot of the map is missing!
 - Have you used `/bluemap render <world>` yet? If not, do that! :D
-- Press the `clear tile cache` button in BlueMap's menu. This updates all tiles from the server and makes sure your 
+- Press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure your 
   browser has not cached anything weird.
 - Use the command `/bluemap debug block`. If that is throwing an error, it is likely that you have a mod installed 
   that is not compatible with bluemap. Check the incompatibilities-list below.. If you don't have any mod from the list, 

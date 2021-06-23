@@ -87,8 +87,6 @@ Currently, there is no general way how to find this info, but here are some thin
   your feet and the one you are standing on. For 1.12.x this also includes the numeric-id and the meta-value.
 - The mod/plugin [WorldEdit](https://www.curseforge.com/minecraft/mc-mods/worldedit) can create blocks based on 
   numeric-id:meta for you
-- BlueMap generates a folder `missing-configs` that contains files with all blocks BlueMap did not find any
-  configuration for. Those generated configs contain the default values BlueMap "guessed" for the blocks.
 
 
 ### Block-properties config

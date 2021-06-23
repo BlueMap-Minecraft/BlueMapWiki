@@ -32,6 +32,9 @@ And on top of that it is compressed.
   it to the web-app. *(We can do this with the [http-header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
   `Content-Encoding: gzip`)*
 
+Optionally:
+- If a map-tile (`/data/...`) does not exist, instead of returning a 404 we want to respond with 200 and this file: `/assets/emptyTile.json` *(This removes harmless but annoying 404 errors in the browsers console)*
+
 ## Live data interface
 If you are using a plugin/mod you usually have live-updating player-markers on your map. For those to work with an 
 external web-server you will also need to reverse-proxy all requests to `/live/*` to the builtin web-server.
@@ -52,8 +55,9 @@ server {
     try_files $uri $uri/ =404 ;
   }
   
-  # We only want the map-tiles, so only files in the data/ folder should use this setting
+  # map-tiles are stored compressed, and they have a fallback file that should be returned if the tile does not exist
   location /data/ {
+    error_page 404 =200 /assets/emptyTile.json;
     gzip_static always;
   }
 
@@ -64,9 +68,13 @@ server {
 }
 ```
 
-## Apache
-I am not using Apache and i have not tested this myself, but here is a solution from 
-[@kencinder](https://github.com/kencinder) as an example configuration:
+## Apache2
+### Apache2 Modules
+*this needs the HEADERS, REWRITE and all PROXY (PROXY and PROXY_HTTP) modules for Apache to be enabled!*  
+*you can check your enabled modules via `# apache2ctl -M` and check whether the modules are enabled.*  
+*after installing any missing module via `# a2enmod MODULENAME` don't forget to restart apache2!*
+
+### Apache2 configuration (apache2.conf)
 ```apache
 DocumentRoot /var/www/
 <Directory /var/www/>
@@ -81,7 +89,15 @@ DocumentRoot /var/www/
   # without it, Content-Type will be "application/x-gzip"
   RewriteCond %{HTTP:Accept-Encoding} \b(x-)?gzip\b
   RewriteCond %{REQUEST_FILENAME}.gz -s
-  RewriteRule ^(.+) $1.gz [L]
+  RewriteRule ^(.+) $1.gz
+  
+  # Check if file doesn't exists and is a data file
+  RewriteCond %{REQUEST_URI} "^/data"
+  RewriteCond %{REQUEST_FILENAME} !-s
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  # Rewrite request to emptyTile
+  RewriteRule ^.*$ /assets/emptyTile.json [L]
 
   # Also add a content-encoding header to tell the browser to decompress
   <FilesMatch .gz$>
@@ -96,10 +112,17 @@ ProxyPreserveHost On
 ProxyPass /live/ http://127.0.0.1:8100/live/
 ProxyPassReverse /live/ http://127.0.0.1:8100/live/
 ```
-*(this needs the HEADERS, REWRITE and all PROXY mods for Apache to be enabled)*
+
+### Important additional note
+If you set the bluemap webroot via **webserver.conf** and **render.conf** to be somewhere else than the default webserver root (e.g. **/var/www/bluemap/** instead of **/var/www/** ) you have to make sure that you adjust the proxy configuration to match the new path!
+```
+ProxyPass /bluemap/live/ http://127.0.0.1:8100/live/
+ProxyPassReverse /bluemap/live/ http://127.0.0.1:8100/live/
+```
+otherwise your proxy does not accept the redirection correctly and you will not have player data available!
 
 ## Caddy
-Here is a solution from [@mbround18](https://github.com/mbround18) if you are using [Caddy](https://caddyserver.com/):
+Here is a solution if you are using [Caddy](https://caddyserver.com/):
 ```
 http://your-domain {
   root * /usr/share/caddy/

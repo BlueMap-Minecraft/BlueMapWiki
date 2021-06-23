@@ -25,7 +25,7 @@ in #general, and I will add it! :)
 - **Lands**<br>
   [https://www.spigotmc.org/resources/lands-land-claim-plugin-grief-prevention-protection-gui-management-wars-1-16-support.53313/](https://www.spigotmc.org/resources/lands-land-claim-plugin-grief-prevention-protection-gui-management-wars-1-16-support.53313/)
 
-- **BlueBridge** *(for **WorldGuard**)*<br>
+- **BlueBridge** *(for **WorldGuard** & **GriefPrevention**)*<br>
   [https://github.com/Mark-225/BlueBridge](https://github.com/Mark-225/BlueBridge)
 
 - **Player Warps**<br>
@@ -45,3 +45,9 @@ in #general, and I will add it! :)
 
 - **BlueMap No Ore Texture Pack**<br>
   [https://www.spigotmc.org/resources/bluemap-no-ore-texture-pack.90535/](https://www.spigotmc.org/resources/bluemap-no-ore-texture-pack.90535/)
+  
+- **CivsExtras** *(for Civs)*<br>
+  [https://github.com/JotaFaD/CivsExtras](https://github.com/JotaFaD/CivsExtras)
+
+- **Clear Water Texturepack**<br>
+  [https://www.spigotmc.org/resources/bluemap-clear-water-texturepack.91054/](https://www.spigotmc.org/resources/bluemap-clear-water-texturepack.91054/)
