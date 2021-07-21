@@ -52,3 +52,9 @@ in #general, and I will add it! :)
 
 - **Clear Water Texturepack**<br>
   [https://www.spigotmc.org/resources/bluemap-clear-water-texturepack.91054/](https://www.spigotmc.org/resources/bluemap-clear-water-texturepack.91054/)
+
+- **BlueMapOfflineSkinSupport** *(player-head icons for offline-mode)*<br>
+  [https://www.spigotmc.org/resources/bluemapofflineskinsupport.91486/](https://www.spigotmc.org/resources/bluemapofflineskinsupport.91486/)
+
+- **BlueMapOfflinePlayerMarkers** *(player-head icons for logged off players)*<br>
+  [https://github.com/TechnicJelle/BlueMapOfflinePlayerMarkers/releases](https://github.com/TechnicJelle/BlueMapOfflinePlayerMarkers/releases)
