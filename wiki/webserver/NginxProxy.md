@@ -21,15 +21,15 @@ This is useful if you want to integrate your map in your website, or want to add
 - BlueMaps integrated webserver is running on port `8100`. *(Again, just replace `8100` with the actual port below)*
 
 ## BlueMap on a subdirectory of your website
-If you have a normal website hosted with NGINX and want your map on `/map/` (e.g `https://mydomain.com/map/`) then 
+If you have a normal website hosted with NGINX and want your map on `/map` (e.g `https://mydomain.com/map`) then 
 you can just add this to your NGINX configuration:
 ```nginx
 server {
   
   ...
 
-  location ~/map(.*)$ {
-    proxy_pass http://127.0.0.1:8100$1;
+  location /map/ {
+    proxy_pass http://127.0.0.1:8100/;
   }
 }
 ```
