@@ -33,7 +33,7 @@ in #general, and I will add it! :)
   [https://www.spigotmc.org/resources/66692/](https://www.spigotmc.org/resources/66692/)
 
 - **MCG BlueMap Essentials** *(integration for multiple other plugins)*<br>
-  [https://www.spigotmc.org/resources/mcg-bluemap-essentials.88940/](https://www.spigotmc.org/resources/mcg-bluemap-essentials.88940/)
+  [https://plugins.mcgsoft.eu/mcg-bluemap-essentials/](https://plugins.mcgsoft.eu/mcg-bluemap-essentials/)
 
 - **TownyBlue** *(for **Towny**)*<br>
   [https://github.com/Hafixion/TownyBlue](https://github.com/Hafixion/TownyBlue)
