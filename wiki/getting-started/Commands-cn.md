@@ -10,7 +10,7 @@
 | `/bluemap worlds`                                      | bluemap.status  | 显示BlueMap加载的所有世界                        |
 | `/bluemap pause`                                       | bluemap.pause   | 暂停所有渲染                                     |
 | `/bluemap resume`                                      | bluemap.resume  | 恢复所有暂停的渲染                               |
-| `/bluemap render [world|map] [x z] [block-radius]`     | bluemap.render  | 渲染整个世界（控制台）或玩家（玩家）周围可选半径 |
+| `/bluemap render [world\|map] [x z] [block-radius]`     | bluemap.render  | 渲染整个世界（控制台）或玩家（玩家）周围可选半径 |
 | `/bluemap render cancel`                               | bluemap.render  | 取消队列中的最后一个渲染任务                     |
 | `/bluemap purge <map-id>`                              | bluemap.render  | 清除（删除）已经渲染的地图的所有数据             |
 | `/bluemap marker create <id> <map-id> [x y z] <label>` | bluemap.marker  | 在玩家/提供的位置创建一个基本的POI标记           |
