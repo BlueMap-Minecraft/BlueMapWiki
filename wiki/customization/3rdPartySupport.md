@@ -58,3 +58,9 @@ in #general, and I will add it! :)
 
 - **BlueMapOfflinePlayerMarkers** *(player-head icons for logged off players)*<br>
   [https://github.com/TechnicJelle/BlueMapOfflinePlayerMarkers/releases](https://github.com/TechnicJelle/BlueMapOfflinePlayerMarkers/releases)
+
+- **BlueMapPlayerPause** *(pause bluemap-renders when players are online)*<br>
+  [https://github.com/TechnicJelle/BlueMapPlayerPause](https://github.com/TechnicJelle/BlueMapPlayerPause)
+
+- **BlueMapFloodgate**<br>
+  [https://github.com/TechnicJelle/BlueMapFloodgate/](https://github.com/TechnicJelle/BlueMapFloodgate/)
