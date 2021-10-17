@@ -64,3 +64,6 @@ in #general, and I will add it! :)
 
 - **BlueMapFloodgate**<br>
   [https://github.com/TechnicJelle/BlueMapFloodgate/](https://github.com/TechnicJelle/BlueMapFloodgate/)
+
+- **BlueMap-Quests**<br>
+  [https://www.spigotmc.org/resources/bluemap-quests.96806/](https://www.spigotmc.org/resources/bluemap-quests.96806/)
