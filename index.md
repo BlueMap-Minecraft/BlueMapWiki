@@ -32,3 +32,8 @@ Read the [installation instructions]({{site.baseurl}}/wiki/getting-started/Insta
 ## Questions / Need help?
 If you have questions or need help, you can always join the [Discord-Server for BlueMap](https://discord.gg/zmkyJa3) or 
 [r/BlueMap](https://www.reddit.com/r/BlueMap/) and ask there :)
+
+---
+
+[![JetBrainsLogo](https://bluecolored.de/paste/jetbrains-variant-4.svg)](https://www.jetbrains.com/?from=BlueMap)<br>
+Special thanks to [JetBrains](https://www.jetbrains.com/?from=BlueMap) for giving out an OpenSource-Licence for BlueMap development!
