@@ -46,7 +46,7 @@ BlueMap will then load that mod like a resource-pack: Try to parse the block-sta
 **You need to put these config files in a .zip file, and that .zip file into bluemaps resourcepacks folder.** 
 
 ### Block-properties config
-**File:** `blockProperties.json`<br>
+**File:** `assets/modid/blockProperties.json`<br>
 **Example:**
 ```json
 {
@@ -68,7 +68,7 @@ Possible properties for blocks are:
   the [ambient occlusion](https://en.wikipedia.org/wiki/Ambient_occlusion) on neighbor blocks.
 
 ### Block-colors config
-**File:** `blockColors.json`<br>
+**File:** `assets/modid/blockColors.json`<br>
 **Example:**
 ```json
 {
@@ -88,7 +88,7 @@ the block, `redstone` to use the power-level of the block *(used for redstone)*,
 or a static color using a [css-style color-hex](https://htmlcolorcodes.com/color-picker/) like `#86a863`.
 
 ### Biomes config
-**File:** `biomes.json`<br>
+**File:** `assets/modid/biomes.json`<br>
 **Example:**
 ```json
 {
