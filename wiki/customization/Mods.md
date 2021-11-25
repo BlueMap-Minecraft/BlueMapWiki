@@ -45,6 +45,7 @@ BlueMap will then load that mod like a resource-pack: Try to parse the block-sta
 **Optionally** you can add some configs to tell bluemap how to render special blocks.<br>
 **You need to put these config files in a .zip file, and that .zip file into bluemaps resourcepacks folder.** 
 
+### Block-properties config
 **File:** `blockProperties.json`<br>
 **Example:**
 ```json
