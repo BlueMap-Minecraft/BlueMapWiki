@@ -16,7 +16,6 @@ look like this:
 
 If you don't want that, you can try to add and configure the resources of those mods to tell BlueMap how to render 
 those blocks.<br>
-**Unfortunately for 1.12.x this is not easy and very tedious.**<br>
 Here is how it works:
 
 1. TOC
@@ -28,7 +27,7 @@ Here is how it works:
 > Read the chapter [Installing-resource-packs]({{site.baseurl}}/wiki/customization/ResourcePacks.html) before reading this chapter.
 {: .info }
 
-The first and most important thing to do this, is to take the **client**-version of the mod.jar and put it into the 
+Usually, the only thing you need to do, is to take the **client**-version of the mod.jar and put it into the 
 `resourcepacks`-folder.<br>
 E.g. if you want to add support for biomes-o-plenty you take the `biomesoplenty.jar` from your client and upload it 
 on your server into bluemaps `resourcepack`-folder *(next to bluemaps configuration-files)*!<br>
@@ -42,91 +41,30 @@ BlueMap will then load that mod like a resource-pack: Try to parse the block-sta
 > resources using the normal format.
 {: .info }
 
-**After that it could already work!** But especially on 1.12.x you might need to do some more configuration. 
-Go through the chapters below and prepare the config files.
-
-## Configs
-
-### Block-id config (1.12.2 only)
-**File:** `blockIds.json`<br>
-**Example:**
-```json
-{
-  "extragrassmod:grass:0": "extragrassmod:grass[variant=mossy,snowy=false]",
-  "extragrassmod:grass:1": "extragrassmod:grass[variant=dry,snowy=false]",
-  "extragrassmod:grass:2": "extragrassmod:grass[variant=sandy,snowy=false]",
-  "extragrassmod:grass:3": "extragrassmod:grass[variant=flowered,snowy=true]"
-}
-```
-
-This is the most annoying part, but it is only needed with worlds (chunks) stored in the 1.12.x format!<br>
-**So if you have a minecraft world with only 1.13.x and above, you don't need to do this.**
-
-Before 1.13 and [the flattening](https://minecraft.gamepedia.com/Java_Edition_1.13/Flattening), blocks are stored by 
-their numeric-id and a meta-value. So the andesite block for example has id `1` and a meta value of `5`, this is 
-usually written like so: `1:5`.<br>
-If a mod now adds a new block, this new block is being assigned to such an id. Forge then stores a mapping of the 
-numeric-id and the literal-id of this block in a table in the world-files *(`level.dat`)*. Now BlueMap needs to know 
-for each id:meta combination what block-state to render.
-
-So, we have 3 id-types:
-- The `numeric-id` (e.g. `169`) is some integer standing for some block. The mapped block can be different 
-  for each world.
-- The `literal-id` (e.g. `minecraft:sea_lantern`) is the (namespaced) unique name of the block.
-- The `resource-id` (e.g. `minecraft:sea_lantern`) declares the namespace and the name of the block-state file in 
-  resources (and resource-packs). So BlueMap would search in the loaded resources for the file 
-  `assets/<namespace>/blockstates/<id>.json` (`assets/minecraft/blockstates/sea_lantern.json`). 
-  This is usually the same as the `literal-id` but there are some rare cases where they are different.
-
-To configure a block, you need to find all possible meta-values and their belonging literal-id + properties.
-Then we format them like this: `"namespace:literal-id:meta": "namespace:resource-id[property1=value1,property2=value2]"`
-and add them to the config *(see example above)*. You can also use the numeric-id instead of the literal-id,
-but since this id can change across worlds this is not recommended.
-
-Currently, there is no general way how to find this info, but here are some things that might help:
-- Has the mod a wiki? Maybe there is some info.
-- The literal-id and the properties of a block are usually displayed in-game if you press F3 and look at the block.
-- The BlueMap plugin has a command `/bluemap debug` that shows you all the information BlueMap has about the block at 
-  your feet and the one you are standing on. For 1.12.x this also includes the numeric-id and the meta-value.
-- The mod/plugin [WorldEdit](https://www.curseforge.com/minecraft/mc-mods/worldedit) can create blocks based on 
-  numeric-id:meta for you
-
-
-### Block-properties config
-> **Info:**<br>
-> If there are no properties defined for a block, BlueMap looks at the model and "guesses" its properties. This is
-> usually accurate and you can ignore this config.
-{: .info }
+## Configs (optional)
+**Optionally** you can add some configs to tell bluemap how to render special blocks.<br>
+**You need to put these config files in a .zip file, and that .zip file into bluemaps resourcepacks folder.** 
 
 **File:** `blockProperties.json`<br>
 **Example:**
 ```json
 {
-  "morenaturemod:special_log": {
-    "culling": true,
-    "occluding": true,
-    "flammable": true
-  },
-  "morenaturemod:special_leaves": {
-    "culling": false,
-    "occluding": true,
-    "flammable": true
-  },
-  "morenaturemod:cool_flower": {
-    "culling": false,
-    "occluding": false,
-    "flammable": true
-  }
+  "minecraft:bubble_column": { "alwaysWaterlogged": true },
+  "minecraft:grass": { "randomOffset": true },
+  "minecraft:glass": { "occluding": false }
 }
 ```
 
-To render blocks correctly, BlueMap needs to know if a block is:
-- `culling` it's neighbor block-faces: If the neighbors block-face that is facing this block 
-  [can be removed](https://en.wikipedia.org/wiki/Hidden-surface_determination#Occlusion_culling) because it is not
-  visible.
-- `occluding` near blocks: This is basically used to determine if the block is "occluding" light when calculating 
+Usually bluemap tries to guess those properties based on the block's model. But if that guess is not correct, you can
+change the render-behaviour of a block with this config.
+
+Possible properties for blocks are:
+- `alwaysWaterlogged` are blocks that are waterlogged by default. So they don't need the "waaterlogged" property to 
+  be rendered as a waterlogged block
+- `randomOffset` are blocks that have a small random offset to break the grid-like pattern. In vanilla minecraft this is
+  done for grass-blocks and flowers
+- `occluding` is used to determine if the block is "occluding" light when calculating 
   the [ambient occlusion](https://en.wikipedia.org/wiki/Ambient_occlusion) on neighbor blocks.
-- is `flammable`. This is currently only used in 1.12.x to calculate the appearance of fire.
 
 ### Block-colors config
 **File:** `blockColors.json`<br>
@@ -136,7 +74,8 @@ To render blocks correctly, BlueMap needs to know if a block is:
   "minecraft:water": "@water",
   "minecraft:grass": "@grass",
   "minecraft:redstone_wire": "#ff0000",
-  "minecraft:birch_leaves": "#86a863"
+  "minecraft:birch_leaves": "#86a863",
+  "minecraft:redstone_wire": "@redstone"
 }
 ```
 
@@ -144,24 +83,42 @@ Some blocks like grass, leaves, water or redstone are dynamically colored. Those
 properties or are just static.
 
 Possible values are `@foliage`, `@grass`, `@water` to use the foliage-, grass- or water-color of the biome to color 
-the block, or a static color using a [css-style color-hex](https://htmlcolorcodes.com/color-picker/) like `#86a863`.
+the block, `redstone` to use the power-level of the block *(used for redstone)*,
+or a static color using a [css-style color-hex](https://htmlcolorcodes.com/color-picker/) like `#86a863`.
 
 ### Biomes config
-This is still a todo, currently unknown biomes are treated as "ocean"-biomes.
+**File:** `biomes.json`<br>
+**Example:**
+```json
+{
+    "minecraft:flower_forest": {
+        "humidity": 0.8,
+        "temp": 0.7,
+        "watercolor": 4159204
+    },
+    "minecraft:birch_forest": {
+        "humidity": 0.6,
+        "temp": 0.6,
+        "watercolor": 4159204
+    },
+    "minecraft:dark_forest": {
+        "humidity": 0.8,
+        "temp": 0.7,
+        "watercolor": 4159204,
+        "foliagecolor": "#5528340a",
+        "grasscolor": "#8828340a"
+    }
+}
+```
 
-## Installing those configs
-Now you have some config files, but where do they go?
+If a mod adds a new biome, bluemap needs to know some properties of that biome to calculate things like grass and 
+foliage-color. You can define these using this config. Undefined biomes will be treated as an ocean-biome.
 
-There are 2 places where you can put those configs:
-1. in the config-folder next to the `core.conf` and `render.conf` etc...
-2. in this folder inside a resource-pack: `assets/<mod-id>/bluemap`
-
-The resource-pack is very useful if you want to create a mod-integration that is easy to share with others. :)
+*(The biomes-config works only for Minecraft 1.18+ worlds)*
 
 ## Infos for mod-developers
 If you want your mod to be compatible with BlueMap you can simply add all needed resources and configs to your jar-file.
 
-All configs can be put in `assets/<namespace>/bluemap`.<br>
 If you need to override your own resources exclusively for bluemap, you can do this by adding them inside the 
 `assets/<namespace>/bluemap` folder.<br>
 *(E.g. `assets/yourmod/bluemap/blockstates/someblock.json` will override `assets/yourmod/blockstates/someblock.json`)*
