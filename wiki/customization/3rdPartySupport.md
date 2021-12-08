@@ -67,3 +67,9 @@ in #general, and I will add it! :)
 
 - **BlueMap-Quests**<br>
   [https://www.spigotmc.org/resources/bluemap-quests.96806/](https://www.spigotmc.org/resources/bluemap-quests.96806/)
+
+- **BeautyQuests**<br>
+  [https://www.spigotmc.org/resources/beautyquests.39255/](https://www.spigotmc.org/resources/beautyquests.39255/)
+
+- **vane**<br>
+  [https://github.com/oddlama/vane](https://github.com/oddlama/vane)
