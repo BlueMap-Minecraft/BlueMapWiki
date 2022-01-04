@@ -22,7 +22,7 @@ In those generated config files every field has a comment above it with what it 
 *(if it has one)*.
 
 ## The core configuration: `core.conf`
-This config file contains core-settings that are needed for the basic functionalities if BlueMap.
+This config file contains core-settings that are needed for the basic functionalities of BlueMap.
 
 ```yaml
 accept-download: false
