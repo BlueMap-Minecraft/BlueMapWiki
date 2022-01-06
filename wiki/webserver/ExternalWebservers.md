@@ -75,7 +75,7 @@ server {
 *you can check your enabled modules via `# apache2ctl -M` and check whether the modules are enabled.*  
 *after installing any missing module via `# a2enmod MODULENAME` don't forget to restart apache2!*
 
-### Apache2 configuration (apache2.conf)
+### Apache2 configuration
 ```apache
 DocumentRoot /var/www/
 <Directory /var/www/>
