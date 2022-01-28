@@ -43,7 +43,8 @@ BlueMap will then load that mod like a resource-pack: Try to parse the block-sta
 
 ## Configs (optional)
 **Optionally** you can add some configs to tell bluemap how to render special blocks.<br>
-**You need to put these config files in a .zip file, and that .zip file into bluemaps resourcepacks folder.** 
+**You need to put these config files any .zip file or folder, and then put that into bluemaps resourcepacks folder.**<br>
+*(You are basically creating a special resource-pack for bluemap here)*
 
 ### Block-properties config
 **File:** `assets/modid/blockProperties.json`<br>
@@ -60,7 +61,7 @@ Usually bluemap tries to guess those properties based on the block's model. But 
 change the render-behaviour of a block with this config.
 
 Possible properties for blocks are:
-- `alwaysWaterlogged` are blocks that are waterlogged by default. So they don't need the "waaterlogged" property to 
+- `alwaysWaterlogged` are blocks that are waterlogged by default. So they don't need the "waterlogged" property to 
   be rendered as a waterlogged block
 - `randomOffset` are blocks that have a small random offset to break the grid-like pattern. In vanilla minecraft this is
   done for grass-blocks and flowers
@@ -74,7 +75,6 @@ Possible properties for blocks are:
 {
   "minecraft:water": "@water",
   "minecraft:grass": "@grass",
-  "minecraft:redstone_wire": "#ff0000",
   "minecraft:birch_leaves": "#86a863",
   "minecraft:redstone_wire": "@redstone"
 }
@@ -100,7 +100,7 @@ or a static color using a [css-style color-hex](https://htmlcolorcodes.com/color
     "minecraft:birch_forest": {
         "humidity": 0.6,
         "temp": 0.6,
-        "watercolor": 4159204
+        "watercolor": "#3f76e4"
     },
     "minecraft:dark_forest": {
         "humidity": 0.8,
