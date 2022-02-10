@@ -23,9 +23,9 @@ To create (advanced) markers, you create a `markers.json` in the `bluemap/web/da
         {
           "id": "spawn",
           "type": "poi",
-          "map": "acrana",
-          "position": { "x": 192.5, "y": 71.5, "z": -207.5 },
-          "label": "Spawn",
+          "map": "world",
+          "position": { "x": 105.5, "y": 62.5, "z": 50.5 },
+          "label": "<b>Spawnpoint</b>",
           "icon": "data/icons/LogoCircle32.png",
           "anchor": { "x": 16, "y": 16 },
           "minDistance": 10.0,
@@ -33,24 +33,12 @@ To create (advanced) markers, you create a `markers.json` in the `bluemap/web/da
         },
 
         {
-          "id": "holy-command-block",
-          "type": "poi",
-          "map": "acrana",
-          "position": { "x": 188.5, "y": 72.5, "z": -214.5 },
-          "label": "The shrine of the commandblock",
-          "icon": "assets/poi.svg",
-          "anchor": { "x": 25, "y": 50 },
-          "minDistance": 0.0,
-          "maxDistance": 250.0
-        },
-
-        {
-          "id": "swamp",
+          "id": "mthoru",
           "type": "html",
-          "map": "acrana",
-          "position": { "x": -60, "y": 100, "z": 3400 },
-          "label": "Swamp",
-          "html": "<div style='line-height: 2em; font-size: 2em; color: white; transform: translate(-50%, -50%);'>Swamp</div>",
+          "map": "world",
+          "position": { "x": -596, "y": 100, "z": 26 },
+          "label": "Mt. Horu",
+          "html": "<div style='line-height: 2em; font-size: 2em; color: white; transform: translate(-50%, -50%);'>Mt. Horu</div>",
           "anchor": { "x": 0, "y": 0 },
           "minDistance": 250.0,
           "maxDistance": 4000.0
@@ -59,40 +47,40 @@ To create (advanced) markers, you create a `markers.json` in the `bluemap/web/da
         {
           "id": "a-tree",
           "type": "extrude",
-          "map": "acrana",
+          "map": "world",
           "position": { "x": 186, "y": 80, "z": -319 },
           "label": "A tree",
           "detail": "This is a tree.",
           "shape": [
-            { "x": 177, "z": -326},
-            { "x": 193, "z": -326},
-            { "x": 193, "z": -310},
-            { "x": 177, "z": -310}
+            { "x": -8, "z": 201},
+            { "x": -8, "z": 185},
+            { "x": 10, "z": 185},
+            { "x": 10, "z": 201}
           ],
-          "shapeMinY": 66,
-          "shapeMaxY": 88,
+          "shapeMinY": 75,
+          "shapeMaxY": 95,
           "depthTest": true,
           "lineWidth": 3,
           "lineColor": { "r": 0, "g": 255, "b": 0, "a": 1 },
           "fillColor": { "r": 0, "g": 200, "b": 0, "a": 0.2 },
           "minDistance": 10.0,
-          "maxDistance": 500.0
+          "maxDistance": 1000.0
         },
 
         {
           "id": "river",
           "type": "line",
-          "map": "acrana",
+          "map": "world",
           "position": { "x": 165.0, "y": 65, "z": -276.0 },
           "label": "River",
           "detail": "A river ... <br><br><i>honestly i just needed a reason to use the line marker ;D</i>",
           "line": [
-            { "x": 122.5, "y": 64, "z": -205.5 },
-            { "x": 181, "y": 67, "z": -259 },
-            { "x": 108, "y": 65, "z": -321 },
-            { "x": 104, "y": 64, "z": -336 },
-            { "x": 53, "y": 64, "z": -336 },
-            { "x": 49, "y": 64, "z": -419 }
+            { "x": 84, "y": 64, "z": 59 },
+            { "x": 15, "y": 67, "z": 12 },
+            { "x": -101, "y": 65, "z": -20 },
+            { "x": -130, "y": 64, "z": -66 },
+            { "x": -113, "y": 64, "z": -293 },
+            { "x": -154, "y": 64, "z": -427 }
           ],
           "depthTest": true,
           "lineWidth": 5,
@@ -104,18 +92,17 @@ To create (advanced) markers, you create a `markers.json` in the `bluemap/web/da
         {
           "id": "town",
           "type": "shape",
-          "map": "acrana",
+          "map": "world",
           "position": { "x": 255.0, "y": 63.0, "z": 1797.0 },
-          "label": "Town",
-          "detail": "The main <b>Town</b> of this world!",
+          "label": "Island",
+          "detail": "A cool Island you should visit!",
           "shape": [
-            { "x": 157.0, "z": 1968.0 },
-            { "x": 24.0, "z": 1848.0 },
-            { "x": 34.0, "z": 1658.0 },
-            { "x": 226.0, "z": 1519.0 },
-            { "x": 375.0, "z": 1517.0 },
-            { "x": 488.0, "z": 1691.0 },
-            { "x": 325.0, "z": 1966.0 }
+            { "x": 623.0, "z": -117.0 },
+            { "x": 817.0, "z": -187.0 },
+            { "x": 1013.0, "z": 321.0 },
+            { "x": 878.0, "z": 406.0 },
+            { "x": 789.0, "z": 369.0 },
+            { "x": 626.0, "z": 200.0 }
           ],
           "shapeY": 64.0,
           "depthTest": false,
