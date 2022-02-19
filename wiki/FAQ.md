@@ -59,7 +59,7 @@ and it should be fixed :)
   BlueMap needs the light data and ignores chunks that don't have it. 
   So it will only render chunks that have been loaded by a player at least once.
 - If nothing else works, you can try to set `ignoreMissingLightData: true` in your 
-  map configuration (`render.conf`). *(And then use `/bluemap force-update` to update your map)*<br>
+  map configuration (`render.conf`). *(And then use `/bluemap purge <map>` to update your map)*<br>
   This will ignore potentially missing light data while rendering, with some drawbacks:
     - Cave-rendering will always be enabled, because it is using the sun-light data to detect the "caves"
     - Everything on the map will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
