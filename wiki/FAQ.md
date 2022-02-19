@@ -54,8 +54,12 @@ and it should be fixed :)
   Check the [incompatibilities-list](#known-incompatibilities-with-other-mods) below. 
   If you don't have any mod from the list, please report the error
   [here](https://github.com/BlueMap-Minecraft/BlueMap/issues).
+- Have you upgraded your world from an earlier Minecraft-version? Or have you pre-generated your world? 
+  Then, chunks that have not been visited by a player **might** not have their light-data generated yet. 
+  BlueMap needs the light data and ignores chunks that don't have it. 
+  So it will only render chunks that have been loaded by a player at least once.
 - If nothing else works, you can try to set `ignoreMissingLightData: true` in your 
-  map configuration (`render.conf`).<br>
+  map configuration (`render.conf`). *(And then use `/bluemap force-update` to update your map)*<br>
   This will ignore potentially missing light data while rendering, with some drawbacks:
     - Cave-rendering will always be enabled, because it is using the sun-light data to detect the "caves"
     - Everything on the map will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
