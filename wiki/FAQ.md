@@ -29,6 +29,17 @@ If yes, check if your `webroot` settings in `render.conf` and `webserver.conf` a
 BlueMap needs to wait until the server saves the world data to disk, so it may take some time for changes to appear 
 on the map. Also make sure to click `Update Map` in the menu on the left to make your browser fetch a fresh copy.
 
+### Q: Why is BlueMap using so much of my CPU?
+When you install BlueMap for the first time, it needs to convert all of your world(s) into 3d models
+This is a pretty intensive process, so it's not strange at all to see BlueMap using up a lot of CPU power for a while after it's been installed
+
+In the BlueMap config file `core.conf` you can set how many threads BlueMap will use for the conversion process. by default it's on `renderThreadCount: -2`, which means that it'll use all threads that the CPU has available, except for two. you can set it to a normal number too, for example, just `renderThreadCount: 2`
+
+But after the conversion process is done for the first time, it won't ever have to do it again!
+From then on, BlueMap will keep track of your world and convert only the chunks that change, so after the initial conversion process, the CPU usage will be negligible :D
+
+If you do `/bluemap`, you can see the progress of the conversions and an estimated time that is left.
+
 ### Q: I have black/pink-checkered blocks on my map!
 Read this: https://github.com/BlueMap-Minecraft/BlueMap/wiki/Configuring-mods
 
