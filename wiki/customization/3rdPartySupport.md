@@ -73,3 +73,6 @@ in #general, and I will add it! :)
 
 - **vane**<br>
   [https://github.com/oddlama/vane](https://github.com/oddlama/vane)
+
+- **Datapack Bluemap Generator**<br>
+  [https://github.com/StrangeOne101/Datapack-Bluemap-Generator](https://github.com/StrangeOne101/Datapack-Bluemap-Generator)
