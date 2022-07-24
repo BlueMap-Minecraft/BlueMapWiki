@@ -76,3 +76,6 @@ in #general, and I will add it! :)
 
 - **Datapack Bluemap Generator**<br>
   [https://github.com/StrangeOne101/Datapack-Bluemap-Generator](https://github.com/StrangeOne101/Datapack-Bluemap-Generator)
+
+- **BlueMap Custom Skin Server**<br>
+  [https://modrinth.com/mod/bcss](https://modrinth.com/mod/bcss)
