@@ -9,41 +9,23 @@ nav_order: 2
 # Configuring Mods
 {: .no_toc }
 
-If you render a world with custom blocks added by mods, BlueMap does not know how to render those blocks so they will 
-look like this:
-
-![Unknown block render example](https://pbs.twimg.com/media/ENeQqrbX0AElXmJ?format=jpg&name=large)
-
-If you don't want that, you can try to add and configure the resources of those mods to tell BlueMap how to render 
-those blocks.<br>
-Here is how it works:
-
 1. TOC
 {:toc}
 
 ## General
+BlueMap is automatically looking for mods and datapacks in your server-files. If it finds them it will try to load them
+and parse its resources to be able to render any additional blocks.  
+If you don't want this, you can turn this auto-discovery off in the `core.conf` -> `scan-for-mod-resources`.
 
-> **Info:**<br>
-> Read the chapter [Installing-resource-packs]({{site.baseurl}}/wiki/customization/ResourcePacks.html) before reading this chapter.
-{: .info }
+BlueMap might not be able to parse all blocks and resources for a mod. For example, if a mod generates it's resources/block-models at
+runtime, bluemap won't be able to find them in the `mod.jar` and will not be able to render them correctly!
+If you have experience with creating resource-packs with custom models, then you can easily make a resource-pack with static
+resources for such a mod. BlueMap can then load your resource-pack instead and render the blocks based on that.
 
-Usually, the only thing you need to do, is to take the **client**-version of the mod.jar and put it into the 
-`resourcepacks`-folder.<br>
-E.g. if you want to add support for biomes-o-plenty you take the `biomesoplenty.jar` from your client and upload it 
-on your server into bluemaps `resourcepack`-folder *(next to bluemaps configuration-files)*!<br>
-
-BlueMap will then load that mod like a resource-pack: Try to parse the block-states and models and load the textures.
-
-> **Info:**<br>
-> Some mods might use resource-formats that are not supported. 
-> *([Forge's blockstate.json](https://mcforge.readthedocs.io/en/1.14.x/models/blockstates/forgeBlockstates/) just has 
-> very limited support)* For this blocks to be rendered you will have to override the resources with alternative 
-> resources using the normal format.
-{: .info }
-
-## Configs (optional)
-**Optionally** you can add some configs to tell bluemap how to render special blocks.<br>
-**You need to put these config files any .zip file or folder, and then put that into bluemaps resourcepacks folder.**<br>
+## Configs
+Some mods add special blocks or biomes that bluemap can't easily read from the mod's resources.
+For this, you can add some configs to tell bluemap how to render those special blocks and biomes.  
+**You need to put these config files in a .zip file or folder, and then put that into bluemaps resourcepacks folder.**  
 *(You are basically creating a special resource-pack for bluemap here)*
 
 ### Block-properties config
@@ -94,20 +76,20 @@ or a static color using a [css-style color-hex](https://htmlcolorcodes.com/color
 {
     "minecraft:flower_forest": {
         "humidity": 0.8,
-        "temp": 0.7,
+        "temperature": 0.7,
         "watercolor": 4159204
     },
     "minecraft:birch_forest": {
         "humidity": 0.6,
-        "temp": 0.6,
+        "temperature": 0.6,
         "watercolor": "#3f76e4"
     },
     "minecraft:dark_forest": {
         "humidity": 0.8,
-        "temp": 0.7,
+        "temperature": 0.7,
         "watercolor": 4159204,
-        "foliagecolor": "#5528340a",
-        "grasscolor": "#8828340a"
+        "foliagecolor": "#28340a55",
+        "grasscolor": "#28340a88"
     }
 }
 ```
@@ -116,10 +98,3 @@ If a mod adds a new biome, bluemap needs to know some properties of that biome t
 foliage-color. You can define these using this config. Undefined biomes will be treated as an ocean-biome.
 
 *(The biomes-config works only for Minecraft 1.18+ worlds)*
-
-## Infos for mod-developers
-If you want your mod to be compatible with BlueMap you can simply add all needed resources and configs to your jar-file.
-
-If you need to override your own resources exclusively for bluemap, you can do this by adding them inside the 
-`assets/<namespace>/bluemap` folder.<br>
-*(E.g. `assets/yourmod/bluemap/blockstates/someblock.json` will override `assets/yourmod/blockstates/someblock.json`)*

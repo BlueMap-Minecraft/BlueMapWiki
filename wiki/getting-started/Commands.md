@@ -29,9 +29,6 @@ command | permission | description
 `/bluemap freeze <map-id>` | bluemap.freeze | pauses all updates on a specific map *(persists over a server-restart)*
 `/bluemap unfreeze <map-id>` | bluemap.freeze | resumes all updates on a previously frozen map *(persists over a server-restart)*
 `/bluemap purge <map-id>` | bluemap.purge | purges (deletes) all data of a rendered map *(the map will be re-rendered afterwards, as long as it is configured in the `render.conf`)*
-`/bluemap marker create <id> <map-id> [x y z] <label>` | bluemap.marker | creates a basic POI-Marker at the player-/provided position
-`/bluemap marker remove <id>` | bluemap.marker | removes the marker with that id
-`/bluemap marker list` | bluemap.marker | lists all markers
 
 ### Commands you usually don't need
 

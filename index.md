@@ -17,7 +17,7 @@ The Sponge/Spigot-Plugin automatically updates your map as soon as something cha
 as well as rendering newly generated terrain and managing the render-tasks.
 
 Some features and some blocks are still missing. Especially some tile-entities will not render correctly/at all. 
-[Here](https://github.com/BlueMap-Minecraft/BlueMap/projects/1?fullscreen=true) is a list of what is planned for 
+[Here](https://github.com/orgs/BlueMap-Minecraft/projects/2) is a list of what is planned for 
 future releases.
 
 ![screenshot]({{site.baseurl}}/assets/BlueMapScreenshot.jpg)

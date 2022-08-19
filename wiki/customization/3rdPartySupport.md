@@ -15,6 +15,11 @@ API: [https://github.com/BlueMap-Minecraft/BlueMapAPI](https://github.com/BlueMa
 If you know of any plugin/mod that fits into this list, you can ping me (Blue) on [discord](https://discord.gg/zmkyJa3) 
 in #general, and I will add it! :)
 
+> **Important:**<br>
+> Make sure the plugin/mod is compatible with your version of BlueMapAPI. You can see the API-Version of your BlueMap
+> on the [official download page](https://github.com/BlueMap-Minecraft/BlueMap/releases/latest). *("Targets: BlueMapAPI: v?.?.?")*
+{: .info .important }
+
 ----
 
 - **BlueMap-Essentials** *(for **EssentialsX**)*<br>

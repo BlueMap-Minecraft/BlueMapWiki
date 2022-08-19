@@ -12,8 +12,9 @@ BlueMap supports the use of minecraft resource-packs. If you want to change the 
 use high resolution textures or fancy block-models.
 
 > **Important:**<br>
-> If you change your resource-pack setup you need to delete your previous renders! Delete the complete `web/data` 
-> folder! Otherwise, you will get broken models with really weird textures.
+> If you change your resource-pack setup you need to delete your previous renders! 
+> Purge your maps with `/bluemap purge <map>`.
+> Otherwise, you will get broken models with really weird textures.
 {: .info .important }
 
 To install a resource-pack you just need to put the resource-pack folder or zip in the folder `resourcepacks` next to 
