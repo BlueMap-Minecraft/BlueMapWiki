@@ -11,7 +11,7 @@ nav_order: 1
 BlueMap supports the use of minecraft resource-packs. If you want to change the appearance of your map, 
 use high resolution textures or fancy block-models.
 
-> **Important:**<br>
+> **Important:**  
 > If you change your resource-pack setup you need to delete your previous renders! 
 > Purge your maps with `/bluemap purge <map>`.
 > Otherwise, you will get broken models with really weird textures.

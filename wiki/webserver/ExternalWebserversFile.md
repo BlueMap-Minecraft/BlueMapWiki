@@ -51,7 +51,7 @@ So with some context your website-config could look like this:
 server {
   listen 80;
   server_name yourdomain.com;
-
+  
   # path to bluemap-webroot, bluemap can also be used in a sub-folder .. just adapt the paths accordingly
   root /var/www;
   
@@ -64,7 +64,7 @@ server {
     error_page 404 =200 /assets/emptyTile.json;
     gzip_static always;
   }
-
+  
   # Proxy requests to the live data interface of each map to bluemaps integrated webserver
   # If you have multiple servers you will need to proxy each map-id to the correct server
   location ~* /(maps/[^/]*/live/.*) {

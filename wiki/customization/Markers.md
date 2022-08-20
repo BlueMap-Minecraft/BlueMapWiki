@@ -7,12 +7,16 @@ nav_order: 4
 ---
 
 # Markers
+{: .no_toc }
 
 BlueMap allows you to add various markers to your map. You can do this either by manually configuring them in your
 map-config or by having a 3rd-party plugin that uses BlueMap's [API](https://github.com/BlueMap-Minecraft/BlueMapAPI)
 to manage markers.
 
 A list of known 3rd-party plugins that use BlueMap's API is available [here]({{site.baseurl}}/wiki/customization/3rdPartySupport).
+
+1. TOC
+   {:toc}
 
 ## Marker Sets
 All markers are grouped into marker-sets. A marker set will be visible in the menu, and all markers in that set can be

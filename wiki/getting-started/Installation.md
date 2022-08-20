@@ -67,14 +67,15 @@ This setup extends the basic setup by using an SQL-Server to store your maps.
 ### Steps
 - Use the basic setup above to install BlueMap like normal
 - In your config-files, open the `storages/sql.conf`-file and configure the connection to your SQL-Server.
-  *(See [this page]({{site.baseurl}}/wiki/getting-started/Configuration#sql-conf) for more info about this config-file)*
+  *(See [this page]({{site.baseurl}}/wiki/getting-started/Configuration#configuring-the-map-storages-store-maps-in-a-database-or-a-different-directory) 
+  for more info about this config-file)*
 - Now open each of your map-config-files and set `storage` to `"sql"`.
 - Reload BlueMap with `/bluemap reload`.
 
 If everything is set up correctly, BlueMap should start to render your maps and store them on the SQL-Server.
 Check the console/logs for any errors or warnings.
 
-## On the CLI / standalone
+## Using BlueMap on the CLI / standalone
 You can use BlueMap as a standalone app on the [CLI](https://en.wikipedia.org/wiki/Command-line_interface). 
 This is useful if you want to render a map of a minecraft-world, but don't want to set up an entire minecraft-server.
 
