@@ -11,7 +11,7 @@ You can use BlueMap on Server-Networks (BungeeCord/Velocity) and show all your m
 There are multiple ways to achieve this.
 
 ## General Setup
-For all setups you will need to install BlueMap [like normally]({site.baseurl}}/wiki/getting-started/Installation) 
+For all setups you will need to install BlueMap [like normally]({{site.baseurl}}/wiki/getting-started/Installation) 
 on every game-server in your network that you want to render maps on.  
 
 **Make sure that the map-configs are NAMED DIFFERENTLY across the entire network!**  
@@ -29,7 +29,7 @@ same folder from them all (e.g. mounting a shared drive/folder). Either of them 
   all server to the same (shared) folder
 - configure all maps on all servers to use that storage
 - choose one of those servers to be the server that will host the web-app. On this server: 
-  create a map-config like [here]({site.baseurl}}/wiki/getting-started/Configuration#hosting-static-maps) for each 
+  create a map-config like [here]({{site.baseurl}}/wiki/getting-started/Configuration#hosting-static-maps) for each 
   map that is on the other servers
 
 Now the maps from the other servers should be visible on the web-app of this one server.
@@ -37,8 +37,8 @@ Now the maps from the other servers should be visible on the web-app of this one
 If you want to have live updating markers and player-markers on all maps, turn on the `write-markers-interval` and the 
 `write-players-interval` in each `plugin.conf` on the other servers.  
 **Or** if you plan on hosting the entire map with an external-webserver you can reverse-proxy each maps live-interface to the correct
-game-server. See: [External Webserver (File-Storage)]({site.baseurl}}/wiki/webserver/ExternalWebserversFile) and
-[External Webserver (SQL-Storage)]({site.baseurl}}/wiki/webserver/ExternalWebserversSQL).
+game-server. See: [External Webserver (File-Storage)]({{site.baseurl}}/wiki/webserver/ExternalWebserversFile) and
+[External Webserver (SQL-Storage)]({{site.baseurl}}/wiki/webserver/ExternalWebserversSQL).
 
 ## Using an external-webserver and different storages
 If you can't store all maps on the same storage, you can also use an external-webserver to host the webapp, and just
