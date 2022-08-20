@@ -16,7 +16,7 @@ to manage markers.
 A list of known 3rd-party plugins that use BlueMap's API is available [here]({{site.baseurl}}/wiki/customization/3rdPartySupport).
 
 1. TOC
-   {:toc}
+{:toc}
 
 ## Marker Sets
 All markers are grouped into marker-sets. A marker set will be visible in the menu, and all markers in that set can be
