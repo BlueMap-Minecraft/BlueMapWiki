@@ -84,7 +84,7 @@ DocumentRoot /var/www/
     RewriteCond %{REQUEST_FILENAME} !-s
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteCond %{REQUEST_FILENAME} !-d
-    # Rewrite request to emptyTile
+    # Rewrite request to the index.php
     RewriteRule ^.*$ /index.php [L]  
 </Directory>
 
