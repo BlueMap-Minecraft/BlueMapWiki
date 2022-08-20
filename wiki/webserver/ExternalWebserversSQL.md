@@ -28,8 +28,8 @@ from the SQL-Server.
 
 Luckily BlueMap provides such a script. A PHP-Script to be exact. This means the first thing you need to do is to make sure
 that you have PHP (>= 7.4) installed on your webserver.  
-Then you go into the webroot and rename the `_index.php` file to `index.php` (remove the `_`).
-Then you open the file, and set your SQL-Connection settings there. 
+Then you go into the webroot and rename the `_index.php` file to `index.php` (remove the `_`).  
+Then you open the file, and set your SQL-Connection settings there.
 
 > **Important:**  
 > Make sure that your php-setup is working, otherwise you might accidentally leak those SQL-Connection-Settings to the world!

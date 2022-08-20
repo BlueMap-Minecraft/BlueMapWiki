@@ -3,7 +3,7 @@ layout: page
 title: 3rd Party Support
 parent: Advanced Customization
 grand_parent: Wiki
-nav_order: 3
+nav_order: 2
 ---
 
 # 3rd Party Support

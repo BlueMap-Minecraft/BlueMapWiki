@@ -3,7 +3,7 @@ layout: page
 title: Installing Resource-Packs
 parent: Advanced Customization
 grand_parent: Wiki
-nav_order: 1
+nav_order: 3
 ---
 
 # Installing Resource-Packs
