@@ -20,6 +20,12 @@ This is useful if you want to integrate your map in your website, or want to add
   replace `localhost` with the correct ip in the examples below)*
 - BlueMaps integrated webserver is running on port `8100`. *(Again, just replace `8100` with the actual port below)*
 
+> **Info:**<br>
+> If you want, you can tell the internal-webserver to only connect to one specific address like e.g. `127.0.0.1`,
+> so it is no longer accessible from the outside (by default it just connects to all available interfaces):  
+> To do this, just open the `webserver.conf` and add the `ip: "127.0.0.1"` setting somewhere.
+{: .info }
+
 ## BlueMap on a subdirectory of your website
 If you have a normal website hosted with NGINX and want your map on `/map` (e.g `https://mydomain.com/map`) then 
 you can just add this to your NGINX configuration:
