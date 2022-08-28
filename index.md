@@ -4,20 +4,17 @@ title: Home
 nav_order: 0
 ---
 
-<div align="center">
-
 [![title-banner](https://bluecolored.de/paste/BluemapBanner.png)](https://bluemap.bluecolored.de/)
 
-
-create **3D**-maps of your Minecraft worlds and display them in your browser<br>
-<b> >> [DEMO MAP](https://bluecolored.de/bluemap) << </b>
+create **3D**-maps of your Minecraft worlds and display them in your browser  
+**>> [DEMO MAP](https://bluecolored.de/bluemap) <<**
+{: .center }
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/BlueMap-Minecraft/BlueMap)](https://github.com/orgs/BlueMap-Minecraft/projects/2)
 [![GitHub all releases](https://img.shields.io/github/downloads/BlueMap-Minecraft/BlueMap/total)](https://github.com/BlueMap-Minecraft/BlueMap/releases)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/BlueMap-Minecraft/BlueMap)](https://github.com/BlueMap-Minecraft/BlueMap/releases/latest)
 [![Discord](https://img.shields.io/discord/665868367416131594?label=discord)](https://discord.gg/zmkyJa3)
-
-</div>
+{: .center }
 
 ## What is BlueMap
 BlueMap is basically a program that reads your Minecraft world files and generates not only a map, but also 3D-models of the whole surface.
