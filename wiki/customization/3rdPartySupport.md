@@ -21,6 +21,41 @@ in #general, and I will add it! :)
 {: .info .important }
 
 ----
+### BlueMap API v2
+
+- **ChunkyBorder**  
+https://ci.codemc.io/view/Author/job/pop4959/job/ChunkyBorder/  
+with https://ci.codemc.io/view/Author/job/pop4959/job/Chunky/
+
+- **BlueMap Custom Skin Server**  
+https://modrinth.com/mod/bcss
+
+- **BlueMap-Essentials**  
+https://www.spigotmc.org/resources/bluemap-essentials.84365/
+
+- **BlueBorder**  
+https://github.com/pop4959/BlueBorder
+
+- **BlueMapFloodgate**  
+https://github.com/TechnicJelle/BlueMapFloodgate/
+
+- **BlueMapOfflinePlayerMarkers** *(player-head icons for logged off players)*  
+https://github.com/TechnicJelle/BlueMapOfflinePlayerMarkers
+
+- **BlueMapTowny**  
+https://github.com/Chicken/BlueMap-Towny/
+
+- **BlueMap Chat Markers**  
+https://github.com/TechnicJelle/BlueMapChatMarkers
+
+- **Lands**  
+https://www.spigotmc.org/resources/lands-land-claim-plugin-grief-prevention-protection-gui-management-wars-1-16-support.53313/
+
+- **Dynmap Marker to BlueMap Marker converter**  
+https://girugamoz.github.io/minecraft/convert-map-markers/
+
+----
+### BlueMap API v1
 
 - **BlueMap-Essentials** *(for **EssentialsX**)*<br>
   [https://www.spigotmc.org/resources/bluemap-essentials.84365/](https://www.spigotmc.org/resources/bluemap-essentials.84365/)
