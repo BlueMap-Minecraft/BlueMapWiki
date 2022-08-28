@@ -21,6 +21,10 @@ $page-width: $content-width + $sidebar-width;
   color: $body-text-color;
 }
 
+a {
+  background-image: unset !important; // remove link-underline
+}
+
 .highlight {
   line-height: 0.75em;
 
