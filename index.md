@@ -1,36 +1,49 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
 title: Home
 nav_order: 0
 ---
 
-![title-banner]({{site.baseurl}}/assets/BluemapBanner.png)
+<div align="center">
 
-BlueMap is a tool that generates 3d-maps of your Minecraft worlds and displays them in your browser. 
-Take a look at [this demo](https://bluecolored.de/bluemap). 
-It is really easy to set up - almost plug-and-play - if you use the integrated web-server *(optional)*.
+[![title-banner](https://bluecolored.de/paste/BluemapBanner.png)](https://bluemap.bluecolored.de/)
 
-The Sponge/Spigot-Plugin automatically updates your map as soon as something changes in your world, 
-as well as rendering newly generated terrain and managing the render-tasks.
 
-Some features and some blocks are still missing. Especially some tile-entities will not render correctly/at all. 
-[Here](https://github.com/orgs/BlueMap-Minecraft/projects/2) is a list of what is planned for 
-future releases.
+create **3D**-maps of your Minecraft worlds and display them in your browser<br>
+<b> >> [DEMO MAP](https://bluecolored.de/bluemap) << </b>
 
-![screenshot]({{site.baseurl}}/assets/BlueMapScreenshot.jpg)
+[![GitHub issues](https://img.shields.io/github/issues-raw/BlueMap-Minecraft/BlueMap)](https://github.com/orgs/BlueMap-Minecraft/projects/2)
+[![GitHub all releases](https://img.shields.io/github/downloads/BlueMap-Minecraft/BlueMap/total)](https://github.com/BlueMap-Minecraft/BlueMap/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/BlueMap-Minecraft/BlueMap)](https://github.com/BlueMap-Minecraft/BlueMap/releases/latest)
+[![Discord](https://img.shields.io/discord/665868367416131594?label=discord)](https://discord.gg/zmkyJa3)
 
-## Download
-You can download BlueMap from [here](https://github.com/BlueMap-Minecraft/BlueMap/releases/latest)!
+</div>
+
+## What is BlueMap
+BlueMap is basically a program that reads your Minecraft world files and generates not only a map, but also 3D-models of the whole surface.
+With the web-app you then can look at those in your browser and basically view the world as if you were ingame! 
+Or just look at it from far away to get an overview.
+
+[![screenshot](https://bluecolored.de/paste/BlueMapScreenshot.jpg?2)](https://bluecolored.de/bluemap)
+
+BlueMap comes as a Spigot/Paper or Sponge Plugin, as a Fabric or Forge-Mod and you can also use BlueMap without any Server
+from the Command-Line as a standalone tool.
+
+If installed as a Plugin/Mod, BlueMap **renders asynchronously** to your MinecraftServer-Thread. 
+This means at no time it will block your server-thread directly. 
+So as long as your CPU is not fully utilized, your server should not be slowed down while BlueMap is rendering.
+
 
 ## Using BlueMap
-BlueMap can be used on the command-line, or as a plugin/mod for your Sponge/Spigot/Paper/Forge/Fabric-Server. 
-Read the [installation instructions]({{site.baseurl}}/wiki/getting-started/Installation.html) to get started!
+You can download BlueMap from [here](https://github.com/BlueMap-Minecraft/BlueMap/releases).  
+Read the [installation instructions](https://bluemap.bluecolored.de/wiki/getting-started/Installation.html) to get started!
+
+Here you can see how many servers are using BlueMap:
+
+[![BlueMap Graph](https://metrics.bluecolored.de/bluemap/graph.php?1)](https://metrics.bluecolored.de/)
 
 ## Questions / Need help?
-If you have questions or need help, you can always join the [Discord-Server for BlueMap](https://discord.gg/zmkyJa3) or 
+If you have questions or need help, you can always join the [Discord-Server for BlueMap](https://discord.gg/zmkyJa3) or
 [r/BlueMap](https://www.reddit.com/r/BlueMap/) and ask there :)
 
 ---
