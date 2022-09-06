@@ -119,3 +119,6 @@ in #general, and I will add it! :)
 
 - **BlueMap Custom Skin Server**<br>
   [https://modrinth.com/mod/bcss](https://modrinth.com/mod/bcss)
+  
+- **HuskHomes**<br>
+  [https://www.spigotmc.org/resources/%E2%AD%90-huskhomes-1-16-1-19-%E2%AD%90-simple-intuitive-teleportation-suite-with-cross-server-support.83767/](https://www.spigotmc.org/resources/%E2%AD%90-huskhomes-1-16-1-19-%E2%AD%90-simple-intuitive-teleportation-suite-with-cross-server-support.83767/)
