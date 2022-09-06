@@ -24,7 +24,7 @@ in #general, and I will add it! :)
 ### BlueMap API v2
 
 - **ChunkyBorder**  
-[https://www.spigotmc.org/resources/chunkyborder.84278/](https://www.spigotmc.org/resources/chunkyborder.84278/)
+[https://www.spigotmc.org/resources/chunkyborder.84278/](https://www.spigotmc.org/resources/chunkyborder.84278/)  
 [https://www.curseforge.com/minecraft/mc-mods/chunky-border](https://www.curseforge.com/minecraft/mc-mods/chunky-border)
 
 - **BlueMap Custom Skin Server**  
