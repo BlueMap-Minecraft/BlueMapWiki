@@ -60,6 +60,9 @@ in #general, and I will add it! :)
 - **BlueMap Advanced Marker**  
   [https://modrinth.com/mod/bam](https://modrinth.com/mod/bam)
 
+- **BlueBridge** *(WorldGuard, GriefPrevention, Vanilla Worldborder)*  
+  [https://github.com/Mark-225/BlueBridge](https://github.com/Mark-225/BlueBridge)
+
 ----
 ### BlueMap API v1
 
