@@ -63,6 +63,9 @@ in #general, and I will add it! :)
 - **BlueBridge** *(WorldGuard, GriefPrevention, Vanilla Worldborder)*  
   [https://github.com/Mark-225/BlueBridge](https://github.com/Mark-225/BlueBridge)
 
+- **PlayerPlot**
+  [https://www.spigotmc.org/resources/playerplot-updated.105770/](https://www.spigotmc.org/resources/playerplot-updated.105770/)
+
 ----
 ### BlueMap API v1
 
