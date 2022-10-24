@@ -60,9 +60,9 @@ Here is an example config for a POI marker:
 example-poi-marker: {
     type: "poi"
     position: { x: 1, y: 64, z: -23 }
+    label: "Example POI Marker"
     
     # Optional:
-    label: "Example POI Marker"
     icon: "assets/poi.svg"
     anchor: { x: 25, y: 45 }
     min-distance: 10
@@ -87,10 +87,10 @@ Here is an example config for a HTML Marker:
 example-html-marker: {
     type: "html"
     position: { x: 1, y: 64, z: -23 }
+    label: "Example HTML Marker"
     html: "<div style='line-height: 2em; font-size: 2em; color: white; transform: translate(-50%, -50%);'>Example HTML Marker</div>"
     
     # Optional:
-    label: "Example HTML Marker"
     anchor: { x: 0, y: 0 }
     min-distance: 10
     max-distance: 10000000
@@ -111,6 +111,7 @@ Here is an example config for a Line Marker:
 example-line-marker: {
     type: "line"
     position: { x: 1, y: 64, z: -25 }
+    label: "Example Line Marker"
     line: [
         { x: 1, y: 64, z: -23 }
         { x: 1, y: 64, z: -24 }
@@ -120,7 +121,6 @@ example-line-marker: {
     ]
     
     # Optional:
-    label: "Example Line Marker"
     detail: "This is a <b>line</b> marker"
     link: null
     new-tab: false
@@ -154,6 +154,7 @@ Here is an example config for a Shape Marker:
 example-shape-marker: {
     type: "shape"
     position: { x: 1, y: 64, z: -23 }
+    label: "Example Shape Marker"
     shape: [
         { x: 1, z: -23 }
         { x: 1, z: -24 }
@@ -164,7 +165,6 @@ example-shape-marker: {
     shape-y: 64
     
     # Optional:
-    label: "Example Shape Marker"
     detail: "This is a <b>shape</b> marker"
     link: null
     new-tab: false
@@ -199,6 +199,7 @@ Here is an example config for a Extrude Marker:
 example-extrude-marker: {
     type: "extrude"
     position: { x: 1, y: 64, z: -23 }
+    label: "Example Extrude Marker"
     shape: [
         { x: 1, z: -23 }
         { x: 1, z: -24 }
@@ -210,7 +211,6 @@ example-extrude-marker: {
     shape-max-y: 72
     
     # Optional:
-    label: "Example Extrude Marker"
     detail: "This is a <b>extrude</b> marker"
     link: null
     new-tab: false
