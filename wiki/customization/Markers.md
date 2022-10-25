@@ -37,7 +37,7 @@ example-marker-set: {
 **Properties:**
 - `label`: The label of the marker-set. Will be used as the name of the menu entry
 - `toggleable`: If this is `true`, the marker-set can be enabled or disabled in the menu
-- `default-hidden`: If this is `true`, the marker-set will be hidden by default and can be enabled in the user
+- `default-hidden`: If this is `true`, the marker-set will be hidden by default and can be enabled by the user
 - `markers` is the list of all markers in this marker-set
 
 ## Types of Markers
