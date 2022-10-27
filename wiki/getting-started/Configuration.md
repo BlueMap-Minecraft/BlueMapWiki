@@ -59,7 +59,7 @@ You can control how many CPU-Cores BlueMap is (roughly) using by changing the `r
 The more threads you give it, the more CPU-Cores it will use, but also the faster it will render. 
 
 Minecraft itself can utilize not too many CPU-Cores. The main server-thread will always only use one CPU-Core, and then there might be
-some additional usage for world-generation or Network-Threads. But altogether it doesn't usually can utilize more than about 3 cores.
+some additional usage for world-generation or Network-Threads. But altogether it can't usually utilize more than about 3 cores.
 This means you can give the rest of those cores to BlueMap if you want to optimize the render-speed.
 
 If you have 4 or fewer cores on your Server-CPU you probably want to set the `render-thread-count` to 1. 
