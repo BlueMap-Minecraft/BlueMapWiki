@@ -66,6 +66,9 @@ in #general, and I will add it! :)
 - **PlayerPlot**  
   [https://www.spigotmc.org/resources/playerplot-updated.105770/](https://www.spigotmc.org/resources/playerplot-updated.105770/)
 
+- **BlueMap Marker Manager**  
+  [https://modrinth.com/plugin/bmarker](https://modrinth.com/plugin/bmarker)
+
 ----
 ### BlueMap API v1
 
