@@ -69,6 +69,9 @@ in #general, and I will add it! :)
 - **BlueMap Marker Manager**  
   [https://modrinth.com/plugin/bmarker](https://modrinth.com/plugin/bmarker)
 
+- **Dynamic Trees in BlueMap**  
+  [https://www.curseforge.com/minecraft/texture-packs/dynamic-trees-in-bluemap](https://www.curseforge.com/minecraft/texture-packs/dynamic-trees-in-bluemap)
+
 ----
 ### BlueMap API v1
 
