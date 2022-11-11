@@ -61,6 +61,7 @@ in #general, and I will add it! :)
   [https://modrinth.com/mod/bam](https://modrinth.com/mod/bam)
 
 - **BlueBridge** *(WorldGuard, GriefPrevention, Vanilla Worldborder)*  
+  [https://modrinth.com/plugin/bluebridge](https://modrinth.com/plugin/bluebridge)  
   [https://github.com/Mark-225/BlueBridge](https://github.com/Mark-225/BlueBridge)
 
 - **PlayerPlot**  
