@@ -29,8 +29,8 @@ same folder from them all (e.g. mounting a shared drive/folder). Either of them 
   all server to the same (shared) folder
 - configure all maps on all servers to use that storage
 - choose one of those servers to be the server that will host the web-app. On this server: 
-  create a map-config like [here]({{site.baseurl}}/wiki/getting-started/Configuration#hosting-static-maps) for each 
-  map that is on the other servers
+  create an extra map-config like [here: "Hosting static maps"]({{site.baseurl}}/wiki/getting-started/Configuration#hosting-static-maps) for each 
+  map that is on the **other** servers
 
 Now the maps from the other servers should be visible on the web-app of this one server.
 
