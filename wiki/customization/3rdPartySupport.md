@@ -73,6 +73,10 @@ in #general, and I will add it! :)
 - **Dynamic Trees in BlueMap**  
   [https://www.curseforge.com/minecraft/texture-packs/dynamic-trees-in-bluemap](https://www.curseforge.com/minecraft/texture-packs/dynamic-trees-in-bluemap)
 
+- **Flan**  
+  [https://www.curseforge.com/minecraft/mc-mods/flan](https://www.curseforge.com/minecraft/mc-mods/flan)  
+  [https://www.curseforge.com/minecraft/mc-mods/flan-forge](https://www.curseforge.com/minecraft/mc-mods/flan-forge)
+
 ----
 ### BlueMap API v1
 
