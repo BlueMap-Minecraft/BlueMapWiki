@@ -20,7 +20,7 @@ Here is a checklist:
 
 ### Q: I am getting `404 - Not Found` when I open the map
 Check your `core.conf` configuration file, did you set `accept-download` to `true`?<br>
-If yes, check if your `webroot` settings in `render.conf` and `webserver.conf` are set to the correct (same) folder.
+If yes, check if your `webroot` settings in `webapp.conf` and `webserver.conf` are set to the correct (same) folder.
 
 ### Q: My map isn't updating!
 BlueMap needs to wait until the server saves the world data to disk, so it may take some time for changes to appear 
