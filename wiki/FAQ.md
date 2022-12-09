@@ -39,7 +39,7 @@ From then on, BlueMap will keep track of your world and convert only the chunks 
 If you do `/bluemap`, you can see the progress of the conversions and an estimated time that is left.
 
 ### Q: I have black/pink-checkered blocks on my map!
-Read this: https://github.com/BlueMap-Minecraft/BlueMap/wiki/Configuring-mods
+Read this: [https://github.com/BlueMap-Minecraft/BlueMap/wiki/Configuring-mods](https://bluemap.bluecolored.de/wiki/customization/Mods.html)
 
 ### Q: My block-textures are messed up when I zoom in on the map!
 First, press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure 
