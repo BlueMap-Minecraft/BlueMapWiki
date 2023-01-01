@@ -77,6 +77,9 @@ in #general, and I will add it! :)
   [https://www.curseforge.com/minecraft/mc-mods/flan](https://www.curseforge.com/minecraft/mc-mods/flan)  
   [https://www.curseforge.com/minecraft/mc-mods/flan-forge](https://www.curseforge.com/minecraft/mc-mods/flan-forge)
 
+- **GDHooks** *(GriefDefender)*  
+  [https://github.com/bloodmc/GDHooks](https://github.com/bloodmc/GDHooks)
+
 ----
 ### BlueMap API v1
 
