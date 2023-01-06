@@ -55,6 +55,8 @@ There are different types of markers that you can use, depending on what you nee
 The POI Marker is the most basic marker. It's a simple icon-image that can be placed anywhere on the map. When clicked,
 it shows its label.
 
+![qLZpKw97EU](https://user-images.githubusercontent.com/10765470/211083198-93d034fc-9d6b-4ee9-aef2-08db0958c1ee.png)
+
 Here is an example config for a POI marker:
 ```yaml
 example-poi-marker: {
@@ -63,6 +65,7 @@ example-poi-marker: {
     label: "Example POI Marker"
     
     # Optional:
+    detail: "This is a <b>POI</b> marker"
     icon: "assets/poi.svg"
     anchor: { x: 25, y: 45 }
     min-distance: 10
@@ -71,6 +74,8 @@ example-poi-marker: {
 ```
 
 **Specific POI-Marker properties are:**
+- `detail` is the text that is shown when you click on the icon. This property allows using any html-tags. 
+  It default to the label of the marker.
 - `icon`, which is any url to an image that will be used as the marker's icon. Can be a local file or a remote url.
   The image is not resized, so the image should be exactly as big as you want the icon to be on the map. All image-formats
   that can be used in a html-img-tag are supported
@@ -81,6 +86,8 @@ example-poi-marker: {
 ### HTML Markers
 HTML Markers are used to add any HTML-Element to the map. This gives you full freedom if you want to add just a simple text,
 any image, a button or even ... embed a video ;D. 
+
+![ESQgDvgzHg](https://user-images.githubusercontent.com/10765470/211083264-ca89c1b5-0051-4a82-af45-d9ebec9e9c35.png)
 
 Here is an example config for a HTML Marker:
 ```yaml
@@ -105,6 +112,8 @@ example-html-marker: {
 ### Line Markers
 Line Markers do what their name suggests. They are used to draw a line on the map. If you click on that line, it shows the
 marker's `detail`.
+
+![dIZ7W6zjG2](https://user-images.githubusercontent.com/10765470/211083298-0116588c-15c8-4e84-8690-1a2936ae5c0c.png)
 
 Here is an example config for a Line Marker:
 ```yaml
@@ -148,6 +157,8 @@ things like render-order. Make sure this is always roughly in the middle of the 
 ### Shape Markers
 A shape marker is any flat shape (polygon) placed somewhere on the map. You can use it to mark areas, for example.
 If you click on the shape, it shows the marker's `detail`.
+
+![xDcmgynWv7](https://user-images.githubusercontent.com/10765470/211083324-04829ca3-515b-4b6b-8223-c9edaffbd07a.png)
 
 Here is an example config for a Shape Marker:
 ```yaml
@@ -193,6 +204,8 @@ example-shape-marker: {
 ### Extrude Markers
 Extrude Markers are the same as a shape-marker, but the shape is extruded between two heights. With this you can mark
 areas that are limited to specific y-positions.
+
+![SqRL5ouEDS](https://user-images.githubusercontent.com/10765470/211083342-211b5d8b-81a3-407f-849b-af555707b85d.png)
 
 Here is an example config for a Extrude Marker:
 ```yaml
