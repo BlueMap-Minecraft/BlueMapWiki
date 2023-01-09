@@ -80,6 +80,9 @@ in #general, and I will add it! :)
 - **GDHooks** *(GriefDefender)*  
   [https://github.com/bloodmc/GDHooks](https://github.com/bloodmc/GDHooks)
 
+- **BlueMap Banner Marker**  
+  [https://modrinth.com/plugin/bbanner](https://modrinth.com/plugin/bbanner)
+
 ----
 ### BlueMap API v1
 
