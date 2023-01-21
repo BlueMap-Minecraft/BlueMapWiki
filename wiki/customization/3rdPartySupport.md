@@ -83,6 +83,9 @@ in #general, and I will add it! :)
 - **BlueMap Banner Marker**  
   [https://modrinth.com/plugin/bbanner](https://modrinth.com/plugin/bbanner)
 
+- **BlueMap Custom Skin Provider**  
+  [https://github.com/TechnicJelle/BlueMapCustomSkinProvider](https://github.com/TechnicJelle/BlueMapCustomSkinProvider)
+
 ----
 ### BlueMap API v1
 
