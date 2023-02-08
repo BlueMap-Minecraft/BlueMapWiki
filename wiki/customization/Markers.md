@@ -28,6 +28,7 @@ example-marker-set: {
   label: "Example Marker Set"
   toggleable: true
   default-hidden: false
+  sorting: 0
   markers: {
     # markers go here ...
   }
@@ -38,6 +39,7 @@ example-marker-set: {
 - `label`: The label of the marker-set. Will be used as the name of the menu entry
 - `toggleable`: If this is `true`, the marker-set can be enabled or disabled in the menu
 - `default-hidden`: If this is `true`, the marker-set will be hidden by default and can be enabled by the user
+- `sorting` Is a number defining the order that marker-sets will appear in the menu *(lower `sorting`-values come first in lists)*
 - `markers` is the list of all markers in this marker-set
 
 ## Types of Markers
