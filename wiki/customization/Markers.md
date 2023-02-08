@@ -263,3 +263,128 @@ example-extrude-marker: {
 - `line-width` is the width of the line in pixels
 - `line-color` is the color of the line
 - `fill-color` is the color of the fill
+
+## Full example
+
+Here is a full example of how it could look like in (at the end of) your map-config:
+
+```yaml
+# Here you can define any static marker-sets with markers that should be displayed on the map.
+# You can change this at any time.
+# If you need dynamic markers, you can use any plugin that integrates with BlueMap's API.
+# Here is a list: https://bluemap.bluecolored.de/wiki/customization/3rdPartySupport.html
+marker-sets: {
+
+    example-marker-set: {
+    
+        label: "Example Marker Set"
+        toggleable: true
+        default-hidden: false
+        sorting: 0
+        
+        markers: {
+        
+            example-poi-marker: {
+                type: "poi"
+                position: { x: 1, y: 64, z: -23 }
+                label: "Example POI Marker"
+                icon: "assets/poi.svg"
+                anchor: { x: 25, y: 45 }
+                sorting: 0
+                listed: true
+                min-distance: 10
+                max-distance: 10000000
+            }
+            
+            example-html-marker: {
+                type: "html"
+                position: { x: 1, y: 64, z: -23 }
+                label: "Example HTML Marker"
+                html: "<div style='line-height: 2em; font-size: 2em; color: white; transform: translate(-50%, -50%);'>Exa
+                anchor: { x: 0, y: 0 }
+                sorting: 0
+                listed: true
+                min-distance: 10
+                max-distance: 10000000
+            }
+            
+            example-line-marker: {
+                type: "line"
+                position: { x: 1, y: 64, z: -25 }
+                line: [
+                    { x: 1, y: 64, z: -23 }
+                    { x: 1, y: 64, z: -24 }
+                    { x: 1, y: 64, z: -25 }
+                    { x: 2, y: 64, z: -25 }
+                    { x: 3, y: 64, z: -25 }
+                ]
+                label: "Example Line Marker"
+                detail: "This is a <b>line</b> marker"
+                link: null
+                new-tab: false
+                depth-test: true
+                line-width: 5
+                line-color: { r: 255, g: 0, b: 0, a: 1.0 }
+                sorting: 0
+                listed: true
+                min-distance: 10
+                max-distance: 10000000
+            }
+            
+            example-shape-marker: {
+                type: "shape"
+                position: { x: 1, y: 64, z: -23 }
+                shape: [
+                    { x: 1, z: -23 }
+                    { x: 1, z: -24 }
+                    { x: 1, z: -25 }
+                    { x: 2, z: -25 }
+                    { x: 3, z: -25 }
+                ]
+                shape-y: 64
+                label: "Example Shape Marker"
+                detail: "This is a <b>shape</b> marker"
+                link: null
+                new-tab: false
+                depth-test: true
+                line-width: 5
+                line-color: { r: 255, g: 0, b: 0, a: 1.0 }
+                fill-color: { r: 200, g: 0, b: 0, a: 0.3 }
+                sorting: 0
+                listed: true
+                min-distance: 10
+                max-distance: 10000000
+            }
+            
+            example-extrude-marker: {
+                type: "extrude"
+                position: { x: 1, y: 64, z: -23 }
+                shape: [
+                    { x: 1, z: -23 }
+                    { x: 1, z: -24 }
+                    { x: 1, z: -25 }
+                    { x: 2, z: -25 }
+                    { x: 3, z: -25 }
+                ]
+                shape-min-y: 47
+                shape-max-y: 72
+                label: "Example Extrude Marker"
+                detail: "This is a <b>extrude</b> marker"
+                link: null
+                new-tab: false
+                depth-test: true
+                line-width: 5
+                line-color: { r: 255, g: 0, b: 0, a: 1.0 }
+                fill-color: { r: 200, g: 0, b: 0, a: 0.3 }
+                sorting: 0
+                listed: true
+                min-distance: 10
+                max-distance: 10000000
+            }
+            
+        }
+        
+    }
+    
+}
+```
