@@ -46,8 +46,10 @@ There are different types of markers that you can use, depending on what you nee
 
 **Every marker has:**
 - a `type` property that defines what kind of marker it is
-- a `position`, which is the x y and z coordinates of where the marker (or the marker-center) is placed on the map
+- a `position` which is the x y and z coordinates of where the marker (or the marker-center) is placed on the map
 - a `label` defining the name of the marker. Used e.g. in the marker-list
+- a `sorting` number defining the (default) order that markers will appear in lists and menus *(lower `sorting`-values come first in lists)*
+- a `listed` property defining weather the marker will be listed in lists and menus or not
 - a `min-distance` and a `max-distance` which default to "unlimited" but can be used to limit the distance to the camera 
   at which the marker is shown
 
@@ -68,6 +70,8 @@ example-poi-marker: {
     detail: "This is a <b>POI</b> marker"
     icon: "assets/poi.svg"
     anchor: { x: 25, y: 45 }
+    sorting: 0
+    listed: true
     min-distance: 10
     max-distance: 10000000
 }
@@ -99,6 +103,8 @@ example-html-marker: {
     
     # Optional:
     anchor: { x: 0, y: 0 }
+    sorting: 0
+    listed: true
     min-distance: 10
     max-distance: 10000000
 }
@@ -136,6 +142,8 @@ example-line-marker: {
     depth-test: true
     line-width: 5
     line-color: { r: 255, g: 0, b: 0, a: 1.0 }
+    sorting: 0
+    listed: true
     min-distance: 10
     max-distance: 10000000
 }
@@ -183,6 +191,8 @@ example-shape-marker: {
     line-width: 5
     line-color: { r: 255, g: 0, b: 0, a: 1.0 }
     fill-color: { r: 200, g: 0, b: 0, a: 0.3 }
+    sorting: 0
+    listed: true
     min-distance: 10
     max-distance: 10000000
 }
@@ -231,6 +241,8 @@ example-extrude-marker: {
     line-width: 5
     line-color: { r: 255, g: 0, b: 0, a: 1.0 }
     fill-color: { r: 200, g: 0, b: 0, a: 0.3 }
+    sorting: 0
+    listed: true
     min-distance: 10
     max-distance: 10000000
 }
