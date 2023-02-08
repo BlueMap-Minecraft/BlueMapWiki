@@ -300,7 +300,7 @@ marker-sets: {
                 type: "html"
                 position: { x: 1, y: 64, z: -23 }
                 label: "Example HTML Marker"
-                html: "<div style='line-height: 2em; font-size: 2em; color: white; transform: translate(-50%, -50%);'>Exa
+                html: "<div style='line-height: 2em; font-size: 2em; color: white; transform: translate(-50%, -50%);'>Example HTML Marker</div>"
                 anchor: { x: 0, y: 0 }
                 sorting: 0
                 listed: true
