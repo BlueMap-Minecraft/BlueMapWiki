@@ -141,7 +141,7 @@ example-line-marker: {
     detail: "This is a <b>line</b> marker"
     link: null
     new-tab: false
-    depth-test: true
+    depth-test: false
     line-width: 5
     line-color: { r: 255, g: 0, b: 0, a: 1.0 }
     sorting: 0
@@ -189,7 +189,7 @@ example-shape-marker: {
     detail: "This is a <b>shape</b> marker"
     link: null
     new-tab: false
-    depth-test: true
+    depth-test: false
     line-width: 5
     line-color: { r: 255, g: 0, b: 0, a: 1.0 }
     fill-color: { r: 200, g: 0, b: 0, a: 0.3 }
@@ -322,7 +322,7 @@ marker-sets: {
                 detail: "This is a <b>line</b> marker"
                 link: null
                 new-tab: false
-                depth-test: true
+                depth-test: false
                 line-width: 5
                 line-color: { r: 255, g: 0, b: 0, a: 1.0 }
                 sorting: 0
@@ -346,7 +346,7 @@ marker-sets: {
                 detail: "This is a <b>shape</b> marker"
                 link: null
                 new-tab: false
-                depth-test: true
+                depth-test: false
                 line-width: 5
                 line-color: { r: 255, g: 0, b: 0, a: 1.0 }
                 fill-color: { r: 200, g: 0, b: 0, a: 0.3 }
