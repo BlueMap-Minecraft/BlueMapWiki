@@ -100,5 +100,5 @@ This is useful if you want to render a map of a minecraft-world, but don't want 
   *(More info for configuring BlueMap can be found [here]({{site.baseurl}}/wiki/getting-started/Configuration))*
 - After you have edited the configs run `java -jar BlueMap-cli.jar -r` to start the render.
 - With `java -jar BlueMap-cli.jar -w` you can also start the builtin web-server to be able to view your map. 
-  Or you can read [this]({{site.baseurl}}/wiki/webserver/ExternalWebservers) to learn how to setup NGINX or 
+  Or you can read [this]({{site.baseurl}}/wiki/webserver) to learn how to setup NGINX or 
   Apache for BlueMap.
