@@ -86,6 +86,9 @@ in #general, and I will add it! :)
 - **BlueMap Custom Skin Provider**  
   [https://github.com/TechnicJelle/BlueMapCustomSkinProvider](https://github.com/TechnicJelle/BlueMapCustomSkinProvider)
 
+- **BlueMap Advanced Skins**  
+  [https://github.com/Semetrix/AdvancedBluemapSkins](https://github.com/Semetrix/AdvancedBluemapSkins)
+
 ----
 ### BlueMap API v1
 
