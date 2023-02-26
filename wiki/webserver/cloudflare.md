@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Creating subdomains for Bluemap with Cloudflare Tunnels
+title: Exposing BlueMap with Cloudflare Tunnels
 parent: Webserver
 grand_parent: Wiki
 nav_order: 2
@@ -9,7 +9,7 @@ nav_order: 2
 
 If you want to make map.example.com like subdomains for Bluemap without nginx you can use Cloudflare Tunnel.
 
-# What do you need to make it?
+# Assumptions / Prerequisites?
 - A domain you own.
 - A Cloudflare account. (Free also works)
 - Docker installed.
