@@ -28,7 +28,7 @@ If you want to make map.example.com like subdomains for Bluemap without nginx yo
 
 5. Click "Next", choose a team name, choose the free plan, proceed to payment, add your payment methods and click "Purchase".
 
-6. Go to Zero Trust Dashboard -> Access -> Tunnels -> Create a tunnel. Set your Tunnel name, save the tunnel, then install Docker now if you didn't installed already (if you have windows, you can download cloudflared.msi file) and select "Docker" and copy the command Cloudflare gave you, paste it in your terminal. BUT if it gives you `docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?` simply type `systemctl start docker` command on your terminal then try it with `sudo` again (ignore `Unable to find image 'cloudflare/cloudflared:latest' locally` message).
+6. Go to Zero Trust Dashboard -> Access -> Tunnels -> Create a tunnel. Set your Tunnel name, save the tunnel, then install Docker now if you didn't installed already (if you have windows, you can download cloudflared.msi file) and select "Docker" and copy the command Cloudflare gave you, paste it in your terminal. BUT if it gives you `docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?` error, simply type `systemctl start docker` command on your terminal then try it with `sudo` again (ignore `Unable to find image 'cloudflare/cloudflared:latest' locally` message).
 
 > **Important:**<br>
 > You have to keep it running, if you close it or close your computer it wont gonna work!
