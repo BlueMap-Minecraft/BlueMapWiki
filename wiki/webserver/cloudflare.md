@@ -9,15 +9,15 @@ nav_order: 2
 
 If you want to make map.example.com like subdomains for Bluemap without nginx you can use Cloudflare Tunnel.
 
-# Assumptions / Prerequisites?
+# Assumptions / Prerequisites
 - A domain you own.
 - A Cloudflare account.
 - Docker installed.
 - A computer/vds/vps that always can keep running
-- A credit/prepaid card, paypal etc. (Don't worry, you dont have to pay anything.)
+- A credit/prepaid card, paypal etc. (You dont have to pay anything)
 
 # Add your domain to Cloudflare nameservers.
-1. Go to your Cloudflare account, click on "Add a Site", write your domain, select your plan (Free plan works) Cloudflare will scan your all dns records existed, you can add all of them, this wont gonna affect anything. After clicking "Continue" copy 2 name servers Cloudflair gave you and click "Done, check nameservers".
+1. Go to your Cloudflare account, click on "Add a Site", write your domain, select the free plan. Cloudflare will scan your all dns records existed, you can add all of them, this wont gonna affect anything. After clicking "Continue" copy 2 name servers Cloudflair gave you and click "Done, check nameservers".
 
 2. Go to the site where you bought your domain from, for this example i used Google Domains. Click on "My domains" then select the domain you want to set. 
 
@@ -26,9 +26,9 @@ If you want to make map.example.com like subdomains for Bluemap without nginx yo
 # Creating the Cloudflare Tunnel.
 4. On Cloudflare, go to Traffic -> Cloudflare Tunnel -> Launch Zero Trust Dashboard. 
 
-5. Click "Next", choose a team name, choose a plan (free works), proceed to payment, add your payment methods (again, it's free you just need any credit/prepaid card or paypal account), purchase.
+5. Click "Next", choose a team name, choose the free plan, proceed to payment, add your payment methods and click "Purchase".
 
-6. Go to Zero Trust Dashboard -> Access -> Tunnels -> Create a tunnel. Set your Tunnel name, save the tunnel, then install Docker now if you didn't installed already (if you have windows, you can download cloudflared.msi file) and select "Docker" and copy the command Cloudflare gave you, paste it in your terminal. BUT if it gives you `docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?` simply type `systemctl start docker` command on your terminal then try it with sudo again (ignore `Unable to find image 'cloudflare/cloudflared:latest' locally` message).
+6. Go to Zero Trust Dashboard -> Access -> Tunnels -> Create a tunnel. Set your Tunnel name, save the tunnel, then install Docker now if you didn't installed already (if you have windows, you can download cloudflared.msi file) and select "Docker" and copy the command Cloudflare gave you, paste it in your terminal. BUT if it gives you `docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?` simply type `systemctl start docker` command on your terminal then try it with `sudo` again (ignore `Unable to find image 'cloudflare/cloudflared:latest' locally` message).
 
 > **Important:**<br>
 > You have to keep it running, if you close it or close your computer it wont gonna work!
