@@ -11,10 +11,10 @@ If you want to make map.example.com like subdomains for Bluemap without nginx yo
 
 # Assumptions / Prerequisites?
 - A domain you own.
-- A Cloudflare account. (Free also works)
+- A Cloudflare account.
 - Docker installed.
 - A computer/vds/vps that always can keep running
-- A credit/prepaid card, paypal etc. (Don't worry you dont have to pay anything.)
+- A credit/prepaid card, paypal etc. (Don't worry, you dont have to pay anything.)
 
 # Add your domain to Cloudflare nameservers.
 1. Go to your Cloudflare account, click on "Add a Site", write your domain, select your plan (Free plan works) Cloudflare will scan your all dns records existed, you can add all of them, this wont gonna affect anything. After clicking "Continue" copy 2 name servers Cloudflair gave you and click "Done, check nameservers".
