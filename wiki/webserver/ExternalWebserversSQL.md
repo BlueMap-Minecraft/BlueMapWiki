@@ -3,7 +3,7 @@ layout: page
 title: External Webservers (SQL-Storage)
 parent: Webserver
 grand_parent: Wiki
-nav_order: 3
+nav_order: 4
 ---
 
 # Directly hosting BlueMap with external webservers from a SQL storage
