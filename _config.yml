@@ -1,37 +1,21 @@
 title: BlueMap
 description: >-
   BlueMap is a Minecraft mapping tool that creates 3D models of your Minecraft worlds and displays them in a web viewer.
+theme: just-the-docs
+color_scheme: dark
+
+
 baseurl: ""
 url: ""
 
-remote_theme: pmarsceill/just-the-docs
-color_scheme: dark
-
-#logo: "/assets/BluemapBanner.png"
-
 aux_links:
-  "BlueMap on GitHub":
-    - "https://github.com/BlueMap-Minecraft/BlueMap"
-    -
+  "BlueMap on GitHub": "https://github.com/BlueMap-Minecraft/BlueMap"
+
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub."
 gh_edit_repository: "https://github.com/BlueMap-Minecraft/bluemap-minecraft.github.io"
 gh_edit_branch: "master"
 gh_edit_view_mode: "edit"
 
-plugins:
-
 exclude:
   - .idea/
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
-# include:
-#   - assets
