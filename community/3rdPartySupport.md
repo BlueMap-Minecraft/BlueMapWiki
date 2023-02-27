@@ -11,6 +11,9 @@ nav_order: 1
 
 API: [https://github.com/BlueMap-Minecraft/BlueMapAPI](https://github.com/BlueMap-Minecraft/BlueMapAPI)
 
+If you know of any plugin/mod that fits into this list, please add it to this page and make a PR on GitHub:
+https://github.com/BlueMap-Minecraft/BlueMapWiki/edit/master/community/3rdPartySupport.md :)
+
 > **Important:**<br>
 > Make sure the plugin/mod is compatible with your version of BlueMapAPI. You can see the API-Version of your BlueMap
 > on the [official download page](https://github.com/BlueMap-Minecraft/BlueMap/releases/latest). *("Targets: BlueMapAPI: v?.?.?")*
