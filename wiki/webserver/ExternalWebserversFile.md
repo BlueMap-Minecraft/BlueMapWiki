@@ -3,7 +3,7 @@ layout: page
 title: External Webservers (FILE-Storage)
 parent: Webserver
 grand_parent: Wiki
-nav_order: 2
+nav_order: 1
 ---
 
 # Directly hosting BlueMap with external webservers from a FILE storage
