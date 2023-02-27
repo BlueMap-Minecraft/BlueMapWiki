@@ -2,7 +2,6 @@
 layout: page
 title: 3rd Party Addons & Tools
 parent: Community Guides
-grand_parent: Wiki
 nav_order: 1
 ---
 
