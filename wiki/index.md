@@ -10,4 +10,4 @@ nav_order: 1
 Here you can find some basic information on how to setup and use BlueMap!  
 If you need any help, you can always visit our [Discord](https://discord.gg/zmkyJa3) :)
 
-We also have some [Community Guides]({{site.baseurl}}/community/) for some more specific and complex topics.
+We also have some [Community Guides]({{site.baseurl}}/community/) for more specific and complex topics.
