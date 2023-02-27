@@ -1,19 +1,16 @@
 ---
 layout: page
-title: 3rd Party Support
-parent: Advanced Customization
+title: 3rd Party Addons & Tools
+parent: Community Guides
 grand_parent: Wiki
-nav_order: 2
+nav_order: 1
 ---
 
-# 3rd Party Support
+# 3rd Party Addons & Tools
 
 **This is a list of plugins/mods/resources that use BlueMap's API to integrate some features with BlueMap.**
 
 API: [https://github.com/BlueMap-Minecraft/BlueMapAPI](https://github.com/BlueMap-Minecraft/BlueMapAPI)
-
-If you know of any plugin/mod that fits into this list, you can ping me (Blue) on [discord](https://discord.gg/zmkyJa3) 
-in #general, and I will add it! :)
 
 > **Important:**<br>
 > Make sure the plugin/mod is compatible with your version of BlueMapAPI. You can see the API-Version of your BlueMap
