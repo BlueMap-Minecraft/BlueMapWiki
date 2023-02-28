@@ -56,6 +56,7 @@ blockquote {
   &.info {
     background-color: mix($blue-000, $body-background-color, 10%);
     border-left-color: $blue-000;
+    border-radius: 4px;
 
     &.important {
       border-left-color: $red-000;

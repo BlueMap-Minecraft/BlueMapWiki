@@ -43,6 +43,7 @@ class AddonBrowser extends HTMLElement {
         .menu {
             display: flex;
             background-color: #333;
+            border-radius: 4px;
         }
         
         input {
@@ -86,7 +87,8 @@ class AddonBrowser extends HTMLElement {
             display: flex;
             background-color: #222;
             margin: 0.5em 0;    
-            padding: 0.5em;      
+            padding: 0.5em;
+            border-radius: 4px;
         }
         
         .addon .title {
@@ -213,7 +215,7 @@ class AddonBrowser extends HTMLElement {
                     element.href = link;
                     element.target = "_blank";
                     element.innerHTML = `
-                    <img alt="${id}" src="/assets/addon_browser/links/${id}.png">
+                    <img alt="${id}" src="/assets/addon_browser/links/${id}.svg">
                     `;
                     linksElement.append(element);
                 }
