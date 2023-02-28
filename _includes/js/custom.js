@@ -1,16 +1,20 @@
 class AddonBrowser extends HTMLElement {
-
     // noinspection JSUnusedGlobalSymbols
     connectedCallback() {
         this.attachShadow({ mode: "open" });
         this.shadowRoot.innerHTML = `
         <div class="menu">
             <input id="search" type="text" placeholder="Search...">
-            <input id="api-version" type="text" placeholder="API-Version">
+            <div class="select">
+                <label for="api-version">API-Version</label>
+                <select id="api-version" name="api-version">
+                    <option value="any">any</option>
+                </select>
+            </div>
             <div class="select">
                 <label for="platform">Platform</label>
                 <select id="platform" name="platform">
-                    <option value="all">all</option>       
+                    <option value="any">any</option>
                 </select>
             </div>
         </div>
@@ -57,7 +61,7 @@ class AddonBrowser extends HTMLElement {
         
         .select {
             position: relative;
-            width: 20em;
+            width: 10em;
             margin: 0 0.5em;
         }
         
@@ -72,15 +76,6 @@ class AddonBrowser extends HTMLElement {
         .select select {
             padding: 0.5em 0;
             margin: 0.5em 0;
-        }
-        
-        #api-version {
-            width: 20em;
-        }
-        
-        #api-version.error {
-            color: #ff6666;
-            text-decoration: underline;
         }
         
         .addon {
@@ -144,38 +139,52 @@ class AddonBrowser extends HTMLElement {
         `;
         this.shadowRoot.prepend(styleElement);
 
-        this.shadowRoot.querySelectorAll("input, select").forEach(element => {
+        this.shadowRoot.querySelectorAll("input, select").forEach((element) => {
             //element.addEventListener("change", () => this.update());
             element.addEventListener("input", () => this.update());
         });
 
-        this.fetchHocon(`/assets/addon_browser/addons.conf`).then(addons => {
+        this.fetchHocon(`/assets/addon_browser/addons.conf`).then((addons) => {
             this.addons = addons;
             this.addons.sort((a, b) => {
                 return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
-            })
+            });
 
             this.apiVersions = [];
             this.platforms = [];
-            this.addons.forEach(addon => {
-                if (addon.apiVersion && !this.apiVersions.includes(addon.apiVersion))
-                    this.apiVersions.push(addon.apiVersion);
+            this.addons.forEach((addon) => {
+                if (addon.apiVersion) {
+                    const subversions = addon.apiVersion.split(".");
+                    for (let i = 0; i < subversions.length; i++) {
+                        const version = subversions.slice(0, i + 1).join(".");
+                        if (!this.apiVersions.includes(version)) this.apiVersions.push(version);
+                    }
+                }
 
-                addon.platforms.forEach(platform => {
-                    if (!this.platforms.includes(platform))
-                        this.platforms.push(platform);
+                addon.platforms.forEach((platform) => {
+                    if (!this.platforms.includes(platform)) this.platforms.push(platform);
                 });
             });
             this.apiVersions.sort(this.compareVersions);
-            this.shadowRoot.getElementById("api-version").value = this.apiVersions[this.apiVersions.length - 1];
 
-            let apiPlatformSelectElement = this.shadowRoot.getElementById("platform")
-            this.platforms.forEach(platform => {
+            let apiVersionSelectElement = this.shadowRoot.getElementById("api-version");
+            this.apiVersions.forEach((version) => {
+                let option = document.createElement("option");
+                option.value = version;
+                option.innerHTML = version;
+                apiVersionSelectElement.append(option);
+            });
+            this.shadowRoot.getElementById("api-version").value = Math.max(
+                ...this.apiVersions.map((v) => v.split(".")[0])
+            );
+
+            let apiPlatformSelectElement = this.shadowRoot.getElementById("platform");
+            this.platforms.forEach((platform) => {
                 let option = document.createElement("option");
                 option.value = platform;
                 option.innerHTML = platform;
                 apiPlatformSelectElement.append(option);
-            })
+            });
 
             let resultElement = this.shadowRoot.getElementById("search-results");
             this.addons.forEach((addon, id) => {
@@ -194,14 +203,13 @@ class AddonBrowser extends HTMLElement {
                         .trim()
                         .replaceAll("<", "&lt;")
                         .replaceAll(">", "&gt;")
-                        .replaceAll("\n", "<br>")
-                    }</div>
+                        .replaceAll("\n", "<br>")}</div>
                 </div>
                 <div class="links"></div>
                 `;
 
                 let platformsElement = element.getElementsByClassName("platforms").item(0);
-                addon.platforms.forEach(platform => {
+                addon.platforms.forEach((platform) => {
                     let element = document.createElement("img");
                     element.src = `/assets/addon_browser/platforms/${platform}.webp`;
                     element.alt = platform;
@@ -230,18 +238,7 @@ class AddonBrowser extends HTMLElement {
     update() {
         let search = this.shadowRoot.getElementById("search").value;
         let platform = this.shadowRoot.getElementById("platform").value;
-
-        let apiVersionElement = this.shadowRoot.getElementById("api-version");
-        let apiVersion = apiVersionElement.value;
-        apiVersionElement.classList.remove("error");
-        if (apiVersion) {
-            if (!/^(\d+)(\.\d+){0,2}$/.test(apiVersion)) {
-                apiVersionElement.classList.add("error");
-                apiVersion = null;
-            } else {
-                apiVersion = apiVersion.split(".");
-            }
-        }
+        let apiVersion = this.shadowRoot.getElementById("api-version").value.split(".");
 
         this.addons.forEach((addon, id) => {
             let element = this.shadowRoot.getElementById("addon-" + id);
@@ -251,10 +248,11 @@ class AddonBrowser extends HTMLElement {
                 if (
                     (!addon.name || !addon.name.toLowerCase().includes(search.toLowerCase())) &&
                     (!addon.description || !addon.description.toLowerCase().includes(search.toLowerCase()))
-                ) match = false;
+                )
+                    match = false;
             }
 
-            if (apiVersion && addon.apiVersion) {
+            if (apiVersion[0] !== "any" && addon.apiVersion) {
                 let addonVersion = addon.apiVersion.split(".");
                 if (Number.parseInt(apiVersion[0]) !== Number.parseInt(addonVersion[0])) {
                     match = false;
@@ -263,7 +261,7 @@ class AddonBrowser extends HTMLElement {
                         let a = Number.parseInt(apiVersion[i]);
                         let b = Number.parseInt(addonVersion[i]);
 
-                        if (a < b){
+                        if (a < b) {
                             match = false;
                             break;
                         }
@@ -271,9 +269,8 @@ class AddonBrowser extends HTMLElement {
                 }
             }
 
-            if (addon.platforms && platform && platform !== "all") {
-                if (!addon.platforms.includes(platform))
-                    match = false;
+            if (addon.platforms && platform && platform !== "any") {
+                if (!addon.platforms.includes(platform)) match = false;
             }
 
             if (match) {
@@ -306,7 +303,6 @@ class AddonBrowser extends HTMLElement {
 
         return 0;
     }
-
 }
 
 customElements.define("addon-browser", AddonBrowser);
