@@ -21,10 +21,11 @@ For this to work you need to do some configuration.
 
 ## The goal
 BlueMap renders and saves the map in a lot of small parts called "tiles". Those tiles are saved in individual files 
-in a tree-like folder-structure here: `<webroot>/maps/<map-id>/tiles/`. The file-data is in 
-[json](https://www.json.org/json-de.html)-format. But the files are also compressed with 
-[GZip](https://en.wikipedia.org/wiki/Gzip). The problem now is, that the web-app (browser) is asking for the 
-uncompressed .json files, but a normal webserver only finds the compressed ones.
+in a tree-like folder-structure here: `<webroot>/maps/<map-id>/tiles/`. The low-res data is saved in
+[PNG](https://en.wikipedia.org/wiki/PNG) files that can just be served normally. The high-res tile data is saved in 
+[GZip](https://en.wikipedia.org/wiki/Gzip)-compressed [JSON](https://www.json.org/) files. The problem now is,
+that the web-app (browser) is asking for the uncompressed `.json` files, but a normal webserver only finds the
+compressed `.json.gz` ones.
 
 **For example:** the web-app is asking for a tile: `/maps/world/tiles/0/x9/z-8.json`. If your webserver is now searching 
 for that file, it will not find it, because the file it needs is actually this one: `/maps/world/tiles/0/x9/z-8.json.gz`!
@@ -37,8 +38,10 @@ And on top of that it is compressed.
   `Content-Encoding: gzip`)*
 
 Optionally:
-- If a map-tile (or just any request to `/maps/*`) does not exist, instead of returning a 404 we want to respond with 
+- If a high-res map tile does not exist, instead of returning a 404 we want to respond with 
   200 and this file: `/assets/emptyTile.json` *(This removes harmless but annoying 404 errors in the browsers console)*
+- If a low-res map tile does not exist, instead of returning a 404 and showing errors in the browser console, we
+  return a 204 (No Content).
 - If you are using a plugin/mod you usually have live-updating player-markers on your map. For those to work with an 
   external web-server you will also need to reverse-proxy all requests to `/maps/*/live/*` to the builtin web-server.
 
@@ -55,20 +58,22 @@ server {
   # path to bluemap-webroot, bluemap can also be used in a sub-folder .. just adapt the paths accordingly
   root /var/www;
   
-  location / {
-    try_files $uri $uri/ =404 ;
+  location ~* ^/maps/[^/]*/tiles/ {
+    # High-res tiles are stored as precompressed JSON with a fallback to returning an empty tile.
+    # Low-res tiles are stored as pngs with a fallback to returning 204 (No Content).
+    location ~* \.json$  {
+      error_page 404 =200 /assets/emptyTile.json;
+      gzip_static always;
+    }
+    location ~* \.png$ {
+      try_files $uri =204;
+    }
   }
-  
-  # map-tiles are stored compressed, and they have a fallback file that should be returned if the tile does not exist
-  location /maps/ {
-    error_page 404 =200 /assets/emptyTile.json;
-    gzip_static always;
-  }
-  
-  # Proxy requests to the live data interface of each map to bluemaps integrated webserver
-  # If you have multiple servers you will need to proxy each map-id to the correct server
-  location ~* /(maps/[^/]*/live/.*) {
-    proxy_pass http://127.0.0.1:8100/$1;
+
+  # Proxy requests for live data to the bluemaps integrated webserver.
+  # If you have multiple servers you will need to proxy each map-id to the correct server.
+  location ~* ^/maps/[^/]*/live/ {
+    proxy_pass http://127.0.0.1:8100;
   }
 }
 ```
