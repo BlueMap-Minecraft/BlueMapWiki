@@ -73,7 +73,7 @@ server {
   # Proxy requests for live data to the bluemaps integrated webserver.
   # If you have multiple servers you will need to proxy each map-id to the correct server.
   location ~* ^/maps/[^/]*/live/ {
-    proxy_pass http://127.0.0.1:8100/$1;
+    proxy_pass http://127.0.0.1:8100;
   }
 }
 ```
