@@ -22,13 +22,15 @@ that allows for 24/7 viewing of the map (and map markers), even when the server 
 
 ## Setting up a lazy server
 
-A project named [lazymc] can be used to set up a lazy Minecraft server. Essentially it acts just
-enough like a normal Minecraft server to accept an incoming connection request, start the Minecraft
-server (if not already running) and transparently proxy the connection through to it. It also
-monitors the number of current players and shuts the server down once it's empty.
+The [lazymc] project can be used to set up a lazy Minecraft server. Essentially it acts just enough
+like a normal Minecraft server to accept an incoming connection request, start the Minecraft server
+(if not already running) and transparently proxy the connection through to it.
 
-Any detailed instructions here on how to set up and configure lazymc would run the risk of getting
-outdated, so for help on setting it up, see the usage guide provided by the project.
+Once the server is running, it monitors the number of current players and shuts it down once it's
+empty. It can also be configured to pause the Minecraft server instead of shutting it down so it can
+be instantly resumed when the next player connects.
+
+Detailed instructions on how to set up and configure lazymc are available in the project's README.
 
 
 ## Configuring BlueMap
@@ -58,6 +60,11 @@ Most of this configuration is going to be the exact same as is detailed on the [
 skim first. The difference in this case is that we're *expecting* that the integrated webserver will
 be down when the server is offline and the proxy should therefore return some placeholder data to
 keep the frontend happy.
+
+Note that if [lazymc] is configured to pause the server instead of shutting it down, Nginx will need
+to be configured with a short `proxy_read_timeout` to avoid hanging while waiting for a response
+from the integrated webserver. This is because the paused server will accept the connection but not
+be able to respond in any way to the request.
 
 
 ## Faking "live" data while server is offline
@@ -102,7 +109,8 @@ server {
   # Proxy all requests for live data to the integrated webserver.
   # Fall back to @server-offline if it can't be contacted.
   location ~* ^/maps/[^/]*/live/ {
-    error_page 502 = @server-offline;
+    proxy_read_timeout 2s;  # required if lazymc pauses the server instead of shutting it down
+    error_page 502 504 = @server-offline;
     proxy_pass http://127.0.0.1:8100;  # the default port for the integrated webserver, adapt to your setup
   }
 
