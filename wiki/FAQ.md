@@ -93,6 +93,9 @@ BlueMaps integrated webserver does not (and will not) support SSL on its own,
 but you can e.g. [use NGINX to reverse-proxy your map]({{site.baseurl}}/wiki/webserver/NginxProxy.html) 
 and add SSL that way.
 
+### Q: How do I add authentication to my map?
+BlueMap does not support authentication by itself. Instead, you could use [http-basic-auth using an external webserver](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/).
+
 ## Known incompatibilities with other mods
 - JustEnoughIDs (jeid)
 - NotEnoughIDs
