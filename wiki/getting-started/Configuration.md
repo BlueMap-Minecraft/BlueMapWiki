@@ -50,7 +50,7 @@ an SQL-Driver. You will only need to provide a Driver if there is no driver alre
 usually already a MySQL-Driver provided.
 
 For the `connection-url` you can use any valid JDBC-URL. Consult the documentation of your database-driver for more information.
-You might need to [URLEncode](https://www.urlencoder.io/) your username and password if it contains special characters.
+You can use the `connection-properties` to set your username and password without having to encode them into your `connection-url`.
 
 ## Performance tweaking
 BlueMap is rendering asynchronously to your server-thread. This means at no time it will block your server-thread directly.
