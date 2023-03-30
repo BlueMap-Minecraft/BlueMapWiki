@@ -1,0 +1,17 @@
+{
+    "name": "faq-updater",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "start": "node ."
+    },
+    "dependencies": {
+        "discord.js": "^14.8.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18.15.11"
+    }
+}

@@ -1,0 +1,34 @@
+name: Deploy FAQ to Discord
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "wiki/FAQ.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "faq"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install deps
+        working-directory: .github/faq-updater
+        run: npm ci
+      - name: Run FAQ updater
+        working-directory: .github/faq-updater
+        run: npm start
+        env:
+          DISCORD_TOKEN: ${{ env.DISCORD_TOKEN }}
+          DISCORD_CHANNEL: ${{ env.DISCORD_CHANNEL }}
