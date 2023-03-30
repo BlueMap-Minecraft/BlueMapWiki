@@ -10,3 +10,6 @@ vendor/
 
 # Ignore IntelliJ project files
 .idea/
+
+# FAQ updater dependencies
+node_modules/
