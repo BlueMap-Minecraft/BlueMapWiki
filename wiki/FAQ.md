@@ -50,7 +50,7 @@ If that doesn't help you might have changed some bluemap-settings that require a
 Just use `/bluemap purge <map-id>` to delete and re-render the entire map. Then clear your browser-cache again,
 and it should be fixed :)
 
-### Q: I have a black map / a lot of the map is missing! Part 1.
+### Q: I have a black map / a lot of the map is missing!
 - Press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure your 
   browser has not cached anything weird.
 - Use `/bluemap` to check if BlueMap is rendering something! It might be busy rendering a different map first.
@@ -64,8 +64,6 @@ and it should be fixed :)
   Check the [incompatibilities-list](#known-incompatibilities-with-other-mods) below.
   If you don't have any mod from the list, please report the error
   [here](https://github.com/BlueMap-Minecraft/BlueMap/issues).
-
-### Q: I have a black map / a lot of the map is missing! Part 2.
 - Have you upgraded your world from an earlier Minecraft-version? Or have you pre-generated your world or generated it with e.g. WorldPainter? 
   Then, chunks that have not been visited by a player **might** not have their light-data generated yet. 
   BlueMap needs the light data and ignores chunks that don't have it.

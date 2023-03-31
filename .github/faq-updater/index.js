@@ -27,7 +27,7 @@ client.on("ready", async () => {
             process.exit(1);
         }
 
-        const oldMessages = [
+        const messages = [
             ...(
                 await faqChannel.messages.fetch({
                     limit: 100,
@@ -35,34 +35,47 @@ client.on("ready", async () => {
             ).values(),
         ]
             .filter((message) => message.author.id === client.user?.id)
-            .sort((a, b) => b.createdTimestamp - a.createdTimestamp);
+            .sort((a, b) => a.createdTimestamp - b.createdTimestamp);
 
-        const newMessages = await getFaqEntries();
+        const newMessages = await getNewMessages();
 
-        for (const message of oldMessages) {
-            const oldTitle = message.content.split("\n")[0].slice(2, -2);
-            if (newMessages.every((newMessage) => newMessage.title !== oldTitle)) {
-                console.log("Deleting outdated FAQ entry", oldTitle);
-                await message.delete();
-            }
-        }
-
-        for (const message of newMessages) {
-            const oldMessage = oldMessages.find((oldMessage) =>
-                oldMessage.content.startsWith(`**${message.title}**`)
+        const sizeDifference = messages.length - newMessages.length;
+        if (sizeDifference > 0) {
+            console.log(
+                `Deleting ${sizeDifference} unnecessary FAQ message${
+                    sizeDifference === 1 ? "" : "s"
+                }`
             );
-            const newContent = `**${message.title}**\n${message.content}\n-------`;
-            if (oldMessage) {
-                if (oldMessage.content === newContent) continue;
-                console.log("Updating FAQ entry", message.title);
-                await oldMessage.edit(newContent);
-            } else {
-                console.log("Adding new FAQ entry", message.title);
-                await faqChannel.send(newContent);
-            }
+            await Promise.all(
+                messages.splice(newMessages.length).map((message) => message.delete())
+            );
+        } else if (sizeDifference < 0) {
+            console.log(
+                `Adding ${-sizeDifference} necessary FAQ message${-sizeDifference === 1 ? "" : "s"}`
+            );
+            messages.push(
+                ...(
+                    await Promise.all(
+                        Array(-sizeDifference)
+                            .fill(0)
+                            .map(() => faqChannel.send(`_ _`))
+                    )
+                ).sort((a, b) => a.createdTimestamp - b.createdTimestamp)
+            );
         }
 
-        console.log("FAQ updated to Discord");
+        let updatedCount = 0;
+        await Promise.all(
+            messages.map(async (message, index) => {
+                const newMessage = newMessages[index];
+                if (message.content !== newMessage) {
+                    await message.edit(newMessage);
+                    updatedCount++;
+                }
+            })
+        );
+
+        console.log(`Updated ${updatedCount} FAQ message${updatedCount === 1 ? "" : "s"}`);
         process.exit(0);
     } catch (error) {
         console.error(error);
@@ -70,26 +83,52 @@ client.on("ready", async () => {
     }
 });
 
-async function getFaqEntries() {
+/**
+ * @param {string} message
+ * @returns {string[]}
+ */
+function splitMessage(message) {
+    const maxLength = 2000 - 2;
+    if (message.length <= maxLength) return [message];
+    const lines = message.split("\n");
+    if (lines.some((line) => line.length > maxLength))
+        throw new Error("Heck this, add some newlines!");
+    const messages = [];
+    let msg = "";
+    for (const line of lines) {
+        if (msg && (msg + "\n" + line).length > maxLength) {
+            messages.push(msg);
+            msg = "";
+        }
+        msg += (msg ? "\n" : "") + line;
+    }
+    messages.push(msg);
+    return messages.filter(Boolean);
+}
+
+async function getNewMessages() {
     const rawContent = await readFile("../../wiki/FAQ.md", "utf8");
     const [_frontmatter, rawQuestions] = rawContent.split("# FAQ").map((section) => section.trim());
-    const questions = rawQuestions
+    const messages = rawQuestions
         .replace(/{{site.baseurl}}/g, "https://bluemap.bluecolored.de")
         .replace(/<br>/g, "\n")
         .split(/^###? /m)
         .slice(1)
-        .map((question) => {
-            const [title, ...content] = question.trim().split("\n");
-            return {
-                title,
-                content: content
-                    .join("\n")
-                    .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (_match, name, link) => {
-                        if (name === link) return `<${link}>`;
-                        if (link.startsWith("#")) return name;
-                        return `${name} (<${link}>)`;
-                    }),
-            };
-        });
-    return questions;
+        .flatMap((question) => {
+            const [title, ...lines] = question.trim().split("\n");
+            const content = lines
+                .join("\n")
+                .trimEnd()
+                // TODO: just use proper markdown links when that feature rolls out
+                .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (_match, name, link) => {
+                    if (name === link) return `<${link}>`;
+                    if (link.startsWith("#")) return name;
+                    return `${name} (<${link}>)`;
+                });
+            const message = `**${title}**\n${content}\n-------`;
+            return splitMessage(message);
+        })
+        .map((message) => message.replace(/^\s+/, (m) => `_${m}_`));
+    messages[messages.length - 1] = messages[messages.length - 1].slice(0, -8);
+    return messages;
 }
