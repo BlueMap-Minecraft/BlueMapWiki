@@ -93,5 +93,7 @@ ProxyPreserveHost On
 ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 ```
 > **Important:**<br>
-> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
+> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!<br>
+> For example, you may need to make a separate .htaccess for each directory on your webserver that uses rewrite rules (often other php based apps).
+
 {: .info .important }
