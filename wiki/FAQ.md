@@ -26,6 +26,9 @@ If yes, check if your `webroot` settings in `webapp.conf` and `webserver.conf` a
 BlueMap needs to wait until the server saves the world data to disk, so it may take some time for changes to appear 
 on the map. Also make sure to click `Update Map` in the menu on the left to make your browser fetch a fresh copy.
 
+### Q: I'm experiencing issues after updating to a newer BlueMap version!
+Please make sure to read the changelog, as there may be more steps necessary than just swapping out the .jar file. Those steps will be clearly listed on the update page.
+
 ### Q: Why is BlueMap using so much of my CPU?
 When you install BlueMap for the first time, it needs to convert all of your world(s) into 3d models.
 This is a pretty intensive process, so it's not strange at all to see BlueMap using up a lot of CPU power for a while after it's been installed.
