@@ -13,7 +13,7 @@ BlueMap allows you to add various markers to your map. You can do this either by
 map-config or by having a 3rd-party plugin that uses BlueMap's [API](https://github.com/BlueMap-Minecraft/BlueMapAPI)
 to manage markers.
 
-A list of known 3rd-party plugins that use BlueMap's API is available [here]({{site.baseurl}}/wiki/customization/3rdPartySupport).
+A list of known 3rd-party plugins that use BlueMap's API is available [here]({{site.baseurl}}/community/3rdPartySupport.html).
 
 1. TOC
 {:toc}
