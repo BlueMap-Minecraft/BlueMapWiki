@@ -119,13 +119,12 @@ async function getNewMessages() {
             const content = lines
                 .join("\n")
                 .trimEnd()
-                // TODO: just use proper markdown links when that feature rolls out
                 .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (_match, name, link) => {
                     if (name === link) return `<${link}>`;
                     if (link.startsWith("#")) return name;
-                    return `${name} (<${link}>)`;
+                    return `[${name}](<${link}>)`;
                 });
-            const message = `**${title}**\n${content}\n-------`;
+            const message = `##${title.startsWith("Q:") ? "#" : ""} ${title}\n${content}`;
             return splitMessage(message);
         })
         .map((message) => message.replace(/^\s+/, (m) => `_${m}_`));

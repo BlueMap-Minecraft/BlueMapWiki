@@ -64,7 +64,7 @@ and it should be fixed :)
   your world or using a plugin to pre-generate an area of your world.)*
 - Use the command `/bluemap debug block` (in-game). If that is throwing an error, it is likely that you have a mod 
   installed that is not compatible with bluemap.
-  Check the [incompatibilities-list](#known-incompatibilities-with-other-mods) below.
+  Check the [incompatibilities-list](#known-incompatibilities-with-other-mods) at the bottom.
   If you don't have any mod from the list, please report the error
   [here](https://github.com/BlueMap-Minecraft/BlueMap/issues).
 - Have you upgraded your world from an earlier Minecraft-version? Or have you pre-generated your world or generated it with e.g. WorldPainter? 
