@@ -16,6 +16,8 @@ If you want to optimize the speed of your web-app for a larger audience, you can
 external webservers like [NGINX](https://www.nginx.com/) or [Apache](https://httpd.apache.org/). 
 For this to work you need to do some configuration.
 
+If your trying to install bluemap without an external SQL server but are still trying to use SQL look [here](https://bluemap.bluecolored.de/wiki/webserver/ExternalWebserversSQL.html)
+
 1. TOC 
 {:toc}
 
