@@ -102,3 +102,84 @@ This is useful if you want to render a map of a minecraft-world, but don't want 
 - With `java -jar BlueMap-cli.jar -w` you can also start the builtin web-server to be able to view your map. 
   Or you can read [this]({{site.baseurl}}/wiki/webserver) to learn how to setup NGINX or 
   Apache for BlueMap.
+
+## Using BlueMap Docker image
+You can use [BlueMap CLI](#using-bluemap-on-the-cli--standalone) in a Docker container. This is perfect for container loving sysadmins.
+The image is available on GitHub container registry as `ghcr.io/bluemap-minecraft/bluemap`.
+For latest and greatest the `latest` tag is the latest release and `master` the latest git commit.
+You can also choose a latest minor of a major with tags such as `v3` or a specific version tag such as `v3.14`.
+
+### Prerequisites
+- A minecraft-world that you want to render
+- Working Docker installation
+- Reading the [CLI](#using-bluemap-on-the-cli--standalone) instructions
+
+### Volumes
+
+| Path          | Purpose                                     |
+| ------------- | ------------------------------------------- |
+| /app/config   | Default config folder                       |
+| /app/web      | Default web application                     |
+| /app/web/maps | Default render data (included in web mount) |
+| /app/data     | Other persistant data                       |
+| /app/world    | Your world (you can also mount others)      |
+
+You can also change these paths to be whatever you want in the configs.
+To change the used config folder use the `-c /path/to/config` flag.
+
+### Steps
+- Somehow obtain the configuration folder.
+  Easiest is to run `docker run --rm -it -v "$(pwd)/config:/app/config" ghcr.io/bluemap-minecraft/bluemap:latest`.
+  Which creates a config folder in your current working directory with the default configs.
+- Configure the application however you like.
+- Start a container to render and host a webserver.
+  ```sh
+  docker run --rm -it \
+    --name bluemap \
+    -p 8100:8100 \
+    -v "$(pwd)/config:/app/config" \
+    -v "$(pwd)/world:/world" \
+    -v "$(pwd)/data:/app/data" \
+    -v "$(pwd)/web:/app/web" \
+    ghcr.io/bluemap-minecraft/bluemap:latest \
+    -r -w
+  ```
+  Change the `$(pwd)/world` to an actual path to your world.
+  The final two flags `-r` is for rendering, `-w` is for the webserver.
+  See CLI usage and `--help` for more.
+  If you changed the default paths in the config to something else, make sure to account for that in the volume mounts.
+  If you want it running on the background remove the `--rm -it` and replace with `-d --restart always`.
+
+Here's a Docker Compose example for running in the background.
+Just start with `docker compose up -d`.
+```yml
+version: '3'
+
+services:
+  bluemap:
+    image: ghcr.io/bluemap-minecraft/bluemap:latest
+    restart: always
+    command: -r -w
+    ports:
+      - '8100:8100'
+    volumes:
+      - './config:/app/config'
+      - './world:/world'
+      - './world_nether:/world_nether'
+      - './world_the_end:/world_the_end'
+      - './data:/app/data'
+      - './web:/app/web'
+```
+
+### Notes
+
+Relative paths in the config are relative to the `/app` folder.
+If you find this confusing, use absolute paths to your mounts.
+
+If you want you can precreate the volume folders with specific user ownership
+and then start BlueMap as a non root user using the Docker `--user uid:gid` flag or compose `user` field.
+
+To change the webserver's port or ip binding, you don't need to change BlueMap's config.
+Instead just change where Docker publishes the port by chaging the `-p 8100:8100` flag.
+
+To change Java flags, just overwrite the entire default `java -jar cli.jar` entrypoint.
