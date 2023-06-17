@@ -2,7 +2,7 @@
 layout: page
 title: Reverse-Proxy setup with Pterodactyl & Nginx
 parent: Community Guides
-nav_order: 5
+nav_order: 6
 ---
 
 # Reverse-Proxy setup with Pterodactyl & Nginx
