@@ -164,7 +164,7 @@ services:
       - '8100:8100'
     volumes:
       - './config:/app/config'
-      - './world:/world'
+      - './world:/app/world'
       - './world_nether:/world_nether'
       - './world_the_end:/world_the_end'
       - './data:/app/data'
