@@ -138,7 +138,7 @@ To change the used config folder use the `-c /path/to/config` flag.
     --name bluemap \
     -p 8100:8100 \
     -v "$(pwd)/config:/app/config" \
-    -v "$(pwd)/world:/world" \
+    -v "$(pwd)/world:/app/world" \
     -v "$(pwd)/data:/app/data" \
     -v "$(pwd)/web:/app/web" \
     ghcr.io/bluemap-minecraft/bluemap:latest \
@@ -164,7 +164,7 @@ services:
       - '8100:8100'
     volumes:
       - './config:/app/config'
-      - './world:/world'
+      - './world:/app/world'
       - './world_nether:/world_nether'
       - './world_the_end:/world_the_end'
       - './data:/app/data'
