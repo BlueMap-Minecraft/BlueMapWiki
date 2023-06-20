@@ -21,9 +21,12 @@ command | permission | description
 `/bluemap` | bluemap.status | displays BlueMaps render status
 `/bluemap version` | bluemap.version | displays BlueMaps version and some more useful system-information
 `/bluemap help` | bluemap.help | displays a list of all possible BlueMap-commands
-`/bluemap reload` | bluemap.reload | reloads all resources, configuration-files and the web-server
+`/bluemap reload [light]` | bluemap.reload | reloads all resources, configuration-files and the web-server *(`light` => re-loads everything other than resources (resourcepacks/mods) which is faster)*
 `/bluemap maps` | bluemap.status | shows all maps loaded by BlueMap
 `/bluemap worlds` | bluemap.status | shows all worlds loaded by BlueMap
+`/bluemap storages` | shows all storages configured/available
+`/bluemap storages <storage>` | shows a list of all maps that are on this storage
+`/bluemap storages <storage> delete <map>` | deletes the (unloaded) map from that storage *(for deleting loaded maps, use the `/bluemap purge <map>` command)*
 `/bluemap stop` | bluemap.stop | pauses all rendering *(persists over a server-restart)*
 `/bluemap start` | bluemap.start | resumes all paused rendering *(persists over a server-restart)*
 `/bluemap freeze <map-id>` | bluemap.freeze | pauses all updates on a specific map *(persists over a server-restart)*
