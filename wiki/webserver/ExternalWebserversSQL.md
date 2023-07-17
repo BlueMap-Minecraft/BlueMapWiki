@@ -83,7 +83,7 @@ DocumentRoot /var/www/
     RewriteCond %{REQUEST_FILENAME} !-s
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteCond %{REQUEST_FILENAME} !-d
-    # Rewrite request to the index.php
+    # Rewrite request to the mysql.php
     RewriteRule ^.*$ /mysql.php [L]  
 </Directory>
 
