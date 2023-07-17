@@ -6,12 +6,13 @@ nav_order: 7
 ---
 
 # Customisation Guide
+{: .no_toc }
+
 How to edit the BlueMap website, for example to make it fit more with your server's brand.
 
 Keep in mind that some BlueMap updates require you to delete the `index.html` file to update the webapp,
 so make sure to remember any edits you do to it and any of BlueMap's other source files, because you will need to apply them again.
 
-{: .no_toc }
 1. TOC 
 {:toc}
 
