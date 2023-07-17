@@ -3,7 +3,7 @@ layout: page
 title: Configuring Mods
 parent: Advanced Customization
 grand_parent: Wiki
-nav_order: 3
+nav_order: 4
 ---
 
 # Configuring Mods

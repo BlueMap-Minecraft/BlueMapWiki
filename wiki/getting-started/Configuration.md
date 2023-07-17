@@ -36,22 +36,6 @@ Inside each map-config you can change all sorts of map-settings like e.g. the di
 is shown on the web-app. Just view the comments in the default config-file that bluemap generated for you.
 Everything is explained there.
 
-## Configuring the map-storages *(store maps in a database or a different directory)*
-In your config-folder you can find a folder called `storages` with some config-files in it.
-In the same way as with the maps, the name of these config-file (without the `.conf`-extension) determines the identifier of the storage.
-Which means you can also add and remove storages.
-In your map-configs you then can use the `storage`-setting to select the storage this map should be stored in.
-
-By default, the `storages` folder contains a `file.conf` and a `sql.conf` file.
-The `file.conf` is the one that is used by default for all maps. It stores the map in a tree-like structure in some folder.
-If you open the file you can e.g. change the path to that folder.
-The `sql.conf` is used to store maps in a database. In it, you can set up the database-connection and optionally provide
-an SQL-Driver. You will only need to provide a Driver if there is no driver already available. On Spigot/Paper for example there is
-usually already a MySQL-Driver provided.
-
-For the `connection-url` you can use any valid JDBC-URL. Consult the documentation of your database-driver for more information.
-You can use the `connection-properties` to set your username and password without having to encode them into your `connection-url`.
-
 ## Performance tweaking
 BlueMap is rendering asynchronously to your server-thread. This means at no time it will block your server-thread directly.
 So as long as your CPU is not fully utilized, your server should not be slowed down while BlueMap is rendering.
