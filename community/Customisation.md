@@ -52,7 +52,7 @@ In some places, when you share a link to your map, it'll embed a bit of extra in
 You can change how this looks by editing the `bluemap/web/index.html` file.\
 The options you can safely change are the `description`, `theme-color`, `og:site_name`, `og:title`, `og:description`, and `og:image`.
 
-> That `og:image` should be a full URL link, not a relative path.
+> The `og:image` attribute should be a full URL link, not a relative path.
 {: .info }
 
 ## Custom website favicon
@@ -63,7 +63,7 @@ There are two ways to change BlueMap's favicon:
 
 ## Custom website title
 The title is the text that is on the tab in your browser.\
-Changing the `<title>` property in the `index.html` will not work!\
+Changing the `<title>` tag in the `index.html` will not work!\
 You need to change it in the language files, which are at `/bluemap/web/lang/`.\
 The option `pageTitle` in the `.conf` files in this directory are what you need to change.
 
@@ -81,9 +81,9 @@ By changing that piece of text, you can choose any other filename you wish.
 To use a custom domain for your BlueMap, instead of a numerical IP, it works like any other website.\
 In your domain's DNS settings, you should point an A Record to the IP of the server your BlueMap is hosted on.\
 Keep in mind that _this will not_ remove the need to type the port afterwards!\
-To fix that, you need an external webserver. Here is a guide on how to do that with NGINX: [External Webservers]({{site.baseurl}}/wiki/webserver/NginxProxy.html)\
+To fix that, you need an external webserver. Here is a guide on how to do that with NGINX: [NginxProxy]({{site.baseurl}}/wiki/webserver/NginxProxy.html)
 
-> It is not possible to do this with an SRV Record, like you probably did for your Minecraft Server. Browsers do not support SRV Records.
+> It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server. Browsers do not support SRV Records.
 {: .info .important }
 
 ## Adding a button to the side-bar
