@@ -97,6 +97,13 @@ BlueMaps integrated webserver does not (and will not) support SSL on its own,
 but you can e.g. [use NGINX to reverse-proxy your map]({{site.baseurl}}/wiki/webserver/NginxProxy.html) 
 and add SSL that way.
 
+### Q: My map disappears when I zoom in!
+This can happen when BlueMap is trying to load the hi-res tiles, but can't find them for some reason.\
+This is usually because haven't set up your external webserver correctly yet.
+Please make sure you've read the [External Webservers]({{site.baseurl}}/wiki/webserver/) guide to see how to do that.
+If you're still having issues, please visit [#support](https://discord.com/channels/665868367416131594/751804128749027421) in our [Discord](https://bluecolo.red/map-discord).\
+It could also be because you've just set `save-hires-layer` to `false`. If this is the case, make sure to set the `hires-slider-default` to `0` in `webapp.conf`, and reload the page completely (`F12` -> `Network` -> `[x] disable Cache` -> `F5`).
+
 ### Q: How do I add authentication to my map?
 BlueMap does not support authentication by itself. Instead, you could use [http-basic-auth using an external webserver](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/).
 
