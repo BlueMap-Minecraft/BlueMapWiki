@@ -47,7 +47,7 @@ From here on, you can customise any BlueMap class you want.
 ## Custom embed
 In some places, when you share a link to your map, it'll embed a bit of extra info. In Discord it looks like this:
 
-![](https://cdn.discordapp.com/attachments/803532169955508234/1130485215232544899/image.png)
+![Screenshot of the default BlueMap embed in Discord]({{site.baseurl}}/assets/BlueMapDiscordEmbed.png)
 
 You can change how this looks by editing the `bluemap/web/index.html` file.\
 The options you can safely change are the `description`, `theme-color`, `og:site_name`, `og:title`, `og:description`, and `og:image`.
