@@ -1,3 +1,10 @@
+---
+layout: page
+title: Customisation Guide
+parent: Community Guides
+nav_order: 7
+---
+
 # Customisation Guide
 {: .no_toc }
 
