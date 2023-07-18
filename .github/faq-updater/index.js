@@ -121,13 +121,13 @@ async function getNewMessages() {
                 .trimEnd()
                 .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (_match, name, link) => {
                     if (name === link) return `<${link}>`;
+                    if (link.startsWith("https://discord.com/channels/")) return link;
                     if (link.startsWith("#")) return name;
-                    return `[${name}](<${link}>)`;
+                    return `__${name}__ (<${link}>)`;
                 });
             const message = `##${title.startsWith("Q:") ? "#" : ""} ${title}\n${content}`;
             return splitMessage(message);
         })
         .map((message) => message.replace(/^\s+/, (m) => `_${m}_`));
-    messages[messages.length - 1] = messages[messages.length - 1].slice(0, -8);
     return messages;
 }
