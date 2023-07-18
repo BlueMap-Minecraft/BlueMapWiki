@@ -128,7 +128,7 @@ async function getNewMessages() {
                     if (link.startsWith("#")) return name;
                     return `__${name}__ (<${link}>)`;
                 });
-            const message = `##${title.startsWith("Q:") ? "#" : ""} ${title}\n${content}`;
+            const message = `## ${title}\n${content}`;
             return splitMessage(message);
         });
 }
