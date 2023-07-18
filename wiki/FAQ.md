@@ -73,12 +73,13 @@ and it should be fixed :)
   BlueMap needs the light data and ignores chunks that don't have it.
   So it will only render chunks that have been loaded by a player at least once.  
   You can try to use a plugin like [LightCleaner](https://www.spigotmc.org/resources/light-cleaner.42469/) to fix chunks 
-  that don't have proper lightdata in your world.
-- If nothing else works, you can try to set `ignore-missing-light-data: true` in your 
-  map-config. *(And then use `/bluemap purge <map>` to update your map)*  
-  This will ignore potentially missing light data while rendering, with some drawbacks:
-    - Cave-rendering will always be enabled in those chunks, because it is using the sun-light data to detect the "caves"
-    - Everything in those chunks will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
+  that don't have proper lightdata in your world. 
+
+If nothing else works, you can try to set `ignore-missing-light-data: true` in your 
+map-config. *(And then use `/bluemap purge <map>` to update your map)*  
+This will ignore potentially missing light data while rendering, with some drawbacks:
+- Cave-rendering will always be enabled in those chunks, because it is using the sun-light data to detect the "caves"
+- Everything in those chunks will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
 
 ### Q: The map (web-app) is really slow (lagging)
 Make sure you have **hardware-acceleration enabled** on your browser! 
