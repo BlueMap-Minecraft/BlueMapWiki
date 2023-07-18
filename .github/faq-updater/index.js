@@ -114,10 +114,11 @@ async function getNewMessages() {
         .split(/^###? /m)
         .slice(1)
         .flatMap((question) => {
-            const [title, lines] = question.trim().split("\n", 2);
+            const [title, ...lines] = question.trim().split("\n");
             const content = lines
+                .join("\n")
                 .trimEnd()
-                .replace(/\n{2,}/, s => "<br>".repeat(s.length))
+                .replace(/\n{2,}/g, s => "<br>".repeat(s.length))
                 .replace(/\s{2,}\n|\s*\\\n|\s*\n(?=\s*-)/g,"<br>")
                 .replace(/\n\s*/g," ")
                 .replace(/<br>/g, "\n")
