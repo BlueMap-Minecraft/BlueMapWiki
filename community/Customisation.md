@@ -13,6 +13,10 @@ How to edit the BlueMap website, for example to make it fit more with your serve
 Keep in mind that some BlueMap updates require you to delete the `index.html` file to update the webapp,
 so make sure to remember any edits you do to it and any of BlueMap's other source files, because you will need to apply them again.
 
+> **Info:**  
+> Throughout this guide, `/bluemap/web/` shall be assumed as the default webroot. If you're using a custom, different webroot, please make sure to use that instead.
+{: .info }
+
 1. TOC 
 {:toc}
 
