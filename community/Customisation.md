@@ -16,7 +16,7 @@ so make sure to remember any edits you do to it and any of BlueMap's other sourc
 1. TOC 
 {:toc}
 
-## Custom theme
+## Theme and look
 BlueMap allows you to write custom CSS snippets, with which you can style the BlueMap interface exactly to your liking.
 
 > **Info:**  
@@ -44,7 +44,7 @@ styles: [
 This should make all BlueMap's buttons fully red.  
 From here on, you can customise any BlueMap class you want.
 
-## Custom embed
+## Embed
 In some places, when you share a link to your map, it'll embed a bit of extra info. In Discord it looks like this:
 
 ![Screenshot of the default BlueMap embed in Discord]({{site.baseurl}}/assets/BlueMapDiscordEmbed.png)
@@ -55,29 +55,29 @@ The options you can safely change are the `description`, `theme-color`, `og:site
 > The `og:image` attribute should be a full URL link, not a relative path.
 {: .info }
 
-## Custom website favicon
+## Website favicon
 A favicon is the icon you'll see on the tab in your browser, and in the favourites bar if you've favourited the website.  
 There are two ways to change BlueMap's favicon:
 1. Replace the favicon image `/bluemap/web/assets/favicon-8768b872.png`
 2. Copy a new image file to the BlueMap webroot (or `assets` directory) and edit the `<link rel="icon" href="./assets/favicon-8768b872.png">` in `index.html` to refer to your new image instead.
 
-## Custom website title
+## Website title
 The title is the text that is on the tab in your browser.  
 Changing the `<title>` tag in the `index.html` will not work!  
-You need to change it in the language files, which are at `/bluemap/web/lang/`.  
+You need to change it in each language file, which are at `/bluemap/web/lang/`.  
 The option `pageTitle` in the `.conf` files in this directory are what you need to change.
 
-## Change default language
+## Default language
 You can change the default language for your map, which will apply for all new visitors.
 It will not change the language for people who have already visited your site once already.  
 In `/bluemap/web/lang/settings.conf` is the setting `default`, which you can change to any of the locales listed below it.
 
-## Change screenshot filename
+## Screenshot filename
 BlueMap has a screenshot feature, which downloads a screenshot to your device.  
 You can change the filename of that by opening the `/bluemap/web/assets/index-123456.js` file, and then doing a `Ctrl`+`F` for "`bluemap-screenshot.png`".  
 By changing that piece of text, you can choose any other filename you wish.
 
-## Custom domain
+## Domain
 To use a custom domain for your BlueMap, instead of a numerical IP, it works like any other website.  
 In your domain's DNS settings, you should point an A Record to the IP of the server your BlueMap is hosted on.  
 Keep in mind that _this will not_ remove the need to type the port afterwards!  
