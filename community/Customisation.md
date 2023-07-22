@@ -72,6 +72,12 @@ You can change the default language for your map, which will apply for all new v
 It will not change the language for people who have already visited your site once already.  
 In `/bluemap/web/lang/settings.conf` is the setting `default`, which you can change to any of the locales listed below it.
 
+## Info Menu
+BlueMap has an *Info* menu in the sidebar, which is also completely customisable.  
+You can edit it in the each language file, which are at `/bluemap/web/lang/`.  
+The option `info: { content:` is the one you need to edit for this.  
+It accepts any normal HTML.
+
 ## Screenshot filename
 BlueMap has a screenshot feature, which downloads a screenshot to your device.  
 You can change the filename of that by opening the `/bluemap/web/assets/index-123456.js` file, and then doing a `Ctrl`+`F` for "`bluemap-screenshot.png`".  
