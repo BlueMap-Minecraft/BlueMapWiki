@@ -108,10 +108,9 @@ function splitMessage(message) {
 
 async function getNewMessages() {
     const rawContent = await readFile("../../wiki/FAQ.md", "utf8");
-    const [_frontmatter, rawQuestions] = rawContent.split("# FAQ").map((section) => section.trim());
-    const messages = rawQuestions
+    const [_frontmatter, rawQuestions] = rawContent.split("# FAQ", 2).map((section) => section.trim());
+    return rawQuestions
         .replace(/{{site.baseurl}}/g, "https://bluemap.bluecolored.de")
-        .replace(/<br>/g, "\n")
         .split(/^###? /m)
         .slice(1)
         .flatMap((question) => {
@@ -119,15 +118,17 @@ async function getNewMessages() {
             const content = lines
                 .join("\n")
                 .trimEnd()
-                .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, (_match, name, link) => {
+                .replace(/\n{2,}/g, s => "<br>".repeat(s.length))
+                .replace(/\s{2,}\n|\s*\\\n|\s*\n(?=\s*-)/g,"<br>")
+                .replace(/\n\s*/g," ")
+                .replace(/<br>/g, "\n")
+                .replace(/\[([^\]]+)]\(([^)]+)\)/g, (_match, name, link) => {
                     if (name === link) return `<${link}>`;
+                    if (link.startsWith("https://discord.com/channels/")) return link;
                     if (link.startsWith("#")) return name;
-                    return `[${name}](<${link}>)`;
+                    return `__${name}__ (<${link}>)`;
                 });
-            const message = `##${title.startsWith("Q:") ? "#" : ""} ${title}\n${content}`;
+            const message = `## ${title}\n${content}`;
             return splitMessage(message);
-        })
-        .map((message) => message.replace(/^\s+/, (m) => `_${m}_`));
-    messages[messages.length - 1] = messages[messages.length - 1].slice(0, -8);
-    return messages;
+        });
 }

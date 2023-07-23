@@ -8,7 +8,7 @@ nav_order: 1
 # FAQ
 
 ### Q: Where can I open my map?
-By default, it's your servers public ip-address (e.g. `123.45.67.8`) and the port (`8100`) like this: `http://123.45.67.8:8100/`<br>
+By default, it's your servers public ip-address (e.g. `123.45.67.8`) and the port (`8100`) like this: `http://123.45.67.8:8100/`  
 *(Make sure you replace `123.45.67.8` with **your** server-ip. The same ip that you are using to connect to your minecraft-server!)*
 
 ### Q: I still can't access the website!
@@ -20,7 +20,7 @@ Here is a checklist:
   on the port? If you don't know this **ask your server-host how you can open a second port for BlueMap!**.
 
 ### Q: I am getting `404 - Not Found` when I open the map
-Check your `core.conf` configuration file, did you set `accept-download` to `true`?<br>
+Check your `core.conf` configuration file, did you set `accept-download` to `true`?  
 If yes, check if your `webroot` settings in `webapp.conf` and `webserver.conf` are set to the correct (same) folder.
 
 ### Q: My map isn't updating!
@@ -47,7 +47,7 @@ Read this: [https://bluemap.bluecolored.de/wiki/customization/Mods.html](https:/
 
 ### Q: My block-textures are messed up when I zoom in on the map!
 First, press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure 
-your browser has not cached anything weird.<br>
+your browser has not cached anything weird.  
 You can also try to clear your browser-cache completely. *(`F12` -> Network -> [x] Disable cache -> `F5`)*
 
 If that doesn't help you might have changed some bluemap-settings that require a complete re-render of the map:
@@ -73,12 +73,13 @@ and it should be fixed :)
   BlueMap needs the light data and ignores chunks that don't have it.
   So it will only render chunks that have been loaded by a player at least once.  
   You can try to use a plugin like [LightCleaner](https://www.spigotmc.org/resources/light-cleaner.42469/) to fix chunks 
-  that don't have proper lightdata in your world.
-- If nothing else works, you can try to set `ignore-missing-light-data: true` in your 
-  map-config. *(And then use `/bluemap purge <map>` to update your map)*<br>
-  This will ignore potentially missing light data while rendering, with some drawbacks:
-    - Cave-rendering will always be enabled in those chunks, because it is using the sun-light data to detect the "caves"
-    - Everything in those chunks will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
+  that don't have proper lightdata in your world. 
+
+If nothing else works, you can try to set `ignore-missing-light-data: true` in your 
+map-config. *(And then use `/bluemap purge <map>` to update your map)*  
+This will ignore potentially missing light data while rendering, with some drawbacks:
+- Cave-rendering will always be enabled in those chunks, because it is using the sun-light data to detect the "caves"
+- Everything in those chunks will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
 
 ### Q: The map (web-app) is really slow (lagging)
 Make sure you have **hardware-acceleration enabled** on your browser! 
@@ -98,10 +99,10 @@ but you can e.g. [use NGINX to reverse-proxy your map]({{site.baseurl}}/wiki/web
 and add SSL that way.
 
 ### Q: My map disappears when I zoom in!
-This can happen when BlueMap is trying to load the hi-res tiles, but can't find them for some reason.\
+This can happen when BlueMap is trying to load the hi-res tiles, but can't find them for some reason.  
 This is usually because haven't set up your external webserver correctly yet.
 Please make sure you've read the [External Webservers]({{site.baseurl}}/wiki/webserver/) guide to see how to do that.
-If you're still having issues, please visit [#support](https://discord.com/channels/665868367416131594/751804128749027421) in our [Discord](https://bluecolo.red/map-discord).\
+If you're still having issues, please visit [#support](https://discord.com/channels/665868367416131594/751804128749027421) in our [Discord](https://bluecolo.red/map-discord).  
 It could also be because you've just set `save-hires-layer` to `false`. If this is the case, make sure to set the `hires-slider-default` to `0` in `webapp.conf`, and reload the page completely (`F12` -> `Network` -> `[x] disable Cache` -> `F5`).
 
 ### Q: How do I add authentication to my map?

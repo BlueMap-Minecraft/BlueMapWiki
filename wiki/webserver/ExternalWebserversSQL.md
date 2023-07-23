@@ -1,6 +1,6 @@
 ---
 layout: page
-title: External Webservers (SQL-Storage)
+title: External Webservers (MySQL-Storage)
 parent: Webserver
 grand_parent: Wiki
 nav_order: 2
@@ -20,25 +20,24 @@ For this to work you need to do some configuration.
 {:toc}
 
 ## The goal
-BlueMap renders and saved the map on your SQL-Server. But the webapp requests them like they would be in a normal file-storage
+BlueMap renders and saved the map on your MySQL-Server. But the webapp requests them like they would be in a normal file-storage
 inside the webroot. So wee need some script that is translating those requests and fetching and providing the correct files 
-from the SQL-Server.
+from the MySQL-Server.
 
 ## General Setup
 
 Luckily BlueMap provides such a script. A PHP-Script to be exact. This means the first thing you need to do is to make sure
 that you have PHP (>= 7.4) installed on your webserver.  
-Then you go into the webroot and rename the `_index.php` file to `index.php` (remove the `_`).  
-Then you open the file, and set your SQL-Connection settings there.
+Then you go into the webroot and open the `mysql.php`, and set your MySQL-Connection settings there.
 
 > **Important:**  
 > Make sure that your php-setup is working, otherwise you might accidentally leak those SQL-Connection-Settings to the world!
 {: .info .important }
 
-Now you need to configure your webserver, so that it rewrites all requests for which no static file exists to the `index.php`.
+Now you need to configure your webserver, so that it rewrites all requests for which no static file exists to the `mysql.php`.
 
 ## NGINX
-On nginx this can be achieved with e.g. `try_files $uri /index.php;`.
+On nginx this can be achieved with e.g. `try_files $uri /mysql.php;`.
 
 With some context your website-config could look something like this:
 ```nginx
@@ -50,7 +49,7 @@ server {
     root /var/www;
     
     location / {
-        try_files $uri /index.php;
+        try_files $uri /mysql.php;
     }
     
     # Proxy requests to the live data interface of each map to bluemaps integrated webserver
@@ -84,8 +83,8 @@ DocumentRoot /var/www/
     RewriteCond %{REQUEST_FILENAME} !-s
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteCond %{REQUEST_FILENAME} !-d
-    # Rewrite request to the index.php
-    RewriteRule ^.*$ /index.php [L]  
+    # Rewrite request to the mysql.php
+    RewriteRule ^.*$ /mysql.php [L]  
 </Directory>
 
 # Proxy requests to the live data interface to bluemaps integrated webserver  
