@@ -28,11 +28,14 @@ a {
 .highlight {
   line-height: 0.75em;
 
-  .na, .nl {
+  .na, .nl, .nx {
     color: $grey-lt-300;
   }
   .c1 {
     color: $grey-dk-000;
+  }
+  .dl {
+    color: #2aa198;
   }
 }
 
