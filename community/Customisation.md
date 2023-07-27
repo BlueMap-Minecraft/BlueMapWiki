@@ -137,6 +137,21 @@ scripts: [
 ]
 ```
 
+The example above will open your new button within the same window.  
+To force it to open within a new/separate tab within your browser, immediately after `href="https://bluemap.bluecolored.de/"`, include the following: `target="_blank"`.
+
+Example:
+
+```js
+buttonTemplate.innerHTML = `
+<a style="text-decoration: none" href="https://bluemap.bluecolored.de/" target="_blank">
+    <div class="simple-button">
+        <div class="label">Visit BlueMap Website</div>
+    </div>
+</a>
+`.trim();
+```
+
 ## Adding custom map icons
 
 Similar to adding a custom button to the side-bar, it's possible to include your own custom world icons. This would replace the existing tiny `"•"` to the left of the world name, represented by the sky colors.
