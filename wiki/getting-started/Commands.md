@@ -31,7 +31,7 @@ Here is a table with all commands and their permissions that you can use if you 
 | `/bluemap start`                           | bluemap.start   | resumes all paused rendering *(persists over a server-restart)*                                                                                            |
 | `/bluemap freeze <map-id>`                 | bluemap.freeze  | pauses all updates on a specific map *(persists over a server-restart)*                                                                                    |
 | `/bluemap unfreeze <map-id>`               | bluemap.freeze  | resumes all updates on a previously frozen map *(persists over a server-restart)*                                                                          |
-| `/bluemap purge <map-id>`                  | bluemap.purge   | purges (deletes) all data of a rendered map *(the map will be re-rendered afterwards, as long as it is configured in the `render.conf`)*                   |
+| `/bluemap purge <map-id>`                  | bluemap.purge   | purges (deletes) all data of a rendered map *(the map will be re-rendered afterwards, as long as it is not frozen)*                   |
 
 ### Commands you usually don't need
 
