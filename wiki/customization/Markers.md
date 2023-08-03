@@ -272,7 +272,7 @@ Here is a full example of how it could look like in (at the end of) your map-con
 # Here you can define any static marker-sets with markers that should be displayed on the map.
 # You can change this at any time.
 # If you need dynamic markers, you can use any plugin that integrates with BlueMap's API.
-# Here is a list: https://bluemap.bluecolored.de/wiki/customization/3rdPartySupport.html
+# Here is a list: https://bluemap.bluecolored.de/community/3rdPartySupport.html
 marker-sets: {
 
     example-marker-set: {
