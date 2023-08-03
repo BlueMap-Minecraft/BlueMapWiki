@@ -29,14 +29,16 @@ BlueMap allows you to write custom CSS snippets, with which you can style the Bl
 
 To get started with BlueMap CSS, you should create a `.css` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that stylesheet with BlueMap, so it'll actually load it.  
-You do this in `webapp.conf`, by putting the file name in the `styles: [ ]` list.
+You do this in `webapp.conf`, by putting the file name in the `styles: [ ]` list.  
+After adding it to the list, you'll probably want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+You can do so with the `/bluemap reload light` command.
 
 To test if it works, you can use this simple style:
 
 `/bluemap/web/my-custom-style.css`:
 ```css
 :root {
-    --theme-bg: #f00;
+    --theme-bg: red;
 }
 ```
 `plugins/BlueMap/webapp.conf`:
@@ -76,13 +78,13 @@ You can change the default language for your map, which will apply for all new v
 It will not change the language for people who have already visited your site once already.  
 In `/bluemap/web/lang/settings.conf` is the setting `default`, which you can change to any of the locales listed below it.
 
-## Info Menu
+## Info menu
 BlueMap has an *Info* menu in the sidebar, which is also completely customisable.  
 You can edit it in the each language file, which are at `/bluemap/web/lang/`.  
 The option `info: { content:` is the one you need to edit for this.  
 It accepts any normal HTML.
 
-## Screenshot filename
+## Screenshot file name
 BlueMap has a screenshot feature, which downloads a screenshot to your device.  
 You can change the filename of that by opening the `/bluemap/web/assets/index-123456.js` file, and then doing a `Ctrl`+`F` for "`bluemap-screenshot.png`".  
 By changing that piece of text, you can choose any other filename you wish.
@@ -96,7 +98,7 @@ To fix that, you need an external webserver. Here is a guide on how to do that w
 > It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server. Browsers do not support SRV Records.
 {: .info .important }
 
-## Adding a button to the side-bar
+## Extra side-bar button
 There is currently no simple way to do this, sadly. The best way would be to clone the BlueMap webapp source code, modify that, and recompile it.  
 That is very complicated, though, and also a lot of effort.
 
@@ -105,9 +107,11 @@ For this, we will make use of the BlueMap feature that allows us to inject any c
 
 To get started, you should create a `.js` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that script with BlueMap, so it'll actually load it.  
-You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.
+You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.  
+After adding it to the list, you'll probably want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+You can do so with the `/bluemap reload light` command.
 
-This is the contents of the script. You can customise the text of the button by changing what's inside the label div,
+Ththe following codeblock is the content of the script file. You can customise the text of the button by changing what's inside the label div,
 and you can change what it links to by replacing the link in the `a`'s `href` attribute.
 
 `/bluemap/web/my-custom-button.js`:
@@ -152,7 +156,7 @@ buttonTemplate.innerHTML = `
 `.trim();
 ```
 
-## Adding custom map icons
+## Map icons
 
 Similar to adding a custom button to the side-bar, it's possible to include your own custom world icons. This would replace the existing tiny `"•"` to the left of the world name, represented by the sky colors.
 
@@ -166,8 +170,11 @@ Examples:
 
 Next, you should create a `.js` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that script with BlueMap, so it'll actually load it.  
-You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.
+You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.  
+After adding it to the list, you'll probably want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+You can do so with the `/bluemap reload light` command.
 
+`/bluemap/web/map-icons.js`:
 ```js
 // trigger an update to map icons
 document.body.addEventListener("click", function() {
@@ -208,8 +215,11 @@ Repeat the process for creating a custom JavaScript file above, but for CSS.
 
 Create a `.css` file in your webroot where the `.js` file is stored.  
 Then you need to register the styles.  
-In `webapp.conf`, put the CSS file name in the `styles: [ ]` list.
+In `webapp.conf`, put the CSS file name in the `styles: [ ]` list.  
+After adding it to the list, you'll probably want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+You can do so with the `/bluemap reload light` command.
 
+`/bluemap/web/map-icons.css`:
 ```css
 /* map [world] icons */
 .side-menu .map-button {
