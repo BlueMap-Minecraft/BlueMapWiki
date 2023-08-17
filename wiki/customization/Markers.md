@@ -74,6 +74,9 @@ example-poi-marker: {
     anchor: { x: 25, y: 45 }
     sorting: 0
     listed: true
+    classes: [
+        "my-custom-class"
+    ]
     min-distance: 10
     max-distance: 10000000
 }
@@ -88,6 +91,7 @@ example-poi-marker: {
 - `anchor`. Could also be called "offset". It's basically the pixel on the marker-image, that is placed (anchored) at the marker's
   position. Often you want this to be the middle of the marker-image. But e.g. if you have a needle as your marker, you'd want
   this to be the tip of the needle
+- A list of `classes` that will be added to the marker-element. Useful if you want to style them with custom css or use them in a custom script.
 
 ### HTML Markers
 HTML Markers are used to add any HTML-Element to the map. This gives you full freedom if you want to add just a simple text,
@@ -107,6 +111,9 @@ example-html-marker: {
     anchor: { x: 0, y: 0 }
     sorting: 0
     listed: true
+    classes: [
+        "my-custom-class"
+    ]
     min-distance: 10
     max-distance: 10000000
 }
@@ -116,6 +123,7 @@ example-html-marker: {
 - `html` .. obvious .. is the html-code for the html-element that you want to show
 - `anchor`. Could also be called "offset". It's basically the pixel on the html-element, that is placed (anchored) at the marker's
   position. *(works the same as on the POI-Marker, just with html-elements)*
+- A list of `classes` that will be added to the marker-element. Useful if you want to style them with custom css or use them in a custom script.
 
 ### Line Markers
 Line Markers do what their name suggests. They are used to draw a line on the map. If you click on that line, it shows the
@@ -272,7 +280,7 @@ Here is a full example of how it could look like in (at the end of) your map-con
 # Here you can define any static marker-sets with markers that should be displayed on the map.
 # You can change this at any time.
 # If you need dynamic markers, you can use any plugin that integrates with BlueMap's API.
-# Here is a list: https://bluemap.bluecolored.de/wiki/customization/3rdPartySupport.html
+# Here is a list: https://bluemap.bluecolored.de/community/3rdPartySupport.html
 marker-sets: {
 
     example-marker-set: {

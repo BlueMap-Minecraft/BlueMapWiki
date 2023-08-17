@@ -126,7 +126,7 @@ async function getNewMessages() {
                     if (name === link) return `<${link}>`;
                     if (link.startsWith("https://discord.com/channels/")) return link;
                     if (link.startsWith("#")) return name;
-                    return `__${name}__ (<${link}>)`;
+                    return `[${name}](<${link}>)`;
                 });
             const message = `## ${title}\n${content}`;
             return splitMessage(message);

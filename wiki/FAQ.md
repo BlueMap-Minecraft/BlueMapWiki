@@ -16,7 +16,7 @@ Here is a checklist:
 - Do you get a message saying `Webserver started...` in your server-console/log? If not, look if there are any
   errors/warnings and check the configuration again.
 - Make sure you are using `http` and not `https` when connecting to the webpage.
-- Is the port (`8100` by default) open and forwarded correctly? Or is your firewall blocking incoming connections 
+- Is the port (`8100` by default, `TCP`) open and forwarded correctly? Or is your firewall blocking incoming connections 
   on the port? If you don't know this **ask your server-host how you can open a second port for BlueMap!**.
 
 ### Q: I am getting `404 - Not Found` when I open the map
