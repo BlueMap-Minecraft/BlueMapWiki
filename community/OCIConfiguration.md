@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Customisation Guide
+title: Oracle Cloud Instance - Ports opening (Oracle Linux and Ubuntu)
 parent: Community Guides
-nav_order: 7
+nav_order: 8
 ---
 
-# Customisation Guide
+# Oracle Cloud Instance - Ports opening (Oracle Linux and Ubuntu)
 {: .no_toc }
 
 How to edit the BlueMap website, for example to make it fit more with your server's brand.
