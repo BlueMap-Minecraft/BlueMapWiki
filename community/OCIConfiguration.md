@@ -2,137 +2,150 @@
 layout: page
 title: Oracle Cloud Instance - Ports opening (Oracle Linux and Ubuntu)
 parent: Community Guides
-nav_order: 8
+nav_order: 9
 ---
 
 # Oracle Cloud Instance - Ports opening (Oracle Linux and Ubuntu)
 {: .no_toc }
 
-How to edit the BlueMap website, for example to make it fit more with your server's brand.
-
-Keep in mind that some BlueMap updates require you to delete the `index.html` file to update the webapp,
-so make sure to remember any edits you do to it and any of BlueMap's other source files, because you will need to apply them again.
-
-> **Info:**  
-> Throughout this guide, `/bluemap/web/` shall be assumed as the default webroot. If you're using a custom, different webroot, please make sure to use that instead.
+> **Info about this guide:**  
+> In this guide, I'll only cover the ports management, both on OCI console and on the server itself.
+> Focus will be held for BlueMap access, not your minecraft server or the way to setup it.
 {: .info }
 
 1. TOC 
 {:toc}
 
-## Theme and look
-BlueMap allows you to write custom CSS snippets, with which you can style the BlueMap interface exactly to your liking.
+
+## Step 1 : Open the ports on your Oracle Instance (web console)
+
+Go to your console ([Oracle Cloud Login page](https://cloud.oracle.com/)), next in the menu, go to "Networking" and then select "Virtual Cloud Networks"
+
+![Screenshot of the OCI web configuration menu]({{site.baseurl}}/assets/ociconf/OCI_01.png)
+
+On the new page, you should see your virtual network (in the form of "vcn-....", by default), select it.
+After that, select your subnet and then, the "Default Security List" (only one of each).
+
+You should get a page similar to this screenshot :
+
+![Screenshot of the default OCI network rules]({{site.baseurl}}/assets/ociconf/OCI_02.png)
+
+Select "Add Ingress Rules"
+The first rule we add is for accessing BlueMap :
+
+![Screenshot of the rule configuration for port opening of BlueMap]({{site.baseurl}}/assets/ociconf/OCI_03.png)
+
+So, as the source, we set it to ANY, so : 0.0.0.0/0
+For the port, if you let the default one : 8100
+The protocol is TCP (standard for HTTP services)
+
+Then, we also need to allow the access to our Minecraft server, if not done yet (depends on which version you installed and/or mods to allow either clients to connect to your Java server)
+
+![Screenshot of the rule configuration for port opening of Minecraft Server]({{site.baseurl}}/assets/ociconf/OCI_04.png)
+
+For all those settings, adapt the destination ports to your needs.
+
+After that, you should have some rules like those ones :
+
+![Screenshot of the OCI network rules summary]({{site.baseurl}}/assets/ociconf/OCI_05.png)
+
+
+Now, a quick explanations here on what we did above :
+
+"Stateless" ==> We do not want to manually create Egress rules, so we do not check this box and let the system handle the connections.
+If we had selected it, we would have needed to create a rule to allow ANY destination to get out of our server from the BlueMap web server port (to any destination port (as this is a random port, never the same).
+
+"Source CIDR" ==> We want to get ANY outside connection to connect to our server, so we specify in CIDR notation, "all", which is 0.0.0.0/0
+
+"Source Port Range" ==> Is defined by the client host (random), so we let this box empty.
+
+"Destination Port Range" ==> For this one, we set to the value of the destination service, in this case for example, the BlueMap port 8100.
+
+
+## Step 2a - Oracle Linux 8
+
+The official guide on how to open your ports can be found there : https://docs.oracle.com/en/operating-systems/oracle-linux/8/firewall/firewall-ConfiguringaPacketFilteringFirewall.html#ol-firewall
+
+But, here is the summary on what you have to do for your Oracle Linux setup :
 
 > **Info:**  
-> If you don't know how to write CSS yet, here is a good guide: [developer.mozilla.org/en-US/docs/Learn/CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
+> All those commands are preceded with "sudo". If you are already using the root account, you can remove it from the command !
 {: .info }
 
-To get started with BlueMap CSS, you should create a `.css` file in your webroot (usually `/bluemap/web/`).  
-Then you need to register that stylesheet with BlueMap, so it'll actually load it.  
-You do this in `webapp.conf`, by putting the file name in the `styles: [ ]` list.
-
-To test if it works, you can use this simple style:
-
-`/bluemap/web/my-custom-style.css`:
-```css
-:root {
-    --theme-bg: #f00;
-}
+First, check that `firewall-cmd` command is available on your system.
+If not, install it using the following command :
 ```
-`plugins/BlueMap/webapp.conf`:
-```hocon
-styles: [
-    "my-custom-style.css"
-]
-```
-This should make all BlueMap's buttons fully red.  
-From here on, you can customise any BlueMap class you want.
-
-## Embed
-In some places, when you share a link to your map, it'll embed a bit of extra info. In Discord it looks like this:
-
-![Screenshot of the default BlueMap embed in Discord]({{site.baseurl}}/assets/BlueMapDiscordEmbed.png)
-
-You can change how this looks by editing the `bluemap/web/index.html` file.  
-The options you can safely change are the `description`, `theme-color`, `og:site_name`, `og:title`, `og:description`, and `og:image`.
-
-> The `og:image` attribute should be a full URL link, not a relative path.
-{: .info }
-
-## Website favicon
-A favicon is the icon you'll see on the tab in your browser, and in the favourites bar if you've favourited the website.  
-There are two ways to change BlueMap's favicon:
-1. Replace the favicon image `/bluemap/web/assets/favicon-8768b872.png`
-2. Copy a new image file to the BlueMap webroot (or `assets` directory) and edit the `<link rel="icon" href="./assets/favicon-8768b872.png">` in `index.html` to refer to your new image instead.
-
-## Website title
-The title is the text that is on the tab in your browser.  
-Changing the `<title>` tag in the `index.html` will not work!  
-You need to change it in each language file, which are at `/bluemap/web/lang/`.  
-The option `pageTitle` in the `.conf` files in this directory are what you need to change.
-
-## Default language
-You can change the default language for your map, which will apply for all new visitors.
-It will not change the language for people who have already visited your site once already.  
-In `/bluemap/web/lang/settings.conf` is the setting `default`, which you can change to any of the locales listed below it.
-
-## Info Menu
-BlueMap has an *Info* menu in the sidebar, which is also completely customisable.  
-You can edit it in the each language file, which are at `/bluemap/web/lang/`.  
-The option `info: { content:` is the one you need to edit for this.  
-It accepts any normal HTML.
-
-## Screenshot filename
-BlueMap has a screenshot feature, which downloads a screenshot to your device.  
-You can change the filename of that by opening the `/bluemap/web/assets/index-123456.js` file, and then doing a `Ctrl`+`F` for "`bluemap-screenshot.png`".  
-By changing that piece of text, you can choose any other filename you wish.
-
-## Domain
-To use a custom domain for your BlueMap, instead of a numerical IP, it works like any other website.  
-In your domain's DNS settings, you should point an A Record to the IP of the server your BlueMap is hosted on.  
-Keep in mind that _this will not_ remove the need to type the port afterwards!  
-To fix that, you need an external webserver. Here is a guide on how to do that with NGINX: [NginxProxy]({{site.baseurl}}/wiki/webserver/NginxProxy.html)
-
-> It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server. Browsers do not support SRV Records.
-{: .info .important }
-
-## Adding a button to the side-bar
-There is currently no simple way to do this, sadly. The best way would be to clone the BlueMap webapp source code, modify that, and recompile it.  
-That is very complicated, though, and also a lot of effort.
-
-Luckily a community member has devised a workaround to do this anyway! (Even if it's not ideal...)  
-For this, we will make use of the BlueMap feature that allows us to inject any custom JavaScript snippets that we want.
-
-To get started, you should create a `.js` file in your webroot (usually `/bluemap/web/`).  
-Then you need to register that script with BlueMap, so it'll actually load it.  
-You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.
-
-This is the contents of the script. You can customise the text of the button by changing what's inside the label div,
-and you can change what it links to by replacing the link in the `a`'s `href` attribute.
-
-`/bluemap/web/my-custom-button.js`:
-```js
-const buttonTemplate = document.createElement("template");
-buttonTemplate.innerHTML = `
-<a style="text-decoration: none" href="https://bluemap.bluecolored.de/">
-    <div class="simple-button">
-        <div class="label">Visit BlueMap Website</div>
-    </div>
-</a>
-`.trim();
-const button = buttonTemplate.content.firstChild;
-
-setInterval(() => {
-    const buttonList = document.querySelector(".side-menu .content")?.children.item(0);
-    if (buttonList && Array.from(buttonList.children).every(el => el.tagName === "HR" || el.className === "simple-button")) {
-        buttonList.appendChild(button);
-    }
-}, 10);
+sudo dnf install firewalld
 ```
 
-`plugins/BlueMap/webapp.conf`:
-```hocon
-scripts: [
-    "my-custom-button.js"
-]
+Then, you can simply add the needed ports to the rules list, for BlueMap, it's by default 8100/tcp, so the command will look like this :
 ```
+sudo firewall-cmd --permanent --zone=public --add-port=8100/tcp
+```
+
+As a final command, just run this to reload the firewall configuration with your changes
+```
+sudo firewall-cmd --reload
+```
+
+
+## Step 2b - Ubuntu
+
+As per Oracle's Best Practices, follow the steps explained here : https://blogs.oracle.com/developers/post/enabling-network-traffic-to-ubuntu-images-in-oracle-cloud-infrastructure ; At the chapter "Host Firewall".
+
+The method used there is to edit a file named "/etc/iptables/rules.v4" and add your rules in there.
+
+Your file should look like this (the start of it at least) :
+```
+# CLOUD_IMG: This file was created/modified by the Cloud Image build process
+# iptables configuration for Oracle Cloud Infrastructure
+
+# See the Oracle-Provided Images section in the Oracle Cloud Infrastructure
+# documentation for security impact of modifying or removing these rule
+
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [463:49013]
+:InstanceServices - [0:0]
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p udp --sport 123 -j ACCEPT
+-A [...]
+COMMIT
+```
+
+You can then insert a new line, for BlueMap, this would look like this :
+```
+# CLOUD_IMG: This file was created/modified by the Cloud Image build process
+# iptables configuration for Oracle Cloud Infrastructure
+
+# See the Oracle-Provided Images section in the Oracle Cloud Infrastructure
+# documentation for security impact of modifying or removing these rule
+
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [463:49013]
+:InstanceServices - [0:0]
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -p icmp -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p udp --sport 123 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 8123 -j ACCEPT
+-A [...]
+COMMIT
+```
+
+Now, save the file and after that, you can either chose to reboot the server or run the following command :
+
+```
+sudo iptables-restore < /etc/iptables/rules.v4
+```
+
+## Step 3 - Enjoy !
+
+If you did arrive there, you should be able to access your web map with the address : http://Your_Server_Public_IP:Your_BlueMap_Web_Port (port, by default is 8100).
+
+If you want to use a custom DNS and/or HTTPS, you can find some information in the Webserver Wiki ([Reverse proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html))
