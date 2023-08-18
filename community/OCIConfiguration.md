@@ -73,10 +73,18 @@ But, here is the summary on what you have to do for your Oracle Linux setup :
 {: .info }
 
 First, check that `firewall-cmd` command is available on your system.
-If not, install it using the following command :
+You can check it's presence with this command :
+```
+sudo firewall-cmd --version
+```
+
+If you don't get a version output or simply "Command not found", do the following commands to install it :
 ```
 sudo dnf install firewalld
+sudo systemctl enable firewalld
 ```
+The second command ensure it will start on boot.
+
 
 Then, you can simply add the needed ports to the rules list, for BlueMap, it's by default 8100/tcp, so the command will look like this :
 ```
@@ -133,7 +141,7 @@ You can then insert a new line, for BlueMap, this would look like this :
 -A INPUT -p icmp -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p udp --sport 123 -j ACCEPT
--A INPUT -p tcp -m state --state NEW -m tcp --dport 8123 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 8100 -j ACCEPT
 -A [...]
 COMMIT
 ```
