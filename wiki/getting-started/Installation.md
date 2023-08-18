@@ -142,10 +142,10 @@ To change the used config folder use the `-c /path/to/config` flag.
     -v "$(pwd)/data:/app/data" \
     -v "$(pwd)/web:/app/web" \
     ghcr.io/bluemap-minecraft/bluemap:latest \
-    -r -w
+    -r -u -w
   ```
   Change the `$(pwd)/world` to an actual path to your world.
-  The final two flags `-r` is for rendering, `-w` is for the webserver.
+  The final two flags `-r` is for rendering, `-u` enables auto-updating the map, `-w` is for the webserver.
   See CLI usage and `--help` for more.
   If you changed the default paths in the config to something else, make sure to account for that in the volume mounts.
   If you want it running on the background remove the `--rm -it` and replace with `-d --restart always`.
@@ -159,7 +159,7 @@ services:
   bluemap:
     image: ghcr.io/bluemap-minecraft/bluemap:latest
     restart: always
-    command: -r -w
+    command: -r -u -w
     ports:
       - '8100:8100'
     volumes:
