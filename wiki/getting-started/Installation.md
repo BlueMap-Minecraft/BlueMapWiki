@@ -67,7 +67,7 @@ This setup extends the basic setup by using an SQL-Server to store your maps.
 ### Steps
 - Use the basic setup above to install BlueMap like normal
 - In your config-files, open the `storages/sql.conf`-file and configure the connection to your SQL-Server.
-  *(See [this page]({{site.baseurl}}/wiki/getting-started/Configuration#configuring-the-map-storages-store-maps-in-a-database-or-a-different-directory) 
+  *(See [this page]({{site.baseurl}}/wiki/customization/Storages.html#mysql-mariadb--postgres) 
   for more info about this config-file)*
 - Now open each of your map-config-files and set `storage` to `"sql"`.
 - Reload BlueMap with `/bluemap reload`.
