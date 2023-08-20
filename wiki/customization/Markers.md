@@ -213,7 +213,7 @@ example-shape-marker: {
   in their order, the last position is automatically connected to the first position
 - `shape-y` is the y-position of the shape
 - `detail` is the text that is shown when you click on the shape. This property allows using any html-tags
-- `link` is an optional url that is opened when you click on the line (or `null` if you don't want a link)
+- `link` is an optional url that is opened when you click on the shape (or `null` if you don't want a link)
 - `new-tab` defines whether the above link should be opened in a new tab or not
 - `depth-test` if this is `false` the marker will always render above all other (hires) terrain. If it's `true`,
   hires tiles will be able to cover the marker if they are in front of it
@@ -264,7 +264,7 @@ example-extrude-marker: {
 - `shape-min-y` is the lower y-position of the shape
 - `shape-max-y` is the upper y-position of the shape
 - `detail` is the text that is shown when you click on the shape. This property allows using any html-tags
-- `link` is an optional url that is opened when you click on the line (or `null` if you don't want a link)
+- `link` is an optional url that is opened when you click on the shape (or `null` if you don't want a link)
 - `new-tab` defines whether the above link should be opened in a new tab or not
 - `depth-test` if this is `false` the marker will always render above all other (hires) terrain. If it's `true`,
   hires tiles will be able to cover the marker if they are in front of it
