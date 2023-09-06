@@ -67,7 +67,7 @@ This setup extends the basic setup by using an SQL-Server to store your maps.
 ### Steps
 - Use the basic setup above to install BlueMap like normal
 - In your config-files, open the `storages/sql.conf`-file and configure the connection to your SQL-Server.
-  *(See [this page]({{site.baseurl}}/wiki/getting-started/Configuration#configuring-the-map-storages-store-maps-in-a-database-or-a-different-directory) 
+  *(See [this page]({{site.baseurl}}/wiki/customization/Storages.html#mysql-mariadb--postgres) 
   for more info about this config-file)*
 - Now open each of your map-config-files and set `storage` to `"sql"`.
 - Reload BlueMap with `/bluemap reload`.
@@ -142,12 +142,12 @@ To change the used config folder use the `-c /path/to/config` flag.
     -v "$(pwd)/data:/app/data" \
     -v "$(pwd)/web:/app/web" \
     ghcr.io/bluemap-minecraft/bluemap:latest \
-    -r -w
+    -r -u -w
   ```
-  Change the `$(pwd)/world` to an actual path to your world.
-  The final two flags `-r` is for rendering, `-w` is for the webserver.
-  See CLI usage and `--help` for more.
-  If you changed the default paths in the config to something else, make sure to account for that in the volume mounts.
+  Change the `$(pwd)/world` to an actual path to your world.  
+  The final two flags `-r` is for rendering, `-u` enables auto-updating the map, `-w` is for the webserver.  
+  See CLI usage and `--help` for more.  
+  If you changed the default paths in the config to something else, make sure to account for that in the volume mounts.  
   If you want it running on the background remove the `--rm -it` and replace with `-d --restart always`.
 
 Here's a Docker Compose example for running in the background.
@@ -159,7 +159,7 @@ services:
   bluemap:
     image: ghcr.io/bluemap-minecraft/bluemap:latest
     restart: always
-    command: -r -w
+    command: -r -u -w
     ports:
       - '8100:8100'
     volumes:
