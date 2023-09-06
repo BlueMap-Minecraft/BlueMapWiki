@@ -165,12 +165,13 @@ COMMIT
 
 Now, save the file and after that, you can either chose to reboot the server or run the following command :
 
+**If you are NOT using the root privileges :**
 ```
-If you are NOT using the root privileges :
 sudo iptables-restore < /etc/iptables/rules.v4
+```
 
-
-If you are using the root privileges :
+**If you are using the root privileges :**
+```
 iptables-restore < /etc/iptables/rules.v4
 ```
 
