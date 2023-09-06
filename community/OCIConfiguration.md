@@ -64,7 +64,7 @@ If we had selected it, we would have needed to create a rule to allow ANY destin
 
 ## Step 2a - Oracle Linux 8
 
-The official guide on how to open your ports can be found there : https://docs.oracle.com/en/operating-systems/oracle-linux/8/firewall/firewall-ConfiguringaPacketFilteringFirewall.html#ol-firewall
+The official guide on how to open your ports can be found there : [https://docs.oracle.com/en/operating-systems/oracle-linux/8/firewall/firewall-ConfiguringaPacketFilteringFirewall.html#ol-firewall](https://docs.oracle.com/en/operating-systems/oracle-linux/8/firewall/firewall-ConfiguringaPacketFilteringFirewall.html#ol-firewall)
 
 But, here is the summary on what you have to do for your Oracle Linux setup :
 
@@ -99,11 +99,11 @@ sudo firewall-cmd --reload
 
 ## Step 2b - Ubuntu
 
-As per Oracle's Best Practices, follow the steps explained here : https://blogs.oracle.com/developers/post/enabling-network-traffic-to-ubuntu-images-in-oracle-cloud-infrastructure ; At the chapter "Host Firewall".
+As per Oracle's Best Practices, you can follow the steps explained here : [https://blogs.oracle.com/developers/post/enabling-network-traffic-to-ubuntu-images-in-oracle-cloud-infrastructure](https://blogs.oracle.com/developers/post/enabling-network-traffic-to-ubuntu-images-in-oracle-cloud-infrastructure) ; At the chapter "Host Firewall" or just read the quick steps below.
 
-The method used there is to edit a file named "/etc/iptables/rules.v4" and add your rules in there.
+The method used there is to edit a file named "/etc/iptables/rules.v4" and add your own rules in there.
 
-Your file should look like this (the start of it at least) :
+Your initial file should look like this (the start of it at least) :
 ```
 # CLOUD_IMG: This file was created/modified by the Cloud Image build process
 # iptables configuration for Oracle Cloud Infrastructure
@@ -119,12 +119,17 @@ Your file should look like this (the start of it at least) :
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p icmp -j ACCEPT
 -A INPUT -i lo -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 -A INPUT -p udp --sport 123 -j ACCEPT
 -A [...]
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+[...]
+-A InstanceServices [...]
 COMMIT
 ```
 
-You can then insert a new line, for BlueMap, this would look like this :
+You can then insert a new line, for BlueMap (but before the global REJECT rules !), this would look like this :
 ```
 # CLOUD_IMG: This file was created/modified by the Cloud Image build process
 # iptables configuration for Oracle Cloud Infrastructure
@@ -140,16 +145,34 @@ You can then insert a new line, for BlueMap, this would look like this :
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p icmp -j ACCEPT
 -A INPUT -i lo -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
 -A INPUT -p udp --sport 123 -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport 8100 -j ACCEPT
 -A [...]
+-A INPUT -j REJECT --reject-with icmp-host-prohibited
+-A FORWARD -j REJECT --reject-with icmp-host-prohibited
+[...]
+-A InstanceServices [...]
+COMMIT
+
 COMMIT
 ```
 
+> Be carefull while adding lines in this file !
+> You have to put your new lines BEFORE the "REJECT" rules ("-A INPUT -j REJECT --reject-with icmp-host-prohibited").
+> By not following this, the firewall could apply, by default, the "deny" rule (sometime this could work, but just not everytime).
+{: .info .important }
+
 Now, save the file and after that, you can either chose to reboot the server or run the following command :
 
+**If you are NOT using the root privileges :**
 ```
 sudo iptables-restore < /etc/iptables/rules.v4
+```
+
+**If you are using the root privileges :**
+```
+iptables-restore < /etc/iptables/rules.v4
 ```
 
 ## Step 3 - Enjoy !
