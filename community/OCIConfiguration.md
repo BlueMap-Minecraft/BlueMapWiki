@@ -154,8 +154,6 @@ You can then insert a new line, for BlueMap (but before the global REJECT rules 
 [...]
 -A InstanceServices [...]
 COMMIT
-
-COMMIT
 ```
 
 > Be carefull while adding lines in this file !
