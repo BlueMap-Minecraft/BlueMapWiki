@@ -2,7 +2,7 @@
 layout: page
 title: Pre-Configuration for Minecraft Earth maps
 parent: Community Guides
-nav_order: IDK
+nav_order: 10
 ---
 
 Before using Bluemap (or any map plugin) with Minecraft Earth maps, you need to do some pre-configuration. This is due to lighting and rendering issues with WorldPainter as a whole due to it depending on chunks being loaded.
