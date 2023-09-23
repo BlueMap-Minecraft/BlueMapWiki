@@ -14,6 +14,6 @@ Make sure you've purged the map first (`/bluemap freeze <Map name>` to freeze an
 First off, **set the world border.** This will ensure that players cannot escape the earth map and helps with Chunky and Light Cleaner later. Open this link and follow the steps for your worldmap size: https://docs.apocmc.us/minecraft-earth-map/map-borders  
 This will also prerender the map to remove some extra issues. Wait for it to finish before proceeding.
 
-Next, do `/cleanlight world <Map name>`. This will clean up the bugged lighting on these maps, letting Bluemap properly render the map. Wait for it to finish (you can check with `/cleanlight status`, it's going to take a while).
+Next, do `/cleanlight world <World name>`. This will clean up the bugged lighting on these maps, letting Bluemap properly render the map. Wait for it to finish (you can check with `/cleanlight status`, it's going to take a while).
 
 Now that preconfiguration is done, do `/bluemap render <Map name>` to start rendering the world again! Make sure you unfreeze the world too with `/bluemap unfreeze <Map name>`.
