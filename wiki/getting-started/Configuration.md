@@ -30,7 +30,7 @@ also stores all map-information based on that identifier.
 
 If you want to remove a map, you can just delete its `.conf` file.  
 After removing the file, and reloading/restarting BlueMap, you may want to delete any of the map's previously rendered map data, which you can do with `/bluemap storages <storage> delete <map>`.  
-You can also do that manually by deleting the folder for it, which usually is at `bluemap/web/maps/`, or by deleting the SQL Table for it.
+On the default file-storage, you can also do that manually by deleting the folder for it, which usually is at `bluemap/web/maps/`.
 
 If you want to add a map, you can create a new `.conf` file in this folder and fill it with the correct information.
 The easiest way is probably to just copy the `.conf` file from the one of the default config-files and edit it to your liking.
