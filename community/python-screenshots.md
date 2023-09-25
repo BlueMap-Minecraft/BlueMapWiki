@@ -1,3 +1,10 @@
+---
+layout: page
+title: Render screenshots from Python
+parent: Community Guides
+nav_order: 11
+---
+
 # Render screenshots from Python
 ## What and why ?
 I needed to export images of worlds from python, for a big project. First i tried to make my own renderer, and when you don't have any experience with OpenGL, or any other such frameworks, it is nearly impossible. So I looked at other projects that already renders `nbt` files or maps, such as [deepslate](https://github.com/misode/deepslate) or [prismarine-viewer](https://github.com/PrismarineJS/prismarine-viewer), but, unfortunately, I'm a python guy, so I'm lazy and want easy stuff.
