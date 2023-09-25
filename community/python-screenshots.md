@@ -12,7 +12,7 @@ I needed to export images of worlds from python, for a big project. First i trie
 Then I remembered that when I had a server on [minestrator](https://minestrator.com), I had the LiveMap option activated, and that it was awesome. So I looked at the program used for this, and I found BlueMap. But now, how would I automate screenshoting a world ?
 ## Tutorial
 ### Setup
-- Follow the [installation instructions for **BlueMap-CLI**](https://minestrator.com). It even worked on my Mac, how amazing is that.
+- Follow the [installation instructions for **BlueMap-CLI**](https://bluemap.bluecolored.de/wiki/getting-started/Installation.html#using-bluemap-on-the-cli--standalone). It even worked on my Mac, how amazing is that.
 - Install Python. For this example, I am using **Python 3.11**, but it should work on other versions as long as the dependancies are supported.
   - `aiofiles`, used to **write and read files asynchronously**.
     Install it with: `pip install aiofiles`.
