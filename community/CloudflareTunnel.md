@@ -48,7 +48,7 @@ Go to Access, Tunnels and click on Complete Setup then follow these steps.
 
 3. Proceed to payment
    - Just add a payment method and click on purchase.
-   - If you're picked the Free plan, a credit/prepaid card is required for security reasons, but you won't be spending any money for it.
+   - If you've picked the Free plan, a credit/prepaid card is required for security reasons, but you won't be spending any money for it.
 
 4. Go back to Tunnels again
    - Name it anything you want and save the tunnel.
