@@ -52,15 +52,16 @@ server {
         try_files $uri /mysql.php;
     }
     
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+    }
+
+    # OPTIONAL:
     # Proxy requests to the live data interface of each map to bluemaps integrated webserver
     # If you have multiple servers you will need to proxy each map-id to the correct server
     location ~* /(maps/[^/\s]*/live/.*) {
         proxy_pass http://127.0.0.1:8100/$1;
-    }
-    
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
     }
 }
 ```
@@ -87,6 +88,7 @@ DocumentRoot /var/www/
     RewriteRule ^.*$ /mysql.php [L]  
 </Directory>
 
+# OPTIONAL:
 # Proxy requests to the live data interface to bluemaps integrated webserver  
 ProxyPreserveHost On
 ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
