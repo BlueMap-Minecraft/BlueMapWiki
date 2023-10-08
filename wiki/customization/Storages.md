@@ -65,8 +65,8 @@ somehow:
 For **Spigot, Fabric and Forge** there are a couple of [mods/plugins](https://modrinth.com/mods?q=jdbc) which add such a driver.
 
 Alternatively you can also **manually** download the JDBC-Driver of your choice and configure bluemap to load it:  
-Download the driver-jar (e.g. [mariadb-java-client-3.1.4.jar](https://mariadb.com/downloads/connectors/connectors-data-access/java8-connector/)) 
-and place it in the `./bluemap` folder. Then set `driver-jar: "bluemap/mariadb-java-client-3.0.7.jar"` and `driver-class: "org.mariadb.jdbc.Driver"`
+Download the driver-jar (e.g. [mariadb-java-client-3.2.0.jar](https://mariadb.com/downloads/connectors/connectors-data-access/java8-connector/)) 
+and place it in the `./bluemap` folder. Then set `driver-jar: "bluemap/mariadb-java-client-3.2.0.jar"` and `driver-class: "org.mariadb.jdbc.Driver"`
 to tell BlueMap where to find the jar and which class to load from it. *(Don't forget to remove the `#` to uncomment the settings)*
 
 ## Sqlite
