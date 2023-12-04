@@ -2,6 +2,10 @@
 name: 3rd Party Addons PR Validator
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'assets/addon_browser/'
+      - '.github/workflows/addons-pr-validator.yml'
   pull_request:
     paths:
       - 'assets/addon_browser/'
