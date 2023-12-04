@@ -19,6 +19,7 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v4.0.0
         with:
+          distribution: temurin
           java-version: 11
 
       - name: Clone Validator Tool
