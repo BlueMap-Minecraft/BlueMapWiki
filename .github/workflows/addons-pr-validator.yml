@@ -28,4 +28,4 @@ jobs:
       - name: Run the Validator
         run: |
           cd BlueMap3rdValidator
-          ./gradlew run --args=".."
+          ./gradlew run --no-daemon --args=".."
