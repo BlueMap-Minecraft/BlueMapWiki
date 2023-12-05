@@ -1,4 +1,3 @@
-
 name: 3rd Party Addons PR Validator
 on:
   workflow_dispatch:
@@ -15,6 +14,7 @@ permissions:
 
 jobs:
   addons-pr-validator:
+    name: 3rd Party Addons PR Validator
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
