@@ -32,4 +32,5 @@ jobs:
       - name: Run the Validator
         run: |
           cd BlueMap3rdValidator
-          ./gradlew run --no-daemon --args=".."
+          ./gradlew build
+          java -jar build/libs/shadow-1.0-all.jar ".."
