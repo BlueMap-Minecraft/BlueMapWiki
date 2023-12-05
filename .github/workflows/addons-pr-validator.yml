@@ -2,10 +2,12 @@ name: 3rd Party Addons PR Validator
 on:
   workflow_dispatch:
   push:
+    # TODO: Re-enable this, to prevent running when not necessary
     # paths:
     #   - 'assets/addon_browser/'
     #   - '.github/workflows/addons-pr-validator.yml'
   pull_request:
+    # TODO: Re-enable this, to prevent running when not necessary
     # paths:
     #   - 'assets/addon_browser/'
 
