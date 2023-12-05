@@ -29,8 +29,10 @@ jobs:
       - name: Clone Validator Tool
         run: git clone https://github.com/TechnicJelle/BlueMap3rdValidator.git
 
-      - name: Run the Validator
+      - name: Build the Validator
         run: |
           cd BlueMap3rdValidator
           ./gradlew build
-          java -jar build/libs/shadow-1.0-all.jar ".."
+
+      - name: Run the Validator
+        run: java -jar BlueMap3rdValidator/build/libs/shadow-1.0-all.jar "."
