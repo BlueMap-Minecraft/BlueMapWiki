@@ -25,6 +25,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 11
+          check-latest: false
 
       - name: Clone Validator Tool
         run: git clone https://github.com/TechnicJelle/BlueMap3rdValidator.git
