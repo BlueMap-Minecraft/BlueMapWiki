@@ -25,6 +25,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 11
+          cache: gradle
 
       - name: Clone Validator Tool
         run: git clone https://github.com/TechnicJelle/BlueMap3rdValidator.git
@@ -32,7 +33,7 @@ jobs:
       - name: Build the Validator
         run: |
           cd BlueMap3rdValidator
-          ./gradlew build
+          ./gradlew build --no-daemon
 
       - name: Run the Validator
         run: java -jar BlueMap3rdValidator/build/libs/BlueMap3rdValidator-1.0-all.jar "."
