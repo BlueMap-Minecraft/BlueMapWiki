@@ -1,6 +1,6 @@
 ---
 layout: page
-title: External Webservers (MySQL-Storage)
+title: External Webservers (SQL-Storage)
 parent: Webserver
 grand_parent: Wiki
 nav_order: 2
