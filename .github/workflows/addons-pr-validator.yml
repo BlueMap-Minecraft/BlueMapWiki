@@ -31,7 +31,6 @@ jobs:
           distribution: temurin
           java-version: 11
           check-latest: false
-          # TODO: Improve/Fix caching, because the building still takes 50 seconds every single time! 
           cache: gradle
           cache-dependency-path: |
             BlueMap3rdValidator/*.gradle*
