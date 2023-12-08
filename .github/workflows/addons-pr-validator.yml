@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Clone Validator Tool
-        run: git clone https://github.com/TechnicJelle/BlueMap3rdValidator.git
+        run: git clone https://github.com/BlueMap-Minecraft/BlueMap3rdValidator.git
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4.0.0
