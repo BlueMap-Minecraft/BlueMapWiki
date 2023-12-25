@@ -153,7 +153,7 @@ scripts: [
 ]
 
 styles: [
-	"watermark.css"
+    "watermark.css"
 ]
 ```
 After adding these to the lists, you need to reload BlueMap, so BlueMap applies the changes you've made to the configs.
