@@ -98,6 +98,67 @@ To fix that, you need an external webserver. Here is a guide on how to do that w
 > It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server. Browsers do not support SRV Records.
 {: .info .important }
 
+## Watermark/Overlay Image
+To add a "watermark" overlay image to your map, we'll need to write a little bit of JavaScript and CSS.
+
+To get started, you should create two files: `watermark.js` and `watermark.css` in your webroot (usually `/bluemap/web/`).  
+Copy this into both of those files:
+
+`/bluemap/web/watermark.js`:
+```js
+// JavaScript function to show the watermark
+function showWatermark() {
+    const anchor = document.createElement("a"); //create HTML <a>
+    document.body.appendChild(anchor); //place it on the page
+    anchor.href = "https://bluemap.bluecolored.de/"; //set the link
+
+    const watermarkImage = document.createElement("img"); //create HTML <img>
+    anchor.appendChild(watermarkImage); //place it inside the just created <a>
+    watermarkImage.src = "https://avatars.githubusercontent.com/u/42522657"; //set the image URL
+    watermarkImage.id = 'watermarkImage'; //set the tag's ID, so the CSS style will apply to it
+}
+
+// Call the function to show the watermark
+showWatermark();
+```
+> Feel free to change the `anchor.href` link and the `watermarkImage.src` link.
+{: .info }
+
+`/bluemap/web/watermark.css`:
+```css
+/* Apply to the HTML tag with the ID 'watermarkImage' */
+#watermarkImage {
+    /* Place the image in the bottom left, 20 pixels from each side. */
+    bottom: 20px;
+    left: 20px;
+
+    /* Adjust this size as needed */
+    max-width: 150px;
+    max-height: 150px;
+
+    display: block;
+    position: fixed;
+    z-index: 9999;
+}
+```
+> Feel free to change the placement and the size of the watermark.
+{: .info }
+
+Now you need to register these files with BlueMap, so it'll actually load them.  
+You do this in `webapp.conf`, by putting the file name of the script in the `scripts: [ ]` list,
+and the file name of the style in the `styles: [ ]` list, like this:
+```hocon
+scripts: [
+    "watermark.js"
+]
+
+styles: [
+	"watermark.css"
+]
+```
+After adding these to the lists, you need to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+You can do so with the `/bluemap reload light` command.
+
 ## Extra side-bar button
 There is currently no simple way to do this, sadly. The best way would be to clone the BlueMap webapp source code, modify that, and recompile it.  
 That is very complicated, though, and also a lot of effort.
@@ -108,7 +169,7 @@ For this, we will make use of the BlueMap feature that allows us to inject any c
 To get started, you should create a `.js` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that script with BlueMap, so it'll actually load it.  
 You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.  
-After adding it to the list, you'll probably want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+After adding it to the list, you need to reload BlueMap, so BlueMap applies the changes you've made to the configs.
 You can do so with the `/bluemap reload light` command.
 
 Ththe following codeblock is the content of the script file. You can customise the text of the button by changing what's inside the label div,
