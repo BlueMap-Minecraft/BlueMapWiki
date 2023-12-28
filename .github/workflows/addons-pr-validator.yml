@@ -1,0 +1,45 @@
+name: 3rd Party Addons PR Validator
+on:
+  workflow_dispatch:
+  push:
+    # TODO: Re-enable this, to prevent running when not necessary
+    # paths:
+    #   - 'assets/addon_browser/'
+    #   - '.github/workflows/addons-pr-validator.yml'
+  pull_request:
+    # TODO: Re-enable this, to prevent running when not necessary
+    # paths:
+    #   - 'assets/addon_browser/'
+
+permissions:
+  contents: read
+
+jobs:
+  addons-pr-validator:
+    name: 3rd Party Addons PR Validator
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Clone Validator Tool
+        run: git clone https://github.com/BlueMap-Minecraft/BlueMap3rdValidator.git
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.0.0
+        with:
+          distribution: temurin
+          java-version: 11
+          check-latest: false
+          cache: gradle
+          cache-dependency-path: |
+            BlueMap3rdValidator/*.gradle*
+            BlueMap3rdValidator/**/gradle-wrapper.properties
+
+      - name: Build the Validator
+        run: |
+          cd BlueMap3rdValidator
+          ./gradlew build --no-daemon
+
+      - name: Run the Validator
+        run: java -jar BlueMap3rdValidator/build/libs/BlueMap3rdValidator-1.0-all.jar "."
