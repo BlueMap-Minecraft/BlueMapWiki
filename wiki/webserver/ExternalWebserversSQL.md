@@ -21,7 +21,7 @@ For this to work you need to do some configuration.
 
 ## The goal
 BlueMap renders and saved the map on your SQL-Server. But the webapp requests them like they would be in a normal file-storage
-inside the webroot. So wee need some script that is translating those requests and fetching and providing the correct files 
+inside the webroot. So we need some script that is translating those requests and fetching and providing the correct files 
 from the SQL-Server.
 
 ## General Setup
