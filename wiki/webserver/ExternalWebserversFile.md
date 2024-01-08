@@ -142,7 +142,6 @@ http://your-domain {
   reverse_proxy /live/*  http://127.0.0.1:8100
 
   @JSONgz {
-    header Accept-Encoding *gzip*
     path *.json
     file {
         try_files {path}.gz
