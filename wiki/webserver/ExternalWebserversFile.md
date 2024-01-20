@@ -134,7 +134,7 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 Newer versions of [Caddy](https://caddyserver.com/) have a `precompressed` option that's similar to Nginx's `gzip_static`. Unfortunately this [requires the "base" file](https://github.com/caddyserver/caddy/issues/5116) `.json` to also exist, but Bluemap only creates the "precompressed" files `.json.gz`.
 
 Here is the required config to serve the high-res `.json.gz` files correctly:
-```caddyfile
+```
 http://your-domain {
   root * /usr/share/caddy/
   file_server
