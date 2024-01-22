@@ -1,8 +1,7 @@
 ---
 layout: page
 title: 3rd Party Addons & Tools
-parent: Community Guides
-nav_order: 1
+nav_order: 3
 ---
 
 # 3rd Party Addons & Tools
