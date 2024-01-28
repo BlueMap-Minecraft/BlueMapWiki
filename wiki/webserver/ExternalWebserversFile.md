@@ -139,7 +139,7 @@ http://your-domain {
   root * /usr/share/caddy/
   file_server
 
-  reverse_proxy /maps/*/live/* http://127.0.0.1:8400
+  reverse_proxy /maps/*/live/* http://127.0.0.1:8100
 
   @JSONgz {
     path *.json
