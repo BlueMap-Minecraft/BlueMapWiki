@@ -34,6 +34,11 @@ Then you go into the webroot and open the `sql.php`, and set your SQL-Connection
 > Make sure that your php-setup is working, otherwise you might accidentally leak those SQL-Connection-Settings to the world!
 {: .info .important }
 
+> **Info:**  
+> Since all your maps are on the database, make sure to delete the (old) `maps` folder from your **webroot** if it is still there. So the files in there don't
+> override data that should actually come from the database.
+{: .info }
+
 Now you need to configure your webserver, so that it rewrites all requests for which no static file exists to the `sql.php`.
 
 ## NGINX
