@@ -40,9 +40,10 @@ this list will work for your use case.
 We also do not guarantee the safety of your system when you install any
 addons from this list, even though we try to remove actively harmful addons as soon as possible.
 
-**Reasons for a removal of an addon include:**
+Reasons for a removal of an addon include:
 - The addon being outdated and no longer maintained
 - Fatal issues/bugs that could irreversibly harm your server
 - Malware, Spyware and other intentionally harmful software
 
-If you feel like an addon on this list fulfills one of these criteria, report it (Github or Discord) and we will decide if the issue warrants a removal.
+If you feel like an addon on this list should be removed, please report it 
+on [Github](https://github.com/BlueMap-Minecraft/BlueMapWiki/issues/new) or [Discord](https://discord.gg/zmkyJa3)!
