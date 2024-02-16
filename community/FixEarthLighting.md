@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Fixing lighting issues with Chunky
+title: Fixing lighting issues with Earth maps
 parent: Community Guides
 nav_order: 10
 ---
