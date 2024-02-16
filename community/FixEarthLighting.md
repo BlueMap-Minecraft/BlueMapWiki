@@ -5,6 +5,8 @@ parent: Community Guides
 nav_order: 10
 ---
 
+# Fixing lighting issues with Earth maps
+
 Earth maps are usually created using third party tools such as WorldPainter, which create minimal chunk data, often missing important components such as lighting information.
 Normally, you won't notice this, because the server will automatically fix lighting data when players load the chunks.
 However, BlueMap directly reads chunk data from disk. This is much more efficient and allows BlueMap to easily support many platforms, but also means the chunk data needs to be complete before BlueMap can read it properly.
