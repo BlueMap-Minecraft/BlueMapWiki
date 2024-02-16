@@ -5,7 +5,7 @@ parent: Community Guides
 nav_order: 10
 ---
 
-Earth maps are usually made with the program WorldPainter, which exports worlds with somewhat broken lighting data.  
+Earth maps are usually created using third party tools such as WorldPainter, which create minimal chunk data, often missing important components such as lighting information.
 Normally, you don't notice this, because the server automatically fixes the lighting data whenever it needs to load the chunks, due to a player coming near them.  
 However, BlueMap does not use ask server to load the chunks, but instead it reads the chunk files on your actual disk itself. This is much more reliable, and also what allows BlueMap to support so many platforms!  
 But due to this, the server doesn't fix a chunk's lighting data before BlueMap renders it. This is why we need to use a tool like Chunky to fix them!
