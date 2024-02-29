@@ -106,7 +106,7 @@ This is useful if you want to render a map of a minecraft-world, but don't want 
 ## Using BlueMap Docker image
 You can use [BlueMap CLI](#using-bluemap-on-the-cli--standalone) in a Docker container. This is perfect for container loving sysadmins.
 The image is available on GitHub container registry as `ghcr.io/bluemap-minecraft/bluemap`.
-For latest and greatest the `latest` tag is the latest release and `master` the latest git commit.
+For latest and greatest (but possibly unstable) the `latest` tag is the latest release and `master` the latest git commit.
 You can also choose a latest minor of a major with tags such as `v3` or a specific version tag such as `v3.14`.
 
 ### Prerequisites
@@ -129,7 +129,7 @@ To change the used config folder use the `-c /path/to/config` flag.
 
 ### Steps
 - Somehow obtain the configuration folder.
-  Easiest is to run `docker run --rm -it -v "$(pwd)/config:/app/config" ghcr.io/bluemap-minecraft/bluemap:latest`.
+  Easiest is to run `docker run --rm -it -v "$(pwd)/config:/app/config" ghcr.io/bluemap-minecraft/bluemap:v3`.
   Which creates a config folder in your current working directory with the default configs.
 - Configure the application however you like.
 - Start a container to render and host a webserver.
@@ -141,7 +141,7 @@ To change the used config folder use the `-c /path/to/config` flag.
     -v "$(pwd)/world:/app/world" \
     -v "$(pwd)/data:/app/data" \
     -v "$(pwd)/web:/app/web" \
-    ghcr.io/bluemap-minecraft/bluemap:latest \
+    ghcr.io/bluemap-minecraft/bluemap:v3 \
     -r -u -w
   ```
   Change the `$(pwd)/world` to an actual path to your world.  
@@ -157,7 +157,7 @@ version: '3'
 
 services:
   bluemap:
-    image: ghcr.io/bluemap-minecraft/bluemap:latest
+    image: ghcr.io/bluemap-minecraft/bluemap:v3
     restart: always
     command: -r -u -w
     ports:
