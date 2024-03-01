@@ -49,7 +49,7 @@ marker-sets: {
 For more information on how to create markers, please refer to the [official Markers Guide]({{site.baseurl}}/wiki/customization/Markers.html).
 
 ## Manual with commands
-You can manually also create markers with the popular 3rd-party addon, [BlueMap Marker Manager](https://modrinth.com/plugin/bmarker).
+You can manually also create markers with the popular 3rd-party addon, [BlueMap Marker Manager](https://modrinth.com/plugin/bmarker).  
 This is a Paper plugin and Fabric mod that allows you to create BlueMap markers via in-game commands, instead of via the config.
 
 Create the marker set:
@@ -78,17 +78,17 @@ Create the world border marker:
 ```
 
 ## Automatic with BlueBorder
-There is a much simpler way to add a world border, if you're using the vanilla world border: you can install the [BlueBorder](https://github.com/pop4959/BlueBorder) plugin!
-It automatically adds a world border marker at the position of your world border, without any commands or configuration necessary!
+There is a much simpler way to add a world border, if you're using the vanilla world border: you can install the [BlueBorder](https://github.com/pop4959/BlueBorder) plugin!  
+It automatically adds a world border marker at the position of your world border, without any commands or configuration necessary!  
 You can choose the colour for your border in the config file.
 
 ## Automatic with BlueBridge
 [BlueBridge](https://github.com/Mark-225/BlueBridge) is another plugin that can add a marker where your vanilla world border is.
-Download `BlueBridgeCore.jar` and `BlueBridgeWB.jar`, and place them in your plugins folder.
+Download `BlueBridgeCore.jar` and `BlueBridgeWB.jar`, and place them in your plugins folder.  
 For more information on how to use this plugin, please visit [its wiki](https://github.com/Mark-225/BlueBridge/wiki/Usage).
 
 ## Automatic with ChunkyBorder
-If you're not using the vanilla world border, you can also use [Chunky](https://modrinth.com/plugin/chunky) and its extension [ChunkyBorder](https://modrinth.com/plugin/chunkyborder) to add a world border. 
+If you're not using the vanilla world border, you can also use [Chunky](https://modrinth.com/plugin/chunky) and its extension [ChunkyBorder](https://modrinth.com/plugin/chunkyborder) to add a world border.  
 You can then create a world border like this:
 ```
 /chunky radius 1000
@@ -101,8 +101,8 @@ or like this:
 /chunky radius 1000
 /chunky border add
 ```
-For more information on how to use Chunky and ChunkyBorder, please visit their respective wiki's: [Chunky Wiki](https://github.com/pop4959/Chunky/wiki) and [ChunkyBorder Wiki](https://github.com/pop4959/ChunkyBorder/wiki)
+For more information on how to use Chunky and ChunkyBorder, please visit their respective wiki's: [Chunky Wiki](https://github.com/pop4959/Chunky/wiki) and [ChunkyBorder Wiki](https://github.com/pop4959/ChunkyBorder/wiki)  
 You can choose the colour for your border in the config file.
 
-If this is an Earth map that you got from from [earth.motfe.net](https://earth.motfe.net/), then you can find the exact commands and coordinates to add your border on this website: [docs.apocmc.us/minecraft-earth-map/map-borders](https://docs.apocmc.us/minecraft-earth-map/map-borders#id-1-500-scale-map)
+If this is an Earth map that you got from from [earth.motfe.net](https://earth.motfe.net/), then you can find the exact commands and coordinates to add your border on this website: [docs.apocmc.us/minecraft-earth-map/map-borders](https://docs.apocmc.us/minecraft-earth-map/map-borders#id-1-500-scale-map)  
 Please note that you do _not_ have to run `/chunky start`, though, like this website suggests!
