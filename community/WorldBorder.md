@@ -46,7 +46,7 @@ marker-sets: {
     }
 }
 ```
-For more information on how to create markers, please refer to the [official Markers Guide](../wiki/customization/Markers.md).
+For more information on how to create markers, please refer to the [official Markers Guide]({{site.baseurl}}/wiki/customization/Markers.html).
 
 ## Manual with commands
 You can manually also create markers with the popular 3rd-party addon, [BlueMap Marker Manager](https://modrinth.com/plugin/bmarker).
