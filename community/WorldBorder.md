@@ -4,45 +4,49 @@ title: Adding a World Border
 parent: Community Guides
 nav_order: 12
 ---
-# Adding a World Border
 
-There are many ways to display your world border on your map.
-All of them work by adding a marker to the map.
-This guide will list a few of the most common ways to do that.
+# Adding a World Border
+{: .no_toc }
+
+There are many ways to display your world border on your map.  
+All of them work by adding a marker to the map, but some ways are simpler than others, at the cost of control or supported platforms.  
+This guide will list a few of the most common ways to add a world border to your BlueMap!
+
+{:toc}
 
 ## Manual in the config
 This is the most supported method. This will work on every platform (Paper/Fabric/Forge/etc).
 Go to your BlueMap config directory, and open the `maps` folder.
-In there, you will find a `.conf` file for each of your maps.
-Open the file that corresponds to the world that you want to add a world border to, and scroll to the bottom, until the `marker-sets` section.
+In there, you will find a `.conf` file for each of your maps.  
+Open the file that corresponds to the world that you want to add a world border to, and scroll to the bottom, until the `marker-sets` section.  
 Copy this snippet into there, and adapt it to your liking:
 ```hocon
 marker-sets: {
-	world-borders: {
-		label: "World Borders"
-		toggleable: true
-		default-hidden: false
-		sorting: 0
-		markers: {
-			world-border: {
-				type: "shape"
-				label: "World Border"
-				position: { x: 0, y: 64, z: 0 }	# Center of your world
-				shape-y: 64
-				shape: [
-					{ x: -1000, z: -1000 }	# Top-Left (North-West)
-					{ x:  1000, z: -1000 }	# Top-Right (North-East)
-					{ x:  1000, z:  1000 }	# Bottom-Right (South-East)
-					{ x: -1000, z:  1000 }	# Bottom-Left (South-West)
-				]
-				line-color: { r: 255, g: 0, b: 0, a: 1.0 }	# red
-				fill-color: { r:   0, g: 0, b: 0, a: 0.0 }	# fully see-through
-			}
-		}
-	}
+    world-borders: {
+        label: "World Borders"
+        toggleable: true
+        default-hidden: false
+        sorting: 0
+        markers: {
+            world-border: {
+                type: "shape"
+                label: "World Border"
+                position: { x: 0, y: 64, z: 0 } # Center of your world
+                shape-y: 64
+                shape: [
+                    { x: -1000, z: -1000 }  # Top-Left (North-West)
+                    { x:  1000, z: -1000 }  # Top-Right (North-East)
+                    { x:  1000, z:  1000 }  # Bottom-Right (South-East)
+                    { x: -1000, z:  1000 }  # Bottom-Left (South-West)
+                ]
+                line-color: { r: 255, g: 0, b: 0, a: 1.0 }  # red
+                fill-color: { r:   0, g: 0, b: 0, a: 0.0 }  # fully see-through
+            }
+        }
+    }
 }
 ```
-For more information on how to create markers, please refer to the official Marker Guide: https://bluemap.bluecolored.de/wiki/customization/Markers.html
+For more information on how to create markers, please refer to the official [Markers] Guide.
 
 ## Manual with commands
 You can manually also create markers with the popular 3rd-party addon, [BlueMap Marker Manager](https://modrinth.com/plugin/bmarker).
