@@ -73,7 +73,7 @@ This setup extends the basic setup by using an SQL-Server to store your maps.
 - Reload BlueMap with `/bluemap reload`.
 - Now that your maps are stored on your database, you should delete the old map data from your filesystem, to prevent it from interfering.  
   You can do this by running the command `/bluemap storages file delete <map>` for each of the maps you have just switched to SQL.
-Instead of running that command, you can also this manually by deleting the old map folder on your filesystem, which usually is at `bluemap/web/maps/`.
+  Or just manually delete the old map-data folder on your filesystem, which usually is at `./bluemap/web/maps`.
 
 
 If everything is set up correctly, BlueMap should start to render your maps and store them on the SQL-Server.
