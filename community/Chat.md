@@ -42,8 +42,8 @@ We've got a VPS running Debian. The VPS has a public IP. There is a Paper Minecr
 BlueMap installed as a plugin running on port 8100. The BlueMap is accesible at `http://12.34.56.789:8100/`.
 In my case the Minecraft server is run with a Docker container as seen below.
 
-![Contents of docker-compose.yml and files in the data directory]({{site.baseurl}}/assets/starting-situation.png)
-![BlueMap already working at http://12.34.56.789:8100/]({{site.baseurl}}/assets/bluemap-already-working.png)
+![Contents of docker-compose.yml and files in the data directory]({{site.baseurl}}/assets/chat/starting-situation.png)
+![BlueMap already working at http://12.34.56.789:8100/]({{site.baseurl}}/assets/chat/bluemap-already-working.png)
 
 ## Acquiring the jars
 
@@ -58,7 +58,7 @@ Build the whole project with `./gradlew build` or `gradlew.bat build` on windows
 Congratulations, you've now built a Java project, actually multiple but that's irrelevant.
 Just know that plugin jars we need later will be found inside the `build/` folder in the current folder.
 
-![Terminal session with the commands ran]({{site.baseurl}}/assets/built-jars.png)
+![Terminal session with the commands ran]({{site.baseurl}}/assets/chat/built-jars.png)
 
 ## Proxying with nginx
 
@@ -66,7 +66,7 @@ Our first step is to put the BlueMap site behind nginx reverse proxy. This is ne
 nginx auth request module and combine many services under one host. Install nginx using `sudo apt install -y nginx`.
 You should now be able to observe nginx working at `http://12.34.56.789/`
 
-![Welcome to nginx!]({{site.baseurl}}/assets/nginx-installed.png)
+![Welcome to nginx!]({{site.baseurl}}/assets/chat/nginx-installed.png)
 
 Next we should navigate to `/etc/nginx` to start configuring our fresh installation. We shall start by removing the
 default configuration files with `sudo rm -rf ./sites-available/default ./sites-enabled/default /var/www/html`.
@@ -86,7 +86,7 @@ server {
 Next we have to enable the create configuration file with `sudo ln -s ../sites-available/bluemap.conf ./sites-enabled/bluemap.conf`.
 Then after reloading nginx with `sudo nginx -s reload` we should see our BlueMap at the location which had nginx welcome page earlier.
 
-![BlueMap running through nginx proxy]({{site.baseurl}}/assets/http-proxied-bluemap.png)
+![BlueMap running through nginx proxy]({{site.baseurl}}/assets/chat/http-proxied-bluemap.png)
 
 As we no longer use BlueMap's own port for accessing it. We should prevent it from being exposed. In our `docker-compose.yml` file
 we can do `"127.0.0.1:8100:8100/tcp"` instead of `"8100:8100/tcp"`. If you don't use Docker, instead of changing Docker's
@@ -97,7 +97,7 @@ port bindings change directly the ip address bluemap uses by editing `plugins/Bl
 Proxying is cool and all but it's pretty much a no-op right now. So open up your DNS management interface,
 in my case Cloudflare, and add an A record for the ip address of the server.
 
-![DNS record at Cloudflare]({{site.baseurl}}/assets/dns-cloudflare.png)
+![DNS record at Cloudflare]({{site.baseurl}}/assets/chat/dns-cloudflare.png)
 
 Change the server name in nginx `sites-available/bluemap.conf` file to match your chosen domain like this `server_name your.domain;`
 The BlueMap should be accesible at the domain, just without HTTPS still.
@@ -162,7 +162,7 @@ server {
 
 After reloading nginx with `sudo nginx -s reload` we should have a working BlueMap website with HTTPS. Hurray!
 
-![BlueMap with HTTPS]({{site.baseurl}}/assets/bluemap-with-https.png)
+![BlueMap with HTTPS]({{site.baseurl}}/assets/chat/bluemap-with-https.png)
 
 ## Authentication
 
@@ -247,11 +247,11 @@ server {
 
 Your BlueMap should now have a log in button in the menu.
 
-![A wild Log in button appears]({{site.baseurl}}/assets/login-button.png)
+![A wild Log in button appears]({{site.baseurl}}/assets/chat/login-button.png)
 
-![The authentication screen]({{site.baseurl}}/assets/authentication-screen.png)
+![The authentication screen]({{site.baseurl}}/assets/chat/authentication-screen.png)
 
-![BlueMap menu has your Minecraft head now]({{site.baseurl}}/assets/logged-in-bluemap.png)
+![BlueMap menu has your Minecraft head now]({{site.baseurl}}/assets/chat/logged-in-bluemap.png)
 
 ## Chat
 
@@ -271,9 +271,9 @@ Next just add the following next to the integration addon location in the nginx 
     }
 ```
 
-![The chat in the webapp]({{site.baseurl}}/assets/chat-in-web.png)
+![The chat in the webapp]({{site.baseurl}}/assets/chat/chat-in-web.png)
 
-![The chat in Minecraft]({{site.baseurl}}/assets/chat-in-mc.png)
+![The chat in Minecraft]({{site.baseurl}}/assets/chat/chat-in-mc.png)
 
 ### CONGRATULATIONS!!! YOU HAVE DONE IT!!!
 {: .no_toc }
