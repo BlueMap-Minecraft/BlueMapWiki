@@ -6,7 +6,6 @@ nav_order: 14
 ---
 
 # Web chat
-
 {: .no_toc }
 
 1. TOC
@@ -277,3 +276,4 @@ Next just add the following next to the integration addon location in the nginx 
 ![The chat in Minecraft]({{site.baseurl}}/assets/chat-in-mc.png)
 
 ### CONGRATULATIONS!!! YOU HAVE DONE IT!!!
+{: .no_toc }
