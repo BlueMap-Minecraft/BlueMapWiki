@@ -118,8 +118,8 @@ addgroup certs
 usermod -aG certs root
 usermod -aG certs www-data
 mkdir /etc/nginx/certs
-touch /etc/nginx/key.pem
-touch /etc/nginx/fullchain.pem
+touch /etc/nginx/certs/key.pem
+touch /etc/nginx/certs/fullchain.pem
 chown -R root:certs /etc/nginx/certs
 chmod 770 /etc/nginx/certs
 chmod 660 /etc/nginx/certs/*
