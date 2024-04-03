@@ -186,6 +186,9 @@ class AddonBrowser extends HTMLElement {
                 apiPlatformSelectElement.append(option);
             });
 
+            const preSelectedPlatform = new URLSearchParams(window.location.search).get("platform");
+            if (preSelectedPlatform != null) apiPlatformSelectElement.value = preSelectedPlatform;
+
             let resultElement = this.shadowRoot.getElementById("search-results");
             this.addons.forEach((addon, id) => {
                 let element = document.createElement("div");
@@ -239,6 +242,12 @@ class AddonBrowser extends HTMLElement {
         let search = this.shadowRoot.getElementById("search").value;
         let platform = this.shadowRoot.getElementById("platform").value;
         let apiVersion = this.shadowRoot.getElementById("api-version").value.split(".");
+
+        const preSelectedPlatform = new URLSearchParams(window.location.search).get("platform") ?? "any";
+        if (preSelectedPlatform !== platform) {
+            if (platform === "any") window.history.pushState("", "", window.location.pathname);
+            else history.pushState("", "", `?platform=${platform}`);
+        }
 
         this.addons.forEach((addon, id) => {
             let element = this.shadowRoot.getElementById("addon-" + id);
