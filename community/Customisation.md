@@ -52,7 +52,7 @@ From here on, you can customise any BlueMap class you want.
 
 ## WebApp Script Addons
 Aside from custom CSS snippets, BlueMap also supports custom JavaScript snippets to customise the behaviour of the webapp.  
-You can find those in the [3rd Party Addons section of this wiki]({{site.baseurl}}3rdPartySupport.html), under the "script" platform filter.
+You can find those in the [3rd Party Addons section of this wiki]({{site.baseurl}}3rdPartySupport.html?platform=script), under the "script" platform filter.
 
 The installation process for these is basically the same as for a CSS snippet:  
 Download, copy, or create a `.js` file in your webroot (usually `/bluemap/web/`).  
