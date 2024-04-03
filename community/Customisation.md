@@ -108,3 +108,23 @@ To fix that, you need an external webserver. Here is a guide on how to do that w
 
 > It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server. Browsers do not support SRV Records.
 {: .info .important }
+
+## Advanced Webapp Customisation
+If you feel like you need more control over the look and behaviour of the webapp
+than JavaScript and CSS snippets allow you, you can modify the original source code
+of the BlueMap WebApp, and recompile it manually.
+
+> This should not be attempted by people who don't already have experience with common
+> web-development tools and frameworks like Node, Vue.js, Vite, and three.js.
+{: .info .important }
+
+To get started, you should clone the BlueMap repo using git.
+([link](https://github.com/BlueMap-Minecraft/BlueMap?tab=readme-ov-file#development))
+
+Then, inside [`BlueMapCommon/webapp`](https://github.com/BlueMap-Minecraft/BlueMap/tree/master/BlueMapCommon/webapp),
+you will find the source code for the webapp.
+
+You can now edit that however you'd like. The important commands for running and compiling are described in the
+[readme](https://github.com/BlueMap-Minecraft/BlueMap/tree/master/BlueMapCommon/webapp#readme).
+
+Good luck!
