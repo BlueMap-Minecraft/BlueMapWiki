@@ -121,10 +121,13 @@ of the BlueMap WebApp, and recompile it manually.
 To get started, you should clone the BlueMap repo using git.
 ([link](https://github.com/BlueMap-Minecraft/BlueMap?tab=readme-ov-file#development))
 
-Then, inside [`BlueMapCommon/webapp`](https://github.com/BlueMap-Minecraft/BlueMap/tree/master/BlueMapCommon/webapp),
+Then, inside [`BlueMapCommon/webapp/`](https://github.com/BlueMap-Minecraft/BlueMap/tree/master/BlueMapCommon/webapp),
 you will find the source code for the webapp.
 
 You can now edit that however you'd like. The important commands for running and compiling are described in the
 [readme](https://github.com/BlueMap-Minecraft/BlueMap/tree/master/BlueMapCommon/webapp#readme).
+
+Once you've made your changes and recompiled it, you can copy the `BlueMapCommon/webapp/dist/` folder to your server,
+and replace the default webapp with your custom one.
 
 Good luck!
