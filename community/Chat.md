@@ -45,21 +45,6 @@ In my case the Minecraft server is run with a Docker container as seen below.
 ![Contents of docker-compose.yml and files in the data directory]({{site.baseurl}}/assets/chat/starting-situation.png)
 ![BlueMap already working at http://12.34.56.789:8100/]({{site.baseurl}}/assets/chat/bluemap-already-working.png)
 
-## Acquiring the jars
-
-As the developer of these addons is a way too lazy to properly release them anywhere and keep them up-to-date,
-it's best to build them from source manually. These steps should be performed on your PC instead of the server.
-First install [Git](https://git-scm.com/downloads)
-and then install [OpenJDK 17 JDK](https://adoptium.net/temurin/releases/?package=jdk&version=17).
-
-Pop open your favorite Terminal and navigate to somewhere to download the source code.
-Run `git clone https://github.com/Chicken/Auth` and navigate inside the freshly cloned repository.
-Build the whole project with `./gradlew build` or `gradlew.bat build` on windows.
-Congratulations, you've now built a Java project, actually multiple but that's irrelevant.
-Just know that plugin jars we need later will be found inside the `build/` folder in the current folder.
-
-![Terminal session with the commands ran]({{site.baseurl}}/assets/chat/built-jars.png)
-
 ## Proxying with nginx
 
 Our first step is to put the BlueMap site behind nginx reverse proxy. This is needed as we want HTTPS,
@@ -166,9 +151,10 @@ After reloading nginx with `sudo nginx -s reload` we should have a working BlueM
 
 ## Authentication
 
-Remember those plugin jars we built like ages ago? Yeah, we want the Authentication one and BlueMap-Auth one.
+Download [Authentication](https://github.com/Chicken/Auth/releases/tag/authentication-v0.3.0)
+and [BlueMap-Auth](https://github.com/Chicken/Auth/releases/tag/bluemap-auth-v0.1.0).
 Copy them to the server plugins folder. You can do this with scp for example
-`scp build/{Authentication,BlueMap-Auth}*.jar 12.34.56.789:~/minecraft-server/data/plugins`.
+`scp Downloads/{Authentication,BlueMap-Auth}*.jar 12.34.56.789:~/minecraft-server/data/plugins`.
 
 Now let's restart the server to generate configuration files.
 Edit `plugins/Authentication/config.yml` to have `optional_authentication: true`.
@@ -257,8 +243,8 @@ Your BlueMap should now have a log in button in the menu.
 
 We've finally arrived at the last step. Just one more plugin and a tiny bit of nginx configuration.
 
-Copy the final plugin jar from your PC to the server and restart it.
-`scp build/BlueMap-Chat*.jar 12.34.56.789:~/minecraft-server/data/plugins`
+Download [BlueMap-Chat](https://github.com/Chicken/Auth/releases/tag/bluemap-chat-v0.1.0) and transfer it
+`scp Downloads/BlueMap-Chat*.jar 12.34.56.789:~/minecraft-server/data/plugins`
 Us Docker users have to fiddle with the ips and ports again. Edit the `plugins/BlueMap-Chat/config.yml` to have
 `ip: "0.0.0.0"` and `docker-compose.yml` ports section to have `"127.0.0.1:8800:8800/tcp"`.
 
