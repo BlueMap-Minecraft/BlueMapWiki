@@ -49,8 +49,8 @@ marker-sets: {
 For more information on how to create markers, please refer to the [official Markers Guide]({{site.baseurl}}/wiki/customization/Markers.html).
 
 ## Manual with commands
-You can manually also create markers with the popular 3rd-party addon, [BlueMap Marker Manager](https://modrinth.com/plugin/bmarker).  
-This is a Paper plugin and Fabric mod that allows you to create BlueMap markers via in-game commands, instead of via the config.
+You can manually also create markers with the popular 3rd-party addon, [BlueMap Marker Manager](https://modrinth.com/plugin/bmarker). (Available as a Paper plugin and as a Fabric mod.)  
+This addon allows you to create BlueMap markers via in-game commands, instead of via the config.
 
 Create the marker set:
 ```
