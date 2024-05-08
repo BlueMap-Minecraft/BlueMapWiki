@@ -61,7 +61,7 @@ server {
   location ~* ^/maps/[^/]*/tiles/ {
     # High-res tiles are stored as precompressed JSON with a fallback to returning an empty tile.
     # Low-res tiles are stored as pngs with a fallback to returning 204 (No Content).
-    location ~* \.json$  {
+    location ~* \.prbm$  {
       error_page 404 =200 /assets/emptyTile.json;
       gzip_static always;
     }
