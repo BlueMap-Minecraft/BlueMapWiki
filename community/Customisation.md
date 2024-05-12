@@ -20,7 +20,7 @@ so make sure to remember any edits you do to it and any of BlueMap's other sourc
 1. TOC 
 {:toc}
 
-## Theme and look
+## Custom Styles (Theme and Look)
 BlueMap allows you to write custom CSS snippets, with which you can style the BlueMap interface exactly to your liking.
 
 > **Info:**  
@@ -30,7 +30,7 @@ BlueMap allows you to write custom CSS snippets, with which you can style the Bl
 To get started with BlueMap CSS, you should create a `.css` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that stylesheet with BlueMap, so it'll actually load it.  
 You do this in `webapp.conf`, by putting the file name in the `styles: [ ]` list.  
-After adding it to the list, you'll probably want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+After adding it to the list, you'll want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
 You can do so with the `/bluemap reload light` command.
 
 To test if it works, you can use this simple style:
@@ -50,16 +50,39 @@ styles: [
 This should make all BlueMap's buttons fully red.  
 From here on, you can customise any BlueMap class you want.
 
-## WebApp Script Addons
-Aside from custom CSS snippets, BlueMap also supports custom JavaScript snippets to customise the behaviour of the webapp.  
-You can find those in the [3rd Party Addons section of this wiki]({{site.baseurl}}/3rdPartySupport.html?platform=script), under the "script" platform filter.
+You can also find some pre-made styles for BlueMap in the [3rd Party Addons section of this wiki]({{site.baseurl}}/3rdPartySupport.html?platform=script),
+under the "style" platform filter. Feel free to take inspiration from these! Styling is tricky.
 
-The installation process for these is basically the same as for a CSS snippet:  
-Download, copy, or create a `.js` file in your webroot (usually `/bluemap/web/`).  
+## Custom Scripts (Behaviour)
+Aside from custom CSS snippets, BlueMap also supports custom JavaScript snippets to customise the behaviour of the webapp.
+
+> **Info:**  
+> If you don't know how to write JavaScript yet, here is a good guide: [developer.mozilla.org/en-US/docs/Learn/JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
+{: .info }
+
+To get started with BlueMap JavaScript, you should create a `.js` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that script with BlueMap, so it'll actually load it.  
 You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.  
-After adding it to the list, you'll probably want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
+After adding it to the list, you'll want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
 You can do so with the `/bluemap reload light` command.
+
+To test if it works, you can use this simple script:
+
+`/bluemap/web/my-custom-script.js`:
+```js
+console.log("Hello world!");
+```
+`plugins/BlueMap/webapp.conf`:
+```hocon
+scripts: [
+    "my-custom-script.js"
+]
+```
+This should log a message to the browser console.
+From here on, you can program any additional behaviour you want!
+
+You can find some pre-made scripts in the [3rd Party Addons section of this wiki]({{site.baseurl}}/3rdPartySupport.html?platform=script),
+under the "script" platform filter. Feel free to take inspiration from these! Scripting is hard.
 
 ## Embed
 In some places, when you share a link to your map, it'll embed a bit of extra info. In Discord it looks like this:
