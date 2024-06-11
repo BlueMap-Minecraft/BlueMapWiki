@@ -72,8 +72,8 @@ and it should be fixed :)
   Then, chunks that have not been visited by a player **might** not have their light-data generated yet. 
   BlueMap needs the light data and ignores chunks that don't have it.
   So it will only render chunks that have been loaded by a player at least once.  
-  You can try to use a plugin like [LightCleaner](https://www.spigotmc.org/resources/light-cleaner.42469/) to fix chunks 
-  that don't have proper lightdata in your world. 
+  Here is a dedicated guide to fixing lighting issues in your world:
+  [https://bluemap.bluecolored.de/community/FixLighting.html](https://bluemap.bluecolored.de/community/FixLighting.html)
 
 If nothing else works, you can try to set `ignore-missing-light-data: true` in your 
 map-config. *(And then use `/bluemap purge <map>` to update your map)*  
