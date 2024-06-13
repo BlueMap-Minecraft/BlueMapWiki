@@ -50,7 +50,7 @@ First, press the `Update Map` button in BlueMap's menu. This updates all tiles f
 your browser has not cached anything weird.  
 You can also try to clear your browser-cache completely. *(`F12` -> Network -> [x] Disable cache -> `F5`)*
 
-If that doesn't help you might have changed some bluemap-settings that require a complete re-render of the map:
+If that doesn't help, you might have changed some bluemap-settings that require a complete re-render of the map:
 Just use `/bluemap purge <map-id>` to delete and re-render the entire map. Then clear your browser-cache again,
 and it should be fixed :)
 
@@ -72,8 +72,8 @@ and it should be fixed :)
   Then, chunks that have not been visited by a player **might** not have their light-data generated yet. 
   BlueMap needs the light data and ignores chunks that don't have it.
   So it will only render chunks that have been loaded by a player at least once.  
-  You can try to use a plugin like [LightCleaner](https://www.spigotmc.org/resources/light-cleaner.42469/) to fix chunks 
-  that don't have proper lightdata in your world. 
+  Here is a dedicated guide to fixing lighting issues in your world:
+  [https://bluemap.bluecolored.de/community/FixLighting.html](https://bluemap.bluecolored.de/community/FixLighting.html)
 
 If nothing else works, you can try to set `ignore-missing-light-data: true` in your 
 map-config. *(And then use `/bluemap purge <map>` to update your map)*  
@@ -81,7 +81,7 @@ This will ignore potentially missing light data while rendering, with some drawb
 - Cave-rendering will always be enabled in those chunks, because it is using the sun-light data to detect the "caves"
 - Everything in those chunks will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
 
-### Q: The map (web-app) is really slow (lagging)
+### Q: The map (web-app) has low FPS (lagging)
 Make sure you have **hardware-acceleration enabled** on your browser! 
 Use your favorite search engine to learn how to do this :)
 
@@ -89,9 +89,17 @@ If you have a laptop with two GPU-units, make sure that the high-performance GPU
 E.g. Intel/Nvidia sometimes like to use the low-performance GPU for your browser by default, to save energy.
 You can change this in the Nvidia-Control-Panel.
 
+### Q. Chunks (tiles) are loading in really slowly
+This is almost entirely dependent on the network speed between your server and your own computer.
+
+You can debug this by using your browser's built-in developer tools (Network tab) to check how long each request is taking, and where the bottleneck is.
+
+If you're certain that speed is adequate, make sure you're on the latest version of BlueMap.
+
 ### Q: How can I add or remove maps?
 To add a map, copy a map-config from the `maps`-folder next to the other config-files, open it and tweak the settings 
-for your new map. To remove a map, just delete the config-file.
+for your new map. To remove a map, just delete the config-file.  
+Read [this guide](https://bluemap.bluecolored.de/wiki/getting-started/Configuration.html#configuring-your-maps-adding--removing-maps) for more info.
 
 ### Q: How can I add SSL (HTTPS) to my map?
 BlueMaps integrated webserver does not (and will not) support SSL on its own, 

@@ -28,12 +28,43 @@ same folder from them all (e.g. mounting a shared drive/folder). Either of them 
 - configure either the `storages/sql.conf` on all server to the same sql-server, or the `storages/file.conf` on 
   all server to the same (shared) folder
 - configure all maps on all servers to use that storage
-- choose one of those servers to be the server that will host the web-app. On this server: 
-  create an extra map-config like [here: "Hosting static maps"]({{site.baseurl}}/wiki/getting-started/Configuration#hosting-static-maps) for each 
-  map that is on the **other** servers
+- choose one of those servers to be the server that will host the web-app.  
+  **On this server:** create an extra map-config like [here: "Hosting static maps"]({{site.baseurl}}/wiki/getting-started/Configuration#hosting-static-maps) for each 
+  map that is on the **other** servers. *(example below)*
 
 Now the maps from the other servers should be visible on the web-app of this one server.
 
+> #### Example
+> Assuming your servers/maps look like this:
+> ```
+> server1/...
+>   s1_map1.conf
+>   s1_map2.conf
+> 
+> server2/...
+>   s2_map1.conf
+>   s2_map2.conf
+> ```
+> the maps are all stored on the same database ...
+> now if you want to see the maps from `server2` also on the webapp from `server1`, then you need to add these files:
+> ```
+> server1/...
+>   s1_map1.conf
+>   s1_map2.conf
+>   s2_map1.conf <<-
+>   s2_map2.conf <<-
+> 
+> server2/...
+>   s2_map1.conf
+>   s2_map2.conf
+> ``` 
+> to your `server1` and the content of those two extra files should look like this:
+> ```hocon
+> storage: "sql"
+> ```
+> nothing else.
+
+### Live updates
 If you want to have live updating markers and player-markers on all maps, turn on the `write-markers-interval` and the 
 `write-players-interval` in each `plugin.conf` on the other servers.  
 **Or** if you plan on hosting the entire map with an external-webserver you can reverse-proxy each maps live-interface to the correct
