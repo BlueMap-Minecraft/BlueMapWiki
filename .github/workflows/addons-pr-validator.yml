@@ -20,13 +20,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Clone Validator Tool
         run: git clone https://github.com/BlueMap-Minecraft/BlueMap3rdValidator.git
 
       - name: Setup Java JDK
-        uses: actions/setup-java@v4.0.0
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11
