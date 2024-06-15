@@ -1,34 +1,34 @@
 ---
 layout: page
-title: Installing Resource-Packs
+title: Resource/Data-packs
 parent: Advanced Customization
 grand_parent: Wiki
 nav_order: 3
 ---
 
-# Installing Resource-Packs
+# Installing Resourcepacks or Datapacks
 
-BlueMap supports the use of minecraft resource-packs. If you want to change the appearance of your map, 
-use high resolution textures or fancy block-models.
+BlueMap supports the use of minecraft resourcepacks and datapacks. If you want to change the appearance of your map, 
+use high resolution textures or fancy block-models or customize biomes.
 
 > **Important:**  
-> If you change your resource-pack setup you need to delete your previous renders! 
+> If you change your resource/data-pack setup you need to delete your previous renders! 
 > Purge your maps with `/bluemap purge <map>`.
-> Otherwise, you will get broken models with really weird textures.
+> Otherwise, you might get broken models and/or weird texture-mixups.
 {: .info .important }
 
-To install a resource-pack you just need to put the resource-pack folder or zip in the folder `resourcepacks` next to 
+To install a resource/data-pack you just need to put the pack-folder or zip into the folder `packs` next to 
 your configuration files and reload BlueMap. BlueMap will scan the folder and try to load every resource it finds.
 
-> Sponge, Forge, Fabric: `./config/bluemap/resourcepacks/`<br>
-> Spigot/Paper: `./plugins/BlueMap/resourcepacks/`
+> Sponge, Forge, Fabric: `./config/bluemap/packs/`<br>
+> Spigot/Paper: `./plugins/BlueMap/packs/`
+> CLI: `./config/packs/`
 {: .info }
 
-You can use more than one resource-pack. Like in minecraft, they will override each other. They are loaded in 
-alphabetical order, so a resource-pack called `zzzresources.zip` will override `aaaresources.zip`.<br>
+You can use more than one resource/data-pack. Like in minecraft, they will override each other. They are loaded in 
+alphabetical order, so a pack called `zzzresources.zip` will override `aaaresources.zip`.  
 This means you can reorder them by renaming them e.g. `01_some_pack.zip`, `02_some_extension_pack.zip`...
 
-Make sure the resource-pack is for the correct minecraft-version. Otherwise, it might not be loaded correctly.<br>
-There might be warnings in the console if you are using resource-packs that have some unexpected formatting. A warning
-mostly results in a single (block-)model not loaded correctly, so all the other resources from that resource-pack are 
-still being loaded.
+Make sure the resource/data-pack is for the correct minecraft-version. Otherwise, it might not be loaded correctly.  
+You can check the `./bluemap/logs/debug.log` (`./data/logs/debug.log` on cli) to find warnings that might occur when 
+loading resource/data-packs.

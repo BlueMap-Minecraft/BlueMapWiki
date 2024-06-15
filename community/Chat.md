@@ -75,7 +75,7 @@ Then after reloading nginx with `sudo nginx -s reload` we should see our BlueMap
 
 As we no longer use BlueMap's own port for accessing it. We should prevent it from being exposed. In our `docker-compose.yml` file
 we can do `"127.0.0.1:8100:8100/tcp"` instead of `"8100:8100/tcp"`. If you don't use Docker, instead of changing Docker's
-port bindings change directly the ip address bluemap uses by editing `plugins/BlueMap/webserver.conf` and adding `ip: "127.0.0.1"`.
+port bindings change directly the ip address BlueMap uses by editing `plugins/BlueMap/webserver.conf` and adding `ip: "127.0.0.1"`.
 
 ## Domain and HTTPS
 
