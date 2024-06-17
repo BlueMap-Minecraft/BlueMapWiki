@@ -91,12 +91,20 @@ If you have a laptop with two GPU-units, make sure that the high-performance GPU
 E.g. Intel/Nvidia sometimes like to use the low-performance GPU for your browser by default, to save energy.
 You can change this in the Nvidia-Control-Panel.
 
-### Q. Chunks (map-tiles) are loading in really slowly
-This is almost entirely dependent on the network speed between your server and your own computer.
+### Q. Chunks (tiles) are loading in really slowly
+BlueMap needs to convert your world's chunks to 3D model files. (We often refer to this process as "rendering".)  
+If you have just installed BlueMap, this might take a while, because it is the first time.  
+You can check the progress with `/bluemap`. You may just have to wait for the chunks to finish being converted.
 
-You can debug this by using your browser's built-in developer tools (Network tab) to check how long each request is taking, and where the bottleneck is.
+Once the 3D model files have been generated, they are stored on your server.
+They then get requested from people visiting your BlueMap website.  
+The speed at which those files get transferred from the server to the browser is
+almost entirely dependent on the network speed between your server and your own computer.  
+You can debug this by using your browser's built-in developer tools (Network tab)
+to check how long each request is taking, and where the bottleneck is.
 
-If you're certain that speed is adequate, make sure you're on the latest version of BlueMap.
+If you're certain the connection speed between your server and you is adequate,
+make sure you're on the latest version of BlueMap, as there may have been optimisations since.
 
 ### Q: How can I add or remove maps?
 To add a map, copy a map-config from the `maps`-folder next to the other config-files, open it and tweak the settings 
