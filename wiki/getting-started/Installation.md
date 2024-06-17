@@ -13,23 +13,28 @@ nav_order: 1
 {:toc}
 
 ## General Prerequisites
-To run bluemap you need:
-- Java 11 or newer
+To run BlueMap you need:
+- Java 16 or newer
 - Minecraft Java-Edition
 
 BlueMap only works with Java-Edition worlds, Bedrock-Edition worlds are not supported!
 
-## Where do i find...
+## Where do I find...
 ### ...the "config-files"? 
-They are located in your server-root folder at `./plugins/BlueMap/` (Spigot/Paper) or `./config/bluemap/` (Forge/Fabric/Sponge) 
-or directly next to the `BlueMap.jar` if you are using the CLI-Version of BlueMap.
+They are located relative to your server-root/working-directory here:
+
+| Platform            | Directory            |
+|---------------------|----------------------|
+| Spigot/Paper        | `./plugins/BlueMap/` |
+| Forge/Fabric/Sponge | `./config/bluemap/`  |
+| CLI                 | `./config/`          |
 
 ### ...the "webroot"?
 The webroot is the folder that contains all the files that will be hosted by the webserver and that can be accessed by the browser.
 By default, it is located in your server-root folder at `./bluemap/web/`. 
 
-### ... the map-files?
-The webapp expects the map-files **inside the web-root** at `./maps/`. This is also the place where maps are stored by default.
+### ... the map-data?
+The webapp expects the map-data **inside the web-root** at `./maps/`. This is also the place where maps are stored by default.
 
 ## Installing BlueMap (basic setup)
 This is the basic setup for BlueMap. BlueMap will run as a plugin/mod on your server, render/update the maps as your world changes
@@ -75,7 +80,6 @@ This setup extends the basic setup by using an SQL-Server to store your maps.
   You can do this by running the command `/bluemap storages file delete <map>` for each of the maps you have just switched to SQL.
   Or just manually delete the old map-data folder on your filesystem, which usually is at `./bluemap/web/maps`.
 
-
 If everything is set up correctly, BlueMap should start to render your maps and store them on the SQL-Server.
 Check the console/logs for any errors or warnings.
 
@@ -106,15 +110,16 @@ This is useful if you want to render a map of a minecraft-world, but don't want 
 - With `java -jar BlueMap-cli.jar -w` you can also start the builtin web-server to be able to view your map. 
   Or you can read [this]({{site.baseurl}}/wiki/webserver) to learn how to setup NGINX or 
   Apache for BlueMap.
+- Use `java -jar BlueMap-cli.jar -h` to get a list and explanation for all available flags.
 
 ## Using BlueMap Docker image
 You can use [BlueMap CLI](#using-bluemap-on-the-cli--standalone) in a Docker container. This is perfect for container loving sysadmins.
 The image is available on GitHub container registry as `ghcr.io/bluemap-minecraft/bluemap`.
 For latest and greatest the `latest` tag is the latest release (which can be a pre-release) and `master` the latest git commit.
-You can also choose a latest minor of a major with tags such as `v3` or a specific version tag such as `v3.14`.
+You can also choose a latest minor of a major with tags such as `v3` or a specific version tag such as `v3.14`.  
 For production usage you should **always** pin the version to the minor version as even the latest minor might still be a pre-release.
 You can see the list of available Docker tags on [GitHub](https://github.com/BlueMap-Minecraft/BlueMap/pkgs/container/bluemap).
-The documentation will now on substitute the version with `<version>`.
+The documentation will from now on substitute the version with `<version>`.
 
 ### Prerequisites
 - A minecraft-world that you want to render
@@ -184,9 +189,9 @@ Relative paths in the config are relative to the `/app` folder.
 If you find this confusing, use absolute paths to your mounts.
 
 If you want you can precreate the volume folders with specific user ownership
-and then start BlueMap as a non root user using the Docker `--user uid:gid` flag or compose `user` field.
+and then start BlueMap as a non-root user using the Docker `--user uid:gid` flag or compose `user` field.
 
 To change the webserver's port or ip binding, you don't need to change BlueMap's config.
-Instead just change where Docker publishes the port by chaging the `-p 8100:8100` flag.
+Instead, just change where Docker publishes the port by changing the `-p 8100:8100` flag.
 
 To change Java flags, just overwrite the entire default `java -jar cli.jar` entrypoint.

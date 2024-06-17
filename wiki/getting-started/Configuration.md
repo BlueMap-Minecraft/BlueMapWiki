@@ -13,19 +13,19 @@ nav_order: 2
 {:toc}
 
 ## General
-The configuration files of bluemap are formatted using [HOCON](https://github.com/lightbend/config/blob/master/HOCON.md). 
+BlueMap's configuration files are formatted using [HOCON](https://github.com/lightbend/config/blob/master/HOCON.md). 
 Please make sure you have a basic understanding of how to use HOCON.
 
-If you have no configuration files, bluemap generates example configurations for you when it is starting.
+If you have no configuration files, BlueMap generates example configurations for you when it is starting.
 In those generated config files every field has a comment above it with what it does, and it's default value 
 *(if it has one)*. Read those! They'll explain a lot! :)
 
 ## Configuring your maps *(adding & removing maps)*
 In your config-folder you can find a folder called `maps`. This folder contains a `.conf` file for each map that you want
-bluemap to render, update and/or show on the web-app.
+BlueMap to render, update and/or show on the web-app.
 
 The name of those config-files (without the `.conf`-extension) will be the identifier of your map. E.g. you will use that
-identifier in your commands to select the map. If you rename a config-file, it will be like creating a new map, since bluemap
+identifier in your commands to select the map. If you rename a config-file, it will be like creating a new map, since BlueMap
 also stores all map-information based on that identifier.
 
 If you want to remove a map, you can just delete its `.conf` file.  
@@ -36,7 +36,7 @@ If you want to add a map, you can create a new `.conf` file in this folder and f
 The easiest way is probably to just copy the `.conf` file from the one of the default config-files and edit it to your liking.
 
 Inside each map-config you can change all sorts of map-settings like e.g. the display-name of the map or the order in which the map
-is shown on the web-app. Just view the comments in the default config-file that bluemap generated for you.
+is shown on the web-app. Just view the comments in the default config-file that BlueMap generated for you.
 Everything is explained there.
 
 ## Performance tweaking
@@ -56,7 +56,7 @@ The `player-render-limit` setting in BlueMap's `plugin.conf` controls this.
 
 ## Hosting static maps
 If you have an old map of a world that doesn't exist anymore or a map that was rendered on a different server, you can still display it
-on the web-app. All bluemap needs is to know the identifier 
+on the web-app. All BlueMap needs is to know the identifier 
 (see ["Configuring the map-storages"](#configuring-the-map-storages-store-maps-in-a-database-or-a-different-directory)) 
 of the map and the storage that it is stored in.
 So we can just add a new map-config named like the identifier of the map with the only setting being the `storage`-setting.

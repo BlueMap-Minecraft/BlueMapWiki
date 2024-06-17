@@ -91,7 +91,7 @@ server {
   listen 80;
   server_name yourdomain.com;
 
-  # path to bluemap-webroot, bluemap can also be used in a sub-folder .. just adapt the paths accordingly
+  # path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
   root /var/www;
 
   location ~* ^/maps/[^/]*/tiles/ {

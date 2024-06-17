@@ -9,8 +9,8 @@ nav_order: 2
 # Directly hosting BlueMap with external webservers from a SQL storage
 {: .no_toc }
 
-BlueMap's internal webserver is very lightweight and quite fast, but it is quickly overwhelmed by a larger number of
-concurrent requests.
+BlueMap's internal webserver is very lightweight and quite fast, but it might get overwhelmed by a larger number of
+concurrent users.
 
 If you want to optimize the speed of your web-app for a larger audience, you can also host BlueMap directly with 
 external webservers like [NGINX](https://www.nginx.com/) or [Apache](https://httpd.apache.org/). 
@@ -20,7 +20,7 @@ For this to work you need to do some configuration.
 {:toc}
 
 ## The goal
-BlueMap renders and saved the map on your SQL-Server. But the webapp requests them like they would be in a normal file-storage
+BlueMap renders and saves the map on your SQL-Server. But the webapp requests them like they would be in a normal file-storage
 inside the webroot. So we need some script that is translating those requests and fetching and providing the correct files 
 from the SQL-Server.
 
@@ -50,7 +50,7 @@ server {
     listen 80;
     server_name yourdomain.com;
     
-    # path to bluemap-webroot, bluemap can also be used in a sub-folder .. just adapt the paths accordingly
+    # path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
     root /var/www;
     
     location / {
