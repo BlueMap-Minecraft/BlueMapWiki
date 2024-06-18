@@ -130,7 +130,7 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 {: .info .important }
 
 ### Caddy configuration
-```caddy
+```
 yourdomain.com {
 	# path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
 	root /var/www
