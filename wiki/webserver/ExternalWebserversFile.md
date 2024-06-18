@@ -128,3 +128,30 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
 {: .info .important }
+
+### Caddy configuration
+```caddy
+yourdomain.com {
+	# path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
+	root /var/www
+	file_server
+
+	# Match the textures.json file & .prbm files
+	@gz path /maps/*/textures.json *.prbm
+	# Find .gz files (if not found respond with 204) for the above matcher, and set the "Content-Encoding gzip" header
+	handle @gz {
+		try_files {path}.gz =204
+		header Content-Encoding gzip
+	}
+
+	# Respond with 204 for non-existant map-tiles
+	@204 path */tiles/*
+	handle @204 {
+		try_files {path} =204
+	}
+}
+
+```
+> **Important:**<br>
+> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
+{: .info .important }
