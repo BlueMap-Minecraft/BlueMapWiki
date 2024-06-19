@@ -59,6 +59,7 @@ and it should be fixed :)
 - Press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure your 
   browser has not cached anything weird.
 - Use `/bluemap` to check if BlueMap is rendering something! It might be busy rendering a different map first.
+- Use `/bluemap unfreeze <map>` to make sure it's not frozen.
 - Make sure that the `world:`-setting in your map-config is set to the correct world-folder.
 - Make sure that the `dimension:`-setting in your map-config is correct.
 - Make sure your BlueMap-version supports the minecraft-version you are trying to render. *(You can see that on 
