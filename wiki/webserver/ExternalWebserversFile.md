@@ -143,7 +143,7 @@ yourdomain.com {
   handle @gz {
     try_files {path}.gz =204
     header Content-Encoding gzip
-    }
+  }
 
   # Respond with 204 for non-existant map-tiles
   @204 path */tiles/*
