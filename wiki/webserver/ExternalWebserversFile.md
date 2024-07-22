@@ -121,7 +121,8 @@ DocumentRoot /var/www/
 </Directory>
 
 # OPTIONAL:
-# Proxy requests to the live data interface to bluemaps integrated webserver  
+# Proxy requests for live data to the bluemaps integrated webserver.
+# If you have multiple servers you will need to proxy each map-id to the correct server.
 ProxyPreserveHost On
 ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 ```
@@ -129,30 +130,33 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
 {: .info .important }
 
-### Caddy configuration
+## Caddy configuration
 ```
 yourdomain.com {
-	# path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
-	root * /var/www
-	file_server
+  # path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
+  root * /var/www
+  file_server
 
-	# Match the textures.json file & .prbm files
-	@gz path /maps/*/textures.json *.prbm
-	# Find .gz files (if not found respond with 204) for the above matcher, and set the "Content-Encoding gzip" header
-	handle @gz {
-		try_files {path}.gz =204
-		header Content-Encoding gzip
-	}
+  # Match the textures.json file & .prbm files
+  @gz path /maps/*/textures.json *.prbm
+  # Find .gz files (if not found respond with 204) for the above matcher, and set the "Content-Encoding gzip" header
+  handle @gz {
+    try_files {path}.gz =204
+    header Content-Encoding gzip
+    }
 
-	# Respond with 204 for non-existant map-tiles
-	@204 path */tiles/*
-	handle @204 {
-		try_files {path} =204
-	}
+  # Respond with 204 for non-existant map-tiles
+  @204 path */tiles/*
+  handle @204 {
+    try_files {path} =204
+  }
 
-	handle /maps/*/live/* {
-		reverse_proxy 127.0.0.1:8100
-	}
+  # OPTIONAL:
+  # Proxy requests for live data to the bluemaps integrated webserver.
+  # If you have multiple servers you will need to proxy each map-id to the correct server.
+  handle /maps/*/live/* {
+    reverse_proxy 127.0.0.1:8100
+  }
 }
 ```
 > **Important:**<br>
