@@ -133,7 +133,7 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 ```
 yourdomain.com {
 	# path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
-	root /var/www
+	root * /var/www
 	file_server
 
 	# Match the textures.json file & .prbm files
@@ -149,8 +149,11 @@ yourdomain.com {
 	handle @204 {
 		try_files {path} =204
 	}
-}
 
+	handle /maps/*/live/* {
+		reverse_proxy 127.0.0.1:8100
+	}
+}
 ```
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
