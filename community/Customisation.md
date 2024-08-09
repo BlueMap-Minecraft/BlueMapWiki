@@ -124,13 +124,17 @@ You can change the filename of that by opening the `/bluemap/web/assets/index-12
 By changing that piece of text, you can choose any other filename you wish.
 
 ## Domain
-To use a custom domain for your BlueMap, instead of a numerical IP, it works like any other website.  
-In your domain's DNS settings, you should point an A Record to the IP of the server your BlueMap is hosted on.  
-Keep in mind that _this will not_ remove the need to type the port afterwards!  
-To fix that, you need an external webserver. Here is a guide on how to do that with NGINX: [NginxProxy]({{site.baseurl}}/wiki/webserver/NginxProxy.html)
+To use a custom domain for your BlueMap, instead of a numerical IP, it works like any other website.
 
-> It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server. Browsers do not support SRV Records.
+> It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server! Browsers do not support SRV Records.
 {: .info .important }
+
+Putting BlueMap onto a domain is best done in multiple steps:
+0. Make sure you have a server running on a numeric IP (`124.45.67.890`) and that BlueMap is accessible there (`http://124.45.67.890:8100`)
+1. You should start with creating an A record in your domain's DNS settings that points to your numeric IP. BlueMap should now be accessible through `http://yourdomain.com:8100`. This is generally as far as you can get with normal Minecraft server hosts... Maybe with some nicer hosting providers, you can talk to them and discuss possibilities, though :)
+2. If you have more control over your server (if you for example host at home or rent a VPS), you can install an external webserver and make it run on your domain. We generally recommend nginx. Here is a nice Getting Started guide for it: https://nginx.org/en/docs/beginners_guide.html
+3. Once you have your external webserver set up, you need to reverse-proxy BlueMal with it. Here is a guide on how to do that with nginx: [NginxProxy]({{site.baseurl}}/wiki/webserver/NginxProxy.html)
+4. Once you have that, you can even set up SLL (HTTPS)
 
 ## Advanced Webapp Customisation
 If you feel like you need more control over the look and behaviour of the webapp
