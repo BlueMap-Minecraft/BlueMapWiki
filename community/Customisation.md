@@ -23,6 +23,8 @@ so make sure to remember any edits you do to it and any of BlueMap's other sourc
 ## Custom Styles (Theme and Look)
 BlueMap allows you to write custom CSS snippets, with which you can style the BlueMap interface exactly to your liking.
 
+Custom styles are not limited to any specific platform; they work on all platforms that BlueMap supports.
+
 > **Info:**  
 > If you don't know how to write CSS yet, here is a good guide: [developer.mozilla.org/en-US/docs/Learn/CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
 {: .info }
@@ -55,6 +57,8 @@ under the "style" platform filter. Feel free to take inspiration from these! Sty
 
 ## Custom Scripts (Behaviour)
 Aside from custom CSS snippets, BlueMap also supports custom JavaScript snippets to customise the behaviour of the webapp.
+
+Custom scripts are not limited to any specific platform; they work on all platforms that BlueMap supports.
 
 > **Info:**  
 > If you don't know how to write JavaScript yet, here is a good guide: [developer.mozilla.org/en-US/docs/Learn/JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
