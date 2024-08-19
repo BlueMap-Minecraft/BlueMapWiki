@@ -22,7 +22,7 @@ Cloudflare R2 is a service that allows you to host files on Cloudflare's network
 - Credit card/prepaid card you have
 - a completely rendered BlueMap map (you can use the CLI or the docker container for that) — this is intended as a one-time upload for a map where further adjustments are unnecessary
 - rclone on the system you've rendered the map on
-
+- a rendered bluemap, which uses FILE storage, not SQL storage
 
 ## Adding a domain to Cloudflare
 
