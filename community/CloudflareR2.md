@@ -37,7 +37,7 @@ Go to Websites, click on “Add a site” then write your domain name.
     - You can skip it because we don't need to set a DNS for this method.
 
 3. “Change your nameservers”
-    - Go to the site you bought your domain and change nameservers to Cloudflare's nameservers.
+    - Go to the site where you bought your domain and change nameservers to Cloudflare's nameservers.
 
 
 ## Creating a bucket & uploading files with rclone
