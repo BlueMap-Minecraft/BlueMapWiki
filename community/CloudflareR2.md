@@ -11,18 +11,21 @@ nav_order: 15
 1. TOC
 {:toc}
 
+## For whom is this guide?
+
+This guide is for people who want a static map, which they rarely if ever want to update. It is not intended for a live map of a server.
+
 ## What is Cloudflare R2?
 
 Cloudflare R2 is a service that allows you to host files on Cloudflare's network. With a couple of tweaks, you can host static websites such as BlueMap on Cloudflare R2. Please bear in mind that Cloudflare R2 costs money.
 
 ## What do you need for this?
 
-- Cloudflare account
-- Domain you own & is connected with Cloudflare
-- Credit card/prepaid card you have
-- a completely rendered BlueMap map (you can use the CLI or the docker container for that) — this is intended as a one-time upload for a map where further adjustments are unnecessary
-- rclone on the system you've rendered the map on
-- a rendered bluemap, which uses FILE storage, not SQL storage
+- a Cloudflare account
+- a Domain you own & is connected with Cloudflare
+- a Credit card/prepaid card you have
+- a rendered BlueMap, which uses FILE storage, not SQL storage
+- rclone installed on the system you've rendered the map on
 
 ## Adding a domain to Cloudflare
 
@@ -42,13 +45,13 @@ Go to Websites, click on “Add a site” then write your domain name.
 
 ## Creating a bucket & uploading files with rclone
 
-1. Go to R2, click on “Create bucket” then write your bucket name.
+1. Go to R2, click on “Create bucket” then write your bucket name, e.g. `bluemap`.
 
 2. In your new bucket, go to settings.
 
 3. Scroll to Public Access / Custom Domains and click on “Connect Domain”. Enter the domain you want to use for BlueMap and confirm the changes.
 
-4. (optional) Scroll down and edit the “Default Multipart Abort Rule” by clicking on the three dots and then “Edit”. Set the “Multipart Abort Rule” to 1 day.
+4. (optional) Scroll down and edit the “Default Multipart Abort Rule” by clicking on the three dots and then “Edit”. Set the “Multipart Abort Rule” to 1 day. This will cause multipart uploads to be aborted after 1 day if they are not completed. This is useful if a larger file upload is interrupted. It will remove the incomplete file after 1 day.
 
 5. Go back to the R2 overview page and click on “Manage R2 API Tokens”. Click on “Create API Token” and give it a name. Give it “Admin Read & Write” permissions & create the token.  Keep this page open for the rclone configuration.
 
@@ -70,7 +73,7 @@ Go to Websites, click on “Add a site” then write your domain name.
 
 3. Run the following command to upload the files to your R2 bucket:
    ```bash
-   rclone sync . R2:drehmal-bluemap/ --transfers=60 --checkers=120 -P
+   rclone sync . R2:bluemap/ --transfers=60 --checkers=120 -P
    ```
    - `rclone` — the program you are calling
    - `sync` — the command to synchronize files — files which are not present in the destination will be copied there and files which are not present in the source will be deleted in the destination
@@ -86,7 +89,7 @@ Go to Websites, click on “Add a site” then write your domain name.
 
 1. Go to your domain inside the Cloudflare dashboard. Click on “Rules” and then “Transform Rules” — make sure you are in the Rewrite URL tab. Click on “Create Rule”.
 
-2. Give the Rule a name, e.g. `BlueMap: Index`.
+2. Give the Rule a name, e.g. `BlueMap: Index`. This rule will allow you to open the BlueMap domain without the need to enter `index.html` at the end of the URL.
    1. Select `Custom filter expression`
       1. In the first field, select `Hostname`. In the Operator field, select `equals`. In the value field, enter the domain you are using for BlueMap, e.g. `map.example.com`.
       2. Click on `And` to add another rule.
@@ -94,9 +97,9 @@ Go to Websites, click on “Add a site” then write your domain name.
    2. Further down under Path, select `Rewrite to...`.
       1. In the first field select `Dynamic` and in the second field enter `concat(http.request.uri.path, "index.html")`.
    3. It should look similar to this: ![Screenshot of the index rule in Cloudflare]({{site.baseurl}}/assets/r2/index_rule.png)
-   4. Save the rule. This rule allows you to open the BlueMap without the need to enter `index.html` at the end of the URL.
+   4. Save the rule.
 
-3. Create another Transform rule here and give it a name, e.g. `BlueMap: gzip`
+3. Create another Transform rule here and give it a name, e.g. `BlueMap: gzip`. This rule allows Cloudflare to serve the compressed files when the textures or the .prbm files are requested.
    1. Select `Custom filter expression`
       1. In the first field, select `Hostname`. In the Operator field, select `equals`. In the value field, enter the domain you are using for BlueMap, e.g. `map.example.com`.
       2. Click on `And` to add another rule.
@@ -108,10 +111,10 @@ Go to Websites, click on “Add a site” then write your domain name.
    2. Further down under Path, select `Rewrite to...`.
       1. In the first field select `Dynamic` and in the second field enter `concat(http.request.uri.path, ".gz")`.
    3. It should look similar to this: ![Screenshot of the gzip rule in Cloudflare]({{site.baseurl}}/assets/r2/gzip_rule.png)
-   4. Save the rule. This rule allows Cloudflare to serve the compressed files when the textures or the .prbm files are requested.
+   4. Save the rule.
 
 4. Now click on the `Modify Response Header` tab and create a new rule.
-   1. Give the rule a name, e.g. `BlueMap: Content-Encoding`.
+   1. Give the rule a name, e.g. `BlueMap: Content-Encoding`. This rule marks the compressed files as compressed, so your browser knows how to handle them when it requests them.
    2. Select `Custom filter expression`
       1. In the first field, select `URI Path`. In the Operator field, select `ends with`. In the value field, enter `.gz`.
       2. Click on `Or` to add another rule.
@@ -121,7 +124,7 @@ Go to Websites, click on “Add a site” then write your domain name.
    3. Further down under `Modify response header`.
       1. In the first field, select `Set static`. In the Header name field, enter `Content-Encoding`. In the Header value field, enter `gzip`.
    4. It should look similar to this: ![Screenshot of the Content-Encoding rule in Cloudflare]({{site.baseurl}}/assets/r2/encoding_rule.png)
-   5. Save the rule. This rule marks the compressed files as compressed, so your browser knows how to handle them when requested.
+   5. Save the rule.
 
 
 ## Making optional configurations
