@@ -31,7 +31,7 @@ Go to Websites, click on "Add a site" then write your domain name.
     - You can skip it because we don't need to set a dns for this method.
     
 3. "Change your nameservers"
-    - Go to the site you bought your domain and change nameservers to Cloudflare's nameservers.
+    - Go to the site you where bought your domain and change nameservers to Cloudflare's nameservers.
 
 After doing these parts go to Traffic, Cloudflare Tunnel and click on Launch Zero Trust Dashboard.
 
