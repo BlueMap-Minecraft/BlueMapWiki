@@ -129,7 +129,7 @@ Go to Websites, click on “Add a site” then write your domain name.
 
 ## Making optional configurations
 
-Every time a file is requested from your bucket, that counts as an operation. Every operation above the free limit induces a cost. To reduce the number of requests to your bucket, you can set up a cache policy. This will cache the files on Cloudflare's edge servers and serve them from there. This will reduce the number of requests to your bucket and thus reduce the costs.
+Every time a file is requested from your bucket, that counts as an operation. Every operation above the free limit induces a cost. To reduce the number of requests to your bucket, you can set up a cache policy. This has 2 parts. The first part of the rule (the `Edge TTL`) will cache the files on Cloudflare's edge servers and serve them from there. This will reduce the number of requests to your bucket and thus reduce the costs. The second part of the rule (the `Browser TTL`) will increase the time the files are cached in the browser. This can be beneficial if you have many visitors who visit the map multiple times. They can load the map faster because the files are already in their browser cache. If they want to see the latest version of the map, they can do a hard refresh (Ctrl + F5) to force the browser to load the static files from the server AND click on the "Update Map" button in the menu to reload the map tiles.
 
 1. Go to your domain inside the Cloudflare dashboard. Click on “Rules” and then “Cache Rules”. Click on “Create Rule”.
    1. Give the Rule a name, e.g. `BlueMap: Cache`.
@@ -137,11 +137,10 @@ Every time a file is requested from your bucket, that counts as an operation. Ev
       1. In the first field, select `Hostname`. In the Operator field, select `equals`. In the value field, enter the domain you are using for BlueMap, e.g. `map.example.com`.
    3. Further down under `Cache eligibility` select `Eligible for cache`.
    4. Further down under `Edge TTL` click on `Add Setting`.
-      1. Now select `Ignore cache-control header and use this TTL` and set `Input time-to-live (TTL)` to a value you are comfortable with. I set it to 1 year.
-      2. This rule will cache all files for up to 1 year on Cloudflare's edge servers and serve them from there instead of requesting them from your bucket. This will reduce the number of requests to your bucket and thus reduce the costs.
+      1. Now select `Ignore cache-control header and use this TTL` and set `Input time-to-live (TTL)` to a value you are comfortable with. I set it to 1 year, this will cache the files on Cloudflare's edge servers for up to 1 year. 
    5. Further down under `Browser TTL` click on `Add Setting`.
-      1. Now select `Override origin and use this TTL` and set `Input time-to-live (TTL)` to a value you are comfortable with. I set it to 1 year.
-      2. This rule will cache all files for up to 1 year in your browser. This can be beneficial if you have many visitors who visit the map multiple times. They can load the map faster because the files are already in their browser cache. If they want to see the latest version of the map, they can do a hard refresh (Ctrl + F5) to force the browser to load the static files from the server AND click on the "Update Map" button in the menu to reload the map tiles.
+      1. Now select `Override origin and use this TTL` and set `Input time-to-live (TTL)` to a value you are comfortable with. I set it to 1 year, this will cache the files in the browser for up to 1 year.
    6. It should look similar to this: ![Screenshot of the Cache rule in Cloudflare]({{site.baseurl}}/assets/r2/cache_rule.png)
    7. Save the rule.
+
 2. If you have a paid plan, you can potentially use “Custom error responses” to change 404 errors to 204 errors as suggested by the [External Web server documentation]({{site.baseurl}}/wiki/webserver/ExternalWebserversFile). This is however, not necessary for BlueMap to work. Since this documentation is about Cloudflare R2 and the free domain plan, I will not go into detail about this.
