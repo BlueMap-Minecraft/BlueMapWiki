@@ -113,8 +113,8 @@ Go to Websites, click on “Add a site” then write your domain name.
    3. It should look similar to this: ![Screenshot of the gzip rule in Cloudflare]({{site.baseurl}}/assets/r2/gzip_rule.png)
    4. Save the rule.
 
-4. Now click on the `Modify Response Header` tab and create a new rule.
-   1. Give the rule a name, e.g. `BlueMap: Content-Encoding`. This rule marks the compressed files as compressed, so your browser knows how to handle them when it requests them.
+4. Now click on the `Modify Response Header` tab and create a new rule. This rule marks the compressed files as compressed, so your browser knows how to handle them when it requests them.
+   1. Give the rule a name, e.g. `BlueMap: Content-Encoding`.
    2. Select `Custom filter expression`
       1. In the first field, select `URI Path`. In the Operator field, select `ends with`. In the value field, enter `.gz`.
       2. Click on `Or` to add another rule.
