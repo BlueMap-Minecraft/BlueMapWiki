@@ -101,3 +101,45 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
 {: .info .important }
+
+## Caddy with php-fpm
+
+Here is an example for how it could look like on Caddy with php-fpm:
+```caddy
+# Replace this with your own domain.
+# Put http://example.com if you are behind a reverse proxy, that way Caddy will not try to process HTTPS
+example.com {
+    root * /home/container/public
+    # https://caddyserver.com/docs/caddyfile/patterns#php-fpm
+    php_fastcgi localhost:9000
+    file_server
+    # Rewrite requests to sql.php
+    try_files {path} /sql.php
+}
+```
+> **Important:**<br>
+> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
+{: .info .important }
+
+## FrankenPHP
+
+Here is an example for how it could look like on FrankenPHP:
+```caddy
+{
+    # https://caddyserver.com/docs/caddyfile/patterns#frankenphp
+    frankenphp
+    order php_server before file_server
+}
+# Replace this with your own domain.
+# Put http://example.com if you are behind a reverse proxy, that way Caddy will not try to process HTTPS
+example.com {
+    root * /home/container/public
+    file_server
+    php_server
+    # Rewrite requests to sql.php
+    try_files {path} /sql.php
+}
+```
+> **Important:**<br>
+> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
+{: .info .important }
