@@ -111,7 +111,7 @@ Here is an example for how it could look like on Caddy with php-fpm:
 example.com {
     root * /home/container/public
     # https://caddyserver.com/docs/caddyfile/patterns#php-fpm
-    php_fastcgi localhost:9000
+    php_fastcgi unix//run/php/php7.4-fpm.sock # May need to be changed
     file_server
     # Rewrite requests to sql.php
     try_files {path} /sql.php
