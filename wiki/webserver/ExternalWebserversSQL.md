@@ -109,14 +109,27 @@ Here is an example for how it could look like on Caddy with php-fpm:
 # Replace this with your own domain.
 # Put http://example.com if you are behind a reverse proxy, that way Caddy will not try to process HTTPS
 example.com {
-    root * /home/container/public
-    # https://caddyserver.com/docs/caddyfile/patterns#php-fpm
-    php_fastcgi unix//run/php/php7.4-fpm.sock # May need to be changed
-    file_server
-    # Rewrite requests to sql.php
-    try_files {path} /sql.php
+	# This designates the root for the webserver
+	root /var/www/map.example.com
+	file_server
+
+	# https://caddyserver.com/docs/caddyfile/patterns#php-fpm
+	# You may need to modify this path.
+	php_fastcgi unix//run/php/php7.4-fpm.sock
+
+
+	# This directive tells the webserver to use SQL.PHP, which is the main file that handles PHP requests. You need this for PHP.
+	handle {
+		try_files {path} /sql.php
+	}
+
+	# OPTIONAL:
+	# Proxy requests for live data to the bluemaps integrated webserver.
+	# If you have multiple servers you will need to proxy each map-id to the correct server.
+	handle /maps/*/live/* {
+		reverse_proxy 127.0.0.1:8100
+	}
 }
-```
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
 {: .info .important }
