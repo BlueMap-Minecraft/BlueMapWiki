@@ -166,6 +166,7 @@ example.com {
 	handle /maps/*/live/* {
 		reverse_proxy 127.0.0.1:8100
 	}
+}
 ```
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
