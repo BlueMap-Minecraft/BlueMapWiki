@@ -115,7 +115,6 @@ yourdomain.com {
     # You may need to modify this path.
     php_fastcgi unix//run/php/php7.4-fpm.sock
 
-
     # Use the sql.php script, which handles requests with data from the sql-server.
     handle {
         try_files {path} /sql.php
