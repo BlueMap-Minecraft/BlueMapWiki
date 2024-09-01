@@ -101,3 +101,68 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
 {: .info .important }
+
+## Caddy with php-fpm
+
+Here is an example for how it could look like on Caddy with php-fpm:
+```
+yourdomain.com {
+    # The root for the webserver.
+    root /var/www
+    file_server
+
+    # https://caddyserver.com/docs/caddyfile/patterns#php-fpm
+    # You may need to modify this path.
+    php_fastcgi unix//run/php/php7.4-fpm.sock
+
+    # Use the sql.php script, which handles requests with data from the sql-server.
+    handle {
+        try_files {path} /sql.php
+    }
+
+    # OPTIONAL:
+    # Proxy requests for live data to the bluemaps integrated webserver.
+    # If you have multiple servers you will need to proxy each map-id to the correct server.
+    handle /maps/*/live/* {
+        reverse_proxy 127.0.0.1:8100
+    }
+}
+```
+> **Important:**<br>
+> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
+{: .info .important }
+
+## FrankenPHP
+
+Here is an example for how it could look like on FrankenPHP:
+```
+{
+    # https://frankenphp.dev/docs/config/#caddyfile-config
+    # Enable FrankenPHP.
+    frankenphp
+}
+
+yourdomain.com {
+    # The root for the webserver.
+    root /var/www
+
+    # https://frankenphp.dev/docs/config/
+    # Execute PHP files in the root directory and serve assets.
+    php_server
+
+    # Use the sql.php script, which handles requests with data from the sql-server.
+    handle {
+        try_files {path} /sql.php
+    }
+
+    # OPTIONAL:
+    # Proxy requests for live data to the bluemaps integrated webserver.
+    # If you have multiple servers you will need to proxy each map-id to the correct server.
+    handle /maps/*/live/* {
+        reverse_proxy 127.0.0.1:8100
+    }
+}
+```
+> **Important:**<br>
+> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
+{: .info .important }
