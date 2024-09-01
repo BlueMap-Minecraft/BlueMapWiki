@@ -105,7 +105,7 @@ ProxyPassMatch ^/(maps/[^/]*/live/.*) http://127.0.0.1:8100/$1
 ## Caddy with php-fpm
 
 Here is an example for how it could look like on Caddy with php-fpm:
-```caddy
+```
 yourdomain.com {
     # The root for the webserver.
     root /var/www
@@ -136,7 +136,7 @@ yourdomain.com {
 ## FrankenPHP
 
 Here is an example for how it could look like on FrankenPHP:
-```caddy
+```
 {
     # https://frankenphp.dev/docs/config/#caddyfile-config
     # Enable FrankenPHP.
