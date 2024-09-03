@@ -69,19 +69,13 @@ be able to respond in any way to the request.
 
 ## Faking "live" data while server is offline
 
-The endpoints of the live resources the frontend is looking for are:
- - `/maps/<world>/live/markers.json`
- - `/maps/<world>/live/players.json`
+The frontend attempts to load live data (markers, players) from endpoints under
+`/maps/<world>/live/`.
 
-For `markers.json`, BlueMap will automatically write out the current set of markers to a file on
-disk in `<webroot>/maps/<world>/live/markers.json` when it shuts down. This is conveniently exactly
-the same path as the request is asking for so we can just service the request normally from the
-webroot.
-
-For `players.json`, we don't want to send any legitimate data back because if the server is off,
-there can't be any players. In this guide we opt to send back the contents of
-`/assets/emptyTile.json` (`{}`) since it's convenient. It also keeps the frontend polling for
-players so if the server is started, it will automatically pick up the legitimate player data.
+When shutting down (and periodically) BlueMap will write out the current live state to files in
+`<webroot>/maps/<world>/live/`. These files conveniently have the exact path that the frontend is
+looking for so we can just service the request normally from the webroot (falling back to a 204 No
+Content response if the requested file doesn't exist).
 
 
 ## Example Nginx config
@@ -94,31 +88,33 @@ server {
   # path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
   root /var/www;
 
-  location ~* ^/maps/[^/]*/tiles/ {
-    # High-res tiles are stored as precompressed JSON with a fallback to returning an empty tile.
-    # Low-res tiles are stored as pngs with a fallback to returning 204 (No Content).
-    location ~* \.json$  {
-      error_page 404 =200 /assets/emptyTile.json;
-      gzip_static always;
+  location /maps/ {
+    # All high-res tile data and some json data is precompressed into *.gz files
+    gzip_static always;
+
+    # Return 204 No Content if requesting a missing tile
+    location ~* ^/maps/[^/]*/tiles/ {
+      error_page 404 = @no-content;
     }
-    location ~* \.png$ {
-      try_files $uri =204;
+
+    # Proxy all requests for live data to the integrated webserver.
+    # Fall back to @server-offline if it can't be contacted.
+    location ~* ^/maps/[^/]*/live/ {
+      proxy_read_timeout 2s;  # required if lazymc pauses the server instead of shutting it down
+      error_page 502 504 = @server-offline;
+      proxy_pass http://127.0.0.1:8100;  # the default port for the integrated webserver, adapt to your setup
     }
   }
 
-  # Proxy all requests for live data to the integrated webserver.
-  # Fall back to @server-offline if it can't be contacted.
-  location ~* ^/maps/[^/]*/live/ {
-    proxy_read_timeout 2s;  # required if lazymc pauses the server instead of shutting it down
-    error_page 502 504 = @server-offline;
-    proxy_pass http://127.0.0.1:8100;  # the default port for the integrated webserver, adapt to your setup
+  location @no-content {
+    internal;
+    return 204;
   }
 
-  # Handles serving "live" data when the integrated webserver can't be reached
+  # Serve "live" data from the disk when the integrated webserver can't be reached
   location @server-offline {
     internal;
-    # Serve markers.json from disk, fall back to sending the data for an empty tile for players.json
-    try_files $uri /assets/emptyTile.json;
+    try_files $uri =204;
   }
 }
 ```
