@@ -162,3 +162,52 @@ yourdomain.com {
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
 {: .info .important }
+
+## IIS
+### IIS Modules
+This needs URL Rewrite and Application Request Routing modules.
+
+## IIS configuration
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <directoryBrowse enabled="true" />
+        <staticContent>
+            <mimeMap fileExtension=".conf" mimeType="text/plain" />
+        </staticContent>
+        <rewrite>
+            <rules>
+                <rule name="Rewrite maps extenstions to .gz">
+                    <match url="maps\/.*\/tiles\/.*.json" />
+                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+                    <action type="Rewrite" url="{R:0}.gz" />
+                </rule>
+            </rules>
+
+            <outboundRules>
+                <!-- Set Content-Type to application/json -->
+                <rule name="Set gzip headers for JSON">
+                    <match serverVariable="RESPONSE_Content-Type" pattern=".*" />
+                    <action type="Rewrite" value="application/json" />
+                    <conditions>
+                        <add input="{REQUEST_FILENAME}" pattern=".*.json.gz" />
+                    </conditions>
+                </rule>
+
+                <!-- Set Content-Encoding to gzip -->
+                <rule name="Set Accept-Encoding gzip">
+                    <match serverVariable="RESPONSE_Content-Encoding" pattern=".*" />
+                    <action type="Rewrite" value="gzip" />
+                    <conditions>
+                        <add input="{REQUEST_FILENAME}" pattern=".*.json.gz" />
+                    </conditions>
+                </rule>
+            </outboundRules>
+        </rewrite>
+    </system.webServer>
+</configuration>
+```
+> **Important:**<br>
+> The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
+{: .info .important }
