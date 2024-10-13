@@ -29,12 +29,13 @@ We need to create local Pterodactyl allocations for the BlueMap webserver to use
 
 1. Head over to the Pterodactyl admin area.
 2. Create a new allocation on the desired node for the server you want to create the proxy for.
-> Set the `IP Address` to `127.0.0.1` along with your desired port
+> Set the `IP Address` to `172.18.0.1` along with your desired port
 3. Add the newly created allocation to the server you want to create the proxy for.
 > If you changed the port make sure to edit it in the `webserver.conf` file as well.
 
 ## Usage in NGINX config blocks
 You need to use the Pterodactyl pass-through IP (`172.18.0.1`) in the config blocks for the reverse proxy to work.
+You can usually locate the config file to be edited in `/etc/nginx/sites-available/`.
 
 ### BlueMap on a subdirectory of your website
 Same as in [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) except you need to use the Pterodactyl pass-through IP (`172.18.0.1`).
