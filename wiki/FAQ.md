@@ -31,30 +31,6 @@ on the map. Also make sure to click `Update Map` in the menu on the left to make
 Please make sure to read the changelog, as there may be more steps necessary than just swapping out the .jar file. 
 Those steps will be clearly listed on the update page.
 
-### Q: Why is BlueMap using so much of my CPU?
-When you install BlueMap for the first time, it needs to convert all of your world(s) into 3d models.
-This is a pretty intensive process, so it's not strange at all to see BlueMap using up a lot of CPU power for a while after it's been installed.
-
-In the BlueMap config file `core.conf` you can set how many threads BlueMap will use for the conversion process.
-BlueMap runs asynchronously to your server-thread, so as long as the CPU isn't maxed out, it should not slow down your server.
-
-After the conversion process is done for the first time, it won't ever have to render the whole map again!
-From then on, BlueMap will keep track of your world and convert only the chunks that change.
-
-If you do `/bluemap`, you can see the progress of the conversions and an estimated time that is left.
-
-### Q: I have black/pink-checkered blocks on my map!
-Read this: [https://bluemap.bluecolored.de/wiki/customization/Mods.html](https://bluemap.bluecolored.de/wiki/customization/Mods.html)
-
-### Q: My block-textures are messed up when I zoom in on the map!
-First, press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure 
-your browser has not cached anything weird.  
-You can also try to clear your browser-cache completely. *(`F12` -> Network -> [x] Disable cache -> `F5`)*
-
-If that doesn't help, you might have changed some BlueMap-settings that require a complete re-render of the map:
-Just use `/bluemap purge <map-id>` to delete and re-render the entire map. Then clear your browser-cache again,
-and it should be fixed :)
-
 ### Q: I have a black map / a lot of the map is missing!
 - Press the `Update Map` button in BlueMap's menu. This updates all tiles from the server and makes sure your 
   browser has not cached anything weird.
@@ -84,6 +60,21 @@ This will ignore potentially missing light data while rendering, with some drawb
 - Cave-rendering will always be enabled in those chunks, because it is using the sun-light data to detect the "caves"
 - Everything in those chunks will be rendered fully lit (sun-light value of 15, looks similar to having night-vision)
 
+### Q: My map is only loading in low resolution!
+This happens when your webapp can't load the high-resolution tiles for some reason.  
+This could be caused by one of these things:  
+- You have updated BlueMap, but did not update BlueMap's webapp properly.  
+  Try to delete the `<webroot>/index.html` and reload BlueMap.
+- You disabled the hires tiles in your map config.  
+  Set `enable-hires` to `true` in your map config and purge your map so bluemap re-renders it with the hires tiles enabled.
+- You haven't set up your external webserver correctly.  
+  Please make sure you've read the [External Webservers]({{site.baseurl}}/wiki/webserver/) guide to see how to do that.
+
+If you're still having issues, please visit [#support](https://discord.com/channels/665868367416131594/751804128749027421) in our [Discord](https://bluecolo.red/map-discord).  
+
+### Q: I have black/pink-checkered blocks on my map!
+Read this: [https://bluemap.bluecolored.de/wiki/customization/Mods.html](https://bluemap.bluecolored.de/wiki/customization/Mods.html)
+
 ### Q: The map (web-app) has low FPS (lagging)
 Make sure you have **hardware-acceleration enabled** on your browser! 
 Use your favorite search engine to learn how to do this :)
@@ -107,6 +98,18 @@ to check how long each request is taking, and where the bottleneck is.
 If you're certain the connection speed between your server and you is adequate,
 make sure you're on the latest version of BlueMap, as there may have been optimisations since.
 
+### Q: Why is BlueMap using so much of my servers CPU?
+When you install BlueMap for the first time, it needs to convert all of your world(s) into 3d models.
+This is a pretty intensive process, so it's not strange at all to see BlueMap using up a lot of CPU power for a while after it's been installed.
+
+In the BlueMap config file `core.conf` you can set how many threads BlueMap will use for the conversion process.
+BlueMap runs asynchronously to your server-thread, so as long as the CPU isn't maxed out, it should not slow down your server.
+
+After the conversion process is done for the first time, it won't ever have to render the whole map again!
+From then on, BlueMap will keep track of your world and convert only the chunks that change.
+
+If you do `/bluemap`, you can see the progress of the conversions and an estimated time that is left.
+
 ### Q: How can I add or remove maps?
 To add a map, copy a map-config from the `maps`-folder next to the other config-files, open it and tweak the settings 
 for your new map. To remove a map, just delete the config-file.  
@@ -116,19 +119,6 @@ Read [this guide](https://bluemap.bluecolored.de/wiki/getting-started/Configurat
 BlueMaps integrated webserver does not (and will not) support SSL on its own, 
 but you can e.g. [use NGINX to reverse-proxy your map]({{site.baseurl}}/wiki/webserver/NginxProxy.html) 
 and add SSL that way.
-
-### Q: My map disappears when I zoom in!
-This happens when BlueMap is trying to load the hi-res tiles, but can't find them for some reason.  
-This could be caused by one of these things:  
-- You have updated BlueMap, but did not update BlueMap's webapp properly.  
-  Try to delete the `<webroot>/index.html` and reload BlueMap.
-- You've set `save-hires-layer` to `false` in your map's config.  
-  If this is the case, make sure to set the `hires-slider-default` to `0` in `webapp.conf` and set the 
-  "Render Distance - Hires Layer" slider down to `0` in the webapps settings-menu.
-- You haven't set up your external webserver correctly.  
-  Please make sure you've read the [External Webservers]({{site.baseurl}}/wiki/webserver/) guide to see how to do that.
-
-If you're still having issues, please visit [#support](https://discord.com/channels/665868367416131594/751804128749027421) in our [Discord](https://bluecolo.red/map-discord).  
 
 ### Q: How do I add authentication to my map?
 BlueMap does not support authentication by itself. Instead, you could use [http-basic-auth using an external webserver](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/).
