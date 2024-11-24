@@ -18,6 +18,11 @@ This is why it can be useful to run a tool to fix the data in these chunks first
 We recommend using Chunky since it is supported on most platforms that BlueMap runs on, but for Bukkit-based servers Light Cleaner is also an option.
 
 ## Chunky Instructions
+
+> Chunky seems to not work for fixing lighting issues with the latest versions of Paper (1.21.3+)!
+> If you are using Paper 1.21.3 or higher, jump to the **Light Cleaner Instructions** section below.
+{: .info .important }
+
 First make sure you have Chunky installed. You can download it at [modrinth.com/plugin/chunky](https://modrinth.com/plugin/chunky)  
 Now to fix lighting issues in the world, we will want to force re-loading of all of the chunks in the world. This can be done using the steps outlined below:
 1. Open the config file for Chunky: `Chunky/config.yml`
