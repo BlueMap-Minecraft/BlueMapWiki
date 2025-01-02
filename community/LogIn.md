@@ -39,7 +39,7 @@ It simply asks for a username and password which are configured in a file.
 It is often handled by an external webserver such as Nginx or Apache.
 
 You can create the config file with the `htpasswd` utility by Apache.
-On Debian based distros it is in the `apache2-utils` package.
+On Debian based distros it is in the `apache2-utils` package, or the `httpd-tools` package on RedHat based distros (RHEL/CentOS/Oracle Linux).
 To create a new file and the first user use `htpasswd -c /path/to/file/.htpasswd user`.
 To create a new user use use `htpasswd /path/to/file/.htpasswd another_user`.
 
