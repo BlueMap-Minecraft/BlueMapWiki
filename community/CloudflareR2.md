@@ -2,7 +2,7 @@
 layout: page
 title: Hosting BlueMap on Cloudflare R2
 parent: Community Guides
-nav_order: 15
+nav_order: 16
 ---
 
 # How to host BlueMap on Cloudflare R2

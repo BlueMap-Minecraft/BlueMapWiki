@@ -2,7 +2,7 @@
 layout: page
 title: Oracle Cloud Instance - Ports opening (Oracle Linux and Ubuntu)
 parent: Community Guides
-nav_order: 9
+nav_order: 11
 ---
 
 # Oracle Cloud Instance - Ports opening (Oracle Linux and Ubuntu)
