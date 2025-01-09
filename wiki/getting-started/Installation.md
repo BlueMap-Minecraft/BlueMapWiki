@@ -14,7 +14,7 @@ nav_order: 1
 
 ## General Prerequisites
 To run BlueMap you need:
-- Java 16 or newer
+- Java 21 or newer
 - Minecraft Java-Edition
 
 BlueMap only works with Java-Edition worlds, Bedrock-Edition worlds are not supported!
@@ -88,6 +88,7 @@ You can use BlueMap as a standalone app on the [CLI](https://en.wikipedia.org/wi
 This is useful if you want to render a map of a minecraft-world, but don't want to set up an entire minecraft-server.
 
 ### Prerequisites
+- Java 21 or newer
 - A minecraft-world that you want to render
 - Any **port** that you can use to host the webserver on
   *(Ask your hosting service if & how you can open a port)*
