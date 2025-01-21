@@ -127,18 +127,24 @@ BlueMap has a screenshot feature, which downloads a screenshot to your device.
 You can change the filename of that by opening the `/bluemap/web/assets/index-123456.js` file, and then doing a `Ctrl`+`F` for "`bluemap-screenshot.png`".  
 By changing that piece of text, you can choose any other filename you wish.
 
-## Domain
-To use a custom domain for your BlueMap, instead of a numerical IP, it works like any other website.
+## (Sub)Domain
+To use a custom (sub)domain for your BlueMap, instead of a numerical IP, it works like any other website.
 
-> It is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server! Browsers do not support SRV Records.
+> Putting a web server on a (sub)domain is quite different than a game server!  
+> For example, it is not possible to do remove the port with an SRV Record, like you probably did for your Minecraft Server! Browsers do not support SRV Records.
 {: .info .important }
 
-Putting BlueMap onto a domain is best done in multiple steps:
-0. Make sure you have a server running on a numeric IP (`123.45.67.890`) and that BlueMap is accessible there (`http://123.45.67.890:8100`)
-1. You should start with creating an A record in your domain's DNS settings that points to your numeric IP. BlueMap should now be accessible through `http://yourdomain.com:8100`. This is generally as far as you can get with normal Minecraft server hosts... Maybe with some nicer hosting providers, you can talk to them and discuss possibilities, though :)
-2. If you have more control over your server (if you for example host at home or rent a VPS), you can install an external webserver and make it run on your domain. We generally recommend nginx. Here is a nice Getting Started guide for it: [nginx.org/en/docs/beginners_guide](https://nginx.org/en/docs/beginners_guide.html)
-3. Once you have your external webserver set up, you need to reverse-proxy BlueMap with it. Here is a guide on how to do that with nginx: [NginxProxy]({{site.baseurl}}/wiki/webserver/NginxProxy.html)
-4. Once you have that, you can even set up SLL (HTTPS)
+Putting BlueMap onto a (sub)domain is best done in multiple steps:
+1. Make sure you have a server running on a numeric IP (`123.45.67.890`) and that BlueMap is accessible there (`http://123.45.67.890:8100`)
+2. You should start with creating an A record in your domain's DNS settings that points to your numeric IP.
+   BlueMap should now be accessible through `http://yourdomain.com:8100`.  
+   **This is generally as far as you can get with normal Minecraft server hosts...**
+   Maybe with some nicer hosting providers, you can talk to them and discuss possibilities, though :)
+3. If you have more control over your server (for example, if you host at home or rent a VPS), you can install an external webserver and make it run on your domain.
+   We generally recommend nginx. Here is a nice Getting Started guide for it: [nginx.org/en/docs/beginners_guide](https://nginx.org/en/docs/beginners_guide.html)
+4. Once you have your external webserver set up, you need to reverse-proxy BlueMap with it.
+   Here is a guide on how to do that with nginx: [NginxProxy]({{site.baseurl}}/wiki/webserver/NginxProxy.html)
+5. Once you have that, you can even set up SLL (HTTPS)
 
 ## Advanced Webapp Customisation
 If you feel like you need more control over the look and behaviour of the webapp
