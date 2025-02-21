@@ -15,7 +15,7 @@ nav_order: 5
 
 - Cloudflare account,
 - Domain you own,
-- Server you can install Cloudlare Tunnels,
+- Server you can install Cloudflare Tunnels,
 - Credit card/prepaid card you have.
 
 ## Adding a domain to Cloudflare
