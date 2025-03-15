@@ -43,7 +43,7 @@ Here are some Examples:
 `jdbc:mariadb://db.myhost.com/my-database`  
 `jdbc:postgres://127.0.0.1:3306/bluemap`  
 
-And here is some more documentation for [mysql](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-jdbc-url-format.html),
+And here is some more documentation for [mysql](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-jdbc-url-format.html),
 [mariadb](https://mariadb.com/kb/en/about-mariadb-connector-j/#connection-strings) and [postgres](https://jdbc.postgresql.org/documentation/use/#connecting-to-the-database).
 
 ### Connection-Properties
