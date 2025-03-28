@@ -17,7 +17,7 @@ In the world of BlueMap where we have to support all these platforms and server 
 write guides and addons that cover everyone's needs. That's why this guide will just go through an example case of
 turning a regular old boring BlueMap installation on a Paper server running on a Debian VPS to a fancy one with
 a web chat. You will most likely need to adapt this guide to your specific situation or find a more tech savvy friend
-to help you. You can also hire the writer of this guide ([Antti.Codes](https://antti.codes/)) for consulation for 90€/h.
+to help you. You can also hire the writer of this guide ([Antti.Codes](https://antti.codes/)) for consultation for 90€/h.
 Though as he is way too kind hearted he will help as much as possible on the `#3rd-party-support` channel in the official
 BlueMap Discord for free.
 
@@ -42,7 +42,7 @@ We've got a VPS running Debian. The VPS has a public IP. There is a Paper Minecr
 BlueMap installed as a plugin running on port 8100. The BlueMap is accesible at `http://12.34.56.789:8100/`.
 In my case the Minecraft server is run with a Docker container as seen below.
 
-![Contents of docker-compose.yml and files in the data directory]({{site.baseurl}}/assets/chat/starting-situation.png)
+![Contents of compose.yml and files in the data directory]({{site.baseurl}}/assets/chat/starting-situation.png)
 ![BlueMap already working at http://12.34.56.789:8100/]({{site.baseurl}}/assets/chat/bluemap-already-working.png)
 
 ## Proxying with nginx
@@ -73,7 +73,7 @@ Then after reloading nginx with `sudo nginx -s reload` we should see our BlueMap
 
 ![BlueMap running through nginx proxy]({{site.baseurl}}/assets/chat/http-proxied-bluemap.png)
 
-As we no longer use BlueMap's own port for accessing it. We should prevent it from being exposed. In our `docker-compose.yml` file
+As we no longer use BlueMap's own port for accessing it. We should prevent it from being exposed. In our `compose.yml` file
 we can do `"127.0.0.1:8100:8100/tcp"` instead of `"8100:8100/tcp"`. If you don't use Docker, instead of changing Docker's
 port bindings change directly the ip address BlueMap uses by editing `plugins/BlueMap/webserver.conf` and adding `ip: "127.0.0.1"`.
 
@@ -151,21 +151,27 @@ After reloading nginx with `sudo nginx -s reload` we should have a working BlueM
 
 ## Authentication
 
-Download [Authentication](https://github.com/Chicken/Auth/releases/tag/authentication-v0.3.0)
-and [BlueMap-Auth](https://github.com/Chicken/Auth/releases/tag/bluemap-auth-v0.1.0).
+Download [Authentication](https://github.com/Chicken/Auth/releases/tag/authentication-v0.4.0)
+and [BlueMap-Auth](https://github.com/Chicken/Auth/releases/tag/bluemap-auth-v0.2.1).
 Copy them to the server plugins folder. You can do this with scp for example
-`scp Downloads/{Authentication,BlueMap-Auth}*.jar 12.34.56.789:~/minecraft-server/data/plugins`.
+`scp ~/Downloads/{Authentication,BlueMap-Auth}*.jar 12.34.56.789:~/minecraft-server/data/plugins`.
+Do notice the above links are for specific releases used at the time of writing (v0.4.0 and v0.2.1),
+there may be newer versions available that you may want to use. If you do use newer releases,
+keep in mind that some steps might differ and you should refer to the official up-to-date documentation.
 
 Now let's restart the server to generate configuration files.
 Edit `plugins/Authentication/config.yml` to have `optional_authentication: true`.
 If you aren't using Docker you don't need to touch ports or ips at all but as I am I'll need to.
 I'll edit the `config.yml` for Authentication and BlueMap-Auth to have `ip: "0.0.0.0"`.
-And `docker-compose.yml` to have `"127.0.0.1:8200:8200/tcp"` and `"127.0.0.1:8400:8400/tcp"` in the `ports` section.
+And `compose.yml` to have `"127.0.0.1:8200:8200/tcp"` and `"127.0.0.1:8400:8400/tcp"` in the `ports` section.
 Don't forget to restart the server to apply any changes.
 
 Next we'll get back to nginx and revise the `sites-available/bluemap.conf` to be as follows and reload again with `sudo nginx -s reload`.
+This is based on the [BlueMap-Auth Example Nginx Configuration](https://github.com/Chicken/Auth/tree/master/BlueMap/Integration#example-nginx).
+Replace mentions of "your.domain" with your actual domain.
 
 ```nginx
+# Basic http to https redirect
 server {
   listen 80 default_server;
   listen [::]:80 default_server;
@@ -175,22 +181,28 @@ server {
   }
 }
 
+# Https server, authentication layer
 server {
   listen 443 ssl;
   listen [::]:443 ssl;
 
-  server_name your.domain;
+  # Your domain name
+  server_name your.domain; # REPLACE ME
   
+  # Your ssl certificates
   ssl_certificate /etc/nginx/certs/fullchain.pem;
   ssl_certificate_key /etc/nginx/certs/key.pem;
 
   location / {
+    # Arbitary port which has to be same as the one in the server block below
     proxy_pass http://127.0.0.1:8000;
     proxy_buffering off;
 
+    # Checking the authentication
     auth_request /authentication-outpost/auth;
     error_page 401 = @minecraft_login;
 
+    # Set the request to backend to contain user's information
     auth_request_set $minecraft_loggedin $upstream_http_x_minecraft_loggedin;
     auth_request_set $minecraft_uuid $upstream_http_x_minecraft_uuid;
     auth_request_set $minecraft_username $upstream_http_x_minecraft_username;
@@ -202,33 +214,45 @@ server {
     proxy_set_header Host $host;
   }
 
+  # Arbitary unused path
   location /authentication-outpost/ {
+    # Proxy to your authentication plugin instance
     proxy_pass http://127.0.0.1:8200/;
+    # Send users ip to authentication for security reasons
     proxy_set_header X-Forwarded-For $remote_addr;
+    # Nginx requirements
     proxy_pass_request_body off;
     proxy_set_header Content-Length "";
   }
 
+  # Internal location for redirecting to login page
   location @minecraft_login {
     internal;
     return 302 /authentication-outpost/login;
   }
 }
 
+# Application layer, all requests are authenticated, proxy requests to BlueMap or an addon
 server {
-    listen 127.0.0.1:8000;
+  # Arbitary unused port on localhost
+  listen 127.0.0.1:8000;
 
-    access_log off;
+  # The authentication layer already logs, we don't need internal logging
+  access_log off;
 
-    location / {
-        proxy_pass http://127.0.0.1:8100;
-        proxy_buffering off;
-    }
+  # Everything by default to BlueMap
+  location / {
+    proxy_pass http://127.0.0.1:8100;
+    proxy_buffering off;
+  }
 
-    location /addons/integration/ {
-        proxy_pass http://127.0.0.1:8400/;
-        proxy_buffering off;
-    }
+  # Addon integration requests to it
+  location /addons/integration/ {
+     proxy_pass http://127.0.0.1:8400/;
+     proxy_buffering off;
+  }
+  
+  # Other addons go here
 }
 ```
 
@@ -244,23 +268,26 @@ Your BlueMap should now have a log in button in the menu.
 
 We've finally arrived at the last step. Just one more plugin and a tiny bit of nginx configuration.
 
-Download [BlueMap-Chat](https://github.com/Chicken/Auth/releases/tag/bluemap-chat-v0.1.0) and transfer it
-`scp Downloads/BlueMap-Chat*.jar 12.34.56.789:~/minecraft-server/data/plugins`
-Us Docker users have to fiddle with the ips and ports again. Edit the `plugins/BlueMap-Chat/config.yml` to have
-`ip: "0.0.0.0"` and `docker-compose.yml` ports section to have `"127.0.0.1:8800:8800/tcp"`.
+Download [BlueMap-Chat](https://github.com/Chicken/Auth/releases/tag/bluemap-chat-v0.3.0), transfer it
+`scp ~/Downloads/BlueMap-Chat*.jar 12.34.56.789:~/minecraft-server/data/plugins` and restart the server.
+Yet again the version above is the one used during writing (v0.3.0). You may want to use a newer version
+but the instructions may differ, so refer to the official documentation.
+We Docker users have to fiddle with the ips and ports again. Edit the `plugins/BlueMap-Chat/config.yml` to have
+`ip: "0.0.0.0"` and `compose.yml` ports section to have `"127.0.0.1:8800:8800/tcp"`.
 
-Next just add the following next to the integration addon location in the nginx config and reload nginx again.
+Next, in the nginx config, add the following above the "Other addons go here" text at the bottom of the file and reload nginx.
 
 ```nginx
-    location /addons/chat/ {
-        proxy_pass http://127.0.0.1:8800/;
-        proxy_buffering off;
-    }
+  # Chat addon
+  location /addons/chat/ {
+    proxy_pass http://127.0.0.1:8800/;
+    proxy_buffering off;
+  }
 ```
 
 ![The chat in the webapp]({{site.baseurl}}/assets/chat/chat-in-web.png)
 
 ![The chat in Minecraft]({{site.baseurl}}/assets/chat/chat-in-mc.png)
 
-### CONGRATULATIONS!!! YOU HAVE DONE IT!!!
+## 🎉 You have successfully installed a fantastic web chat for BlueMap!!!
 {: .no_toc }
