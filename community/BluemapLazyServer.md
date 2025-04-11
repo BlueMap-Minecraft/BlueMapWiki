@@ -121,47 +121,47 @@ server {
 
 ## Example Caddy config
 
-```caddy
+```
 yourdomain.com {
-	# Path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
-	root * /var/www
+  # Path to bluemap-webroot, BlueMap can also be used in a sub-folder .. just adapt the paths accordingly
+  root * /var/www
 
-	# Catch the error and serve "live" data from the disk when the integrated webserver can't be reached
-	handle_errors {
-		try_files {path} =204
-		file_server {
-			# Replace the error status preserved from the reverse_proxy directive
-			status 200
-		}
-	}
+  # Catch the error and serve "live" data from the disk when the integrated webserver can't be reached
+  handle_errors {
+    try_files {path} =204
+    file_server {
+      # Replace the error status preserved from the reverse_proxy directive
+      status 200
+    }
+  }
 
-	# Match the textures.json file & .prbm files
-	@gz path /maps/*/textures.json *.prbm
-	# Find .gz files (if not found respond with 204) for the above matcher, and set the "Content-Encoding gzip" header
-	handle @gz {
-		try_files {path}.gz =204
-		header Content-Encoding gzip
-	}
+  # Match the textures.json file & .prbm files
+  @gz path /maps/*/textures.json *.prbm
+  # Find .gz files (if not found respond with 204) for the above matcher, and set the "Content-Encoding gzip" header
+  handle @gz {
+    try_files {path}.gz =204
+    header Content-Encoding gzip
+  }
 
-	# Respond with 204 for non-existant map-tiles
-	@204 path */tiles/*
-	handle @204 {
-		try_files {path} =204
-	}
+  # Respond with 204 for non-existant map-tiles
+  @204 path */tiles/*
+  handle @204 {
+    try_files {path} =204
+  }
 
-	# Proxy requests for live data to the bluemaps integrated webserver.
-	# Trigger an error and fall back to our local files if the server can't be reached.
-	@live path /maps/*/live/*
-	handle @live {
-		reverse_proxy 127.0.0.1:8100 { # Adapt to your setup
-			# We don't want the request to hang indefinitely so we trigger a timeout error after 3s
-			transport http {
-				response_header_timeout 3s
-			}
-		}
-	}
+  # Proxy requests for live data to the bluemaps integrated webserver.
+  # Trigger an error and fall back to our local files if the server can't be reached.
+  @live path /maps/*/live/*
+  handle @live {
+    reverse_proxy 127.0.0.1:8100 { # Adapt to your setup
+      # We don't want the request to hang indefinitely so we trigger a timeout error after 3s
+      transport http {
+        response_header_timeout 3s
+      }
+    }
+  }
 
-	file_server
+  file_server
 }
 ```
 
