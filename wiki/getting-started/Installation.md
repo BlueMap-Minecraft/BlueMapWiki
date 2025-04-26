@@ -166,8 +166,6 @@ To change the used config folder use the `-c /path/to/config` flag.
 Here's a Docker Compose example for running in the background.
 Just start with `docker compose up -d`.
 ```yml
-version: '3'
-
 services:
   bluemap:
     image: ghcr.io/bluemap-minecraft/bluemap:<version>
