@@ -26,6 +26,16 @@ This is useful if you want to integrate your map in your website, or want to add
 > To do this, just open the `webserver.conf` and add the `ip: "127.0.0.1"` setting somewhere.
 {: .info }
 
+## BlueMap on a subdirectory of your website
+If you have a normal website hosted with Caddy and want your map on `/map` (e.g `https://mydomain.com/map`) then
+you can add this to your Caddyfile:
+```caddy
+mydomain.com {
+        handle_path /map/* {
+        reverse_proxy  127.0.0.1:8100
+        }
+}
+```
 
 ## BlueMap on a subdomain
 If you want BlueMap on a subdomain e.g. `https://map.mydomain.com/` then you'd add something like this to
