@@ -96,8 +96,8 @@ Don't forget to restart apache2 after installing any missing module via `a2enmod
 ```apache
 DocumentRoot /var/www/
 <Directory /var/www/>
-  Options FollowSymLinks
   Require all granted
+  Options FollowSymLinks
   SetEnv no-gzip
 
   RewriteEngine on
