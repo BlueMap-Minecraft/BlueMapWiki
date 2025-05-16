@@ -80,9 +80,8 @@ Here is an example for how it could look like on Apache:
 ```apache
 DocumentRoot /var/www/
 <Directory /var/www/>
-    allow from all
-    Options FollowSymLinks
     Require all granted
+    Options FollowSymLinks
   
     RewriteEngine On
     
