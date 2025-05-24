@@ -7,6 +7,11 @@ nav_order: 1
 
 # FAQ
 
+### Q: What does BlueMap look like? Is there a demo-map?
+You can see what BlueMap looks like on the official demo-map here: https://bluecolored.de/bluemap/  
+The controls are listed in the hamburger panel (≡) in the top left, under the **Info** menu.  
+Please feel free to look through the other menus, like the maps, markers and settings, too!
+
 ### Q: Where can I open my map?
 By default, it's your servers public ip-address (e.g. `123.45.67.8`) and the port (`8100`) like this: `http://123.45.67.8:8100/`  
 *(Make sure you replace `123.45.67.8` with **your** server-ip. The same ip that you are using to connect to your minecraft-server!)*
