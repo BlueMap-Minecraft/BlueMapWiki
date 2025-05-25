@@ -33,7 +33,8 @@ So as long as your CPU is not fully utilized, your server should not be slowed d
 
 ## Using BlueMap
 You can download BlueMap from [here](https://github.com/BlueMap-Minecraft/BlueMap/releases).  
-Read the [installation instructions](https://bluemap.bluecolored.de/wiki/getting-started/Installation.html) to get started!
+Read the [installation instructions](https://bluemap.bluecolored.de/wiki/getting-started/Installation.html) to get started!  
+And [here](https://bluemap.bluecolored.de/3rdPartySupport.html) is a list of addons and tools that work with bluemap.
 
 Here you can see how many servers are using BlueMap:
 
