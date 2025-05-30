@@ -44,7 +44,7 @@ And on top of that it is compressed.
 Optionally:
 - If any map tile does not exist, instead of returning a 404 and showing errors in the browser console, we
   return a 204 (No Content).
-- If you are using a plugin/mod you usually have live-updating player-markers on your map. For those to work with an 
+- If you are using BlueMap as a plugin/mod, you usually have live-updating player-markers on your map. For those to work with an 
   external web-server you will also need to reverse-proxy all requests to `/maps/*/live/*` to the builtin web-server.
 
 ## NGINX
