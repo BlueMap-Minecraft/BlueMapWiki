@@ -176,8 +176,8 @@ services:
     volumes:
       - './config:/app/config'
       - './world:/app/world'
-      - './world_nether:/world_nether'
-      - './world_the_end:/world_the_end'
+      - './world_nether:/app/world_nether'
+      - './world_the_end:/app/world_the_end'
       - './data:/app/data'
       - './web:/app/web'
 ```
