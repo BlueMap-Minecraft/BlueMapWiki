@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Custom domains with Cloudlflare Tunnels
+title: Custom domains with Cloudflare Tunnels
 parent: Community Guides
 nav_order: 5
 ---
