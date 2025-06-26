@@ -1,1 +1,9 @@
 <script type="text/javascript" src="{{ '/assets/js/hocon.min.js' | relative_url }}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".nav-list-item").forEach(item => {
+            const expander = item.querySelector(".nav-list-expander");
+            if (expander && !item.classList.contains("active")) expander.click();
+        });
+    });
+</script>
