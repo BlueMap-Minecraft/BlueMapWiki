@@ -143,7 +143,7 @@ Putting BlueMap onto a (sub)domain is best done in multiple steps:
 3. If you have more control over your server (for example, if you host at home or rent a VPS), you can install an external webserver and make it run on your domain.
    We generally recommend nginx. Here is a nice Getting Started guide for it: [nginx.org/en/docs/beginners_guide](https://nginx.org/en/docs/beginners_guide.html)
 4. Once you have your external webserver set up, you need to reverse-proxy BlueMap with it.
-   Here is a guide on how to do that with nginx: [NginxProxy]({{site.baseurl}}/wiki/webserver/NginxProxy.html)
+   We have a some example setups for reverse proxies with a few external webservers here: [Reverse-Proxy]({{site.baseurl}}/wiki/webserver/ReverseProxy.html)
 5. Once you have that, you can even set up SLL (HTTPS)
 
 ## Advanced Webapp Customisation
