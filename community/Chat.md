@@ -27,7 +27,7 @@ Requirement keywords as per [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
 
 - You **MUST** have a Spigot based server. Paper **SHOULD** be used. The addon doesn't support other platforms.
 - You **MUST** have root access and be able to install and configure additional software such as nginx.
-- You **MUST NO**T run a server network with Bungeecord, Velocity or similar. The addon only supports one global chat.
+- You **MUST NOT** run a server network with Bungeecord, Velocity or similar. The addon only supports one global chat.
 - You **SHOULD** have a public IP address. If you don't you will need to figure out exposing ports to the internet yourself.
 - You **SHOULD** know the basics of navigating around the command line, otherwise this will be painful.
 - You **SHOULD** have a domain. Have fun figuring out self signed certificates without a domain.
