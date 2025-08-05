@@ -30,8 +30,7 @@ Once the server is running, it monitors the number of current players and shuts 
 empty. It can also be configured to pause the Minecraft server instead of shutting it down so it can
 be instantly resumed when the next player connects.
 
-Detailed instructions on how to set up and configure lazymc are available in the project's README.
-
+Detailed instructions on how to set up and configure lazymc are available in the project's [README](https://github.com/timvisee/lazymc?tab=readme-ov-file#lazymc).
 
 ## Configuring BlueMap
 
