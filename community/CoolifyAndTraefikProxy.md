@@ -46,7 +46,6 @@ http:
 ```
 Press `Save` and `Reload`.
 
-
 ## BlueMap on a subdirectory of your website
 - Go to `Coolify's Dashboard -> Servers -> YourServer -> Proxy -> Dynamic Configurations`.
 - Press `+ Add`, give it a name like e.g. `bluemap.yaml` and make something like this:

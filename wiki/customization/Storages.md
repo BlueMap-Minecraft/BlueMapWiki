@@ -9,7 +9,7 @@ nav_order: 2
 # Storages
 {: .no_toc }
 
-1. TOC 
+1. TOC
 {:toc}
 
 ## General
@@ -17,11 +17,11 @@ With BlueMap you can define one or more **Storages** where you want your maps to
 Theoretically you could store each map in a different storage.
 
 To configure your storages, you can use the `storages` folder in your config folder.
-In the same way as with the maps, the name of these config-file (without the `.conf`-extension) determines the 
-identifier of the storage. Which means you can also add and remove storages. In your map-configs you then 
-can use the `storage`-setting to select the storage this map should be stored in.  
+In the same way as with the maps, the name of these config-file (without the `.conf`-extension) determines the
+identifier of the storage. Which means you can also add and remove storages. In your map-configs you can
+then use the `storage`-setting to select the storage this map should be stored in.  
 
-**For example:** If you have a config file `storages/mystorage.conf` then in your map configs you can 
+**For example:** If you have a config file `storages/mystorage.conf` then in your map configs you can
 set `storage: "mystorage"` to make that map use it.
 
 ## File Storage
@@ -43,8 +43,8 @@ Here are some Examples:
 `jdbc:mariadb://db.myhost.com/my-database`  
 `jdbc:postgres://127.0.0.1:3306/bluemap`  
 
-And here is some more documentation for [mysql](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-jdbc-url-format.html),
-[mariadb](https://mariadb.com/kb/en/about-mariadb-connector-j/#connection-strings) and [postgres](https://jdbc.postgresql.org/documentation/use/#connecting-to-the-database).
+And here is some more documentation for [MySQL](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-jdbc-url-format.html),
+[MariaDB](https://mariadb.com/kb/en/about-mariadb-connector-j/#connection-strings) and [Postgres](https://jdbc.postgresql.org/documentation/use/#connecting-to-the-database).
 
 ### Connection-Properties
 The `connection-properties` config is just a map of custom properties that you can pass to your db-driver when creating a
@@ -65,7 +65,7 @@ somehow:
 For **Spigot, Fabric and Forge** there are a couple of [mods/plugins](https://modrinth.com/mods?q=jdbc) which add such a driver.
 
 Alternatively you can also **manually** download the JDBC-Driver of your choice and configure BlueMap to load it:  
-Download the driver-jar (e.g. [mariadb-java-client.jar](https://mariadb.com/downloads/connectors/connectors-data-access/java8-connector/)) 
+Download the driver-jar (e.g. [mariadb-java-client.jar](https://mariadb.com/downloads/connectors/connectors-data-access/java8-connector/))
 and place it in the `./bluemap` folder. Then set `driver-jar: "bluemap/mariadb-java-client.jar"` and `driver-class: "org.mariadb.jdbc.Driver"`
 to tell BlueMap where to find the jar and which class to load from it. *(Don't forget to remove the `#` to uncomment the settings)*
 
@@ -87,7 +87,7 @@ Here is a simple way to set up your sqlite-storage:
 Done :)
 
 ## Compression
-All the storage-types have a `compression` setting. It defines how each hires-tile is compressed before it is stored.   
+All the storage-types have a `compression` setting. It defines how each hires-tile is compressed before it is stored.  
 The default and recommended compression is `GZIP`, since browsers can receive the files compressed and decompress them on the fly.  
 The supported compression settings are:
 

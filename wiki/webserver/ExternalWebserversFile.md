@@ -16,7 +16,7 @@ If you want to optimize the speed of your web-app for a larger audience, you can
 external webservers like [NGINX](https://www.nginx.com/) or [Apache](https://httpd.apache.org/). 
 For this to work you need to do some configuration.
 
-1. TOC 
+1. TOC
 {:toc}
 
 ## The goal

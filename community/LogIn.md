@@ -17,9 +17,9 @@ Almost always your map is fully open for everyone to view.
 But sometimes you just don't feel like sharing it.
 Reasons for this might include:
 
-- whitelisted friend only smp
-- staff only map
-- map is a paid rank perk
+- Whitelisted friend only SMP
+- Staff only map
+- Map is a paid rank perk
 
 There are multiple ways of adding a login page.
 The ways range from a simple shared password to a minecraft command and a full-on SSO solution.
@@ -70,7 +70,7 @@ you will need this inside your BlueMap's Apache config:
 
 If you want to restrict users to your BlueMap based on their Minecraft permissions
 such as one given by a permission group/rank you should read about
-[`Chicken/Auth`](https://github.com/Chicken/Auth) which is an amazing project
+[Chicken/Auth](https://github.com/Chicken/Auth) which is an amazing project
 made by a community member of ours.
 
 ## Advanced software (hardest, most flexible)
