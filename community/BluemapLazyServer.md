@@ -19,7 +19,6 @@ that allows for 24/7 viewing of the map (and map markers), even when the server 
 1. TOC
 {:toc}
 
-
 ## Setting up a lazy server
 
 The [lazymc] project can be used to set up a lazy Minecraft server. Essentially it acts just enough
@@ -65,7 +64,6 @@ to be configured with a short `proxy_read_timeout` to avoid hanging while waitin
 from the integrated webserver. This is because the paused server will accept the connection but not
 be able to respond in any way to the request.
 
-
 ## Faking "live" data while server is offline
 
 The frontend attempts to load live data (markers, players) from endpoints under
@@ -75,7 +73,6 @@ When shutting down (and periodically) BlueMap will write out the current live st
 `<webroot>/maps/<world>/live/`. These files conveniently have the exact path that the frontend is
 looking for so we can just service the request normally from the webroot (falling back to a 204 No
 Content response if the requested file doesn't exist).
-
 
 ## Example Nginx config
 
@@ -168,7 +165,6 @@ yourdomain.com {
 > The above config is **just an example** and not a complete config you can just copy&paste. You
 > **will** need to adapt it to your setup!
 {: .info .important }
-
 
   [lazymc]:https://github.com/timvisee/lazymc
   [Nginx]: https://nginx.org/

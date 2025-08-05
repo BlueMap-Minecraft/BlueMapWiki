@@ -11,13 +11,13 @@ Extended guide for setting up a reverse proxy for BlueMap with Pterodactyl and N
 
 ## Assumptions / Prerequisites
 - You have access to your servers shell (not only the minecraft-console).
-- You have pterodactyl already installed and running.
-- You are expected to have a basic understanding of how to use pterodactyl and nginx.
-- You have NGINX already 
+- You have Pterodactyl already installed and running.
+- You are expected to have a basic understanding of how to use Pterodactyl and NGINX.
+- You have NGINX already
   [installed](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/).
-- NGINX is running on the same machine as BlueMaps integrated webserver. *(If that is not the case you'll need to 
-  replace `localhost` with the correct ip in the examples below)*
-- BlueMaps integrated webserver is running on port `8100`. *(Again, just replace `8100` with the actual port below)* 
+- NGINX is running on the same machine as BlueMaps integrated webserver.  
+*(If that is not the case you'll need to replace `localhost` with the correct IP in the examples below)*
+- BlueMaps integrated webserver is running on port `8100`. *(Again, just replace `8100` with the actual port below)*
 
 > **Info:**<br>
 > We advise you to read the [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) guide first.
@@ -25,7 +25,8 @@ Extended guide for setting up a reverse proxy for BlueMap with Pterodactyl and N
 {: .info }
 
 ## Setting up the server allocations in pterodactyl
-We need to create local Pterodactyl allocations for the BlueMap webserver to use. This is done by creating a new allocation in the Pterodactyl panel.
+We need to create local Pterodactyl allocations for the BlueMap webserver to use.  
+This is done by creating a new allocation in the Pterodactyl panel.
 
 1. Head over to the Pterodactyl admin area.
 2. Create a new allocation on the desired node for the server you want to create the proxy for.
@@ -39,7 +40,7 @@ You can usually locate the config file to be edited in `/etc/nginx/sites-availab
 
 ### BlueMap on a subdirectory of your website
 Same as in [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) except you need to use the Pterodactyl pass-through IP (`172.18.0.1`).
-If you have a normal website hosted with NGINX and want your map on `/map` (e.g `https://mydomain.com/map`) then 
+If you have a normal website hosted with NGINX and want your map on `/map` (e.g `https://mydomain.com/map`) then
 you can just add this to your NGINX configuration:
 ```nginx
 server {
@@ -54,8 +55,8 @@ server {
 
 ### BlueMap on a subdomain of your website
 Same as in [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) except you need to use the Pterodactyl pass-through IP (`172.18.0.1`).
-If you want BlueMap on a subdomain e.g. `https://map.mydomain.com/` then you'd add something like this to 
-your nginx config:
+If you want BlueMap on a subdomain e.g. `https://map.mydomain.com/` then you'd add something like this to
+your NGINX config:
 ```nginx
 server {
   listen 80;
@@ -68,5 +69,3 @@ server {
   }
 }
 ```
-
-

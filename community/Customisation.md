@@ -17,7 +17,7 @@ so make sure to remember any edits you do to it and any of BlueMap's other sourc
 > Throughout this guide, `/bluemap/web/` shall be assumed as the default webroot. If you're using a custom, different webroot, please make sure to use that instead.
 {: .info }
 
-1. TOC 
+1. TOC
 {:toc}
 
 ## Custom Styles (Theme and Look)

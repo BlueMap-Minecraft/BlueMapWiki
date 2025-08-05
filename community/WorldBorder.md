@@ -15,8 +15,8 @@ This guide will list a few of the most common ways to add a world border to your
 {:toc}
 
 ## Manual in the config
-This is the most supported method. This will work on every platform (Paper/Fabric/Forge/etc).
-Go to your BlueMap config directory, and open the `maps` folder.
+This is the most supported method. This will work on every platform (Paper/Fabric/Forge/etc).  
+Go to your BlueMap config directory, and open the `maps` folder.  
 In there, you will find a `.conf` file for each of your maps.  
 Open the file that corresponds to the world that you want to add a world border to, and scroll to the bottom, until the `marker-sets` section.  
 Copy this snippet into there, and adapt it to your liking:
