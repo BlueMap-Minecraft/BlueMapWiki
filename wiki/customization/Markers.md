@@ -23,7 +23,7 @@ All markers are grouped into marker-sets. A marker set will be visible in the me
 enabled or disabled at once.
 
 Here is an example config for a marker-set:
-```yaml
+```hocon
 example-marker-set: {
   label: "Example Marker Set"
   toggleable: true
@@ -62,7 +62,7 @@ it shows its label.
 ![qLZpKw97EU](https://user-images.githubusercontent.com/10765470/211083198-93d034fc-9d6b-4ee9-aef2-08db0958c1ee.png)
 
 Here is an example config for a POI marker:
-```yaml
+```hocon
 example-poi-marker: {
     type: "poi"
     position: { x: 1, y: 64, z: -23 }
@@ -100,7 +100,7 @@ any image, a button or even ... embed a video ;D.
 ![ESQgDvgzHg](https://user-images.githubusercontent.com/10765470/211083264-ca89c1b5-0051-4a82-af45-d9ebec9e9c35.png)
 
 Here is an example config for a HTML Marker:
-```yaml
+```hocon
 example-html-marker: {
     type: "html"
     position: { x: 1, y: 64, z: -23 }
@@ -132,7 +132,7 @@ marker's `detail`.
 ![dIZ7W6zjG2](https://user-images.githubusercontent.com/10765470/211083298-0116588c-15c8-4e84-8690-1a2936ae5c0c.png)
 
 Here is an example config for a Line Marker:
-```yaml
+```hocon
 example-line-marker: {
     type: "line"
     position: { x: 1, y: 64, z: -25 }
@@ -179,7 +179,7 @@ If you click on the shape, it shows the marker's `detail`.
 ![xDcmgynWv7](https://user-images.githubusercontent.com/10765470/211083324-04829ca3-515b-4b6b-8223-c9edaffbd07a.png)
 
 Here is an example config for a Shape Marker:
-```yaml
+```hocon
 example-shape-marker: {
     type: "shape"
     position: { x: 1, y: 64, z: -23 }
@@ -228,7 +228,7 @@ areas that are limited to specific y-positions.
 ![SqRL5ouEDS](https://user-images.githubusercontent.com/10765470/211083342-211b5d8b-81a3-407f-849b-af555707b85d.png)
 
 Here is an example config for a Extrude Marker:
-```yaml
+```hocon
 example-extrude-marker: {
     type: "extrude"
     position: { x: 1, y: 64, z: -23 }
@@ -276,7 +276,7 @@ example-extrude-marker: {
 
 Here is a full example of how it could look like in (at the end of) your map-config:
 
-```yaml
+```hocon
 # Here you can define any static marker-sets with markers that should be displayed on the map.
 # You can change this at any time.
 # If you need dynamic markers, you can use any plugin that integrates with BlueMap's API.

@@ -28,14 +28,27 @@ a {
 .highlight {
   line-height: 0.75em;
 
-  .na, .nl, .nx {
-    color: $grey-lt-300;
+  background-color: #111;
+
+  pre {
+    background-color: unset;
   }
-  .c1 {
+
+  code, .err, .na, .nl, .nx, .nc, .k, .kn {
+    color: $grey-lt-300;
+    background-color: unset;
+  }
+  .c, .c1 {
+    color: $grey-dk-100;
+  }
+  .p, .se {
     color: $grey-dk-000;
   }
-  .dl {
-    color: #2aa198;
+  .n, .s, .s2, .sr, .ss, .si, .nb {
+    color: #a1ceff;
+  }
+  .kc, .mi, .mf, .nv {
+    color: $blue-000;
   }
 }
 
