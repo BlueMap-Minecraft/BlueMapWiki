@@ -29,7 +29,8 @@ render-mask: [
 * Each mask defines a shape in the world that will either be:
   * **Included** in the rendered map (default).
   * **Excluded** using the `subtract: true` property.
-* Masks are applied in **top-to-bottom order**.
+* Masks are applied in **top-to-bottom order**.  
+  This means masks that come later will **overrule** (take priority over) previous masks.
 
 BlueMap automatically updates the rendered map when masks are changed, and deletes tiles outside the defined area.  
 To fix any potential issues after changing masks, you can use: `/bluemap fix-edges <map>`
@@ -141,3 +142,90 @@ render-mask: [
   }
 ]
 ```
+
+## More Examples
+
+### Excluding a Secret Building
+
+If you start with a mask that has `subtract: true`, bluemap will render everything except the defined mask-area.  
+Like this you can for example exclude a secret building or area from the map:
+
+```hocon
+render-mask: [
+  {
+    type: box
+    subtract: true
+    min-x: 100
+    max-x: 200
+    min-z: 100
+    max-z: 200
+  }
+]
+```
+
+If you **additionally** have a world-border and want to limit your render as well, you can combine it like this:
+```hocon
+render-mask: [
+  { # first define the world-border as the main area that should be rendered 
+    type: box
+    subtract: false
+    min-x: -10000
+    max-x: 10000
+    min-z: -10000
+    max-z: 10000
+  }
+  { # then subtract your secret location that you don't want to render
+    type: box
+    subtract: true
+    min-x: 100
+    max-x: 200
+    min-z: 100
+    max-z: 200
+  }
+]
+```
+
+### A See-Through Nether Ceiling
+
+Here is an alternative way how you can handle the nethers ceiling:
+```hocon
+render-mask: [
+  {
+    type: box
+    subtract: true
+    min-y: 127
+    max-y: 127
+  }
+]
+
+render-edges: false
+```
+
+### Remove the Nether Ceiling entirely
+
+If you want to remove the nether-ceiling entirely, including everything that has been build on top of the nether, 
+you can use either this config:
+
+```hocon
+render-mask: [
+  {
+    max-y: 90
+  }
+]
+```
+
+or this config:
+
+```hocon
+render-mask: [
+  {
+    subtract: true
+    min-y: 91
+  }
+]
+```
+
+Both configs simply remove everything that is at `y: 91` or higher and render everything else.
+
+Notice how `type: box` and `subtract: false` are omitted in these examples. 
+We can do that since those are the default values of these mask properties.
