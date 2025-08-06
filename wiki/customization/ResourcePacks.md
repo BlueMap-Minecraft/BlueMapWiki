@@ -3,7 +3,7 @@ layout: page
 title: Resource/Data-packs
 parent: Advanced Customization
 grand_parent: Wiki
-nav_order: 3
+nav_order: 4
 ---
 
 # Installing Resourcepacks or Datapacks

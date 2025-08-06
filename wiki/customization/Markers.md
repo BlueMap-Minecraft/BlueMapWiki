@@ -3,7 +3,7 @@ layout: page
 title: Markers
 parent: Advanced Customization
 grand_parent: Wiki
-nav_order: 1
+nav_order: 2
 ---
 
 # Markers
