@@ -42,7 +42,7 @@ Then you go into the webroot and open the `sql.php`, and set your SQL-Connection
 Now you need to configure your webserver, so that it rewrites all requests for which no static file exists to the `sql.php`.
 
 ## NGINX
-On nginx this can be achieved with e.g. `try_files $uri /sql.php;`. This uses the SQL script to fetch the map tiles from your database.
+On nginx this can be achieved with e.g. `try_files $uri /sql.php;`. This uses the PHP script to fetch the map tiles from your database.
 
 With some context your website-config could look something like this:
 ```nginx
