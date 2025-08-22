@@ -21,7 +21,7 @@ Extended guide for setting up a reverse proxy for BlueMap with Pterodactyl and N
 
 > **Info:**<br>
 > We advise you to read the [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) guide first.
-> And also the [Pterodactyl Minecraft community guide](https://pterodactyl.io/community/games/minecraft.html) it contains usefull info about the allocations.
+> And also the [Pterodactyl Minecraft community guide](https://pterodactyl.io/community/games/minecraft.html) it contains useful info about the allocations.
 {: .info }
 
 ## Setting up the server allocations in pterodactyl

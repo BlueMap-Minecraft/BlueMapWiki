@@ -42,7 +42,7 @@ Then you go into the webroot and open the `sql.php`, and set your SQL-Connection
 Now you need to configure your webserver, so that it rewrites all requests for which no static file exists to the `sql.php`.
 
 ## NGINX
-On nginx this can be achieved with e.g. `try_files $uri /sql.php;`.
+On nginx this can be achieved with e.g. `try_files $uri /sql.php;`. This uses the PHP script to fetch the map tiles from your database.
 
 With some context your website-config could look something like this:
 ```nginx
@@ -66,10 +66,28 @@ server {
     # Proxy requests to the live data interface of each map to bluemaps integrated webserver
     # If you have multiple servers you will need to proxy each map-id to the correct server
     location ~* /(maps/[^/\s]*/live/.*) {
-        proxy_pass http://127.0.0.1:8100/$1;
+        proxy_pass http://123.4.5.6:8100/$1;
     }
 }
 ```
+
+If you have multiple servers, you can simply add another location block for each map, as follows:
+
+```nginx
+    location ~* /(maps/world/live/.*) {
+        proxy_pass http://123.4.5.6:8100/$1;
+    }
+
+    location ~* /(maps/world_nether/live/.*) {
+        proxy_pass http://654.3.2.1:8100/$1;
+    }
+```
+
+With this in your config, you will be fetching the live data for `world` from 123.4.5.6 and for `world_nether` from 654.3.2.1 .
+> **Info:**  
+> You will need to change your existing location block to specify which map is on the server. Then create any other needed blocks.
+{: .info }
+
 > **Important:**<br>
 > The above config is **just an example** and not a complete config you can just copy&paste. You **will** need to adapt it to your setup!
 {: .info .important }
