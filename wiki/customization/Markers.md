@@ -242,11 +242,10 @@ example-extrude-marker: {
     position: { x: 1, y: 64, z: -23 }
     label: "Example Extrude Marker"
     shape: [
-        { x: 1, z: -23 }
-        { x: 1, z: -24 }
-        { x: 1, z: -25 }
-        { x: 2, z: -25 }
-        { x: 3, z: -25 }
+      { x: -10, z: -10 }
+      { x: -10, z: 10 }
+      { x: 10, z: 10 }
+      { x: 10, z: -10 }
     ]
     shape-min-y: 47
     shape-max-y: 72
