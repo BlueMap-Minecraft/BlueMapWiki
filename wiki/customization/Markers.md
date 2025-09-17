@@ -185,15 +185,22 @@ example-shape-marker: {
     position: { x: 1, y: 64, z: -23 }
     label: "Example Shape Marker"
     shape: [
-        { x: 1, z: -23 }
-        { x: 1, z: -24 }
-        { x: 1, z: -25 }
-        { x: 2, z: -25 }
-        { x: 3, z: -25 }
+      { x: -10, z: -10 }
+      { x: -10, z: 10 }
+      { x: 10, z: 10 }
+      { x: 10, z: -10 }
     ]
     shape-y: 64
     
     # Optional:
+    holes: [
+      [
+        { x: 5, z: -5 }
+        { x: 5, z: 5 }
+        { x: -5, z: 5 }
+        { x: -5, z: -5 }
+      ]
+    ]
     detail: "This is a <b>shape</b> marker"
     #link: "https://google.de/"
     new-tab: false
@@ -212,6 +219,7 @@ example-shape-marker: {
 - `shape` is an Array of x,z positions (without y) that define the shape. The shape will be drawn between the positions,
   in their order, the last position is automatically connected to the first position
 - `shape-y` is the y-position of the shape
+- `holes` is an optional Array of shapes (like above) that will be subtracted from the main shape, creating one or more "holes" in the shape.
 - `detail` is the text that is shown when you click on the shape. This property allows using any html-tags
 - `link` is an optional url that is opened when you click on the shape
 - `new-tab` defines whether the above link should be opened in a new tab or not
@@ -244,6 +252,14 @@ example-extrude-marker: {
     shape-max-y: 72
     
     # Optional:
+    holes: [
+      [
+        { x: 5, z: -5 }
+        { x: 5, z: 5 }
+        { x: -5, z: 5 }
+        { x: -5, z: -5 }
+      ]
+    ]
     detail: "This is a <b>extrude</b> marker"
     #link: "https://google.de/"
     new-tab: false
@@ -263,6 +279,7 @@ example-extrude-marker: {
   in their order, the last position is automatically connected to the first position
 - `shape-min-y` is the lower y-position of the shape
 - `shape-max-y` is the upper y-position of the shape
+- `holes` is an optional Array of shapes (like above) that will be subtracted from the main shape, creating one or more "holes" in the shape.
 - `detail` is the text that is shown when you click on the shape. This property allows using any html-tags
 - `link` is an optional url that is opened when you click on the shape
 - `new-tab` defines whether the above link should be opened in a new tab or not
