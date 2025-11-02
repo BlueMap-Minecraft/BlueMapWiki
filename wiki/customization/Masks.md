@@ -66,7 +66,7 @@ Defines a **circular** area in the XZ plane. Optionally limited in height with `
   type: circle
   subtract: false
   center-x: 0
-  center-y: 0
+  center-z: 0
   radius: 4000
   
   # Optional:
@@ -84,7 +84,7 @@ Like the circle mask, but allows different radii for X and Z axes.
   type: ellipse
   subtract: false
   center-x: 0
-  center-y: 0
+  center-z: 0
   radius-x: 4000
   radius-z: 2000
   
@@ -137,7 +137,7 @@ render-mask: [
     type: circle
     subtract: true
     center-x: 0
-    center-y: 0
+    center-z: 0
     radius: 200
   }
 ]
