@@ -119,3 +119,30 @@ th {
     margin-left: calc( (100% - #{$page-width}) / 2 + #{$sidebar-width} );
   }
 }
+
+section.config-indent {
+  --indent-size: 2em;
+
+  &::before, &::after {
+    position: relative;
+    left: calc(-1 * var(--indent-size) - 0.2em);
+  }
+
+  &::before { content: "{"; }
+  &::after  { content: "}"; }
+
+  & :first-child { margin-top:    0; }
+  & :last-child  { margin-bottom: 0; }
+
+  padding-left: var(--indent-size);
+
+  --bracket-height: 2em;
+  border-left: 1px solid transparent;
+  border-image: linear-gradient(to bottom,
+    transparent var(--bracket-height),
+    grey var(--bracket-height),
+    grey calc(100% - var(--bracket-height)),
+    transparent calc(100% - var(--bracket-height))
+  );
+  border-image-slice: 1; 
+}
