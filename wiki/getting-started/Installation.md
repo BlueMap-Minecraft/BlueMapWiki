@@ -42,8 +42,8 @@ and host a small webserver to serve the map-files and the webapp where you can v
 
 ### Prerequisites
 - A Spigot/Paper, Sponge, Fabric or Forge server
-- Any **second port** that you can use, besides the one that is used by the minecraft-server
-  *(Ask your hosting service if & how you can open a second port)*
+- Any **additional port** that you can use, besides the one that is used by the minecraft-server
+  *(Ask your hosting service if & how you can open an additional port)*
 
 ### Steps
 - First you want to download the bluemap-jar. You can choose and download a version 
@@ -51,11 +51,11 @@ and host a small webserver to serve the map-files and the webapp where you can v
   Make sure it fits to the version of your server!
 - Put the downloaded jar in the `plugins` or `mods`-folder of your server and restart the server.
 - BlueMap will now generate the default config-files and pre-configure one map for each world it finds on your server.
-- Open the `core.conf` config-file, read through the comments and agree to downloading some extra resources from Mojang
-  by changing `accept-download` to `true`.
-- Open the `webserver.conf` config-file and change the `port` to the **second port** that you got from your hosting-provider to use.
+- Open the [`core.conf`](../configs/Core.md) config-file, read through the comments and agree to downloading some extra resources from Mojang
+  by changing [`accept-download`](../configs/Core.md#accept-download) to `true`.
+- Open the [`webserver.conf`](../configs/Webserver.md) config-file and change the [`port`](../configs/Webserver.md#port) to the **additional port** that you got from your hosting-provider to use.
 - Now you can go through the rest of the config-files and change the settings to your liking. 
-  *(More info for configuring BlueMap can be found [here]({{site.baseurl}}/wiki/getting-started/Configuration))*
+  *(More info for configuring BlueMap can be found [here](./Configuration.md))*
 - After you have edited the configs, use the command `/bluemap reload` on your server or restart the server.
 
 If everything is set up correctly, BlueMap should start to render your maps. Check the console/logs for any errors or warnings.
@@ -71,10 +71,10 @@ This setup extends the basic setup by using an SQL-Server to store your maps.
 
 ### Steps
 - Use the basic setup above to install BlueMap like normal
-- In your config-files, open the `storages/sql.conf`-file and configure the connection to your SQL-Server.
-  *(See [this page]({{site.baseurl}}/wiki/customization/Storages.html#mysql-mariadb--postgres) 
+- In your config-files, open the [`storages/sql.conf`](../configs/storages/SQL.md)-file and configure the connection to your SQL-Server.
+  *(See [this page](../customization/Storages.md#mysql-mariadb--postgres) 
   for more info about this config-file)*
-- Now open each of your map-config-files and set `storage` to `"sql"`.
+- Now open each of your [map-config files](../configs/Maps.md) and set [`storage`](../configs/Maps.md#storage) to `"sql"`.
 - Reload BlueMap with `/bluemap reload`.
 - Now that your maps are stored on your database, you should delete the old map data from your filesystem, to prevent it from interfering.  
   You can do this by running the command `/bluemap storages file delete <map>` for each of the maps you have just switched to SQL.
@@ -102,22 +102,21 @@ This is useful if you want to render a map of a minecraft-world, but don't want 
 - Open the CLI and change your [cwd](https://en.wikipedia.org/wiki/Working_directory) to the folder containing 
   your jar. *(usually using the command `cd <path-to-your-folder>`)*
 - Run `java -jar BlueMap-cli.jar` so BlueMap generates the configuration-files next to the jar in your cwd.
-- Open the `core.conf` config-file, read through the comments and agree to downloading some extra resources from Mojang
-  by changing `accept-download` to `true`.
+- Open the [`core.conf`](../configs/Core.md) config-file, read through the comments and agree to downloading some extra resources from Mojang
+  by changing [`accept-download`](../configs/Core.md#accept-download) to `true`.
 - Set up your map-configs for the world(s) you want to render.
 - Now you can go through the rest of the config-files and change the settings to your liking.
-  *(More info for configuring BlueMap can be found [here]({{site.baseurl}}/wiki/getting-started/Configuration))*
+  *(More info for configuring BlueMap can be found [here](./Configuration.md))*
 - After you have edited the configs run `java -jar BlueMap-cli.jar -r` to start the render.
 - With `java -jar BlueMap-cli.jar -w` you can also start the builtin web-server to be able to view your map. 
-  Or you can read [this]({{site.baseurl}}/wiki/webserver) to learn how to setup NGINX or 
-  Apache for BlueMap.
+  Or you can read [this](../webserver/) to learn how to set up NGINX or Apache for BlueMap.
 - Use `java -jar BlueMap-cli.jar -h` to get a list and explanation for all available flags.
 
 ## Using BlueMap Docker image
 You can use [BlueMap CLI](#using-bluemap-on-the-cli--standalone) in a Docker container. This is perfect for container loving sysadmins.
 The image is available on GitHub container registry as `ghcr.io/bluemap-minecraft/bluemap`.
 For latest and greatest the `latest` tag is the latest release (which can be a pre-release) and `master` the latest git commit.
-You can also choose a latest minor of a major with tags such as `v3` or a specific version tag such as `v3.14`.  
+You can also choose a latest minor of a major with tags such as `v5` or a specific version tag such as `v5.13`.  
 For production usage you should **always** pin the version to the minor version as even the latest minor might still be a pre-release.
 You can see the list of available Docker tags on [GitHub](https://github.com/BlueMap-Minecraft/BlueMap/pkgs/container/bluemap).
 The documentation will from now on substitute the version with `<version>`.
@@ -134,7 +133,7 @@ The documentation will from now on substitute the version with `<version>`.
 | /app/config   | Default config folder                       |
 | /app/web      | Default web application                     |
 | /app/web/maps | Default render data (included in web mount) |
-| /app/data     | Other persistant data                       |
+| /app/data     | Other persistent data                       |
 | /app/world    | Your world (you can also mount others)      |
 
 You can also change these paths to be whatever you want in the configs.

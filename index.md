@@ -4,7 +4,7 @@ title: Home
 nav_order: 0
 ---
 
-[![title-banner](https://bluecolored.de/paste/BluemapBanner.png)](https://bluemap.bluecolored.de/)
+[![title-banner](./assets/BluemapBanner.png)](https://bluemap.bluecolored.de/)
 
 create **3D**-maps of your Minecraft worlds and display them in your browser  
 **>> [DEMO MAP](https://bluecolored.de/bluemap) <<**
@@ -33,8 +33,8 @@ So as long as your CPU is not fully utilized, your server should not be slowed d
 
 ## Using BlueMap
 You can download BlueMap from [here](https://github.com/BlueMap-Minecraft/BlueMap/releases).  
-Read the [installation instructions](https://bluemap.bluecolored.de/wiki/getting-started/Installation.html) to get started!  
-And [here](https://bluemap.bluecolored.de/3rdPartySupport.html) is a list of addons and tools that work with bluemap.
+Read the [installation instructions](./wiki/getting-started/Installation.md) to get started!  
+And [here](./3rdPartySupport.md) is a list of addons and tools that work with bluemap.
 
 Here you can see how many servers are using BlueMap:
 
@@ -46,6 +46,6 @@ If you have questions or need help, you can always join the [Discord-Server for 
 
 ---
 
-[![JetBrainsLogo](https://bluemap.bluecolored.de/assets/jetbrains.svg)](https://www.jetbrains.com/?from=BlueMap)<br>
+[![JetBrainsLogo](./assets/jetbrains.svg)](https://www.jetbrains.com/?from=BlueMap)<br>
 <br>
 Special thanks to [JetBrains](https://www.jetbrains.com/?from=BlueMap) for giving out an OpenSource-Licence for BlueMap development!

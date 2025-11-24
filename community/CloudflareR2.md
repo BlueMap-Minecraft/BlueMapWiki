@@ -34,13 +34,13 @@ Cloudflare R2 is a service that allows you to host files on Cloudflare's network
 Go to Websites, click on “Add a site” then write your domain name.
 
 1. “Select your plan”
- - You can choose Free plan at the bottom.
+   - You can choose Free plan at the bottom.
 
 2. “Review DNS records”
-  - You can skip it because we don't need to set a DNS for this method.
+   - You can skip it because we don't need to set a DNS for this method.
 
 3. “Change your nameservers”
-  - Go to the site where you bought your domain and change nameservers to Cloudflare's nameservers.
+   - Go to the site where you bought your domain and change nameservers to Cloudflare's nameservers.
 
 
 ## Creating a bucket & uploading files with rclone
@@ -72,16 +72,16 @@ Go to Websites, click on “Add a site” then write your domain name.
 2. Navigate in the terminal to the directory where your BlueMap *web* files are located. You should be in the directory that contains the file `index.html`.
 
 3. Run the following command to upload the files to your R2 bucket:  
-  ```bash
-  rclone sync . R2:bluemap/ --transfers=60 --checkers=120 -P
-  ```  
-  - `rclone` — the program you are calling.  
-  - `sync` — the command to synchronize files — files which are not present in the destination will be copied there and files which are not present in the source will be deleted in the destination.  
-  - `.` — the current directory.  
-  - `R2:bluemap/` — the remote you configured in the rclone configuration plus the name of your bucket.  
-  - `--transfers=60` — the number of parallel transfers — BlueMap consists of numerous small files, so a high number of transfers is beneficial.  
-  - `--checkers=120` — the number of parallel checks — BlueMap consists of numerous small files, so a high number of checks is beneficial. Checkers compare your local files to those remote.  
-  - `-P` — shows you the progress.  
+   ```bash
+   rclone sync . R2:bluemap/ --transfers=60 --checkers=120 -P
+   ```  
+   - `rclone` — the program you are calling.  
+   - `sync` — the command to synchronize files — files which are not present in the destination will be copied there and files which are not present in the source will be deleted in the destination.  
+   - `.` — the current directory.  
+   - `R2:bluemap/` — the remote you configured in the rclone configuration plus the name of your bucket.  
+   - `--transfers=60` — the number of parallel transfers — BlueMap consists of numerous small files, so a high number of transfers is beneficial.  
+   - `--checkers=120` — the number of parallel checks — BlueMap consists of numerous small files, so a high number of checks is beneficial. Checkers compare your local files to those remote.  
+   - `-P` — shows you the progress.  
 
 4. While the files are uploading, you can continue with the next step.
 
@@ -96,7 +96,7 @@ Go to Websites, click on “Add a site” then write your domain name.
       3. In the first field select `URI Path` and in the Operator field select `ends with`. In the value field, enter `/`.  
    2. Further down under Path, select `Rewrite to...`.  
       1. In the first field select `Dynamic` and in the second field enter `concat(http.request.uri.path, "index.html")`.  
-   3. It should look similar to this: ![Screenshot of the index rule in Cloudflare]({{site.baseurl}}/assets/r2/index_rule.png)  
+   3. It should look similar to this: ![Screenshot of the index rule in Cloudflare](../assets/r2/index_rule.png)  
    4. Save the rule.
 
 3. Create another Transform rule here and give it a name, e.g. `BlueMap: gzip`. This rule allows Cloudflare to serve the compressed files when the textures or the .prbm files are requested.  
@@ -110,7 +110,7 @@ Go to Websites, click on “Add a site” then write your domain name.
       7. In the first field select `URI Path` and in the Operator field select `ends with`. In the value field, enter `.prbm`.  
    2. Further down under Path, select `Rewrite to...`.  
       1. In the first field select `Dynamic` and in the second field enter `concat(http.request.uri.path, ".gz")`.
-   3. It should look similar to this: ![Screenshot of the gzip rule in Cloudflare]({{site.baseurl}}/assets/r2/gzip_rule.png)  
+   3. It should look similar to this: ![Screenshot of the gzip rule in Cloudflare](../assets/r2/gzip_rule.png)  
    4. Save the rule.
 
 4. Now click on the `Modify Response Header` tab and create a new rule. This rule marks the compressed files as compressed, so your browser knows how to handle them when it requests them.  
@@ -123,7 +123,7 @@ Go to Websites, click on “Add a site” then write your domain name.
       5.  In the first field, select `URI Path`. In the Operator field, select `ends with`. In the value field, enter `.prbm`.  
    3. Further down under `Modify response header`.  
       1. In the first field, select `Set static`. In the Header name field, enter `Content-Encoding`. In the Header value field, enter `gzip`.  
-   4. It should look similar to this: ![Screenshot of the Content-Encoding rule in Cloudflare]({{site.baseurl}}/assets/r2/encoding_rule.png)  
+   4. It should look similar to this: ![Screenshot of the Content-Encoding rule in Cloudflare](../assets/r2/encoding_rule.png)  
    5. Save the rule.
 
 ## Making optional configurations
@@ -139,7 +139,7 @@ Every time a file is requested from your bucket, that counts as an operation. Ev
       1. Now select `Ignore cache-control header and use this TTL` and set `Input time-to-live (TTL)` to a value you are comfortable with. I set it to 1 year, this will cache the files on Cloudflare's edge servers for up to 1 year.  
    5. Further down under `Browser TTL` click on `Add Setting`.  
       1. Now select `Override origin and use this TTL` and set `Input time-to-live (TTL)` to a value you are comfortable with. I set it to 1 year, this will cache the files in the browser for up to 1 year.  
-   6. It should look similar to this: ![Screenshot of the Cache rule in Cloudflare]({{site.baseurl}}/assets/r2/cache_rule.png)  
+   6. It should look similar to this: ![Screenshot of the Cache rule in Cloudflare](../assets/r2/cache_rule.png)  
    7. Save the rule.
 
-2. If you have a paid plan, you can potentially use “Custom error responses” to change 404 errors to 204 errors as suggested by the [External Web server documentation]({{site.baseurl}}/wiki/webserver/ExternalWebserversFile). This is however, not necessary for BlueMap to work. Since this documentation is about Cloudflare R2 and the free domain plan, I will not go into detail about this.
+2. If you have a paid plan, you can potentially use “Custom error responses” to change 404 errors to 204 errors as suggested by the [External Web server documentation](../wiki/webserver/ExternalWebserversFile.md). This is however, not necessary for BlueMap to work. Since this documentation is about Cloudflare R2 and the free domain plan, I will not go into detail about this.

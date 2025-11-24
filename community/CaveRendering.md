@@ -13,10 +13,10 @@ nav_order: 3
 
 ## By default
 
-By default BlueMap defines a cave as a place where the sun light is zero.
+By default, BlueMap defines a cave as a place where the sunlight is zero.
 To avoid removing important places which are just... dark,
 BlueMap also relies on the height information of blocks.
-By default in an overworld, BlueMap will only consider such blocks as "cave"
+By default, in an overworld, BlueMap will only consider such blocks as "cave"
 if they are below the y-level of 55 AND 5 blocks below the ocean-floor heightmap
 (highest block which blocks motion).
 

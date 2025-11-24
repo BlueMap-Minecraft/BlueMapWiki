@@ -46,7 +46,7 @@ marker-sets: {
     }
 }
 ```
-For more information on how to create markers, please refer to the [official Markers Guide]({{site.baseurl}}/wiki/customization/Markers.html).
+For more information on how to create markers, please refer to the [official Markers Guide](../wiki/customization/Markers.md).
 
 ## Manual with commands
 You can manually also create markers with the popular 3rd-party addon, [BlueMap Marker Manager](https://modrinth.com/plugin/bmarker). (Available as a Paper plugin and as a Fabric mod.)  
@@ -104,5 +104,5 @@ or like this:
 For more information on how to use Chunky and ChunkyBorder, please visit their respective wiki's: [Chunky Wiki](https://github.com/pop4959/Chunky/wiki) and [ChunkyBorder Wiki](https://github.com/pop4959/ChunkyBorder/wiki)  
 You can choose the colour for your border in the config file.
 
-If this is an Earth map that you got from from [earth.motfe.net](https://earth.motfe.net/), then you can find the exact commands and coordinates to add your border on this website: [docs.apocmc.us/minecraft-earth-map/map-borders](https://docs.apocmc.us/minecraft-earth-map/map-borders#id-1-500-scale-map)  
+If this is an Earth map that you got from [earth.motfe.net](https://earth.motfe.net/), then you can find the exact commands and coordinates to add your border on this website: [docs.apocmc.us/minecraft-earth-map/map-borders](https://docs.apocmc.us/minecraft-earth-map/map-borders#id-1-500-scale-map)  
 Please note that you do _not_ have to run `/chunky start`, though, like this website suggests!

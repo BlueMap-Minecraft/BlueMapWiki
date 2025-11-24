@@ -10,7 +10,7 @@ nav_order: 11
 
 > **Info about this guide:**  
 > In this guide, I'll only cover the ports management, both on OCI console and on the server itself.
-> Focus will be held for BlueMap access, not your minecraft server or the way to setup it.
+> Focus will be held for BlueMap access, not your minecraft server or the way to set that up.
 {: .info }
 
 1. TOC
@@ -21,19 +21,19 @@ nav_order: 11
 
 Go to your console ([Oracle Cloud Login page](https://cloud.oracle.com/)), next in the menu, go to "Networking" and then select "Virtual Cloud Networks"
 
-![Screenshot of the OCI web configuration menu]({{site.baseurl}}/assets/ociconf/OCI_01.png)
+![Screenshot of the OCI web configuration menu](../assets/ociconf/OCI_01.png)
 
 On the new page, you should see your virtual network (in the form of "vcn-....", by default), select it.  
 After that, select your subnet and then, the "Default Security List" (only one of each).
 
 You should get a page similar to this screenshot:
 
-![Screenshot of the default OCI network rules]({{site.baseurl}}/assets/ociconf/OCI_02.png)
+![Screenshot of the default OCI network rules](../assets/ociconf/OCI_02.png)
 
 Select "Add Ingress Rules"
 The first rule we add is for accessing BlueMap:
 
-![Screenshot of the rule configuration for port opening of BlueMap]({{site.baseurl}}/assets/ociconf/OCI_03.png)
+![Screenshot of the rule configuration for port opening of BlueMap](../assets/ociconf/OCI_03.png)
 
 So, as the source, we set it to ANY, so: `0.0.0.0/0`  
 For the port, if you left the default one: `8100`  
@@ -41,13 +41,13 @@ The protocol is TCP (standard for HTTP services)
 
 Then, we also need to allow the access to our Minecraft server, if not done yet (depends on which version you installed and/or mods to allow either clients to connect to your Java server)
 
-![Screenshot of the rule configuration for port opening of Minecraft Server]({{site.baseurl}}/assets/ociconf/OCI_04.png)
+![Screenshot of the rule configuration for port opening of Minecraft Server](../assets/ociconf/OCI_04.png)
 
 For all those settings, adapt the destination ports to your needs.
 
 After that, you should have some rules like those ones:
 
-![Screenshot of the OCI network rules summary]({{site.baseurl}}/assets/ociconf/OCI_05.png)
+![Screenshot of the OCI network rules summary](../assets/ociconf/OCI_05.png)
 
 Now, a quick explanations here on what we did above:
 
@@ -71,7 +71,7 @@ But, here is the summary on what you have to do for your Oracle Linux setup:
 {: .info }
 
 First, check that `firewall-cmd` command is available on your system.
-You can check it's presence with this command:
+You can check its presence with this command:
 ```
 sudo firewall-cmd --version
 ```
@@ -158,7 +158,7 @@ COMMIT
 > By not following this, the firewall could apply, by default, the "deny" rule (sometime this could work, but just not everytime).
 {: .info .important }
 
-Now, save the file and after that, you can either chose to reboot the server or run the following command:
+Now, save the file and after that, you can either choose to reboot the server or run the following command:
 
 **If you are NOT using the root privileges:**
 ```
@@ -174,4 +174,4 @@ iptables-restore < /etc/iptables/rules.v4
 
 If you did arrive there, you should be able to access your web map with the address: `http://Your_Server_Public_IP:Your_BlueMap_Web_Port` (port, by default is `8100`).
 
-If you want to use a custom DNS and/or HTTPS, you can find some information in the Webserver Wiki ([Reverse proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html))
+If you want to use a custom DNS and/or HTTPS, you can find some information in the Webserver Wiki ([Reverse proxy BlueMap](../wiki/webserver/ReverseProxy.md))

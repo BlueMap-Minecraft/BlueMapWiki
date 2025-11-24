@@ -15,7 +15,7 @@ nav_order: 5
 ## General
 BlueMap is automatically looking for mods and datapacks in your server-files. If it finds them it will try to load them
 and parse its resources to be able to render any additional blocks.  
-If you don't want this, you can turn this auto-discovery off in the `core.conf` -> `scan-for-mod-resources`.
+If you don't want this, you can turn this auto-discovery off in the [`core.conf` → `scan-for-mod-resources`](../configs/Core.md#scan-for-mod-resources).
 
 BlueMap might not be able to parse all blocks and resources for a mod. For example, if a mod generates its resources/block-models at
 runtime, BlueMap won't be able to find them in the `mod.jar` and will not be able to render them correctly!

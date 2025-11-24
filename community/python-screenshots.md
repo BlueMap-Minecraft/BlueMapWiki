@@ -9,14 +9,14 @@ nav_order: 12
 ## What and why ?
 I needed to export images of worlds from python, for a big project. First I tried to make my own renderer, and when you don't have any experience with OpenGL, or any other such frameworks, it is nearly impossible. So I looked at other projects that already renders `nbt` files or maps, such as [deepslate](https://github.com/misode/deepslate) or [prismarine-viewer](https://github.com/PrismarineJS/prismarine-viewer), but, unfortunately, I'm a python guy, so I'm lazy and want easy stuff.
 
-Then I remembered that when I had a server on [minestrator](https://minestrator.com), I had the LiveMap option activated, and that it was awesome. So I looked at the program used for this, and I found BlueMap. But now, how would I automate screenshoting a world ?
+Then I remembered that when I had a server on [minestrator](https://minestrator.com), I had the LiveMap option activated, and that it was awesome. So I looked at the program used for this, and I found BlueMap. But now, how would I automate screenshotting a world ?
 ## Tutorial
 ### Setup
-- Follow the [installation instructions for **BlueMap-CLI**](https://bluemap.bluecolored.de/wiki/getting-started/Installation.html#using-bluemap-on-the-cli--standalone). It even worked on my Mac, how amazing is that.
+- Follow the [installation instructions for **BlueMap-CLI**](../wiki/getting-started/Installation.md#using-bluemap-on-the-cli--standalone). It even worked on my Mac, how amazing is that.
 - Install Python. For this example, I am using **Python 3.11**, but it should work on other versions as long as the dependencies are supported.
   - `aiofiles`, used to **write and read files asynchronously**.
     Install it with: `pip install aiofiles`.
-  - `playwright`, used to **open headless browsers that executes JS**, and interract with them.
+  - `playwright`, used to **open headless browsers that executes JS**, and interact with them.
     Install it with: `pip install playwright`.
     Then execute: `playwright install chromium`.
     
@@ -85,7 +85,7 @@ Now, back inside the `main` function, I will set the callback. *I am using lambd
 ```py
 page.on('download', lambda download: on_download(output_path, download))
 ```
-And now, I have to interract with the page to **click on the "Take screenshot" button** in the menu.  
+And now, I have to interact with the page to **click on the "Take screenshot" button** in the menu.  
 For this, I am using the following lines, that opens the menu, and then takes the screenshot using the button.
 ```py
         await page.get_by_title('Menu').click()
@@ -102,7 +102,7 @@ Then I am waiting `.5` seconds to make sure the downloading is done. It takes ap
         await asyncio.sleep(.5)
         await page.close()
 ```
-*If you want to export many images, you probably don't want to close the page and open the `playwright` object after each screenshots, so I suggest you to make a loop before the page is created, and to close all after you are done with all the screenshots.*
+*If you want to export many images, you probably don't want to close the page and open the `playwright` object after each screenshot, so I suggest you to make a loop before the page is created, and to close all after you are done with all the screenshots.*
 
 And here is my screenshot, **generated all automatically**:
 ![](https://github.com/BlueMap-Minecraft/BlueMapWiki/assets/85891169/c62739a7-1b19-494b-a457-491a199208af)

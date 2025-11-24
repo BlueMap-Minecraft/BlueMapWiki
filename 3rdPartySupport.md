@@ -46,4 +46,4 @@ Reasons for a removal of an addon include:
 - Malware, Spyware and other intentionally harmful software
 
 If you feel like an addon on this list should be removed, please report it 
-on [Github](https://github.com/BlueMap-Minecraft/BlueMapWiki/issues/new) or [Discord](https://discord.gg/zmkyJa3)!
+on [GitHub](https://github.com/BlueMap-Minecraft/BlueMapWiki/issues/new) or [Discord](https://discord.gg/zmkyJa3)!

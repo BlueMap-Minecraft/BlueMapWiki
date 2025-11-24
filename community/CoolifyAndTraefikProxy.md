@@ -20,7 +20,7 @@ This is useful if you want to integrate your map in your website and you're usin
 
 > **Warning:**<br>
 > Telling the internal-webserver to connect to one specific address like e.g. `127.0.0.1`,
-> <br>from `webserver.conf` by adding `ip: "127.0.0.1"` WILL GIVE A **BAD GATEWAY** ERROR.
+> <br>from [`webserver.conf`](../wiki/configs/Webserver.md) by adding `ip: "127.0.0.1"` WILL GIVE A **BAD GATEWAY** ERROR.
 {: .info }
 
 ## BlueMap on a subdomain

@@ -13,7 +13,7 @@ BlueMap allows you to add various markers to your map. You can do this either by
 map-config or by having a 3rd-party plugin that uses BlueMap's [API](https://github.com/BlueMap-Minecraft/BlueMapAPI)
 to manage markers.
 
-A list of known 3rd-party plugins that use BlueMap's API is available [here]({{site.baseurl}}/community/3rdPartySupport.html).
+A list of known 3rd-party plugins that use BlueMap's API is available [here](../../3rdPartySupport.md).
 
 1. TOC
 {:toc}
@@ -59,7 +59,7 @@ There are different types of markers that you can use, depending on what you nee
 The POI Marker is the most basic marker. It's a simple icon-image that can be placed anywhere on the map. When clicked,
 it shows its label.
 
-![qLZpKw97EU](https://user-images.githubusercontent.com/10765470/211083198-93d034fc-9d6b-4ee9-aef2-08db0958c1ee.png)
+![](https://user-images.githubusercontent.com/10765470/211083198-93d034fc-9d6b-4ee9-aef2-08db0958c1ee.png)
 
 Here is an example config for a POI marker:
 ```hocon
@@ -84,7 +84,7 @@ example-poi-marker: {
 
 **Specific POI-Marker properties are:**
 - `detail` is the text that is shown when you click on the icon. This property allows using any html-tags. 
-  It default to the label of the marker.
+  It defaults to the label of the marker.
 - `icon`, which is any url to an image that will be used as the marker's icon. Can be a local file or a remote url.
   The image is not resized, so the image should be exactly as big as you want the icon to be on the map. All image-formats
   that can be used in a html-img-tag are supported
@@ -97,9 +97,9 @@ example-poi-marker: {
 HTML Markers are used to add any HTML-Element to the map. This gives you full freedom if you want to add just a simple text,
 any image, a button or even ... embed a video ;D. 
 
-![ESQgDvgzHg](https://user-images.githubusercontent.com/10765470/211083264-ca89c1b5-0051-4a82-af45-d9ebec9e9c35.png)
+![](https://user-images.githubusercontent.com/10765470/211083264-ca89c1b5-0051-4a82-af45-d9ebec9e9c35.png)
 
-Here is an example config for a HTML Marker:
+Here is an example config for an HTML Marker:
 ```hocon
 example-html-marker: {
     type: "html"
@@ -129,7 +129,7 @@ example-html-marker: {
 Line Markers do what their name suggests. They are used to draw a line on the map. If you click on that line, it shows the
 marker's `detail`.
 
-![dIZ7W6zjG2](https://user-images.githubusercontent.com/10765470/211083298-0116588c-15c8-4e84-8690-1a2936ae5c0c.png)
+![](https://user-images.githubusercontent.com/10765470/211083298-0116588c-15c8-4e84-8690-1a2936ae5c0c.png)
 
 Here is an example config for a Line Marker:
 ```hocon
@@ -176,7 +176,7 @@ things like render-order. Make sure this is always roughly in the middle of the 
 A shape marker is any flat shape (polygon) placed somewhere on the map. You can use it to mark areas, for example.
 If you click on the shape, it shows the marker's `detail`.
 
-![xDcmgynWv7](https://user-images.githubusercontent.com/10765470/211083324-04829ca3-515b-4b6b-8223-c9edaffbd07a.png)
+![](https://user-images.githubusercontent.com/10765470/211083324-04829ca3-515b-4b6b-8223-c9edaffbd07a.png)
 
 Here is an example config for a Shape Marker:
 ```hocon
@@ -233,9 +233,9 @@ example-shape-marker: {
 Extrude Markers are the same as a shape-marker, but the shape is extruded between two heights. With this you can mark
 areas that are limited to specific y-positions.
 
-![SqRL5ouEDS](https://user-images.githubusercontent.com/10765470/211083342-211b5d8b-81a3-407f-849b-af555707b85d.png)
+![](https://user-images.githubusercontent.com/10765470/211083342-211b5d8b-81a3-407f-849b-af555707b85d.png)
 
-Here is an example config for a Extrude Marker:
+Here is an example config for an Extrude Marker:
 ```hocon
 example-extrude-marker: {
     type: "extrude"
