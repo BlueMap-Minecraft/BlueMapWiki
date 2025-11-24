@@ -16,10 +16,10 @@ nav_order: 3
 With BlueMap you can define one or more **Storages** where you want your maps to be stored.
 Theoretically you could store each map in a different storage.
 
-To configure your storages, you can use the `storages` folder in your config folder.
+To configure your storages, you can use the [`storages`](../configs/storages/) folder in your config folder.
 In the same way as with the maps, the name of these config-file (without the `.conf`-extension) determines the
 identifier of the storage. Which means you can also add and remove storages. In your map-configs you can
-then use the `storage`-setting to select the storage this map should be stored in.  
+then use the [`storage` setting](../configs/Maps.md#storage) to select the storage this map should be stored in.  
 
 **For example:** If you have a config file `storages/mystorage.conf` then in your map configs you can
 set `storage: "mystorage"` to make that map use it.
@@ -28,7 +28,7 @@ set `storage: "mystorage"` to make that map use it.
 The file-storage is the default storage. It is simply a folder where BlueMap will store the map-tiles as separate files.
 Exactly like the webapp expects them.
 Usually that folder is in your webapp's webroot: `./bluemap/web/maps`. But you can change this folder however you like
-using the `root` setting.
+using the [`root`](../configs/storages/File.md#root) setting.
 
 ## MySQL, MariaDB & Postgres
 To use a MySQL, MariaDB or Postgres database, you can use the `sql.conf` template and enter your database information there.  

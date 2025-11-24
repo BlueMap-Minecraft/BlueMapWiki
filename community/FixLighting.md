@@ -19,7 +19,7 @@ We recommend using Chunky since it is supported on most platforms that BlueMap r
 
 ## Chunky Instructions
 First make sure you have Chunky installed. You can download it at [modrinth.com/plugin/chunky](https://modrinth.com/plugin/chunky)  
-Now to fix lighting issues in the world, we will want to force re-loading of all of the chunks in the world. This can be done using the steps outlined below:
+Now to fix lighting issues in the world, we will want to force re-loading of all the chunks in the world. This can be done using the steps outlined below:
 1. Open the config file for Chunky: `Chunky/config.yml`
 2. Set the option `force-load-existing-chunks` to `true`, and save the file
 3. Restart the server, or run `chunky reload` to reload the configuration file on the server

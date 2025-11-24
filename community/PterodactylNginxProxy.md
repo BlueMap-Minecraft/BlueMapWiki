@@ -20,7 +20,7 @@ Extended guide for setting up a reverse proxy for BlueMap with Pterodactyl and N
 - BlueMaps integrated webserver is running on port `8100`. *(Again, just replace `8100` with the actual port below)*
 
 > **Info:**<br>
-> We advise you to read the [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) guide first.
+> We advise you to read the [Reverse Proxy BlueMap with NGINX](../wiki/webserver/NginxProxy.md) guide first.
 > And also the [Pterodactyl Minecraft community guide](https://pterodactyl.io/community/games/minecraft.html) it contains useful info about the allocations.
 {: .info }
 
@@ -32,14 +32,14 @@ This is done by creating a new allocation in the Pterodactyl panel.
 2. Create a new allocation on the desired node for the server you want to create the proxy for.
 > Set the `IP Address` to `172.18.0.1` along with your desired port
 3. Add the newly created allocation to the server you want to create the proxy for.
-> If you changed the port make sure to edit it in the `webserver.conf` file as well.
+> If you changed the port make sure to edit it in the [`webserver.conf`](../wiki/configs/Webserver.md) file as well.
 
 ## Usage in NGINX config blocks
 You need to use the Pterodactyl pass-through IP (`172.18.0.1`) in the config blocks for the reverse proxy to work.
 You can usually locate the config file to be edited in `/etc/nginx/sites-available/`.
 
 ### BlueMap on a subdirectory of your website
-Same as in [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) except you need to use the Pterodactyl pass-through IP (`172.18.0.1`).
+Same as in [Reverse Proxy BlueMap with NGINX](../wiki/webserver/NginxProxy.md) except you need to use the Pterodactyl pass-through IP (`172.18.0.1`).
 If you have a normal website hosted with NGINX and want your map on `/map` (e.g `https://mydomain.com/map`) then
 you can just add this to your NGINX configuration:
 ```nginx
@@ -54,7 +54,7 @@ server {
 ```
 
 ### BlueMap on a subdomain of your website
-Same as in [Reverse Proxy BlueMap with NGINX](https://bluemap.bluecolored.de/wiki/webserver/NginxProxy.html) except you need to use the Pterodactyl pass-through IP (`172.18.0.1`).
+Same as in [Reverse Proxy BlueMap](../wiki/webserver/ReverseProxy.md) except you need to use the Pterodactyl pass-through IP (`172.18.0.1`).
 If you want BlueMap on a subdomain e.g. `https://map.mydomain.com/` then you'd add something like this to
 your NGINX config:
 ```nginx

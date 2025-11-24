@@ -48,7 +48,7 @@ Optionally:
   external web-server you will also need to reverse-proxy all requests to `/maps/*/live/*` to the builtin web-server.
 
 ## NGINX
-With NGINX it is actually only one config-line that does both things *(finding gz-files and setting the header)*:
+With NGINX, it is actually only one config-line that does both things *(finding gz-files and setting the header)*:
 `gzip_static always;`
 
 So with some context your website-config could look like this:

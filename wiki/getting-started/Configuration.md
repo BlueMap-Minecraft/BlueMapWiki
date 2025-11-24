@@ -21,8 +21,8 @@ In those generated config files every field has a comment above it with what it 
 *(if it has one)*. Read those! They'll explain a lot! :)
 
 ## Configuring your maps *(adding & removing maps)*
-In your config-folder you can find a folder called `maps`. This folder contains a `.conf` file for each map that you want
-BlueMap to render, update and/or show on the web-app.
+In your config-folder you can find a folder called [`maps`](../configs/Maps.md).
+This folder contains a `.conf` file for each map that you want BlueMap to render, update and/or show on the web-app.
 
 The name of those config-files (without the `.conf`-extension) will be the identifier of your map. E.g. you will use that
 identifier in your commands to select the map. If you rename a config-file, it will be like creating a new map, since BlueMap
@@ -42,26 +42,26 @@ Everything is explained there.
 ## Performance tweaking
 BlueMap is rendering asynchronously to your server-thread. This means at no time it will block your server-thread directly.
 So as long as your CPU is not fully utilized, your server should not be slowed down while BlueMap is rendering.
-You can control how many CPU-Cores BlueMap is (roughly) using by changing the `render-thread-count` in BlueMap's `core.conf`.
+You can control how many CPU-Cores BlueMap is (roughly) using by changing the [`render-thread-count` in BlueMap's `core.conf`](../configs/Core.md#render-thread-count).
 The more threads you give it, the more CPU-Cores it will use, but also the faster it will render.
 
 Minecraft itself can't utilize many CPU-Cores. The main server-thread will always only use one CPU-Core, and then there might be
 some additional usage for world-generation or Network-Threads. But altogether it can't usually utilize more than about 3 cores.
 This means you can give the rest of those cores to BlueMap if you want to optimize the render-speed.
 
-If you have 4 or fewer cores on your Server-CPU you probably want to set the `render-thread-count` to 1.  
+If you have 4 or fewer cores on your Server-CPU you probably want to set the [`render-thread-count`](../configs/Core.md#render-thread-count) to 1.  
 If you still have issues with lag and think it is caused by BlueMap, then you can tell BlueMap to not render at all if
-there is a certain number of players online: The `player-render-limit` setting in BlueMap's `plugin.conf` controls this.
+there is a certain number of players online: The [`player-render-limit` setting in BlueMap's `plugin.conf`](../configs/Plugin.md#player-render-limit) controls this.
 
 ## Hosting static maps
 If you have an old map of a world that doesn't exist anymore or a map that was rendered on a different server, you can still display it
 on the web-app. All BlueMap needs is to know the identifier
 (see [Configuring the map-storages](../customization/Storages.md))
 of the map and the storage that it is stored in.
-So we can just add a new map-config named like the identifier of the map with the only setting being the `storage`-setting.
+So we can just add a new map-config named like the identifier of the map with the only setting being the [`storage` option](../configs/Maps.md#storage).
 
-E.g. if you have a map with the identifier `mymap` and it is stored in the `storages/sql.conf` storage, you can add a new map-config
-`maps/mymap.conf` with the following content:
+E.g. if you have a map with the identifier `mymap` and it is stored in the [`storages/sql.conf`](../configs/storages/SQL.md) storage,
+you can add a new map-config `maps/mymap.conf` with the following content:
 ```hocon
 storage: "sql"
 ```

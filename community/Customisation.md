@@ -31,7 +31,7 @@ Custom styles are not limited to any specific platform; they work on all platfor
 
 To get started with BlueMap CSS, you should create a `.css` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that stylesheet with BlueMap, so it'll actually load it.  
-You do this in `webapp.conf`, by putting the file name in the `styles: [ ]` list.  
+You do this in [`webapp.conf`](../wiki/configs/Webapp.md), by putting the file name in the `styles: [ ]` list.  
 After adding it to the list, you'll want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
 You can do so with the `/bluemap reload light` command.
 
@@ -52,7 +52,7 @@ styles: [
 This should make all BlueMap's buttons fully red.  
 From here on, you can customise any BlueMap class you want.
 
-You can also find some pre-made styles for BlueMap in the [3rd Party Addons section of this wiki]({{site.baseurl}}/3rdPartySupport.html?platform=script),
+You can also find some pre-made styles for BlueMap in the [3rd Party Addons section of this wiki](../3rdPartySupport.md?platform=script),
 under the "style" platform filter. Feel free to take inspiration from these! Styling is tricky.
 
 ## Custom Scripts (Behaviour)
@@ -66,7 +66,7 @@ Custom scripts are not limited to any specific platform; they work on all platfo
 
 To get started with BlueMap JavaScript, you should create a `.js` file in your webroot (usually `/bluemap/web/`).  
 Then you need to register that script with BlueMap, so it'll actually load it.  
-You do this in `webapp.conf`, by putting the file name in the `scripts: [ ]` list.  
+You do this in [`webapp.conf`](../wiki/configs/Webapp.md), by putting the file name in the `scripts: [ ]` list.  
 After adding it to the list, you'll want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
 You can do so with the `/bluemap reload light` command.
 
@@ -85,13 +85,13 @@ scripts: [
 This should log a message to the browser console.
 From here on, you can program any additional behaviour you want!
 
-You can find some pre-made scripts in the [3rd Party Addons section of this wiki]({{site.baseurl}}/3rdPartySupport.html?platform=script),
+You can find some pre-made scripts in the [3rd Party Addons section of this wiki](../3rdPartySupport.md?platform=script),
 under the "script" platform filter. Feel free to take inspiration from these! Scripting is hard.
 
 ## Embed
-In some places, when you share a link to your map, it'll embed a bit of extra info. In Discord it looks like this:
+In some places, when you share a link to your map, it'll embed a bit of extra info. In Discord, it looks like this:
 
-![Screenshot of the default BlueMap embed in Discord]({{site.baseurl}}/assets/BlueMapDiscordEmbed.png)
+![Screenshot of the default BlueMap embed in Discord](../assets/BlueMapDiscordEmbed.png)
 
 You can change how this looks by editing the `bluemap/web/index.html` file.  
 The options you can safely change are the `description`, `theme-color`, `og:site_name`, `og:title`, `og:description`, and `og:image`.
@@ -118,7 +118,7 @@ In `/bluemap/web/lang/settings.conf` is the setting `default`, which you can cha
 
 ## Info menu
 BlueMap has an *Info* menu in the sidebar, which is also completely customisable.  
-You can edit it in the each language file, which are at `/bluemap/web/lang/`.  
+You can edit it in each language file, which are at `/bluemap/web/lang/`.  
 The option `info: { content:` is the one you need to edit for this.  
 It accepts any normal HTML.
 
@@ -143,7 +143,7 @@ Putting BlueMap onto a (sub)domain is best done in multiple steps:
 3. If you have more control over your server (for example, if you host at home or rent a VPS), you can install an external webserver and make it run on your domain.
    We generally recommend nginx. Here is a nice Getting Started guide for it: [nginx.org/en/docs/beginners_guide](https://nginx.org/en/docs/beginners_guide.html)
 4. Once you have your external webserver set up, you need to reverse-proxy BlueMap with it.
-   We have a some example setups for reverse proxies with a few external webservers here: [Reverse-Proxy]({{site.baseurl}}/wiki/webserver/ReverseProxy.html)
+   We have a some example setups for reverse proxies with a few external webservers here: [Reverse-Proxy](../wiki/webserver/ReverseProxy.md)
 5. Once you have that, you can even set up SSL/TLS (HTTPS)
 
 ## Advanced Webapp Customisation

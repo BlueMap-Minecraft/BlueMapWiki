@@ -9,12 +9,12 @@ nav_order: 15
 
 *Everyone can help to translate BlueMap to their language.*
 
-This guide is for doing everything from the GitHub web interface but you can do them locally via git if you know how to.
+This guide is for doing everything from the GitHub web interface, but you can do them locally via git if you know how to.
 
-Here are the steps to do so:
+Here are the steps:
 
 1. You need to create a GitHub account at <https://github.com/>
-2. Then go to <https://github.com/BlueMap-Minecraft/BlueMap> and press the fork button on the top right corner
+2. Then go to <https://github.com/BlueMap-Minecraft/BlueMap> and press the fork button in the top-right corner
 3. After it has finished forking go inside the folder `BlueMapCommon/webapp/public/lang` and create a new file from the top right of the file selector, name this file with code of your language (`fi.conf`, `ru.conf`, etc) and copy the contents of the `en.conf` to it.
 4. Translate the english strings inside `""`'s to your language
 5. Scroll down and press "commit changes"

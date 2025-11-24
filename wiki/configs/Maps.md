@@ -137,7 +137,7 @@ Please check out [this wiki page](/wiki/customization/Masks.md) for more detaile
 _Default is no mask; BlueMap will render everything that exists._
 
 ## `render-edges`
-Using this, BlueMap pretends that every Block outside of the defined render-mask is AIR,
+Using this, BlueMap pretends that every Block outside the defined render-mask is AIR,
 this means you can see the blocks where the world is cut (instead of having a see-through/xray view).  
 This has only an effect if you set some [`render-mask`](#render-mask) above.
 
@@ -146,7 +146,7 @@ This has only an effect if you set some [`render-mask`](#render-mask) above.
 _Default is_ `true`
 
 ## `edge-light-strength`
-The sun-light strength that blocks at map-edges will recieve if render-edges is enabled.
+The sun-light strength that blocks at map-edges will receive if render-edges is enabled.
 
 Should be a value between `0` and `15`
 

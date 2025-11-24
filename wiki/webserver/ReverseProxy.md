@@ -23,7 +23,7 @@ This is useful if you want to integrate your map in your website, or want to add
 > **Info:**<br>
 > If you want, you can tell the internal-webserver to only connect to one specific address like e.g. `127.0.0.1`,
 > so it is no longer accessible from the outside (by default it just connects to all available interfaces):
-> To do this, just open the `webserver.conf` and add the `ip: "127.0.0.1"` setting somewhere.
+> To do this, just open the [`webserver.conf`](../configs/Webserver.md) and add the `ip: "127.0.0.1"` setting somewhere.
 {: .info }
 
 ## BlueMap on a subdirectory of your website

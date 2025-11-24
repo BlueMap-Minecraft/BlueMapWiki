@@ -15,7 +15,7 @@ By default, BlueMap renders the entire (generated) world. With masks, you can de
 This can be useful to make sure the map only renders **inside** your world-border, or if you want to hide a specific area from the map.  
 In the nether the default config uses masks to remove the nethers ceiling so you can see below the top bedrock-layer.
 
-Render masks are configured in the **map config file**:
+Render masks are configured in the [map config file](../configs/Maps.md#render-mask):
 
 ```hocon
 render-mask: [

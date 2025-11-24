@@ -41,7 +41,7 @@ this work for `SQL`-type storage and uncompressed map data as well, but it will 
 extra work not covered by this guide.
 
 Since we're going to be using an external webserver there's no need to expose the BlueMap integrated
-webserver to the world. To make the server local-only, in `webserver.conf`, add `ip: "127.0.0.1"`
+webserver to the world. To make the server local-only, in [`webserver.conf`](../wiki/configs/Webserver.md), add `ip: "127.0.0.1"`
 just above the existing `port: <some port>` setting. Make a note of what `<some port>` is in your
 config since you'll need it later.
 

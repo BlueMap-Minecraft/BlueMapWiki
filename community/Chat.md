@@ -16,10 +16,10 @@ nav_order: 14
 In the world of BlueMap where we have to support all these platforms and server configurations it is impossible to
 write guides and addons that cover everyone's needs. That's why this guide will just go through an example case of
 turning a regular old boring BlueMap installation on a Paper server running on a Debian VPS to a fancy one with
-a web chat. You will most likely need to adapt this guide to your specific situation or find a more tech savvy friend
+a web chat. You will most likely need to adapt this guide to your specific situation or find a more tech-savvy friend
 to help you. You can also hire the writer of this guide ([Antti.Codes](https://antti.codes/)) for consultation for 90€/h.
-Though as he is way too kind hearted he will help as much as possible on the `#3rd-party-support` channel in the official
-BlueMap Discord for free.
+Though as he is way too kind-hearted he will help as much as possible on the [`#3rd-party-support`](https://discord.com/channels/665868367416131594/863844716047106068) channel
+in [the official BlueMap Discord](https://bluecolo.red/map-discord) for free.
 
 ## Requirements
 
@@ -30,7 +30,7 @@ Requirement keywords as per [RFC 2119](https://datatracker.ietf.org/doc/html/rfc
 - You **MUST NOT** run a server network with Bungeecord, Velocity or similar. The addon only supports one global chat.
 - You **SHOULD** have a public IP address. If you don't you will need to figure out exposing ports to the internet yourself.
 - You **SHOULD** know the basics of navigating around the command line, otherwise this will be painful.
-- You **SHOULD** have a domain. Have fun figuring out self signed certificates without a domain.
+- You **SHOULD** have a domain. Have fun figuring out self-signed certificates without a domain.
 - You **SHOULD NOT** run any chat plugins. The addon does not support them and the behaviour is undefined.
 - You **MAY** grab a sysadmin friend to help you.
 
@@ -39,11 +39,11 @@ The guide assumes all the recommendations are followed.
 ## The starting situation
 
 We've got a VPS running Debian. The VPS has a public IP. There is a Paper Minecraft server running on port `25565` and
-BlueMap installed as a plugin running on port `8100`. The BlueMap is accesible at `http://12.34.56.789:8100/`.  
+BlueMap installed as a plugin running on port `8100`. The BlueMap is accessible at `http://12.34.56.789:8100/`.  
 In my case the Minecraft server is run with a Docker container as seen below.
 
-![Contents of compose.yml and files in the data directory]({{site.baseurl}}/assets/chat/starting-situation.png)
-![BlueMap already working at http://12.34.56.789:8100/]({{site.baseurl}}/assets/chat/bluemap-already-working.png)
+![Contents of compose.yml and files in the data directory](../assets/chat/starting-situation.png)
+![BlueMap already working at http://12.34.56.789:8100/](../assets/chat/bluemap-already-working.png)
 
 ## Proxying with nginx
 
@@ -52,7 +52,7 @@ This is needed as we want HTTPS, NGINX auth request module and combine many serv
 Install NGINX using `sudo apt install -y nginx`.  
 You should now be able to observe NGINX working at `http://12.34.56.789/`
 
-![Welcome to nginx!]({{site.baseurl}}/assets/chat/nginx-installed.png)
+![Welcome to nginx!](../assets/chat/nginx-installed.png)
 
 Next we should navigate to `/etc/nginx` to start configuring our fresh installation  
 We shall start by removing the default configuration files with `sudo rm -rf ./sites-available/default ./sites-enabled/default /var/www/html`  
@@ -69,24 +69,25 @@ server {
 }
 ```
 
-Next we have to enable the create configuration file with `sudo ln -s ../sites-available/bluemap.conf ./sites-enabled/bluemap.conf`.  
+Next we have to enable the created configuration file with `sudo ln -s ../sites-available/bluemap.conf ./sites-enabled/bluemap.conf`.  
 Then after reloading NGINX with `sudo nginx -s reload` we should see our BlueMap at the location which had NGINX welcome page earlier.
 
-![BlueMap running through nginx proxy]({{site.baseurl}}/assets/chat/http-proxied-bluemap.png)
+![BlueMap running through nginx proxy](../assets/chat/http-proxied-bluemap.png)
 
 As we no longer use BlueMap's own port for accessing it. We should prevent it from being exposed.  
 In our `compose.yml` file we can do `"127.0.0.1:8100:8100/tcp"` instead of `"8100:8100/tcp"`.  
-If you don't use Docker, instead of changing Docker's port bindings, change the IP address BlueMap uses by editing `plugins/BlueMap/webserver.conf` and adding `ip: "127.0.0.1"`.
+If you don't use Docker, instead of changing Docker's port bindings,
+change the IP address BlueMap uses by editing [`webserver.conf`](../wiki/configs/Webserver.md) and adding `ip: "127.0.0.1"`.
 
 ## Domain and HTTPS
 
 Proxying is cool and all but it's pretty much a no-op right now.  
 So open up your DNS management interface, in my case Cloudflare, and add an A record for the IP address of the server.
 
-![DNS record at Cloudflare]({{site.baseurl}}/assets/chat/dns-cloudflare.png)
+![DNS record at Cloudflare](../assets/chat/dns-cloudflare.png)
 
 Change the server name in NGINX `sites-available/bluemap.conf` file to match your chosen domain like this `server_name your.domain;`  
-The BlueMap should be accesible at the domain, just without HTTPS still.
+The BlueMap should be accessible at the domain, just without HTTPS still.
 
 To get the most out of our domain we want to use free SSL certificates to secure the connection. And to do that we need
 a tool to acquire certificates, like `acme.sh`, which is really cool. To install `acme.sh` we want to change to root user
@@ -97,7 +98,7 @@ Run `acme.sh --issue --nginx -d your.domain` to acquire the certificates for you
 Though these certificates are not ready for use yet.
 
 First we want to prepare a couple of files and permissions so everything goes smoothly with NGINX.  
-Run the following commmands:
+Run the following commands:
 
 ```sh
 addgroup certs
@@ -111,7 +112,7 @@ chmod 770 /etc/nginx/certs
 chmod 660 /etc/nginx/certs/*
 ```
 
-These will setup a `certs` groups and a `certs` folder which only the users in the group (root and NGINX) are allowed to access.  
+These will set up a `certs` groups and a `certs` folder which only the users in the group (root and NGINX) are allowed to access.  
 Now we can install the certificates we acquired earlier:
 
 ```sh
@@ -121,7 +122,7 @@ acme.sh --install-cert -d your.domain \
 --reloadcmd "systemctl reload nginx"
 ```
 
-We can now logout of the root user and get back to our normal user (unless you just do everything on root anyway...).
+We can now log out of the root user and get back to our normal user (unless you just do everything on root anyway...).
 Let's revise the NGINX `sites-available/bluemap.conf` to use them.
 
 ```nginx
@@ -148,7 +149,7 @@ server {
 
 After reloading NGINX with `sudo nginx -s reload` we should have a working BlueMap website with HTTPS. Hurray!
 
-![BlueMap with HTTPS]({{site.baseurl}}/assets/chat/bluemap-with-https.png)
+![BlueMap with HTTPS](../assets/chat/bluemap-with-https.png)
 
 ## Authentication
 
@@ -158,7 +159,7 @@ Copy them to the server plugins folder. You can do this with scp for example
 `scp ~/Downloads/{Authentication,BlueMap-Auth}*.jar 12.34.56.789:~/minecraft-server/data/plugins`.
 Do notice the above links are for specific releases used at the time of writing (v0.4.0 and v0.2.1),
 there may be newer versions available that you may want to use. If you do use newer releases,
-keep in mind that some steps might differ and you should refer to the official up-to-date documentation.
+keep in mind that some steps might differ, and you should refer to the official up-to-date documentation.
 
 Now let's restart the server to generate configuration files.
 Edit `plugins/Authentication/config.yml` to have `optional_authentication: true`.
@@ -257,13 +258,13 @@ server {
 }
 ```
 
-Your BlueMap should now have a log in button in the menu.
+Your BlueMap should now have a login button in the menu.
 
-![A wild Log in button appears]({{site.baseurl}}/assets/chat/login-button.png)
+![A wild Log in button appears](../assets/chat/login-button.png)
 
-![The authentication screen]({{site.baseurl}}/assets/chat/authentication-screen.png)
+![The authentication screen](../assets/chat/authentication-screen.png)
 
-![BlueMap menu has your Minecraft head now]({{site.baseurl}}/assets/chat/logged-in-bluemap.png)
+![BlueMap menu has your Minecraft head now](../assets/chat/logged-in-bluemap.png)
 
 ## Chat
 
@@ -286,9 +287,9 @@ Next, in the NGINX config, add the following above the "Other addons go here" te
   }
 ```
 
-![The chat in the webapp]({{site.baseurl}}/assets/chat/chat-in-web.png)
+![The chat in the webapp](../assets/chat/chat-in-web.png)
 
-![The chat in Minecraft]({{site.baseurl}}/assets/chat/chat-in-mc.png)
+![The chat in Minecraft](../assets/chat/chat-in-mc.png)
 
 ## 🎉 You have successfully installed a fantastic web chat for BlueMap!!!
 {: .no_toc }

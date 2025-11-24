@@ -11,7 +11,7 @@ You can use BlueMap on Server-Networks (BungeeCord/Velocity) and show all your m
 There are multiple ways to achieve this.
 
 ## General Setup
-For all setups you will need to install BlueMap [like normally]({{site.baseurl}}/wiki/getting-started/Installation) 
+For all setups you will need to install BlueMap [like normally](./Installation.md) 
 on every game-server in your network that you want to render maps on.  
 
 **Make sure that the map-configs are NAMED DIFFERENTLY across the entire network!**  
@@ -25,11 +25,11 @@ Either you have an SQL-Server to which you can connect from all your game-server
 same folder from them all (e.g. mounting a shared drive/folder). Either of them can be used to combine all the map-data from different servers.
 
 ### Steps
-- configure either the `storages/sql.conf` on all server to the same sql-server, or the `storages/file.conf` on 
-  all server to the same (shared) folder
+- configure either the [`storages/sql.conf`](../configs/storages/SQL.md) on all servers to the same sql-server,
+  or the [`storages/file.conf`](../configs/storages/File.md) on all servers to the same (shared) folder
 - configure all maps on all servers to use that storage
 - choose one of those servers to be the server that will host the web-app.  
-  **On this server:** create an extra map-config like [here: "Hosting static maps"]({{site.baseurl}}/wiki/getting-started/Configuration#hosting-static-maps) for each 
+  **On this server:** create an extra map-config like [here: "Hosting static maps"](./Configuration.md#hosting-static-maps) for each 
   map that is on the **other** servers. *(example below)*
 
 Now the maps from the other servers should be visible on the web-app of this one server.
@@ -65,11 +65,12 @@ Now the maps from the other servers should be visible on the web-app of this one
 > nothing else.
 
 ### Live updates
-If you want to have live updating markers and player-markers on all maps, turn on the `write-markers-interval` and the 
-`write-players-interval` in each `plugin.conf` on the other servers.  
+If you want to have live updating markers and player-markers on all maps, turn on the
+[`write-markers-interval` and `write-players-interval`](../configs/Plugin.md#write-markers-interval-and-write-players-interval)
+options in each [`plugin.conf`](../configs/Plugin.md) on the other servers.  
 **Or** if you plan on hosting the entire map with an external-webserver you can reverse-proxy each maps live-interface to the correct
-game-server. See: [External Webserver (File-Storage)]({{site.baseurl}}/wiki/webserver/ExternalWebserversFile) and
-[External Webserver (SQL-Storage)]({{site.baseurl}}/wiki/webserver/ExternalWebserversSQL).
+game-server. See: [External Webserver (File-Storage)](../webserver/ExternalWebserversFile.md) and
+[External Webserver (SQL-Storage)](../webserver/ExternalWebserversSQL.md).
 
 ## Using an external-webserver and different storages
 If you can't store all maps on the same storage, you can also use an external-webserver to host the webapp, and just

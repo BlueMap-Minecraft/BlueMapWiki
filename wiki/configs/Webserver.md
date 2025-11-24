@@ -51,7 +51,7 @@ Whether the logger should append to an existing file, or overwrite it
 _Default is_ `false`
 
 ### `format`
-The format of the webserver-acivity logs.
+The format of the webserver-activity logs.
 
 The syntax is the [Java String formatting](https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html).
 
