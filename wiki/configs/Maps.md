@@ -17,7 +17,7 @@ You will probably want to change at least the [`world`](#world) and [`name`](#na
 but you don't actually have to! By keeping them the same, you can have multiple maps of the same world.
 
 > **Info:**  
-> When a "default" is mentioned for any option, it is meant that if the option is commented out, that is what BlueMap will use.  
+> When a "default" is mentioned for any option, it is meant that if the option is commented out or removed, that is what BlueMap will use as a fallback.  
 > This may not be the same as the option that is pre-filled-in.
 {: .info }
 

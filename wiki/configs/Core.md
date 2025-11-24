@@ -9,7 +9,7 @@ nav_order: 1
 # Core-Config
 
 > **Info:**  
-> When a "default" is mentioned for any option, it is meant that if the option is commented out, that is what BlueMap will use.  
+> When a "default" is mentioned for any option, it is meant that if the option is commented out or removed, that is what BlueMap will use as a fallback.  
 > This may not be the same as the option that is pre-filled-in.
 {: .info }
 
