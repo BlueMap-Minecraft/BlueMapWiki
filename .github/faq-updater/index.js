@@ -1,5 +1,6 @@
 import { Client } from "discord.js";
 import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 const client = new Client({
     intents: [],
@@ -107,10 +108,14 @@ function splitMessage(message) {
 }
 
 async function getNewMessages() {
-    const rawContent = await readFile("../../wiki/FAQ.md", "utf8");
-    const [_frontmatter, rawQuestions] = rawContent.split("# FAQ", 2).map((section) => section.trim());
+    const faqPath = "../../wiki/FAQ.md";
+    const rawContent = await readFile(faqPath, "utf8");
+    const [_frontmatter, rawQuestions] = rawContent
+        .split("# FAQ", 2)
+        .map((section) => section.trim());
+    const baseUrl = "https://bluemap.bluecolored.de";
     return rawQuestions
-        .replace(/{{site.baseurl}}/g, "https://bluemap.bluecolored.de")
+        .replace(/{{site.baseurl}}/g, baseUrl)
         .split(/^###? /m)
         .slice(1)
         .flatMap((question) => {
@@ -118,14 +123,18 @@ async function getNewMessages() {
             const content = lines
                 .join("\n")
                 .trimEnd()
-                .replace(/\n{2,}/g, s => "<br>".repeat(s.length))
-                .replace(/\s{2,}\n|\s*\\\n|\s*\n(?=\s*-)/g,"<br>")
-                .replace(/\n\s*/g," ")
+                .replace(/\n{2,}/g, (s) => "<br>".repeat(s.length))
+                .replace(/\s{2,}\n|\s*\\\n|\s*\n(?=\s*-)/g, "<br>")
+                .replace(/\n\s*/g, " ")
                 .replace(/<br>/g, "\n")
                 .replace(/\[([^\]]+)]\(([^)]+)\)/g, (_match, name, link) => {
                     if (name === link) return `<${link}>`;
                     if (link.startsWith("https://discord.com/channels/")) return link;
-                    if (link.startsWith("#")) return name;
+                    if (link.startsWith("#")) return `[${name}](<${baseUrl}/wiki/FAQ.html${link}>)`;
+                    if (link.startsWith("."))
+                        return `[${name}](<${baseUrl}/${path
+                            .relative("../../", path.join(path.dirname(faqPath), link))
+                            .replace(/\.md/, ".html")}>)`;
                     return `[${name}](<${link}>)`;
                 });
             const message = `## ${title}\n${content}`;
