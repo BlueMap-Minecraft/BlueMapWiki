@@ -201,9 +201,9 @@ If this is set to `true`, BlueMap will render Chunks even if there is no light-d
 
 This can be useful for example if some mod prevents light-data from being saved correctly.  
 However, this also has a few drawbacks:
-- For those chunks, every block will always be fully lit
+- Cave rendering will always be enabled (BlueMap is using the sky-light data to detect "caves")
+- Everything will be rendered fully lit (sky-light value of 15, looks similar to having night vision)
 - Night-mode might not work correctly
-- Caves will always be rendered (ignoring the [`remove-caves-below-y`](#remove-caves-below-y) setting)
 
 _Default is_ `false`
 
@@ -212,7 +212,7 @@ Here you can define any static marker-sets with markers that should be displayed
 
 You can change this at any time.
 
-If you need dynamic markers, you can use any plugin that integrates with BlueMap's API.  
+If you need dynamic markers, you can use any plugin or mod that integrates with BlueMap's API.  
 [Here is a list.](/community/3rdPartySupport.md)
 
 Please check out [this wiki page](/wiki/customization/Markers.md) for information on how to configure this.
