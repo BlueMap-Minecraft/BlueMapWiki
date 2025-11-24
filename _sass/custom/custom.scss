@@ -120,6 +120,43 @@ th {
   }
 }
 
+h2, h3 {
+  scroll-margin-top: 1em;
+}
+
+// Highlight linked headings -->
+h2:not(:has(> code)):target,
+h3:not(:has(> code)):target {
+  animation: highlightTexts 3s ease-out;
+}
+
+@keyframes highlightTexts {
+  from {
+    text-shadow:
+      0 0 2em rgba(170, 170, 255, 1.0),
+      0 0 1em rgba(170, 170, 255, 1.0),
+      0 0 0.1em rgba(170, 170, 255, 1.0);
+  }
+  to {
+    box-shadow: 0 0 0em rgba(255, 255, 170, 0.0);
+  }
+}
+
+h2:target > code,
+h3:target > code {
+  animation: highlightConfigs 3s ease-out;
+}
+
+@keyframes highlightConfigs {
+  from {
+    box-shadow: 0 0 1em 0 rgba(170, 170, 255, 1.0);
+  }
+  to {
+    box-shadow: 0 0 0em 0 rgba(255, 255, 170, 0.0);
+  }
+}
+// <-- Highlight linked headings
+
 section.config-indent {
   --indent-size: 2em;
 

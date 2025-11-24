@@ -51,7 +51,7 @@ This is the driver-class that BlueMap will try to load and use.
 Check the documentation of the driver you are using if you don't know this.
 
 Leaving this commented means that BlueMap automatically tries to find a suitable driver in your classpath.  
-(If you added a custom driverJar above, you HAVE TO set the correct class name here)
+(If you added a custom [`driver-jar`](#driver-jar) above, you HAVE TO set the correct class name here)
 
 ## `compression`
 The compression-type that bluemap will use to compress generated map-data.
