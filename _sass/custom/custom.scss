@@ -123,9 +123,10 @@ th {
 section.config-indent {
   --indent-size: 2em;
 
+  --bracket-width: 0.5em;
   &::before, &::after {
     position: relative;
-    left: calc(-1 * var(--indent-size) - 0.2em);
+    left: calc(-1 * var(--indent-size) - var(--bracket-width) / 2);
   }
 
   &::before { content: "{"; }
