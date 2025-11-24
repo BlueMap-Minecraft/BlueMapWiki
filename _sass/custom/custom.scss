@@ -119,3 +119,68 @@ th {
     margin-left: calc( (100% - #{$page-width}) / 2 + #{$sidebar-width} );
   }
 }
+
+h2, h3 {
+  scroll-margin-top: 1em;
+}
+
+// Highlight linked headings -->
+h2:not(:has(> code)):target,
+h3:not(:has(> code)):target {
+  animation: highlightTexts 3s ease-out;
+}
+
+@keyframes highlightTexts {
+  from {
+    text-shadow:
+      0 0 2em rgba(170, 170, 255, 1.0),
+      0 0 1em rgba(170, 170, 255, 1.0),
+      0 0 0.1em rgba(170, 170, 255, 1.0);
+  }
+  to {
+    box-shadow: 0 0 0em rgba(255, 255, 170, 0.0);
+  }
+}
+
+h2:target > code,
+h3:target > code {
+  animation: highlightConfigs 3s ease-out;
+}
+
+@keyframes highlightConfigs {
+  from {
+    box-shadow: 0 0 1em 0 rgba(170, 170, 255, 1.0);
+  }
+  to {
+    box-shadow: 0 0 0em 0 rgba(255, 255, 170, 0.0);
+  }
+}
+// <-- Highlight linked headings
+
+section.config-indent {
+  --indent-size: 2em;
+
+  &::before, &::after {
+    position: relative;
+    font-family: monospace;
+    left: calc(-1 * var(--indent-size) - 0.5ch); //-0.5ch to center the line neatly between the {}'s
+  }
+
+  &::before { content: "{"; }
+  &::after  { content: "}"; }
+
+  & :first-child { margin-top:    0; }
+  & :last-child  { margin-bottom: 0; }
+
+  padding-left: var(--indent-size);
+
+  --bracket-height: 2em;
+  border-left: 1px solid transparent;
+  border-image: linear-gradient(to bottom,
+    transparent var(--bracket-height),
+    grey var(--bracket-height),
+    grey calc(100% - var(--bracket-height)),
+    transparent calc(100% - var(--bracket-height))
+  );
+  border-image-slice: 1; 
+}

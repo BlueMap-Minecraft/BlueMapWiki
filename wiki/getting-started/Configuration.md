@@ -56,7 +56,7 @@ there is a certain number of players online: The `player-render-limit` setting i
 ## Hosting static maps
 If you have an old map of a world that doesn't exist anymore or a map that was rendered on a different server, you can still display it
 on the web-app. All BlueMap needs is to know the identifier
-(see [Configuring the map-storages](#configuring-the-map-storages-store-maps-in-a-database-or-a-different-directory))
+(see [Configuring the map-storages](../customization/Storages.md))
 of the map and the storage that it is stored in.
 So we can just add a new map-config named like the identifier of the map with the only setting being the `storage`-setting.
 
