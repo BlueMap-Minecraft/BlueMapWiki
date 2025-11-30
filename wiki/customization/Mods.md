@@ -76,6 +76,6 @@ Possible properties for blocks are:
 Some blocks like grass, leaves, water or redstone are dynamically colored. Those colors change by biome, 
 properties or are just static.
 
-Possible values are `@foliage`, `@grass`, `@water` to use the foliage-, grass- or water-color of the biome to color 
+Possible values are `@foliage`, `@dry_foliage`, `@grass`, `@water` to use the foliage-, dry-foliage-, grass- or water-color of the biome to color 
 the block, `@redstone` to use the power-level of the block *(used for redstone)*,
 or a static color using a [css-style color-hex](https://htmlcolorcodes.com/color-picker/) like `#86a863`.
