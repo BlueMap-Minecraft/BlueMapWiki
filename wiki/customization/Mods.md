@@ -42,7 +42,8 @@ Use the standard [datapack format](https://minecraft.wiki/w/Biome_definition) to
   "minecraft:bubble_column": { "alwaysWaterlogged": true },
   "minecraft:grass": { "randomOffset": true },
   "minecraft:glass": { "occluding": false, "cullingIdentical": true },
-  "minecraft:ice": { "cullingIdentical": true }
+  "minecraft:ice": { "cullingIdentical": true },
+  "tfc:grass/loam": { "culling": true }
 }
 ```
 
@@ -56,8 +57,9 @@ Possible properties for blocks are:
   done for grass-blocks and flowers
 - `occluding` is used to determine if the block is "occluding" light when calculating 
   the [ambient occlusion](https://en.wikipedia.org/wiki/Ambient_occlusion) on neighbor blocks.
-- `cullingIdentical` means that if the block is directly next to another block of the same type, then the side facing 
-  that block will be culled (removed)
+- `culling` means that if the block is directly next to another block, then the other blocks side facing this block can 
+  be culled (removed)
+- `cullingIdentical` is the same as `culling` but only applies if the other block has the same block-state
 
 ### Block-colors config
 **File:** `assets/modid/blockColors.json`<br>
