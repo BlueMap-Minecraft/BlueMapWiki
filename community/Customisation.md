@@ -14,7 +14,7 @@ Keep in mind that some BlueMap updates require you to delete the `index.html` fi
 so make sure to remember any edits you do to it and any of BlueMap's other source files, because you will need to apply them again.
 
 > **Info:**  
-> Throughout this guide, `/bluemap/web/` shall be assumed as the default webroot. If you're using a custom, different webroot, please make sure to use that instead.
+> Throughout this guide, `./bluemap/web/` shall be assumed as the default webroot. If you're using a custom, different webroot, please make sure to use that instead.
 {: .info }
 
 1. TOC
@@ -29,7 +29,7 @@ Custom styles are not limited to any specific platform; they work on all platfor
 > If you don't know how to write CSS yet, here is a good guide: [developer.mozilla.org/en-US/docs/Learn/CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS)
 {: .info }
 
-To get started with BlueMap CSS, you should create a `.css` file in your webroot (usually `/bluemap/web/`).  
+To get started with BlueMap CSS, you should create a `.css` file in your webroot (usually `./bluemap/web/`).  
 Then you need to register that stylesheet with BlueMap, so it'll actually load it.  
 You do this in [`webapp.conf`](../wiki/configs/Webapp.md), by putting the file name in the `styles: [ ]` list.  
 After adding it to the list, you'll want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
@@ -37,13 +37,13 @@ You can do so with the `/bluemap reload light` command.
 
 To test if it works, you can use this simple style:
 
-`/bluemap/web/my-custom-style.css`:
+`./bluemap/web/my-custom-style.css`:
 ```css
 :root {
     --theme-bg: red;
 }
 ```
-`plugins/BlueMap/webapp.conf`:
+`./plugins/BlueMap/webapp.conf`:
 ```hocon
 styles: [
     "my-custom-style.css"
@@ -64,7 +64,7 @@ Custom scripts are not limited to any specific platform; they work on all platfo
 > If you don't know how to write JavaScript yet, here is a good guide: [developer.mozilla.org/en-US/docs/Learn/JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
 {: .info }
 
-To get started with BlueMap JavaScript, you should create a `.js` file in your webroot (usually `/bluemap/web/`).  
+To get started with BlueMap JavaScript, you should create a `.js` file in your webroot (usually `./bluemap/web/`).  
 Then you need to register that script with BlueMap, so it'll actually load it.  
 You do this in [`webapp.conf`](../wiki/configs/Webapp.md), by putting the file name in the `scripts: [ ]` list.  
 After adding it to the list, you'll want to reload BlueMap, so BlueMap applies the changes you've made to the configs.
@@ -72,11 +72,11 @@ You can do so with the `/bluemap reload light` command.
 
 To test if it works, you can use this simple script:
 
-`/bluemap/web/my-custom-script.js`:
+`./bluemap/web/my-custom-script.js`:
 ```js
 console.log("Hello world!");
 ```
-`plugins/BlueMap/webapp.conf`:
+`./plugins/BlueMap/webapp.conf`:
 ```hocon
 scripts: [
     "my-custom-script.js"
@@ -93,7 +93,7 @@ In some places, when you share a link to your map, it'll embed a bit of extra in
 
 ![Screenshot of the default BlueMap embed in Discord](../assets/BlueMapDiscordEmbed.png)
 
-You can change how this looks by editing the `bluemap/web/index.html` file.  
+You can change how this looks by editing the `./bluemap/web/index.html` file.  
 The options you can safely change are the `description`, `theme-color`, `og:site_name`, `og:title`, `og:description`, and `og:image`.
 
 > The `og:image` attribute should be a full URL link, not a relative path.
@@ -102,29 +102,29 @@ The options you can safely change are the `description`, `theme-color`, `og:site
 ## Website favicon
 A favicon is the icon you'll see on the tab in your browser, and in the favourites bar if you've favourited the website.  
 There are two ways to change BlueMap's favicon:
-1. Replace the favicon image `/bluemap/web/assets/favicon-8768b872.png`
+1. Replace the favicon image `./bluemap/web/assets/favicon-8768b872.png`
 2. Copy a new image file to the BlueMap webroot (or `assets` directory) and edit the `<link rel="icon" href="./assets/favicon-8768b872.png">` in `index.html` to refer to your new image instead.
 
 ## Website title
 The title is the text that is on the tab in your browser.  
 Changing the `<title>` tag in the `index.html` will not work!  
-You need to change it in each language file, which are at `/bluemap/web/lang/`.  
+You need to change it in each language file, which are at `./bluemap/web/lang/`.  
 The option `pageTitle` in the `.conf` files in this directory are what you need to change.
 
 ## Default language
 You can change the default language for your map, which will apply for all new visitors.
 It will not change the language for people who have already visited your site once already.  
-In `/bluemap/web/lang/settings.conf` is the setting `default`, which you can change to any of the locales listed below it.
+In `./bluemap/web/lang/settings.conf` is the setting `default`, which you can change to any of the locales listed below it.
 
 ## Info menu
 BlueMap has an *Info* menu in the sidebar, which is also completely customisable.  
-You can edit it in each language file, which are at `/bluemap/web/lang/`.  
+You can edit it in each language file, which are at `./bluemap/web/lang/`.  
 The option `info: { content:` is the one you need to edit for this.  
 It accepts any normal HTML.
 
 ## Screenshot file name
 BlueMap has a screenshot feature, which downloads a screenshot to your device.  
-You can change the filename of that by opening the `/bluemap/web/assets/index-123456.js` file, and then doing a `Ctrl`+`F` for "`bluemap-screenshot.png`".  
+You can change the filename of that by opening the `./bluemap/web/assets/index-123456.js` file, and then doing a `Ctrl`+`F` for "`bluemap-screenshot.png`".  
 By changing that piece of text, you can choose any other filename you wish.
 
 ## (Sub)Domain
