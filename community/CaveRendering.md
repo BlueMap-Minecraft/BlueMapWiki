@@ -28,7 +28,9 @@ All of these can be affected by changing options in the map's config files.
 
 By changing `cave-detection-uses-block-light` to `true`,
 caves will also need to be void of any block caused light.
-This for example means that a torched up cave will be rendered.
+This for example means that a torched up cave will be rendered.  
+The downside of this is that it will also render caves that are lit by just lava or glow lichen,
+which is usually unwanted.
 
 ### Remove caves
 
