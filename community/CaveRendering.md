@@ -64,4 +64,4 @@ literally just holes in some dark corners.
 
 Please note that simply disabling free-flight won't be enough of an anti-cheat.  
 You will need to mingle with the cave settings.  
-Using a no-ore texture pack is also a great addition but as caves often contain ores, you will want to hide them as well.
+Using a no-ore texture pack is also a great addition because as caves often contain ores, you will want to hide them as well.
