@@ -15,7 +15,7 @@ Here are the steps:
 
 1. You need to create a GitHub account at <https://github.com/>
 2. Then go to <https://github.com/BlueMap-Minecraft/BlueMap> and press the fork button in the top-right corner
-3. After it has finished forking go inside the folder `BlueMapCommon/webapp/public/lang` and create a new file from the top right of the file selector, name this file with code of your language (`fi.conf`, `ru.conf`, etc) and copy the contents of the `en.conf` to it.
+3. After it has finished forking go inside the folder `common/webapp/public/lang` and create a new file from the top right of the file selector, name this file with code of your language (`fi.conf`, `ru.conf`, etc) and copy the contents of the `en.conf` to it.
 4. Translate the english strings inside `""`'s to your language
 5. Scroll down and press "commit changes"
 6. Open the `settings.conf` file in the same folder and press the pen symbol on top right of the file. Copy another languages settings and give it the right name and filename. Keep these in alphabetical order. Don't forget to commit the changes.
