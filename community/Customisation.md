@@ -52,7 +52,7 @@ styles: [
 This should make all BlueMap's buttons fully red.  
 From here on, you can customise any BlueMap class you want.
 
-You can also find some pre-made styles for BlueMap in the [3rd Party Addons section of this wiki](../3rdPartySupport.md?platform=style),
+You can also find some pre-made styles for BlueMap in the [3rd Party Addons section of this wiki](../3rdPartySupport.html?platform=style),
 under the "style" platform filter. Feel free to take inspiration from these! Styling is tricky.
 
 ## Custom Scripts (Behaviour)
@@ -85,7 +85,7 @@ scripts: [
 This should log a message to the browser console.
 From here on, you can program any additional behaviour you want!
 
-You can find some pre-made scripts in the [3rd Party Addons section of this wiki](../3rdPartySupport.md?platform=script),
+You can find some pre-made scripts in the [3rd Party Addons section of this wiki](../3rdPartySupport.html?platform=script),
 under the "script" platform filter. Feel free to take inspiration from these! Scripting is hard.
 
 ## Embed
