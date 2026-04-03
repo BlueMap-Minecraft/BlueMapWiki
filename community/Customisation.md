@@ -52,7 +52,7 @@ styles: [
 This should make all BlueMap's buttons fully red.  
 From here on, you can customise any BlueMap class you want.
 
-You can also find some pre-made styles for BlueMap in the [3rd Party Addons section of this wiki](../3rdPartySupport.md?platform=script),
+You can also find some pre-made styles for BlueMap in the [3rd Party Addons section of this wiki](../3rdPartySupport.md?platform=style),
 under the "style" platform filter. Feel free to take inspiration from these! Styling is tricky.
 
 ## Custom Scripts (Behaviour)
