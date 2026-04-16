@@ -79,7 +79,7 @@ it will be created.
 {: .info }
 
 Here is a simple way to set up your sqlite-storage:
-- Install this [plugin/mod](https://modrinth.com/plugin/sqlite-jdbc)
+- Install one of these [plugin/mod](https://modrinth.com/discover/mods?q=jdbc+sqlite)s
 - Set the `connection-url` in your `sql.conf` to `connection-url: "jdbc:sqlite:bluemap/sqlite.db"`
 - Set the `max-connections` to `1`
 - Change the `storage` in each of your **map** config files (`./maps/xxx.conf`) to `storage: "sql"`
