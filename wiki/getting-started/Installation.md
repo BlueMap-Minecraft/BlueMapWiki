@@ -117,8 +117,8 @@ You can use [BlueMap CLI](#using-bluemap-on-the-cli--standalone) in a Docker con
 
 The image is available on GitHub container registry as `ghcr.io/bluemap-minecraft/bluemap`.
 
-For production usage you should **always** pin the version to a specific version (such as `v5.20`) as even the latest minor might still be a pre-release.
-This is because some updates (even minor ones) require manual upgrades, which will always be listed in the changelog.
+For production usage you should **always** pin the version to a specific version (such as `v5.20`),
+because some updates (even minor ones) require manual upgrades, which will always be listed in the changelog.
 
 The list of available Docker tags is available on [GitHub](https://github.com/BlueMap-Minecraft/BlueMap/pkgs/container/bluemap).
 
