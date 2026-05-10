@@ -114,11 +114,19 @@ This is useful if you want to render a map of a minecraft-world, but don't want 
 
 ## Using BlueMap Docker image
 You can use [BlueMap CLI](#using-bluemap-on-the-cli--standalone) in a Docker container. This is perfect for container loving sysadmins.
+
 The image is available on GitHub container registry as `ghcr.io/bluemap-minecraft/bluemap`.
-For latest and greatest the `latest` tag is the latest release (which can be a pre-release) and `master` the latest git commit.
-You can also choose a latest minor of a major with tags such as `v5` or a specific version tag such as `v5.13`.  
-For production usage you should **always** pin the version to the minor version as even the latest minor might still be a pre-release.
-You can see the list of available Docker tags on [GitHub](https://github.com/BlueMap-Minecraft/BlueMap/pkgs/container/bluemap).
+
+For production usage you should **always** pin the version to a specific version (such as `v5.20`),
+because some updates (even minor ones) require manual upgrades, which will always be listed in the changelog.
+
+The list of available Docker tags is available on [GitHub](https://github.com/BlueMap-Minecraft/BlueMap/pkgs/container/bluemap).
+
+You can subscribe to be notified of new releases through [GitHub's "watch repository" feature](https://github.com/BlueMap-Minecraft/BlueMap) or the [Discord server](https://bluecolo.red/map-discord), so you can know when to bump up your pinned version.
+
+If you accept instability, you can use the `latest` tag, which is the latest release (which can be a pre-release) or `master` for the latest git commit.
+You can also choose a latest minor of a major with tags such as `v5`.
+
 The documentation will from now on substitute the version with `<version>`.
 
 ### Prerequisites
