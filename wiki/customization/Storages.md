@@ -30,8 +30,8 @@ Exactly like the webapp expects them.
 Usually that folder is in your webapp's webroot: `./bluemap/web/maps`. But you can change this folder however you like
 using the [`root`](../configs/storages/File.md#root) setting.
 
-## MySQL, MariaDB & Postgres
-To use a MySQL, MariaDB or Postgres database, you can use the `sql.conf` template and enter your database information there.  
+## MySQL, MariaDB & PostgreSQL
+To use a MySQL, MariaDB or PostgreSQL database, you can use the `sql.conf` template and enter your database information there.  
 
 ### Connection-URL
 The `connection-url` setting is where you define most things like e.g. the host *(url/address/ip)* of your database and the port.
@@ -41,10 +41,10 @@ But usually it looks something like this: `jdbc:[driver]://[host]:[port]/[databa
 Here are some Examples:  
 `jdbc:mysql://localhost:3306/bluemap?permitMysqlScheme`  
 `jdbc:mariadb://db.myhost.com/my-database`  
-`jdbc:postgres://127.0.0.1:3306/bluemap`  
+`jdbc:postgresql://127.0.0.1:3306/bluemap`  
 
 And here is some more documentation for [MySQL](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-jdbc-url-format.html),
-[MariaDB](https://mariadb.com/kb/en/about-mariadb-connector-j/#connection-strings) and [Postgres](https://jdbc.postgresql.org/documentation/use/#connecting-to-the-database).
+[MariaDB](https://mariadb.com/kb/en/about-mariadb-connector-j/#connection-strings) and [PostgreSQL](https://jdbc.postgresql.org/documentation/use/#connecting-to-the-database).
 
 ### Connection-Properties
 The `connection-properties` config is just a map of custom properties that you can pass to your db-driver when creating a
@@ -70,7 +70,7 @@ and place it in the `./bluemap` folder. Then set `driver-jar: "bluemap/mariadb-j
 to tell BlueMap where to find the jar and which class to load from it. *(Don't forget to remove the `#` to uncomment the settings)*
 
 ## Sqlite
-Configuring Sqlite is basically the same as in [MySQL, MariaDB & Postgres](#mysql-mariadb--postgres), just use a JDBC-driver for sqlite
+Configuring Sqlite is basically the same as in [MySQL, MariaDB & PostgreSQL](#mysql-mariadb--postgresql), just use a JDBC-driver for sqlite
 and configure the correct `connection-url` like this: `jdbc:sqlite:[path-to-database-file]`. If the database-file doesn't exist,
 it will be created.
 
