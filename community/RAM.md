@@ -26,7 +26,7 @@ BlueMap is using **unused** heap-space (RAM) to cache some things
 like e.g. chunk-data and resources to improve performance.
 But as soon as your JVM (your server) needs this cache-space somewhere else, it can do so!
 BlueMap is not hard-reserving that space, so it can't cause an OOM because of this.
-*(Technically this is done using a [SoftValue-Cache](<https://www.baeldung.com/java-caching-caffeine#3-reference-based-eviction>))*  
+*(Technically this is done using a [SoftValue-Cache](https://www.baeldung.com/java-caching-caffeine#3-reference-based-eviction))*  
 After all, it is always said that unused RAM is wasted RAM.
 
 ### 2. Garbage Collection
@@ -35,7 +35,7 @@ Your JVM runs this GC in intervals to free up heap-space that is no-longer used.
 If you have a big heap of multiple GBs, depending on your GC-configuration,
 it can wait for a long time until it decides to run the GC and free some space.
 This has the effect that your RAM-Usage will keep climbing until the GC is ran.
-**Or:** until you restart the server.
+**Or:** until you restart BlueMap through `/bluemap reload` or through restarting the Minecraft server.
 
 So if you remove BlueMap to prove that it is using a lot of RAM,
 what you actually did is you restarted the server,
@@ -48,6 +48,11 @@ even if BlueMap is removed now.
 ## Conclusion
 If you are having OOM errors, it is usually unlikely that BlueMap is causing them.
 In fact, BlueMap has been tested to run fine with only 500MB of RAM!  
+
+Programs that are looking into the Java process from the outside cannot understand these concepts, so OOM-Killers often kill the server when nothing is going wrong at all!  
+It is highly recommend that you disable your OOM-Killer, and let Java itself crash if it's out of memory.  
+You will likely see that this is unlikely to actually happen.
+
 However, if you still believe it's BlueMap causing your OOM,
 then please use the Java startup flag `-XX:+HeapDumpOnOutOfMemoryError`
 to create a heap-dump the next time an OOM occurs,
