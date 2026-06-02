@@ -12,7 +12,7 @@ BlueMap generally does not *need* a lot of memory.
 
 In fact, BlueMap has been proven to work with just 512MB of assigned memory!
 
-The more render-threads you have assigned (in `core.conf`), the more RAM BlueMap will need, so you can lower the amount of used memory by lowering the amount of threads.
+The more [render-threads](https://bluemap.bluecolored.de/wiki/configs/Core.html#render-thread-count) you have assigned, the more RAM BlueMap will need, so you can lower the amount of used memory by lowering the amount of threads.
 
 However, this does not mean that BlueMap won't use more RAM *if it is available*.
 
