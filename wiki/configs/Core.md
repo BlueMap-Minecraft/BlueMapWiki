@@ -42,6 +42,22 @@ Controls whether BlueMap should try to find and load mod-resources and datapacks
 
 _Default is_ `true`
 
+## `update-cooldown`
+Cooldown time in seconds for updating region-files.
+
+If a region-file got updated once, the same region-file will not be updated again until this cooldown-time has passed.
+
+_Default is_ `60` _seconds_
+
+## `full-update-interval`
+The interval in minutes in which a full map-update will be triggered.
+
+This is ADDITIONALLY to the normal map-update process (in case that fails to detect any file-changes).
+
+**This DOESN'T re-render the entire map each time**, it _only checks_ if there are some changes that have not been rendered yet!
+
+_Default is_ `1440` _(24 hours)_
+
 ## `metrics`
 If this is `true`, BlueMap might send really basic metrics reports containing only the implementation-type and the version that is being used to [metrics.bluecolored.de/bluemap](https://metrics.bluecolored.de/)
 

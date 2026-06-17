@@ -71,12 +71,3 @@ If this amount of players or more is online, BlueMap will stop rendering map-upd
 Setting this to `0` or `-1` will disable this feature -> BlueMap will not pause rendering
 
 _Default is_ `-1`
-
-## `full-update-interval`
-The interval in minutes in which a full map-update will be triggered.
-
-This is ADDITIONALLY to the normal map-update process (in case that fails to detect any file-changes).
-
-**This DOESN'T re-render the entire map each time**, it _only checks_ if there are some changes that have not been rendered yet!
-
-_Default is_ `1440` _(24 hours)_
