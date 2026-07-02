@@ -69,13 +69,18 @@ Possible properties for blocks are:
   "minecraft:water": "@water",
   "minecraft:grass": "@grass",
   "minecraft:birch_leaves": "#86a863",
-  "minecraft:redstone_wire": "@redstone"
+  "minecraft:redstone_wire": "@redstone",
+  "minecraft:melon_stem[age=4]": "#80df10",
+  "custom_mod:customBlock": "custom_mod:colormap/custom_colormap"
 }
 ```
 
 Some blocks like grass, leaves, water or redstone are dynamically colored. Those colors change by biome, 
 properties or are just static.
 
-Possible values are `@foliage`, `@dry_foliage`, `@grass`, `@water` to use the foliage-, dry-foliage-, grass- or water-color of the biome to color 
-the block, `@redstone` to use the power-level of the block *(used for redstone)*,
-or a static color using a [css-style color-hex](https://htmlcolorcodes.com/color-picker/) like `#86a863`.
+Possible values are:
+- `@foliage`, `@dry_foliage`, `@grass`, `@water` to use the foliage-, dry-foliage-, grass- or water-color of the biome to color the block
+- `@redstone` to use the power-level of the block *(used for redstone)*
+- a static color using a [css-style color-hex](https://htmlcolorcodes.com/color-picker/) like `#86a863`
+- the resource-key/path to the texture for a custom color-map texture that bluemap should sample using the usual 
+humidity and temperature values of the biome
