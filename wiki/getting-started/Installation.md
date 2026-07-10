@@ -14,7 +14,7 @@ nav_order: 1
 
 ## General Prerequisites
 To run BlueMap you need:
-- Java 21 or newer
+- Java 25 or newer
 - Minecraft Java-Edition
 
 BlueMap only works with Java-Edition worlds, Bedrock-Edition worlds are not supported!
