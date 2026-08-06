@@ -42,4 +42,4 @@ jobs:
           ./gradlew build --no-daemon
 
       - name: Run the Validator
-        run: java -jar BlueMap3rdValidator/build/libs/BlueMap3rdValidator-1.0-all.jar "."
+        run: java -jar BlueMap3rdValidator/build/libs/BlueMap3rdValidator-1.0-all.jar "." >> $GITHUB_STEP_SUMMARY
