@@ -124,7 +124,7 @@ The list of available Docker tags is available on [GitHub](https://github.com/Bl
 
 You can subscribe to be notified of new releases through [GitHub's "watch repository" feature](https://github.com/BlueMap-Minecraft/BlueMap) or the [Discord server](https://bluecolo.red/map-discord), so you can know when to bump up your pinned version.
 
-If you accept instability, you can use the `latest` tag, which is the latest release (which can be a pre-release) or `master` for the latest git commit.
+If you accept instability, you can use the `latest` tag for the latest release, or `master` for the latest git commit.
 You can also choose a latest minor of a major with tags such as `v5`.
 
 The documentation will from now on substitute the version with `<version>`.
