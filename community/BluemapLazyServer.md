@@ -96,7 +96,7 @@ server {
     # Proxy all requests for live data to the integrated webserver.
     # Fall back to @server-offline if it can't be contacted.
     location ~* ^/maps/[^/]*/live/ {
-      proxy_read_timeout 2s;  # required if lazymc pauses the server instead of shutting it down
+      proxy_connect_timeout 2s;  # required if lazymc pauses the server instead of shutting it down
       error_page 502 504 = @server-offline;
       proxy_pass http://127.0.0.1:8100;  # the default port for the integrated webserver, adapt to your setup
     }
