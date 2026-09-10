@@ -84,3 +84,22 @@ Possible values are:
 - a static color using a [css-style color-hex](https://htmlcolorcodes.com/color-picker/) like `#86a863`
 - the resource-key/path to the texture for a custom color-map texture that bluemap should sample using the usual 
 humidity and temperature values of the biome
+
+### Default-BlockStates config
+**File:** `data/modid/defaultBlockstates.json`<br>
+**Example:**
+```json
+{
+  "minecraft:grass_block": "minecraft:grass_block[snowy=false]",
+  "minecraft:acacia_log": "minecraft:acacia_log[axis=y]",
+  "minecraft:lime_wool_stairs": "minecraft:lime_wool_stairs[facing=north,half=bottom,shape=straight,waterlogged=false]"
+}
+```
+
+This file is used to map any block-id to the "default blockstate" of that block.
+This is only relevant for minecraft-worlds that are saved in the 26.3+ format, as minecraft is sometimes omitting block-properties there
+if they are equal to the default blockstate.  
+BlueMap's mod/plugin versions generate (and load) a datapack with this file at every startup from the information available in the game. *(Usually stored at `./bluemap/defaultBlockstates.zip`)*  
+However BlueMap's CLI version is not able to access the running game. So if you are using the CLI/Docker version to
+render, you might need to provide this config for some modded blocks.
+You can either create the file manually yourself or use the generated file from a BlueMap-mod instance that is briefly installed on the server or a client.
