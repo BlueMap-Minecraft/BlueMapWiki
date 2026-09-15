@@ -37,6 +37,19 @@ Whether to use Server-Sent Events (SSE) for pushing tile and marker-updates to t
 
 _Default is_ `true`
 
+## `additional-headers`
+Additional headers the webserver should include in the responses it sends.
+
+_Default is_ no headers.
+
+### Example:
+```hocon
+additional-headers: {
+  "Cache-Control": "public, max-age=86400"
+  "Cloudflare-CDN-Cache-Control": "max-age=60, stale-if-error=604800"
+}
+```
+
 ## `log`
 Config-section for webserver-activity logging
 
