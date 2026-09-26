@@ -61,6 +61,39 @@ Check the documentation of the driver you are using if you don't know this.
 Leaving this commented means that BlueMap automatically tries to find a suitable driver in your classpath.  
 (If you added a custom [`driver-jar`](#driver-jar) above, you HAVE TO set the correct class name here)
 
+## `connection-init-sql`
+SQL-statements that are executed once on every new connection to the database.
+
+Leaving this commented out means that BlueMap uses sensible defaults for the used sql-dialect. These are:
+
+### MySQL / MariaDB
+```hocon
+connection-init-sql: [] #(no initialization SQL)
+```
+
+### PostgreSQL
+```hocon
+connection-init-sql: [
+  "SET synchronous_commit = off"
+]
+```
+
+### SQLite
+```hocon
+connection-init-sql: [
+  "PRAGMA journal_mode = WAL"
+  "PRAGMA synchronous = NORMAL"
+  "PRAGMA busy_timeout = 30000"
+  "PRAGMA foreign_keys = ON"
+]
+```
+
+## `table-prefix`
+The prefix that is prepended to the names of all tables BlueMap creates and uses.  
+Only lowercase letters (a-z), digits (0-9) and underscores (_) are allowed, with a maximum length of 32 characters.  
+Changing this value on an existing setup will NOT rename existing tables or move data, BlueMap will create new, empty ones instead.  
+_Default is_ `bluemap_`
+
 ## `compression`
 The compression-type that bluemap will use to compress generated map-data.
 Available compression-types are:

@@ -45,8 +45,8 @@ _Default is_ no headers.
 ### Example:
 ```hocon
 additional-headers: {
-  "Cache-Control": "public, max-age=86400"
-  "Cloudflare-CDN-Cache-Control": "max-age=60, stale-if-error=604800"
+  "Cache-Control": "public, max-age=86400, stale-if-error=604800"
+  "CDN-Cache-Control": "max-age=60"
 }
 ```
 
