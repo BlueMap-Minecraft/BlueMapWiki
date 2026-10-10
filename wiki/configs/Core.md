@@ -59,7 +59,17 @@ This is ADDITIONALLY to the normal map-update process (in case that fails to det
 
 **This DOESN'T re-render the entire map each time**, it _only checks_ if there are some changes that have not been rendered yet!
 
-_Default is_ `1440` _(24 hours)_
+_Default is_ `1440` _minutes (24 hours)_
+
+## `region-file-check-interval`
+The interval in minutes at which BlueMap checks all region-files for changes.
+
+This is a relatively cheap check IN ADDITION to watching for file-system events, in case those are not reliable.
+For HUGE worlds (> 10000 region-files) you might want to consider increasing the interval or disabling this to reduce cpu and file-read load.
+
+Set to `0` to disable.
+
+_Default is_ `5` _minutes_
 
 ## `scan-for-mod-resources`
 Controls whether BlueMap should try to find and load mod-resources and datapacks from the server/world-directories.
