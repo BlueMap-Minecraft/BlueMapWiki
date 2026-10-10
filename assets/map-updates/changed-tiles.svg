@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" width="1000" height="440" font-family="-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8a8a"/>
+    </marker>
+    <pattern id="chunks" x="40" y="60" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36,0 L0,0 L0,36" fill="none" stroke="#3a3a3a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="0.5" y="0.5" width="999" height="439" rx="16" fill="#262626" stroke="#333333"/>
+
+  <!-- headings -->
+  <text x="184" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">Chunks in the region file</text>
+  <text x="804" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">Map tiles of that region</text>
+
+  <!-- LEFT: chunk grid -->
+  <rect x="40" y="60" width="288" height="288" fill="#1e1e1e"/>
+  <rect x="112" y="96" width="36" height="36" fill="#e0913a"/>
+  <rect x="220" y="240" width="36" height="36" fill="#e0913a"/>
+  <rect x="256" y="240" width="36" height="36" fill="#e0913a"/>
+  <rect x="40" y="60" width="288" height="288" fill="url(#chunks)"/>
+  <rect x="40" y="60" width="288" height="288" fill="none" stroke="#8a8a8a" stroke-width="2"/>
+  <text x="184" y="372" text-anchor="middle" font-size="13" fill="#999999">simplified: a real region has 32 × 32 chunks</text>
+
+  <!-- MIDDLE: explanation -->
+  <path d="M350,204 L640,204" stroke="#8a8a8a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <text x="495" y="120" text-anchor="middle" font-size="14" font-weight="700" fill="#e9e9e9">Compare</text>
+  <text x="495" y="144" text-anchor="middle" font-size="13" fill="#b4b4b4">each chunk's “last changed” time</text>
+  <text x="495" y="163" text-anchor="middle" font-size="13" fill="#b4b4b4">with the time BlueMap remembered</text>
+  <text x="495" y="182" text-anchor="middle" font-size="13" fill="#b4b4b4">from the last time it drew it</text>
+  <text x="495" y="232" text-anchor="middle" font-size="13" fill="#b4b4b4">different? → the tiles on top</text>
+  <text x="495" y="251" text-anchor="middle" font-size="13" fill="#b4b4b4">of that chunk are redrawn</text>
+
+  <!-- RIGHT: tile grid -->
+  <rect x="660" y="60" width="288" height="288" fill="#1e1e1e"/>
+  <rect x="732" y="60" width="72" height="72" fill="#2c84fa"/>
+  <rect x="804" y="204" width="72" height="72" fill="#2c84fa"/>
+  <rect x="876" y="204" width="72" height="72" fill="#2c84fa"/>
+  <g stroke="#555555" stroke-width="1.5">
+    <line x1="732" y1="60" x2="732" y2="348"/>
+    <line x1="804" y1="60" x2="804" y2="348"/>
+    <line x1="876" y1="60" x2="876" y2="348"/>
+    <line x1="660" y1="132" x2="948" y2="132"/>
+    <line x1="660" y1="204" x2="948" y2="204"/>
+    <line x1="660" y1="276" x2="948" y2="276"/>
+  </g>
+  <rect x="660" y="60" width="288" height="288" fill="none" stroke="#8a8a8a" stroke-width="2"/>
+  <text x="768" y="101" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">redraw</text>
+  <text x="840" y="245" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">redraw</text>
+  <text x="912" y="245" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">redraw</text>
+  <text x="804" y="372" text-anchor="middle" font-size="13" fill="#999999">each tile covers roughly 2 × 2 chunks</text>
+
+  <!-- legend -->
+  <rect x="40" y="398" width="16" height="16" fill="#e0913a"/>
+  <text x="64" y="411" font-size="13" fill="#d0d0d0">chunk changed since the last render</text>
+  <rect x="340" y="398" width="16" height="16" fill="#2c84fa"/>
+  <text x="364" y="411" font-size="13" fill="#d0d0d0">tile gets redrawn</text>
+  <rect x="520" y="398" width="16" height="16" fill="#1e1e1e" stroke="#777777"/>
+  <text x="544" y="411" font-size="13" fill="#d0d0d0">tile is skipped – nothing changed there</text>
+</svg>

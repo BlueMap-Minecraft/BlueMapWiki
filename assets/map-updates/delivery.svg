@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 370" width="1000" height="370" font-family="-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5cb85b"/>
+    </marker>
+  </defs>
+  <rect x="0.5" y="0.5" width="999" height="369" rx="16" fill="#262626" stroke="#333333"/>
+
+  <!-- render thread -->
+  <rect x="20" y="90" width="170" height="100" rx="12" fill="#1b2a40" stroke="#2c84fa" stroke-width="2"/>
+  <text x="105" y="132" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">Render thread</text>
+  <text x="105" y="155" text-anchor="middle" font-size="13" fill="#b4b4b4">redraws a tile</text>
+
+  <!-- lowres buffer -->
+  <rect x="215" y="250" width="180" height="72" rx="12" fill="#36281a" stroke="#e0913a" stroke-width="2"/>
+  <text x="305" y="280" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">Low-res buffer</text>
+  <text x="305" y="302" text-anchor="middle" font-size="13" fill="#b4b4b4">collected in memory</text>
+
+  <!-- storage -->
+  <rect x="430" y="70" width="200" height="200" rx="12" fill="#1e1e1e" stroke="#8a8a8a" stroke-width="2"/>
+  <text x="530" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">Map storage</text>
+  <text x="530" y="126" text-anchor="middle" font-size="13" fill="#b4b4b4">files or SQL database</text>
+  <rect x="450" y="145" width="160" height="30" rx="6" fill="#1b2a40" stroke="#2c84fa"/>
+  <text x="530" y="165" text-anchor="middle" font-size="13" fill="#9cc6ff">hi-res tiles (3D)</text>
+  <rect x="450" y="185" width="160" height="30" rx="6" fill="#36281a" stroke="#e0913a"/>
+  <text x="530" y="205" text-anchor="middle" font-size="13" fill="#f0b068">low-res level 1 → 2 → 3</text>
+  <text x="530" y="248" text-anchor="middle" font-size="12" fill="#999999">each level feeds the next</text>
+
+  <!-- browser -->
+  <rect x="790" y="70" width="190" height="200" rx="12" fill="#1c3021" stroke="#5cb85b" stroke-width="2"/>
+  <text x="885" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">Web-app</text>
+  <text x="885" y="126" text-anchor="middle" font-size="13" fill="#b4b4b4">in a viewer's browser</text>
+  <text x="885" y="200" text-anchor="middle" font-size="13" fill="#d0d0d0">swaps in the new</text>
+  <text x="885" y="218" text-anchor="middle" font-size="13" fill="#d0d0d0">tile if it's on screen</text>
+
+  <!-- arrows -->
+  <g stroke="#8a8a8a" stroke-width="2.5" fill="none" marker-end="url(#arrow)">
+    <path d="M192,120 L427,120"/>
+    <path d="M105,192 L105,286 L212,286"/>
+    <path d="M397,286 L530,286 L530,273"/>
+  </g>
+  <text x="310" y="110" text-anchor="middle" font-size="12" fill="#d0d0d0">hi-res tile · saved immediately</text>
+  <text x="120" y="240" font-size="12" fill="#d0d0d0">low-res colours</text>
+  <text x="405" y="308" font-size="12" fill="#d0d0d0">saved 15 s after the region is done</text>
+
+  <g stroke="#5cb85b" stroke-width="2.5" fill="none" marker-end="url(#arrow-green)">
+    <path d="M632,170 L787,170"/>
+  </g>
+  <text x="710" y="160" text-anchor="middle" font-size="12" font-weight="700" fill="#7fd07e">“tile changed”</text>
+  <text x="710" y="190" text-anchor="middle" font-size="12" fill="#d0d0d0">→ browser reloads it</text>
+
+  <text x="500" y="352" text-anchor="middle" font-size="13" fill="#999999">Every saved tile – hi-res or any low-res level – sends its own “tile changed” message.</text>
+</svg>

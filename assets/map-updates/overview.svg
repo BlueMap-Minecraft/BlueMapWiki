@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" width="1000" height="250" font-family="-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+  <rect x="0.5" y="0.5" width="999" height="249" rx="16" fill="#262626" stroke="#333333"/>
+
+  <!-- boxes -->
+  <g>
+    <rect x="10" y="30" width="170" height="135" rx="14" fill="#36281a" stroke="#e0913a" stroke-width="2"/>
+    <circle cx="95" cy="62" r="16" fill="#e0913a"/>
+    <text x="95" y="68" text-anchor="middle" font-size="16" font-weight="700" fill="#181818">1</text>
+    <text x="95" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">A player builds</text>
+    <text x="95" y="129" text-anchor="middle" font-size="13" fill="#b4b4b4">A block is placed</text>
+    <text x="95" y="147" text-anchor="middle" font-size="13" fill="#b4b4b4">or broken in-game</text>
+  </g>
+  <g>
+    <rect x="212" y="30" width="170" height="135" rx="14" fill="#1b2a40" stroke="#2c84fa" stroke-width="2"/>
+    <circle cx="297" cy="62" r="16" fill="#2c84fa"/>
+    <text x="297" y="68" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">2</text>
+    <text x="297" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">The server saves</text>
+    <text x="297" y="129" text-anchor="middle" font-size="13" fill="#b4b4b4">The change is written</text>
+    <text x="297" y="147" text-anchor="middle" font-size="13" fill="#b4b4b4">to the world files</text>
+  </g>
+  <g>
+    <rect x="414" y="30" width="170" height="135" rx="14" fill="#1b2a40" stroke="#2c84fa" stroke-width="2"/>
+    <circle cx="499" cy="62" r="16" fill="#2c84fa"/>
+    <text x="499" y="68" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">3</text>
+    <text x="499" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">BlueMap notices</text>
+    <text x="499" y="129" text-anchor="middle" font-size="13" fill="#b4b4b4">It spots which world</text>
+    <text x="499" y="147" text-anchor="middle" font-size="13" fill="#b4b4b4">file has changed</text>
+  </g>
+  <g>
+    <rect x="616" y="30" width="170" height="135" rx="14" fill="#1b2a40" stroke="#2c84fa" stroke-width="2"/>
+    <circle cx="701" cy="62" r="16" fill="#2c84fa"/>
+    <text x="701" y="68" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">4</text>
+    <text x="701" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">BlueMap redraws</text>
+    <text x="701" y="129" text-anchor="middle" font-size="13" fill="#b4b4b4">only the parts of the</text>
+    <text x="701" y="147" text-anchor="middle" font-size="13" fill="#b4b4b4">map that changed</text>
+  </g>
+  <g>
+    <rect x="818" y="30" width="170" height="135" rx="14" fill="#1c3021" stroke="#5cb85b" stroke-width="2"/>
+    <circle cx="903" cy="62" r="16" fill="#5cb85b"/>
+    <text x="903" y="68" text-anchor="middle" font-size="16" font-weight="700" fill="#181818">5</text>
+    <text x="903" y="106" text-anchor="middle" font-size="15" font-weight="700" fill="#e9e9e9">The map updates</text>
+    <text x="903" y="129" text-anchor="middle" font-size="13" fill="#b4b4b4">Open browsers load</text>
+    <text x="903" y="147" text-anchor="middle" font-size="13" fill="#b4b4b4">the new map pieces</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#8a8a8a" stroke-width="2.5" fill="none" marker-end="url(#arrow)">
+    <line x1="182" y1="97" x2="209" y2="97"/>
+    <line x1="384" y1="97" x2="411" y2="97"/>
+    <line x1="586" y1="97" x2="613" y2="97"/>
+    <line x1="788" y1="97" x2="815" y2="97"/>
+  </g>
+
+  <!-- timing -->
+  <text x="20" y="205" font-size="12" font-weight="700" fill="#999999" letter-spacing="0.5">TYPICAL TIME FOR THIS STEP</text>
+  <line x1="10" y1="214" x2="988" y2="214" stroke="#3d3d3d" stroke-width="1.5"/>
+  <text x="95" y="236" text-anchor="middle" font-size="13" fill="#d0d0d0">-</text>
+  <text x="297" y="236" text-anchor="middle" font-size="13" fill="#d0d0d0">usually &lt;= 5 minutes</text>
+  <text x="499" y="236" text-anchor="middle" font-size="13" fill="#d0d0d0">0 - 5 minutes</text>
+  <text x="701" y="236" text-anchor="middle" font-size="13" fill="#d0d0d0">5 - 60 s pause + drawing</text>
+  <text x="903" y="236" text-anchor="middle" font-size="13" fill="#d0d0d0">a few seconds</text>
+</svg>
