@@ -54,6 +54,13 @@ _Default is "no anchor" → The camera will start with the topmost map and at th
 ## `min-zoom-distance` and `max-zoom-distance`
 The minimum (closest) and maximum (furthest) distance (in blocks) that the camera can be from the ground
 
+## `zoom-to-cursor`
+If zooming with the mouse-wheel or a pinch-gesture should zoom towards the cursor (or the center of the pinch), instead of the center of the screen.
+
+The zoom-buttons, keyboard-zoom, zooming while following a player and zooming while rotating the camera with the mouse always zoom towards the center of the screen.
+
+_Default is_ `true`
+
 ## `resolution-default`
 The default value of the resolution (settings-menu)
 
